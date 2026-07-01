@@ -19,6 +19,25 @@
         'stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>' +
     '</svg>';
 
+  // Иконки состояния оператора — активация/приказ читаются по форме, а не только по цвету.
+  var ICON_ACTIVATED_SVG =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 13 L9 18 L20 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ICON_CONCEAL_SVG =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M2 12 C5 6 9 4 12 4 C15 4 19 6 22 12 C19 18 15 20 12 20 C9 20 5 18 2 12 Z" fill="none" stroke="currentColor" stroke-width="1.8"/>' +
+      '<circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>' +
+      '<line x1="3" y1="21" x2="21" y2="3" stroke="currentColor" stroke-width="1.8"/>' +
+    '</svg>';
+  var ICON_ENGAGE_SVG =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
+      '<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/>' +
+      '<circle cx="12" cy="12" r="2" fill="currentColor"/>' +
+      '<line x1="12" y1="1" x2="12" y2="5" stroke="currentColor" stroke-width="1.8"/>' +
+      '<line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="1.8"/>' +
+      '<line x1="1" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="1.8"/>' +
+      '<line x1="19" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.8"/>' +
+    '</svg>';
+
   var gameData = null;
   var appState = null;
   var pendingConfirm = null; // { message, onConfirm }
@@ -505,6 +524,8 @@
             '<input class="operator__name-input" type="text" data-focus-key="opname-' + op.id + '" data-field="operatorName" data-op="' + op.id + '" value="' + esc(op.name) + '" />' +
             statLine +
           '</div>' +
+          '<button class="activate-toggle' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '" ' +
+            'aria-pressed="' + (op.activated ? 'true' : 'false') + '" aria-label="' + (op.activated ? 'Активирован' : 'Не активирован') + '" title="' + (op.activated ? 'Активирован' : 'Не активирован') + '">' + ICON_ACTIVATED_SVG + '</button>' +
           '<button class="operator__remove" data-action="removeOperator" data-op="' + op.id + '" aria-label="Удалить оператора">✕</button>' +
         '</div>' +
 
@@ -521,9 +542,11 @@
           '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="6">−6</button>' +
         '</div>' +
 
-        '<div class="operator__controls">' +
-          '<button class="order-btn activated-btn' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '">' + (op.activated ? 'Активирован' : 'Не активирован') + '</button>' +
-          '<button class="order-btn ' + (op.order ? 'order-' + op.order : '') + '" data-action="cycleOrder" data-op="' + op.id + '">' + (op.order ? op.order.toUpperCase() : 'Приказ: —') + '</button>' +
+        '<div class="order-toggle">' +
+          '<button class="order-toggle__btn order-toggle__btn--conceal' + (op.order === 'conceal' ? ' is-active' : '') + '" data-action="setOrder" data-op="' + op.id + '" data-value="conceal">' +
+            ICON_CONCEAL_SVG + '<span>Conceal</span></button>' +
+          '<button class="order-toggle__btn order-toggle__btn--engage' + (op.order === 'engage' ? ' is-active' : '') + '" data-action="setOrder" data-op="' + op.id + '" data-value="engage">' +
+            ICON_ENGAGE_SVG + '<span>Engage</span></button>' +
         '</div>' +
         '<div class="operator__controls">' + quickChips + '</div>' +
         '<div class="token-row">' + tokenPills + '</div>' +
@@ -531,7 +554,38 @@
           '<input type="text" placeholder="Свой статус-токен…" data-op="' + op.id + '" />' +
           '<button class="btn btn--sm" type="submit">+ Токен</button>' +
         '</form>' +
+        renderOperatorDatacard(op) +
       '</article>'
+    );
+  }
+
+  function renderOperatorDatacard(op) {
+    var weapons = op.weapons || [];
+    var abilities = op.abilities || [];
+    if (!weapons.length && !abilities.length) return '';
+
+    var weaponRows = weapons.map(function (wp) {
+      return '<tr><td class="weapon-table__name">' + esc(wp.name) + '</td><td>' + esc(wp.atk) + '</td><td>' + esc(wp.hit) + '</td><td>' + esc(wp.dmg) + '</td><td>' + esc(wp.wr) + '</td></tr>';
+    }).join('');
+
+    var weaponTable = weapons.length
+      ? '<table class="weapon-table"><thead><tr><th>NAME</th><th>ATK</th><th>HIT</th><th>DMG</th><th>WR</th></tr></thead><tbody>' + weaponRows + '</tbody></table>'
+      : '';
+
+    var abilityList = abilities.length
+      ? '<div class="ability-list">' + abilities.map(function (ab) {
+          var badges = (ab.cost ? '<span class="ability__badge ability__badge--cost">' + esc(ab.cost) + '</span>' : '') +
+            (ab.tag ? '<span class="ability__badge ability__badge--tag">' + esc(ab.tag) + '</span>' : '');
+          return '<div class="ability"><div class="ability__head"><span class="ability__name">' + esc(ab.name) + '</span>' + badges + '</div>' +
+            '<p class="ability__text">' + esc(ab.text) + '</p></div>';
+        }).join('') + '</div>'
+      : '';
+
+    return (
+      '<details class="operator-datacard">' +
+        '<summary>Оружие и способности</summary>' +
+        '<div class="operator-datacard__body">' + weaponTable + abilityList + '</div>' +
+      '</details>'
     );
   }
 
@@ -565,9 +619,6 @@
     var t = appState.team;
     var critOp = findCritOp(gameData, appState.critOpId);
     var tacOp = t.archetype ? findTacOp(gameData, t.archetype, t.tacOpId) : null;
-    var lists = equipmentUniqueList();
-    var selectedEquip = t.equipmentIds.map(function (uid) { return resolveEquipmentItem(gameData, t, uid); }).filter(Boolean);
-
     var killOp = gameData.killOp;
     var row = getKillGradeRow(gameData, appState.enemyOperativeCount);
     var headHtml = '<tr><th>Против.</th>' + killOp.table.headers.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr>';
@@ -592,10 +643,6 @@
           '<div class="cheat-section">' +
             '<h3>Tac Op</h3>' +
             (tacOp ? '<p><b>' + esc(tacOp.name) + '</b></p><p>Reveal: ' + esc(tacOp.reveal) + '</p><p>' + esc(tacOp.rules) + '</p><p>VP: ' + esc(tacOp.vp) + '</p>' : '<p>Не выбрана.</p>') +
-          '</div>' +
-          '<div class="cheat-section">' +
-            '<h3>Снаряжение</h3>' +
-            (selectedEquip.length ? selectedEquip.map(function (e) { return '<p><b>' + esc(e.name) + '</b> — ' + esc(e.desc) + '</p>'; }).join('') : '<p>Не выбрано.</p>') +
           '</div>' +
           '<div class="cheat-section">' +
             '<h3>Kill Op — ' + esc(killOp.desc) + '</h3>' +
@@ -682,7 +729,7 @@
       });
     },
     toggleActivated: function (ds) { var op = findOp(ds.op); if (op) { toggleActivated(op); persist(); render(); } },
-    cycleOrder: function (ds) { var op = findOp(ds.op); if (op) { cycleOrder(op); persist(); render(); } },
+    setOrder: function (ds) { var op = findOp(ds.op); if (op) { setOrder(op, ds.value); persist(); render(); } },
     healOperator: function (ds) { var op = findOp(ds.op); if (op) { healOperator(op, parseInt(ds.amount, 10)); persist(); render(); } },
     damageOperator: function (ds) { var op = findOp(ds.op); if (op) { damageOperator(op, parseInt(ds.amount, 10)); persist(); render(); } },
     setWoundSegment: function (ds) { var op = findOp(ds.op); if (op) { setWoundsFromTrackSegment(op, parseInt(ds.segment, 10)); persist(); render(); } },

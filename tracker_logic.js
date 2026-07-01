@@ -30,7 +30,7 @@ function generateId() {
 /**
  * @param {string} name
  * @param {number} wounds - максимальное и стартовое здоровье
- * @param {{apl?:number, move?:string, save?:string, portrait?:string}} [stats]
+ * @param {{apl?:number, move?:string, save?:string, portrait?:string, weapons?:Array, abilities?:Array}} [stats]
  */
 function createOperator(name, wounds, stats = {}) {
   return {
@@ -45,6 +45,8 @@ function createOperator(name, wounds, stats = {}) {
     move: stats.move ?? null,
     save: stats.save ?? null,
     portrait: stats.portrait ?? null,
+    weapons: stats.weapons ?? [],     // [{name, atk, hit, dmg, wr}] — только для отображения (датакарта)
+    abilities: stats.abilities ?? [], // [{name, cost, tag, text}] — только для отображения (датакарта)
   };
 }
 
@@ -140,7 +142,7 @@ function rebuildOperatorsFromKillTeam(gameData, team) {
   const killTeamDef = findKillTeamDef(gameData, team.killTeamName);
   if (!killTeamDef) return team;
 
-  const statsOf = (def) => ({ apl: def.apl, move: def.move, save: def.save, portrait: def.portrait });
+  const statsOf = (def) => ({ apl: def.apl, move: def.move, save: def.save, portrait: def.portrait, weapons: def.weapons, abilities: def.abilities });
 
   const wanted = [];
   (killTeamDef.required || []).forEach(r => {
@@ -165,6 +167,8 @@ function rebuildOperatorsFromKillTeam(gameData, team) {
       existing.move = w.stats.move ?? existing.move ?? null;
       existing.save = w.stats.save ?? existing.save ?? null;
       existing.portrait = w.stats.portrait ?? existing.portrait ?? null;
+      existing.weapons = w.stats.weapons ?? existing.weapons ?? [];
+      existing.abilities = w.stats.abilities ?? existing.abilities ?? [];
       return existing;
     }
     return createOperator(w.name, w.wounds, w.stats);
@@ -386,6 +390,12 @@ function cycleOrder(op) {
   return op.order;
 }
 
+/** Прямая установка приказа (сегментированный переключатель): повторный выбор снимает приказ. */
+function setOrder(op, value) {
+  op.order = (op.order === value) ? null : value;
+  return op.order;
+}
+
 function healOperator(op, amount) {
   op.wounds = Math.min(op.maxWounds, op.wounds + amount);
   return op.wounds;
@@ -530,6 +540,8 @@ function importState(rawState) {
     if (o.move === undefined) o.move = null;
     if (o.save === undefined) o.save = null;
     if (o.portrait === undefined) o.portrait = null;
+    if (!o.weapons) o.weapons = [];
+    if (!o.abilities) o.abilities = [];
   });
 
   return s;
@@ -552,6 +564,8 @@ function backfillOperatorStatsFromKillTeam(gameData, appState) {
     if (o.move === null || o.move === undefined) o.move = def.move ?? null;
     if (o.save === null || o.save === undefined) o.save = def.save ?? null;
     if (o.portrait === null || o.portrait === undefined) o.portrait = def.portrait ?? null;
+    if (!o.weapons || !o.weapons.length) o.weapons = def.weapons ?? [];
+    if (!o.abilities || !o.abilities.length) o.abilities = def.abilities ?? [];
   });
   return appState;
 }
@@ -598,6 +612,7 @@ if (typeof module !== 'undefined' && module.exports) {
     renameOperator,
     toggleActivated,
     cycleOrder,
+    setOrder,
     healOperator,
     damageOperator,
     setWoundsFromTrackSegment,

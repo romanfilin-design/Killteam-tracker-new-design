@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Синхронизирует docs/ с мастер-файлом game_data.json в корне проекта:
+Синхронизирует docs/ с мастер-файлами в корне проекта:
   1. Валидирует game_data.json (в корне).
   2. Копирует его в docs/game_data.json.
   3. Пересобирает docs/js/game_data_fallback.js (встроенный фолбэк).
+  4. Копирует tracker_logic.js (в корне) в docs/js/tracker_logic.js.
 
 Запускать из корня проекта (или откуда угодно — пути ниже посчитаны
 относительно расположения самого скрипта):
@@ -12,12 +13,15 @@
 """
 import json
 import pathlib
+import shutil
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "game_data.json"
 DEST_JSON = ROOT / "docs" / "game_data.json"
 DEST_FALLBACK = ROOT / "docs" / "js" / "game_data_fallback.js"
+SRC_LOGIC = ROOT / "tracker_logic.js"
+DEST_LOGIC = ROOT / "docs" / "js" / "tracker_logic.js"
 
 
 def main():
@@ -66,6 +70,11 @@ def main():
 
     print(f"OK: {SRC} -> {DEST_JSON}")
     print(f"OK: fallback пересобран -> {DEST_FALLBACK}")
+
+    if SRC_LOGIC.exists():
+        shutil.copyfile(SRC_LOGIC, DEST_LOGIC)
+        print(f"OK: {SRC_LOGIC} -> {DEST_LOGIC}")
+
     print(f"Команды: {list(data['killTeams'].keys())}")
 
 
