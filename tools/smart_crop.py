@@ -1,27 +1,41 @@
 #!/usr/bin/env python3
 """
-Умный кроп портретов миниатюр: убирает белое поле вокруг фигурки и
-кадрирует квадрат по голове/плечам, а не по всей фигуре.
+Подготовка портретов миниатюр для карточек операторов: опциональный кроп
+по голове/плечам + вырезание белого фона в прозрачность. Результат —
+всегда PNG с альфа-каналом.
 
-Алгоритм:
-  1. Находит баунд-бокс не-белых пикселей (сама миниатюра + база).
-  2. Берёт квадрат размером с ширину баунд-бокса, начиная от его верхней
-     кромки (с небольшим отступом).
-  3. Центрирует этот квадрат по горизонтали на центре масс верхней полосы
-     баунд-бокса (голова/плечи), а не по центру всего бокса — иначе
-     поднятое оружие или штандарт в сторону утягивают кадр.
+Два режима входа:
+  1. Уже готовый квадрат (подготовлен вручную, например в Photoshop по
+     шаблону 600x600, белый фон) — используй --no-crop, скрипт только
+     срежет фон в прозрачность и подгонит размер.
+  2. Исходное фото миниатюры без кропа (белый фон, фигурка не отцентрована
+     как надо) — без --no-crop скрипт сам найдёт баунд-бокс фигурки и
+     кадрирует квадрат по голове/плечам:
+       a. Находит баунд-бокс не-белых пикселей (сама миниатюра + база).
+       b. Берёт квадрат размером с ширину баунд-бокса, начиная от его
+          верхней кромки (с небольшим отступом).
+       c. Центрирует этот квадрат по горизонтали на центре масс верхней
+          полосы баунд-бокса (голова/плечи), а не по центру всего бокса —
+          иначе поднятое оружие или штандарт в сторону утягивают кадр.
+
+Вырезание фона (включено по умолчанию, отключается --no-alpha):
+  Пиксели ближе к белому, чем BG_UPPER, становятся полностью прозрачными;
+  пиксели темнее BG_LOWER — полностью непрозрачными; между ними — плавный
+  переход (мягкое перо по краю миниатюры, без зазубрин).
 
 Использование:
-    python3 tools/smart_crop.py input.jpg output.jpg
-    python3 tools/smart_crop.py input.jpg output.jpg --size 360
-    python3 tools/smart_crop.py input.jpg output.jpg --manual-box LEFT,TOP,RIGHT,BOTTOM
+    # готовый квадрат из Photoshop — только вырезать фон
+    python3 tools/smart_crop.py "input/Night Lord Warrior.jpg" docs/img/portraits/nemesis-claw/warrior.png --no-crop
 
-Если авто-кроп утягивает кадр (случай знамени/штандарта рядом с головой,
-как было с Ventrilokar) — открой исходник, прикинь координаты на глаз и
-передай --manual-box вместо авто-алгоритма.
+    # исходное неотцентрованное фото — кроп + вырезание фона
+    python3 tools/smart_crop.py input.jpg output.png
 
-Пакетная обработка целой папки (все *.jpg/*.png -> output dir):
-    python3 tools/smart_crop.py --batch input_dir/ output_dir/
+    # ручной кроп координатами, если авто-кроп утянул кадр в сторону
+    # (так было с Ventrilokar — рядом со шлемом стоял штандарт)
+    python3 tools/smart_crop.py input.jpg output.png --manual-box 350,260,660,570
+
+    # пакетная обработка целой папки (все *.jpg/*.jpeg/*.png -> output dir)
+    python3 tools/smart_crop.py --batch "input_dir/" docs/img/portraits/<team-slug>/ --no-crop
 """
 import argparse
 import pathlib
@@ -30,10 +44,13 @@ import sys
 import numpy as np
 from PIL import Image
 
-BG_THRESHOLD = 235      # пиксель считается фоном, если min(R,G,B) > этого значения
-TOP_BAND_FRAC = 0.30    # доля высоты баунд-бокса, используемая для поиска горизонтального центра головы
+BG_THRESHOLD = 235      # порог для поиска баунд-бокса фигурки (шаг кропа)
+TOP_BAND_FRAC = 0.30    # доля высоты баунд-бокса для поиска горизонтального центра головы
 TOP_PAD_FRAC = 0.04     # небольшой отступ над самой верхней точкой фигурки
 WIDTH_SLACK = 1.05      # запас по ширине, чтобы не срезать рога/шлем/наплечники
+
+BG_UPPER = 235          # выше этого (ближе к белому) — полностью прозрачно
+BG_LOWER = 205          # ниже этого — полностью непрозрачно; между — плавный переход
 
 
 def smart_crop(img: Image.Image) -> Image.Image:
@@ -76,23 +93,39 @@ def smart_crop(img: Image.Image) -> Image.Image:
     return img.crop((crop_left, crop_top, crop_right, crop_bottom))
 
 
-def process(src: pathlib.Path, dest: pathlib.Path, size: int, manual_box):
+def remove_white_bg(img: Image.Image) -> Image.Image:
+    arr = np.asarray(img.convert("RGB")).astype(np.float32)
+    min_ch = arr.min(axis=2)
+    alpha = np.clip((BG_UPPER - min_ch) / (BG_UPPER - BG_LOWER) * 255, 0, 255).astype(np.uint8)
+    rgba = np.dstack([arr.astype(np.uint8), alpha])
+    return Image.fromarray(rgba, mode="RGBA")
+
+
+def process(src: pathlib.Path, dest: pathlib.Path, size: int, manual_box, no_crop: bool, no_alpha: bool):
     img = Image.open(src).convert("RGB")
-    if manual_box:
+    if no_crop:
+        out = img
+    elif manual_box:
         out = img.crop(manual_box)
     else:
         out = smart_crop(img)
     out = out.resize((size, size), Image.LANCZOS)
+    if not no_alpha:
+        out = remove_white_bg(out)
+    dest = dest.with_suffix(".png")
     dest.parent.mkdir(parents=True, exist_ok=True)
-    out.save(dest, quality=90)
-    print(f"{src.name} -> {dest} ({size}x{size})")
+    out.save(dest)
+    print(f"{src.name} -> {dest} ({size}x{size}{', без альфы' if no_alpha else ''})")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("input", help="файл или (с --batch) папка с исходниками")
-    ap.add_argument("output", help="файл или (с --batch) папка для результатов")
-    ap.add_argument("--size", type=int, default=360, help="сторона квадрата на выходе, px (по умолчанию 360)")
+    ap.add_argument("output", help="файл или (с --batch) папка для результатов (всегда сохраняется как .png)")
+    ap.add_argument("--size", type=int, default=600, help="сторона квадрата на выходе, px (по умолчанию 600)")
+    ap.add_argument("--no-crop", action="store_true",
+                     help="не кадрировать — вход уже квадратный (подготовлен вручную), только вырезать фон и подогнать размер")
+    ap.add_argument("--no-alpha", action="store_true", help="не вырезать белый фон в прозрачность")
     ap.add_argument("--manual-box", default=None,
                      help="ручной кроп LEFT,TOP,RIGHT,BOTTOM в пикселях исходника вместо авто-алгоритма")
     ap.add_argument("--batch", action="store_true", help="обработать все *.jpg/*.jpeg/*.png в папке input")
@@ -111,9 +144,9 @@ def main():
         if not files:
             sys.exit(f"В {in_dir} не найдено *.jpg/*.jpeg/*.png")
         for f in files:
-            process(f, out_dir / (f.stem.lower().replace(" ", "_") + ".jpg"), args.size, manual_box)
+            process(f, out_dir / f.stem.lower().replace(" ", "_"), args.size, manual_box, args.no_crop, args.no_alpha)
     else:
-        process(pathlib.Path(args.input), pathlib.Path(args.output), args.size, manual_box)
+        process(pathlib.Path(args.input), pathlib.Path(args.output), args.size, manual_box, args.no_crop, args.no_alpha)
 
 
 if __name__ == "__main__":

@@ -1,2 +1,4 @@
 .DS_Store
 .claude/
+/incoming_portraits/*
+!/incoming_portraits/README.md
