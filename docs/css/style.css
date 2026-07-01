@@ -467,48 +467,105 @@ body::after {
    Пул операторов подготовки
    ========================================================================== */
 
-.pool-row {
+.pool-carousel {
   display: flex;
-  align-items: center;
   gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--steel-dim);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -4px;
+  padding: 4px 4px 10px;
 }
 
-.pool-row:last-child { border-bottom: none; }
+.pool-card {
+  flex: 0 0 156px;
+  scroll-snap-align: start;
+  background: var(--panel-inset);
+  border: 1px solid var(--steel-dim);
+  display: flex;
+  flex-direction: column;
+}
 
-.pool-row__info { flex: 1; min-width: 0; }
+.pool-card.is-selected {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
 
-.pool-row__name { font-weight: 600; font-size: 14px; }
+.pool-card.is-required {
+  border-color: var(--accent-dim);
+}
 
-.pool-row__stats {
-  font-size: 11px;
+.pool-card__portrait {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-bottom: 1px solid var(--steel-dim);
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.pool-card__portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pool-card__portrait-img--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+}
+
+.pool-card__portrait-img--placeholder svg {
+  width: 56px;
+  height: 56px;
+}
+
+.pool-card__body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.pool-card__name {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.pool-card__stats {
+  font-size: 10.5px;
   color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
 }
 
-.pool-row__stepper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: none;
-}
-
-.pool-row__count {
-  min-width: 24px;
-  text-align: center;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-.required-tag {
+.pool-card__tag {
+  margin-top: auto;
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent-bright);
   border: 1px solid var(--accent-dim);
   padding: 2px 6px;
-  flex: none;
+  align-self: flex-start;
+}
+
+.pool-card__stepper {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.pool-card__count {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .limit-line {
@@ -638,7 +695,17 @@ body::after {
   border-color: var(--accent);
 }
 
-.wound-seg.is-critical.is-filled {
+.wound-seg.is-filled.hp-green {
+  background: linear-gradient(180deg, #8ed35d, #3f7a26);
+  border-color: #6fbf44;
+}
+
+.wound-seg.is-filled.hp-yellow {
+  background: linear-gradient(180deg, #f0c368, var(--caution));
+  border-color: var(--caution);
+}
+
+.wound-seg.is-filled.hp-red {
   background: linear-gradient(180deg, #ff6a52, var(--danger));
   border-color: var(--danger);
 }
@@ -658,7 +725,9 @@ body::after {
   letter-spacing: 0.02em;
 }
 
-.wound-readout__num.is-critical { color: var(--danger); }
+.wound-readout__num.hp-green { color: #8ed35d; }
+.wound-readout__num.hp-yellow { color: var(--caution); }
+.wound-readout__num.hp-red { color: var(--danger); }
 
 .wound-readout__max {
   font-size: 13px;
@@ -875,6 +944,11 @@ body::after {
 .equip-toggle.is-selected .equip-toggle__box {
   background: var(--accent);
   border-color: var(--accent-bright);
+}
+
+.equip-toggle:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* ==========================================================================

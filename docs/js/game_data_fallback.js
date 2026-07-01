@@ -596,7 +596,7 @@ window.GAME_DATA_FALLBACK = {
           "save": "3+",
           "wounds": 15,
           "count": 1,
-          "portrait": "img/portraits/nemesis-claw/visionary.jpg"
+          "portrait": "img/portraits/nemesis-claw/visionary.png"
         }
       ],
       "pool": [
@@ -606,7 +606,7 @@ window.GAME_DATA_FALLBACK = {
           "move": "6\"",
           "save": "3+",
           "wounds": 14,
-          "portrait": "img/portraits/nemesis-claw/fearmonger.jpg"
+          "portrait": "img/portraits/nemesis-claw/fearmonger.png"
         },
         {
           "name": "Night Lord Gunner",
@@ -614,7 +614,7 @@ window.GAME_DATA_FALLBACK = {
           "move": "6\"",
           "save": "3+",
           "wounds": 14,
-          "portrait": "img/portraits/nemesis-claw/gunner.jpg"
+          "portrait": "img/portraits/nemesis-claw/gunner.png"
         },
         {
           "name": "Night Lord Heavy Gunner",
@@ -622,7 +622,7 @@ window.GAME_DATA_FALLBACK = {
           "move": "6\"",
           "save": "3+",
           "wounds": 14,
-          "portrait": "img/portraits/nemesis-claw/heavy_gunner.jpg"
+          "portrait": "img/portraits/nemesis-claw/heavy_gunner.png"
         },
         {
           "name": "Night Lord Screecher",
@@ -630,7 +630,7 @@ window.GAME_DATA_FALLBACK = {
           "move": "6\"",
           "save": "3+",
           "wounds": 14,
-          "portrait": "img/portraits/nemesis-claw/screecher.jpg"
+          "portrait": "img/portraits/nemesis-claw/screecher.png"
         },
         {
           "name": "Night Lord Skinthief",
@@ -638,7 +638,7 @@ window.GAME_DATA_FALLBACK = {
           "move": "6\"",
           "save": "3+",
           "wounds": 14,
-          "portrait": "img/portraits/nemesis-claw/skinthief.jpg"
+          "portrait": "img/portraits/nemesis-claw/skinthief.png"
         },
         {
           "name": "Night Lord Ventrilokar",
@@ -646,7 +646,7 @@ window.GAME_DATA_FALLBACK = {
           "move": "6\"",
           "save": "3+",
           "wounds": 14,
-          "portrait": "img/portraits/nemesis-claw/ventrilokar.jpg"
+          "portrait": "img/portraits/nemesis-claw/ventrilokar.png"
         },
         {
           "name": "Night Lord Warrior",
@@ -655,7 +655,7 @@ window.GAME_DATA_FALLBACK = {
           "save": "3+",
           "wounds": 14,
           "maxCopies": 5,
-          "portrait": "img/portraits/nemesis-claw/warrior.jpg"
+          "portrait": "img/portraits/nemesis-claw/warrior.png"
         }
       ],
       "poolPick": 5,

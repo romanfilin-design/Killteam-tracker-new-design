@@ -29,7 +29,7 @@
   // ------------------------------------------------------------------
 
   function loadGameData() {
-    return fetch('./game_data.json')
+    return fetch('./game_data.json', { cache: 'no-store' })
       .then(function (res) {
         if (!res.ok) throw new Error('bad response');
         return res.json();
@@ -199,7 +199,6 @@
     var t = appState.team;
     var ready = isReadyToStart(appState);
     return (
-      renderTeamNamePanel() +
       renderKillTeamPickPanel() +
       (t.killTeamName ? renderPoolPanel() : '') +
       renderRosterToolsPanel() +
@@ -209,17 +208,6 @@
       '<button class="btn btn--accent btn--block" style="min-height:56px;font-size:16px;" data-action="startGame" ' +
         (ready ? '' : 'disabled') + '>Начать партию</button>' +
       (!ready ? '<p class="empty-state">Нужно: выбрать Crit Op, набрать хотя бы одного оператора, выбрать архетип и Tac Op.</p>' : '')
-    );
-  }
-
-  function renderTeamNamePanel() {
-    return (
-      '<section class="panel">' +
-        '<div class="field" style="margin-bottom:0;">' +
-          '<label class="field__label">Название команды</label>' +
-          '<input type="text" data-focus-key="teamName" data-field="teamName" value="' + esc(appState.team.name) + '" />' +
-        '</div>' +
-      '</section>'
     );
   }
 
@@ -240,44 +228,53 @@
     );
   }
 
+  function poolCardPortrait(portrait) {
+    return portrait
+      ? '<img class="pool-card__portrait-img" src="' + esc(portrait) + '" alt="">'
+      : '<span class="pool-card__portrait-img pool-card__portrait-img--placeholder" aria-hidden="true">' + PORTRAIT_PLACEHOLDER_SVG + '</span>';
+  }
+
   function renderPoolPanel() {
     var t = appState.team;
     var def = findKillTeamDef(gameData, t.killTeamName);
     if (!def) return '';
-    var requiredRows = (def.required || []).map(function (r) {
-      return '<div class="pool-row">' +
-        '<div class="pool-row__info">' +
-          '<div class="pool-row__name">' + esc(r.name) + '</div>' +
-          '<div class="pool-row__stats">APL ' + esc(r.apl) + ' · MOVE ' + esc(r.move) + ' · SAVE ' + esc(r.save) + ' · W' + esc(r.wounds) + '</div>' +
+
+    var requiredCards = (def.required || []).map(function (r) {
+      return '<article class="pool-card is-required">' +
+        '<div class="pool-card__portrait">' + poolCardPortrait(r.portrait) + '</div>' +
+        '<div class="pool-card__body">' +
+          '<div class="pool-card__name">' + esc(r.name) + '</div>' +
+          '<div class="pool-card__stats">APL ' + esc(r.apl) + ' · MOVE ' + esc(r.move) + ' · SAVE ' + esc(r.save) + ' · W' + esc(r.wounds) + '</div>' +
+          '<span class="pool-card__tag">Обязательный ×' + r.count + '</span>' +
         '</div>' +
-        '<span class="required-tag">Обязательный ×' + r.count + '</span>' +
-      '</div>';
+      '</article>';
     }).join('');
 
     var totalPicked = Object.values(t.poolCounts || {}).reduce(function (a, b) { return a + b; }, 0);
 
-    var poolRows = (def.pool || []).map(function (p) {
+    var poolCards = (def.pool || []).map(function (p) {
       var count = t.poolCounts[p.name] || 0;
       var maxCopies = p.maxCopies || 1;
-      return '<div class="pool-row">' +
-        '<div class="pool-row__info">' +
-          '<div class="pool-row__name">' + esc(p.name) + '</div>' +
-          '<div class="pool-row__stats">APL ' + esc(p.apl) + ' · MOVE ' + esc(p.move) + ' · SAVE ' + esc(p.save) + ' · W' + esc(p.wounds) +
+      return '<article class="pool-card' + (count > 0 ? ' is-selected' : '') + '">' +
+        '<div class="pool-card__portrait">' + poolCardPortrait(p.portrait) + '</div>' +
+        '<div class="pool-card__body">' +
+          '<div class="pool-card__name">' + esc(p.name) + '</div>' +
+          '<div class="pool-card__stats">APL ' + esc(p.apl) + ' · MOVE ' + esc(p.move) + ' · SAVE ' + esc(p.save) + ' · W' + esc(p.wounds) +
             (maxCopies > 1 ? ' · лимит ' + maxCopies : '') + '</div>' +
+          '<div class="pool-card__stepper">' +
+            '<button class="btn btn--icon btn--sm" data-action="adjustPool" data-value="' + esc(p.name) + '" data-delta="-1" ' + (count <= 0 ? 'disabled' : '') + '>−</button>' +
+            '<span class="pool-card__count">' + count + '</span>' +
+            '<button class="btn btn--icon btn--sm" data-action="adjustPool" data-value="' + esc(p.name) + '" data-delta="1" ' +
+              (count >= maxCopies || totalPicked >= def.poolPick ? 'disabled' : '') + '>+</button>' +
+          '</div>' +
         '</div>' +
-        '<div class="pool-row__stepper">' +
-          '<button class="btn btn--icon btn--sm" data-action="adjustPool" data-value="' + esc(p.name) + '" data-delta="-1" ' + (count <= 0 ? 'disabled' : '') + '>−</button>' +
-          '<span class="pool-row__count">' + count + '</span>' +
-          '<button class="btn btn--icon btn--sm" data-action="adjustPool" data-value="' + esc(p.name) + '" data-delta="1" ' +
-            (count >= maxCopies || totalPicked >= def.poolPick ? 'disabled' : '') + '>+</button>' +
-        '</div>' +
-      '</div>';
+      '</article>';
     }).join('');
 
     return (
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Состав отряда</span></div>' +
-        requiredRows + poolRows +
+        '<div class="pool-carousel">' + requiredCards + poolCards + '</div>' +
         '<div class="limit-line"><span>Выбрано из пула</span><strong>' + totalPicked + ' / ' + def.poolPick + '</strong></div>' +
       '</section>'
     );
@@ -474,12 +471,13 @@
   function renderOperatorCard(op) {
     var down = isIncapacitated(op);
     var injured = isInjured(op);
+    var hpPct = op.maxWounds > 0 ? (op.wounds / op.maxWounds) * 100 : 0;
+    var hpClass = hpPct >= 60 ? 'hp-green' : (hpPct >= 30 ? 'hp-yellow' : 'hp-red');
     var segCount = Math.max(1, op.maxWounds);
     var segs = '';
     for (var i = 0; i < segCount; i++) {
       var filled = op.wounds > i;
-      var critical = (i + 1) <= Math.ceil(op.maxWounds / 2);
-      segs += '<button class="wound-seg' + (filled ? ' is-filled' : '') + (critical ? ' is-critical' : '') +
+      segs += '<button class="wound-seg' + (filled ? ' is-filled ' + hpClass : '') +
         '" data-action="setWoundSegment" data-op="' + op.id + '" data-segment="' + i + '" aria-label="Здоровье ' + (i + 1) + '"></button>';
     }
 
@@ -512,7 +510,7 @@
 
         '<div class="wound-track">' + segs + '</div>' +
         '<div class="wound-readout">' +
-          '<span class="wound-readout__num' + (down ? ' is-critical' : '') + '">' + op.wounds + '</span>' +
+          '<span class="wound-readout__num ' + hpClass + '">' + op.wounds + '</span>' +
           '<span class="wound-readout__max">из <input class="wound-readout__maxedit" type="number" min="1" data-focus-key="opmax-' + op.id + '" data-field="operatorMaxWounds" data-op="' + op.id + '" value="' + op.maxWounds + '" /></span>' +
         '</div>' +
         '<div class="operator__hp-buttons">' +
@@ -642,6 +640,7 @@
 
     selectKillTeam: function (ds) {
       selectKillTeam(gameData, appState.team, ds.value);
+      appState.team.name = ds.value;
       persist(); render();
     },
     adjustPool: function (ds) {
@@ -755,9 +754,6 @@
       return;
     }
 
-    if (target.dataset.field === 'teamName') {
-      appState.team.name = target.value; persist();
-    }
     if (target.dataset.field === 'enemyCount') {
       setEnemyOperativeCount(appState, parseFloat(target.value)); persist(); render();
     }
@@ -774,9 +770,6 @@
   function onInput(e) {
     var target = e.target;
     // Живое обновление текстовых полей без потери фокуса — без полного ре-рендера.
-    if (target.dataset.field === 'teamName') {
-      appState.team.name = target.value; persist();
-    }
     if (target.dataset.field === 'operatorName') {
       var op = findOp(target.dataset.op);
       if (op) { renameOperator(op, target.value); persist(); }
