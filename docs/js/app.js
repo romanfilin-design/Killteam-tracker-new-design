@@ -335,7 +335,7 @@
     return (
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Kill Team</span></div>' +
-        '<div class="pick-grid">' + cards + '</div>' +
+        '<div class="pick-list">' + cards + '</div>' +
       '</section>'
     );
   }
@@ -432,8 +432,22 @@
     );
   }
 
+  // Выбранный вариант — первым в списке, остальные под ним. Используется для
+  // Crit Op / архетипа / Tac Op, где узкие вертикальные кнопки читаются лучше,
+  // чем решётка колонок.
+  function selectedFirst(list, isSelFn) {
+    var copy = list.slice();
+    copy.sort(function (a, b) {
+      var aSel = isSelFn(a), bSel = isSelFn(b);
+      if (aSel === bSel) return 0;
+      return aSel ? -1 : 1;
+    });
+    return copy;
+  }
+
   function renderCritOpPanel() {
-    var cards = (gameData.critOps || []).map(function (op) {
+    var list = selectedFirst(gameData.critOps || [], function (op) { return appState.critOpId === op.id; });
+    var cards = list.map(function (op) {
       var isSel = appState.critOpId === op.id;
       return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="selectCritOp" data-value="' + esc(op.id) + '">' +
         '<span class="pick-card__name">' + esc(op.name) + '</span>' +
@@ -445,7 +459,7 @@
         '<div class="panel__head"><span class="panel__title">Crit Op</span>' +
           '<button class="btn btn--sm btn--ghost" data-action="randomCritOp">Случайно</button>' +
         '</div>' +
-        '<div class="pick-grid">' + cards + '</div>' +
+        '<div class="pick-stack">' + cards + '</div>' +
       '</section>'
     );
   }
@@ -453,7 +467,10 @@
   function renderArchetypePanel() {
     var t = appState.team;
     var def = findKillTeamDef(gameData, t.killTeamName);
-    var archetypes = def ? (def.archetypes || []) : Object.keys(gameData.tacOpsByArchetype || {});
+    var archetypes = selectedFirst(
+      def ? (def.archetypes || []) : Object.keys(gameData.tacOpsByArchetype || {}),
+      function (a) { return t.archetype === a; }
+    );
 
     var archBtns = archetypes.map(function (a) {
       var isSel = t.archetype === a;
@@ -464,8 +481,8 @@
 
     var tacOpsHtml = '';
     if (t.archetype) {
-      var list = (gameData.tacOpsByArchetype || {})[t.archetype] || [];
-      tacOpsHtml = '<div class="pick-grid" style="margin-top:10px;">' + list.map(function (op) {
+      var list = selectedFirst((gameData.tacOpsByArchetype || {})[t.archetype] || [], function (op) { return t.tacOpId === op.id; });
+      tacOpsHtml = '<div class="pick-stack" style="margin-top:10px;">' + list.map(function (op) {
         var isSel = t.tacOpId === op.id;
         return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="selectTacOp" data-value="' + esc(op.id) + '">' +
           '<span class="pick-card__name">' + esc(op.name) + '</span>' +
@@ -481,7 +498,7 @@
     return (
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Архетип &amp; Tac Op</span></div>' +
-        '<div class="pick-grid">' + archBtns + '</div>' +
+        '<div class="pick-stack">' + archBtns + '</div>' +
         tacOpsHtml +
       '</section>'
     );
@@ -511,13 +528,13 @@
       '</button>';
     }
 
-    var universalHtml = lists.universal.map(chip).join('');
-    var factionHtml = lists.faction.length ? '<div class="panel__title" style="margin:12px 0 6px;">Снаряжение фракции</div>' + lists.faction.map(chip).join('') : '';
+    var factionHtml = lists.faction.length ? '<div class="panel__title" style="margin:0 0 6px;">Снаряжение фракции</div>' + lists.faction.map(chip).join('') : '';
+    var universalHtml = '<div class="panel__title" style="margin:' + (lists.faction.length ? '16px' : '0') + ' 0 6px;">Универсальное</div>' + lists.universal.map(chip).join('');
 
     return (
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Снаряжение</span><span class="panel__badge">' + t.equipmentIds.length + ' / ' + limit + '</span></div>' +
-        universalHtml + factionHtml +
+        factionHtml + universalHtml +
       '</section>'
     );
   }
@@ -663,23 +680,24 @@
             '<input class="operator__name-input" type="text" data-focus-key="opname-' + op.id + '" data-field="operatorName" data-op="' + op.id + '" value="' + esc(op.name) + '" />' +
             statLine +
           '</div>' +
-          '<div class="operator__status-block">' +
-            '<button class="activate-toggle' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '" ' +
-              'aria-pressed="' + (op.activated ? 'true' : 'false') + '" aria-label="' + (op.activated ? 'Активирован' : 'Не активирован') + '" title="' + (op.activated ? 'Активирован' : 'Не активирован') + '">' + ICON_ACTIVATED_SVG + '</button>' +
-            '<button class="order-cycle-btn order-cycle-btn--' + (op.order || 'neutral') + '" data-action="cycleOrder" data-op="' + op.id + '" title="Приказ: ' + orderLabel + '">' + orderIcon + '<span>' + orderLabel + '</span></button>' +
-          '</div>' +
         '</div>' +
 
-        '<div class="wound-track">' + segs + '</div>' +
-        '<div class="wound-readout">' +
+        '<div class="operator__status-row">' +
+          '<button class="activate-toggle' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '" ' +
+            'aria-pressed="' + (op.activated ? 'true' : 'false') + '" aria-label="' + (op.activated ? 'Активирован' : 'Не активирован') + '" title="' + (op.activated ? 'Активирован' : 'Не активирован') + '">' + ICON_ACTIVATED_SVG + '<span>' + (op.activated ? 'Активирован' : 'Активация') + '</span></button>' +
+          '<button class="order-cycle-btn order-cycle-btn--' + (op.order || 'neutral') + '" data-action="cycleOrder" data-op="' + op.id + '" title="Приказ: ' + orderLabel + '">' + orderIcon + '<span>Приказ: ' + orderLabel + '</span></button>' +
+        '</div>' +
+
+        '<div class="wound-row">' +
+          '<div class="wound-track">' + segs + '</div>' +
           '<span class="wound-readout__num ' + hpClass + (String(op.wounds).length >= 2 ? ' wound-readout__num--wide' : '') + '">' + op.wounds + '</span>' +
-          '<div class="operator__hp-buttons">' +
-            '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="1">+1</button>' +
-            '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="3">+3</button>' +
-            '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="1">−1</button>' +
-            '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="3">−3</button>' +
-            '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="6">−6</button>' +
-          '</div>' +
+        '</div>' +
+        '<div class="operator__hp-buttons">' +
+          '<button class="btn" data-action="healOperator" data-op="' + op.id + '" data-amount="1">+1</button>' +
+          '<button class="btn" data-action="healOperator" data-op="' + op.id + '" data-amount="3">+3</button>' +
+          '<button class="btn btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="1">−1</button>' +
+          '<button class="btn btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="3">−3</button>' +
+          '<button class="btn btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="6">−6</button>' +
         '</div>' +
 
         '<div class="operator__controls">' + quickChips + '</div>' +
