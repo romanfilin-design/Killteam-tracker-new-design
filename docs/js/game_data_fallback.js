@@ -447,6 +447,36 @@ window.GAME_DATA_FALLBACK = {
         "usesLabel": "Пассив",
         "desc": "Глушилки Night Lords сеют хаос и не дают перепуганным врагам координироваться. Пока враг в пределах 3\" от дружественного оператора Nemesis Claw — его APL нельзя увеличивать (уже изменённые значения APL это не затрагивает)."
       }
+    ],
+    "Hearthkyn Salvagers": [
+      {
+        "id": "plasma_knives",
+        "name": "Plasma Knives",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы HEARTHKYN SALVAGER получают следующее оружие ближнего боя. У FIELD MEDIC уже есть это оружие, но с лучшими характеристиками — в этом случае используется лучшая версия. Plasma knife: Atk 3, Hit 4+, Dmg 3/5, WR Lethal 5+."
+      },
+      {
+        "id": "climbing_rigs",
+        "name": "Climbing Rigs",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Во время каждой активации дружественного оператора HEARTHKYN SALVAGER можно применить одно из следующего: когда этот оператор поднимается (climbing up), можно считать вертикальную дистанцию как 2\" (независимо от реальной высоты подъёма); когда он спускается (dropping), вертикальная дистанция игнорируется."
+      },
+      {
+        "id": "excavation_tools",
+        "name": "Excavation Tools",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы HEARTHKYN SALVAGER выполняют действие Pick Up Marker за 1 AP меньше и не обязаны контролировать маркер, чтобы это сделать (это имеет приоритет над обычными условиями действия — достаточно его контестить)."
+      },
+      {
+        "id": "writ_of_claim",
+        "name": "Writ of Claim",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Один раз за битву, если дружественные операторы HEARTHKYN SALVAGER контестят два или более маркера цели, после броска на инициативу можно применить это правило — если применяешь, можно перебросить свои кубики."
+      }
     ]
   },
   "killTeams": {
@@ -1584,6 +1614,578 @@ window.GAME_DATA_FALLBACK = {
         {
           "name": "In Midnight Clad",
           "text": "Night Lords едины с тьмой, используя её как союзника и оружие. Когда вражеский оператор стреляет по дружественному оператору NEMESIS CLAW, тот дружественный оператор считается obscured, если верны оба условия: он более чем в 8\" от вражеских операторов, которым он виден; он в пределах 1\" от Heavy terrain, не ниже него, либо хотя бы часть его базы находится под Vantage terrain."
+        }
+      ]
+    },
+    "Hearthkyn Salvagers": {
+      "archetypes": [
+        "Recon",
+        "Security"
+      ],
+      "required": [
+        {
+          "name": "Hearthkyn Theyn",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 9,
+          "count": 1,
+          "portrait": "img/portraits/hearthkyn-salvagers/theyn.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Accurate 1"
+            },
+            {
+              "name": "Autoch-pattern bolter",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Bolt revolver",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "EtaCarn plasma pistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Ion blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Ion pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Piercing Crits 1"
+            },
+            {
+              "name": "Concussion gauntlet",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/7",
+              "wr": "Brutal, Shock"
+            },
+            {
+              "name": "Plasma weapon",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Eye of the Ancestors",
+              "text": "Выбери одного вражеского оператора, или до двух вражеских операторов, если три или более дружественных операторов HEARTHKYN SALVAGER выведены из строя (incapacitated). Каждый из этих вражеских операторов получает один из твоих Grudge tokens.",
+              "cost": "Strategic Gambit"
+            },
+            {
+              "name": "Weavefield Crest",
+              "text": "Один раз за битву, когда кубик атаки наносит Normal Dmg этому оператору, можешь проигнорировать этот урон."
+            }
+          ]
+        }
+      ],
+      "pool": [
+        {
+          "name": "Hearthkyn Dôzr",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/dozr.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolt pistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Accurate 1"
+            },
+            {
+              "name": "Concussion knux",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/4",
+              "wr": "Ceaseless, Lethal 5+, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Brawler",
+              "text": "Когда этот оператор дерётся или отвечает (retaliating), вражеские операторы не могут assist. Если он выведен из строя (incapacitated), можешь ударить одного вражеского оператора в этой последовательности одним из своих неиспользованных successes до того, как он будет убран из killzone. Normal Dmg 4 или больше наносит ему на 1 меньше урона."
+            },
+            {
+              "name": "Knux Smash",
+              "text": "Выбери одного вражеского оператора в пределах control range этого оператора — можешь переместить его до 3\" в место, где он может быть размещён. Затем нанеси ему D3+1 урона (даже если не перемещаешь); если результат D3 равен 3, вычти 1 из APL этого вражеского оператора до конца действия. После этого оператор может немедленно выполнить бесплатное действие Charge (даже если уже выполнял Charge в эту активацию), но не может переместиться больше чем на 3\" в этом действии. Нельзя выполнять это действие, если враг не в пределах control range этого оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Field Medic",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/field_medic.png",
+          "weapons": [
+            {
+              "name": "Bolt revolver",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/5",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Plasma knife",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/5",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Medic!",
+              "text": "Первый раз за каждый turning point, когда другой дружественный оператор HEARTHKYN SALVAGER должен быть выведен из строя (incapacitated), будучи видимым и в пределах 3\" от этого оператора, можешь применить это правило — если применяешь, тот дружественный оператор не выводится из строя, у него остаётся 1 wound и до конца действия его нельзя вывести из строя. После этого дружественный оператор должен немедленно выполнить бесплатное действие Dash, но обязан закончить перемещение в пределах control range этого оператора. Вычти 1 из APL обоих операторов до конца их следующих активаций; если правило применено во время активации того дружественного оператора, эта активация заканчивается. Нельзя применять это правило, если этот оператор выведен из строя, либо если это действие Shoot и этот оператор был бы основной или вторичной целью."
+            },
+            {
+              "name": "Medikit",
+              "text": "Выбери одного дружественного оператора HEARTHKYN SALVAGER в пределах control range этого оператора — он восстанавливает до 2D3 потерянных wounds. Не может быть оператором, на котором в этот turning point уже применялось правило Medic!. Нельзя выполнять это действие в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Grenadier",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/grenadier.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolt pistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Accurate 1"
+            },
+            {
+              "name": "C8 HX charge",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Range 4\", Blast 1\", Heavy (Reposition only), Limited 1, Piercing 1, Saturate"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Grenadier",
+              "text": "Этот оператор может использовать frag, krak и stun grenades (см. universal equipment). Это не учитывается в лимите использований, даже если ты также выбрал эти гранаты для других операторов. Когда этот оператор использует frag или krak grenade, улучши его Hit на 1."
+            },
+            {
+              "name": "Vayr-3 Utility Grenade",
+              "text": "Размести один свой маркер Utility Grenade в пределах 6\" от этого оператора — он должен быть видим этому оператору, либо находиться на Vantage terrain, видимой этому оператору. Пока вражеский оператор в пределах 3\" от этого маркера, его контролирующий игрок должен потратить дополнительный 1 AP, чтобы этот оператор выполнил действие Pick Up Marker или миссийное действие. В шаге Ready следующей фазы Strategy брось D3 — убери маркер после того как пройдёт столько активаций, либо в конце turning point (что наступит раньше). Нельзя выполнять это действие в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Gunner",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/gunner.png",
+          "weapons": [
+            {
+              "name": "EtaCarn plasma beamer",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/6",
+              "wr": "Piercing 1, Beam*"
+            },
+            {
+              "name": "HYLas auto rifle",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Ceaseless, Rending"
+            },
+            {
+              "name": "HYLas rotary cannon (focused)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Ceaseless, Heavy (Reposition only), Saturate"
+            },
+            {
+              "name": "HYLas rotary cannon (sweeping)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Ceaseless, Saturate, Torrent 1\""
+            },
+            {
+              "name": "L7 missile launcher (blast)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/5",
+              "wr": "Blast 2\""
+            },
+            {
+              "name": "L7 missile launcher (focused)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/6",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Magna rail rifle",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/2",
+              "wr": "Devastating 3, Heavy (Dash only), Piercing 2"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Beam",
+              "text": "Когда этот оператор стреляет этим оружием, каждый сохранённый critical success немедленно наносит D3 урона каждому другому оператору вдоль одной (и только одной) линии луча (бросай отдельно за каждого), но исходная цель не затрагивается. Оператор считается на линии луча, если targeting line можно провести от этого оператора к его базе так, что она пересекает базу исходной цели, но не пересекает Heavy terrain."
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Jump Pack Warrior",
+          "apl": 2,
+          "move": "8\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/jump_pack_warrior.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolt pistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Accurate 1"
+            },
+            {
+              "name": "Plasma weapon",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+, Force Impact*"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Jump Pack",
+              "text": "Когда этот оператор выполняет действие с перемещением, он может FLY. Если так, он не двигается пешком — вместо этого убери его с исходного места и размести в пределах дистанции, равной его Move (или 3\", если это было действие Dash), по горизонтали. Обрати внимание, что он не получает дополнительной дистанции при действии Charge. Он должен быть размещён там, где это разрешено правилами, и, если это не Charge, не может быть размещён в пределах control range вражеского оператора."
+            },
+            {
+              "name": "* Force Impact",
+              "text": "Когда этот оператор дерётся этим оружием, если в эту активацию было выполнено действие Charge, оружие получает правило Brutal."
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Kinlynk",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/kinlynk.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolter",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Ion blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Signal",
+              "text": "Выбери другого дружественного оператора HEARTHKYN SALVAGER в killzone. До конца его следующей активации добавь 1 к его APL. Нельзя выполнять это действие в пределах control range вражеского оператора.",
+              "cost": "1AP",
+              "tag": "SUPPORT"
+            },
+            {
+              "name": "System Jam",
+              "text": "Выбери вражеского оператора, являющегося допустимой целью для этого оператора и не имеющего одного из твоих токенов System Jam, — он получает такой токен. До конца битвы вражеский оператор с этим токеном не может активироваться, пока не активируются все вражеские операторы без токена. Когда такой оператор активируется, убери с него токен. Нельзя выполнять это действие в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Kognitâar",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/kognitaar.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolter",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Ion blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Tactician",
+              "text": "Размести либо свой маркер Attack, либо маркер Defence в killzone. Когда дружественный оператор HEARTHKYN SALVAGER стреляет, дерётся или отвечает (retaliating) против вражеского оператора в пределах 3\" от твоего маркера Attack, его оружие получает правило Balanced. Когда враг стреляет по дружественному оператору HEARTHKYN SALVAGER в пределах 3\" от твоего маркера Defence, можешь перебросить один свой кубик защиты. В шаге Ready следующей фазы Strategy убери этот маркер.",
+              "cost": "Strategic Gambit"
+            },
+            {
+              "name": "Accelerated Appraisal",
+              "text": "Если твой маркер Attack или Defence в killzone, убери его. Размести маркер Attack или Defence в killzone. Нельзя выполнять это действие в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Lokâtr",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/lokatr.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolter",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Ion blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Spot",
+              "text": "Выбери вражеского оператора, видимого этому оператору. До конца turning point, когда дружественный оператор HEARTHKYN SALVAGER в пределах 3\" от этого оператора, можешь применить эффект: его дальнобойное оружие получает правило Seek Light; этот вражеский оператор не может быть obscured. Нельзя выполнять это действие в пределах control range вражеского оператора.",
+              "cost": "1AP",
+              "tag": "SUPPORT"
+            },
+            {
+              "name": "Pan Spectral Scan",
+              "text": "Размести свой маркер Pan Spectral Scan в killzone. Когда дружественный оператор HEARTHKYN SALVAGER стреляет по врагу в пределах 3\" от этого маркера, его дальнобойное оружие получает правила Accurate 1 и Saturate. Убери маркер, когда этот оператор активируется снова и не выполняет это действие (что наступит раньше). Нельзя выполнять это действие в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Lugger",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/lugger.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolter",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Ion blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Well Supplied",
+              "text": "Можешь выбрать один дополнительный вариант снаряжения, а в шаге Ready первой фазы Strategy получаешь 1 дополнительный CP."
+            },
+            {
+              "name": "I've Got It",
+              "text": "Один раз за каждую активацию этого оператора он может выполнить миссийное действие за 1 AP меньше."
+            }
+          ]
+        },
+        {
+          "name": "Hearthkyn Warrior",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 8,
+          "portrait": "img/portraits/hearthkyn-salvagers/warrior.png",
+          "weapons": [
+            {
+              "name": "Autoch-pattern bolter",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Ion blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Secure Salvage",
+              "text": "Когда враг стреляет, дерётся или отвечает (retaliating) против этого оператора, если этот оператор контестит маркер цели или один из твоих mission-маркеров, в шаге Resolve Attack Dice можешь вычесть 1 урон у одного success из нанесённого им урона."
+            }
+          ]
+        }
+      ],
+      "poolPick": 9,
+      "equipment": "Hearthkyn Salvagers",
+      "lore": {
+        "intro": "Высоко искусные воины и исследователи разбитых кораблей и заброшенных космических станций, Hearthkyn Salvagers получают задание находить ценные материалы и помечать их для последующей эвакуации. Тяжело вооружённые и предельно решительные, отряды Hearthkyn Salvager захватывают и обороняют такие находки со стойкой решимостью, типичной для Kin.",
+        "operatives": [
+          {
+            "name": "Hearthkyn Theyn",
+            "text": "Те Hearthkyn Salvagers, что проявляют особые способности к лидерству, назначаются своими начальниками или товарищами на звание Theyn. Командуя собственным отрядом, Theyns — высокоопытные исследователи разбитых кораблей с бесчисленными абордажными операциями на счету."
+          },
+          {
+            "name": "Hearthkyn Field Medic",
+            "text": "Эти Hearthkyn Salvagers проходят изнурительную подготовку по оказанию первой помощи под огнём, а также ограниченное инженерное обучение, позволяющее им заботиться о повреждённых Ironkin. В абордажной операции их навыки жизненно важны, поскольку их отряд будет далеко от полноценного медицинского центра Kin."
+          },
+          {
+            "name": "Hearthkyn Dôzr",
+            "text": "Тонкость и нюансы — это концепции, на которые у этих крепких Kin мало времени. Они способны выломать запечатанные люки или даже сплошные стены своим концуссионным knux, пробивая путь своим соратникам. В бою их оружие ещё более разрушительно для незадачливых врагов."
+          },
+          {
+            "name": "Hearthkyn Grenadier",
+            "text": "Вооружённые бандольерами гранат и взрывчатки, Grenadiers выполняют жизненно важную функцию для отрядов Hearthkyn Salvager. Они могут расчистить коридор от врагов в мгновение ока, взорвать запертые двери и оказать тактическую поддержку своим Kin в разгаре перестрелки."
+          },
+          {
+            "name": "Hearthkyn Gunner",
+            "text": "Поскольку в обломках часто обитают всевозможные твари, монстры и враги, Hearthkyn Salvagers имеют доступ к широкому спектру специального и тяжёлого оружия. Gunners выбирают инструменты, наилучшим образом подходящие для задачи, и их шквал тяжёлого огня спас многие отряды."
+          },
+          {
+            "name": "Hearthkyn Jump Pack Warrior",
+            "text": "Hearthkyn Salvagers приходится преодолевать бесчисленные препятствия на своих миссиях. Те, кто использует реактивные ранцы, способны легко преодолевать труднопроходимую местность, а в бою могут использовать мощь своего снаряжения, чтобы усилить удар своего charge."
+          },
+          {
+            "name": "Hearthkyn Kinlynk",
+            "text": "Эмпирейные энергии, обшивка корпуса корабля и толстая порода — всё это способно помешать связи отряда, и Kinlynks вынуждены неустанно трудиться, чтобы обеспечить связь всем своим Kin. Они спокойно передают тактическую информацию в разгаре боя и даже способны нарушить связь врага."
+          },
+          {
+            "name": "Hearthkyn Kognitâar",
+            "text": "Эти Ironkin обладают чрезвычайно сложным искусственным интеллектом и используют эту огромную вычислительную мощь для поддержки своего отряда. Постоянно получая, организуя и анализируя данные, Kognitâar предоставляют своим Kin невероятную тактическую информацию в реальном времени, когда бы она ни понадобилась."
+          },
+          {
+            "name": "Hearthkyn Lokâtr",
+            "text": "Когда опасность подстерегает за каждым углом, в каждой вентиляционной шахте и даже внутри стен обломков, панспектральные сканеры Lokâtrs жизненно важны для того, чтобы Kin могли предвидеть угрозы и реагировать наиболее эффективным способом."
+          },
+          {
+            "name": "Hearthkyn Lugger",
+            "text": "В обломках, куда трудно доставить технику, эти стойкие Kin несут огромные грузы необходимого снаряжения и припасов, не жалуясь. Вкладывая всю свою силу в общее дело, они высоко ценятся своими Kin."
+          },
+          {
+            "name": "Hearthkyn Warrior",
+            "text": "Hearthkyn Warriors — крепкие, закалённые бойцы, гордящиеся своей ролью в опасных абордажных операциях. Warriors оказывают жизненно важную поддержку специалистам своего отряда, отстреливая врагов, пока их товарищи выполняют важные для миссии действия."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Grudge",
+          "text": "Когда вражеский оператор выводит из строя (incapacitate) дружественного оператора HEARTHKYN SALVAGER, тот вражеский оператор получает один из твоих токенов Grudge на всю битву. Когда дружественный оператор HEARTHKYN SALVAGER стреляет, дерётся или отвечает (retaliating) против вражеского оператора, за каждый токен Grudge у этого врага можно сохранить один свой обычный success как critical success (включая обычные successes, уже сохранённые за счёт правила Accurate). Токены Grudge при этом не убираются."
         }
       ]
     }
