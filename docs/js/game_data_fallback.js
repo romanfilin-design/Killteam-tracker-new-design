@@ -463,7 +463,8 @@ window.GAME_DATA_FALLBACK = {
           "move": "5\"",
           "save": "3+",
           "wounds": 15,
-          "count": 1
+          "count": 1,
+          "portrait": "img/portraits/plague-marines/champion.png"
         }
       ],
       "poolPick": 5,
@@ -473,42 +474,48 @@ window.GAME_DATA_FALLBACK = {
           "apl": 3,
           "move": "5\"",
           "save": "3+",
-          "wounds": 14
+          "wounds": 14,
+          "portrait": "img/portraits/plague-marines/bombardier.png"
         },
         {
           "name": "Fighter",
           "apl": 3,
           "move": "5\"",
           "save": "3+",
-          "wounds": 14
+          "wounds": 14,
+          "portrait": "img/portraits/plague-marines/fighter.png"
         },
         {
           "name": "Heavy Gunner",
           "apl": 3,
           "move": "5\"",
           "save": "3+",
-          "wounds": 14
+          "wounds": 14,
+          "portrait": "img/portraits/plague-marines/heavy_gunner.png"
         },
         {
           "name": "Icon Bearer",
           "apl": 3,
           "move": "5\"",
           "save": "3+",
-          "wounds": 14
+          "wounds": 14,
+          "portrait": "img/portraits/plague-marines/icon_bearer.png"
         },
         {
           "name": "Malignant Plaguecaster",
           "apl": 3,
           "move": "5\"",
           "save": "3+",
-          "wounds": 14
+          "wounds": 14,
+          "portrait": "img/portraits/plague-marines/malignant_plaguecaster.png"
         },
         {
           "name": "Warrior",
           "apl": 3,
           "move": "5\"",
           "save": "3+",
-          "wounds": 14
+          "wounds": 14,
+          "portrait": "img/portraits/plague-marines/warrior.png"
         }
       ]
     },
