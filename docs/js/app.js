@@ -222,6 +222,7 @@
     return (
       renderPartyToolsPanel() +
       renderKillTeamPickPanel() +
+      (t.killTeamName ? renderTeamLorePanel() : '') +
       (t.killTeamName ? renderPoolPanel() : '') +
       renderRosterToolsPanel() +
       renderCritOpPanel() +
@@ -246,13 +247,24 @@
     );
   }
 
+  function commanderIcon(portrait) {
+    return portrait
+      ? '<img class="pick-card__commander-img" src="' + esc(portrait) + '" alt="">'
+      : '<span class="pick-card__commander-img pick-card__commander-img--placeholder" aria-hidden="true">' + PORTRAIT_PLACEHOLDER_SVG + '</span>';
+  }
+
   function renderKillTeamPickPanel() {
     var names = Object.keys(gameData.killTeams || {});
     var cards = names.map(function (name) {
       var isSel = appState.team.killTeamName === name;
-      return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="selectKillTeam" data-value="' + esc(name) + '">' +
-        '<span class="pick-card__name">' + esc(name) + '</span>' +
-        '<span class="pick-card__meta">' + (gameData.killTeams[name].archetypes || []).join(' · ') + '</span>' +
+      var def = gameData.killTeams[name];
+      var leaderPortrait = def.required && def.required[0] ? def.required[0].portrait : null;
+      return '<button class="pick-card pick-card--team' + (isSel ? ' is-selected' : '') + '" data-action="selectKillTeam" data-value="' + esc(name) + '">' +
+        '<span class="pick-card__commander">' + commanderIcon(leaderPortrait) + '</span>' +
+        '<span class="pick-card__text">' +
+          '<span class="pick-card__name">' + esc(name) + '</span>' +
+          '<span class="pick-card__meta">' + (def.archetypes || []).join(' · ') + '</span>' +
+        '</span>' +
       '</button>';
     }).join('');
     return (
@@ -260,6 +272,31 @@
         '<div class="panel__head"><span class="panel__title">Kill Team</span></div>' +
         '<div class="pick-grid">' + cards + '</div>' +
       '</section>'
+    );
+  }
+
+  function renderTeamLorePanel() {
+    var def = findKillTeamDef(gameData, appState.team.killTeamName);
+    var lore = def ? def.lore : null;
+    if (!lore) return '';
+
+    var operativesHtml = (lore.operatives || []).map(function (o) {
+      return '<p><b>' + esc(o.name) + '</b> — ' + esc(o.text) + '</p>';
+    }).join('');
+
+    var quoteHtml = lore.quote
+      ? '<blockquote class="lore-quote">«' + esc(lore.quote.text) + '»<cite>— ' + esc(lore.quote.author) + '</cite></blockquote>'
+      : '';
+
+    return (
+      '<details class="panel">' +
+        '<summary>Лор: ' + esc(appState.team.killTeamName) + '</summary>' +
+        '<div class="cheat-body">' +
+          '<p>' + esc(lore.intro) + '</p>' +
+          quoteHtml +
+          operativesHtml +
+        '</div>' +
+      '</details>'
     );
   }
 
@@ -433,10 +470,28 @@
       renderTurningPointPanel() +
       renderCountersPanel() +
       renderSummaryStrip(activatedCount, downCount, t.operators.length) +
+      renderFactionRulePanel() +
       renderOperatorsList() +
       '<button class="btn btn--ghost btn--block" data-action="addOperator" style="margin-bottom:12px;">+ Добавить оператора</button>' +
       renderEquipmentGamePanel() +
       renderCheatSheet()
+    );
+  }
+
+  function renderFactionRulePanel() {
+    var def = findKillTeamDef(gameData, appState.team.killTeamName);
+    var rules = def ? def.factionRules : null;
+    if (!rules || !rules.length) return '';
+
+    var rulesHtml = rules.map(function (r) {
+      return '<div class="cheat-section"><h3>' + esc(r.name) + '</h3><p>' + esc(r.text) + '</p></div>';
+    }).join('');
+
+    return (
+      '<details class="panel" open>' +
+        '<summary>Правило фракции: ' + esc(appState.team.killTeamName) + '</summary>' +
+        '<div class="cheat-body">' + rulesHtml + '</div>' +
+      '</details>'
     );
   }
 
@@ -531,7 +586,7 @@
       : '';
 
     var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);
-    var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : 'Приказ —');
+    var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : '—');
 
     return (
       '<article class="operator' + (down ? ' is-down' : (injured ? ' is-injured' : '')) + '">' +
@@ -543,24 +598,23 @@
             '<input class="operator__name-input" type="text" data-focus-key="opname-' + op.id + '" data-field="operatorName" data-op="' + op.id + '" value="' + esc(op.name) + '" />' +
             statLine +
           '</div>' +
-          '<button class="activate-toggle' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '" ' +
-            'aria-pressed="' + (op.activated ? 'true' : 'false') + '" aria-label="' + (op.activated ? 'Активирован' : 'Не активирован') + '" title="' + (op.activated ? 'Активирован' : 'Не активирован') + '">' + ICON_ACTIVATED_SVG + '</button>' +
-        '</div>' +
-
-        '<div class="operator__status-row">' +
-          '<button class="order-cycle-btn order-cycle-btn--' + (op.order || 'neutral') + '" data-action="cycleOrder" data-op="' + op.id + '">' + orderIcon + '<span>' + orderLabel + '</span></button>' +
+          '<div class="operator__status-block">' +
+            '<button class="activate-toggle' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '" ' +
+              'aria-pressed="' + (op.activated ? 'true' : 'false') + '" aria-label="' + (op.activated ? 'Активирован' : 'Не активирован') + '" title="' + (op.activated ? 'Активирован' : 'Не активирован') + '">' + ICON_ACTIVATED_SVG + '</button>' +
+            '<button class="order-cycle-btn order-cycle-btn--' + (op.order || 'neutral') + '" data-action="cycleOrder" data-op="' + op.id + '" title="Приказ: ' + orderLabel + '">' + orderIcon + '<span>' + orderLabel + '</span></button>' +
+          '</div>' +
         '</div>' +
 
         '<div class="wound-track">' + segs + '</div>' +
         '<div class="wound-readout">' +
           '<span class="wound-readout__num ' + hpClass + '">' + op.wounds + '</span>' +
-        '</div>' +
-        '<div class="operator__hp-buttons">' +
-          '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="1">+1</button>' +
-          '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="3">+3</button>' +
-          '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="1">−1</button>' +
-          '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="3">−3</button>' +
-          '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="6">−6</button>' +
+          '<div class="operator__hp-buttons">' +
+            '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="1">+1</button>' +
+            '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="3">+3</button>' +
+            '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="1">−1</button>' +
+            '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="3">−3</button>' +
+            '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="6">−6</button>' +
+          '</div>' +
         '</div>' +
 
         '<div class="operator__controls">' + quickChips + '</div>' +

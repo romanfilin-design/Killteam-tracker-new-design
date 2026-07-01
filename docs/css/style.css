@@ -463,6 +463,59 @@ body::after {
 
 .pick-card__detail b { color: var(--ink); }
 
+/* Карточка выбора Kill Team — с иконкой командира рядом с названием */
+.pick-card--team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pick-card__commander {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--steel-dim);
+}
+
+.pick-card__commander-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pick-card__commander-img--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+}
+
+.pick-card__commander-img--placeholder svg { width: 24px; height: 24px; }
+
+.pick-card__text { flex: 1; min-width: 0; }
+
+/* Панель лора команды */
+.lore-quote {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-left: 2px solid var(--accent-dim);
+  background: var(--panel-inset);
+  font-style: italic;
+  color: var(--ink-dim);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.lore-quote cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
 /* ==========================================================================
    Пул операторов подготовки
    ========================================================================== */
@@ -608,13 +661,13 @@ body::after {
 .operator__top {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 12px 8px;
+  gap: 8px;
+  padding: 12px 10px 8px;
 }
 
 .operator__portrait {
-  width: 88px;
-  height: 88px;
+  width: 80px;
+  height: 80px;
   flex: none;
   background: var(--panel-inset);
   border: 1px solid var(--steel-dim);
@@ -629,8 +682,8 @@ body::after {
 }
 
 .operator__portrait--placeholder svg {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
 }
 
 .operator__id { flex: 1; min-width: 0; }
@@ -642,23 +695,28 @@ body::after {
   color: var(--ink);
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 18px;
+  font-size: clamp(10px, 3vw, 17px);
   padding: 4px 0;
   width: 100%;
+  min-width: 0;
   min-height: 32px;
+  text-overflow: ellipsis;
 }
 
 .operator__name-input:focus { outline: none; border-bottom-color: var(--accent); }
 
 .operator__stats {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 6px;
   margin-top: 6px;
-  font-size: 12px;
+  font-size: clamp(11px, 3vw, 15px);
   color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
+
+.operator__stats span { flex: 1; white-space: nowrap; }
 
 .operator__stats span b { color: var(--ink-dim); }
 
@@ -701,14 +759,16 @@ body::after {
 
 .wound-readout {
   display: flex;
-  align-items: baseline;
-  padding: 8px 12px 4px;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 12px;
   font-variant-numeric: tabular-nums;
 }
 
 .wound-readout__num {
+  flex: none;
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: 28px;
   color: var(--accent-bright);
   letter-spacing: 0.02em;
 }
@@ -719,12 +779,18 @@ body::after {
 
 .operator__hp-buttons {
   display: flex;
-  gap: 6px;
-  padding: 8px 12px 12px;
-  flex-wrap: wrap;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
-.operator__hp-buttons .btn { flex: 1; min-width: 44px; }
+.operator__hp-buttons .btn {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 2px;
+  font-size: 11px;
+}
 
 .operator__controls {
   display: flex;
@@ -733,13 +799,23 @@ body::after {
   padding: 0 12px 12px;
 }
 
-/* Активация — компактная иконка-переключатель в шапке карточки, не текстовая кнопка,
-   чтобы визуально не путаться с приказом/статусами. */
-.activate-toggle {
+/* Активация + приказ — один блок в правой части шапки, размером с портрет (88x88),
+   разделён на две равные половины по высоте: сверху активация, снизу приказ.
+   Сгруппированы визуально как одна "панель состояния оператора". */
+.operator__status-block {
   flex: none;
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--steel);
+}
+
+.activate-toggle {
+  flex: 1;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--steel-dim);
   background: var(--panel-inset);
   color: var(--ink-faint);
   display: flex;
@@ -747,47 +823,40 @@ body::after {
   justify-content: center;
 }
 
-.activate-toggle svg { width: 18px; height: 18px; }
+.activate-toggle svg { width: 20px; height: 20px; }
 
 .activate-toggle.is-on {
-  border-color: var(--accent);
   background: var(--accent-dim);
   color: #1a0d02;
-  box-shadow: 0 0 10px var(--accent-glow);
-}
-
-/* Приказ — одна компактная кнопка с циклом null -> conceal -> engage -> conceal.
-   Не на всю ширину (это не основной элемент управления), свой цвет на каждое
-   состояние, чтобы приказ читался с одного взгляда. */
-.operator__status-row {
-  padding: 0 12px 10px;
+  box-shadow: inset 0 0 10px var(--accent-glow);
 }
 
 .order-cycle-btn {
-  display: inline-flex;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  min-height: 38px;
-  padding: 6px 14px;
-  border: 1px solid var(--steel);
+  justify-content: center;
+  gap: 2px;
+  border: none;
   background: var(--panel-inset);
   color: var(--ink-faint);
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  font-size: 9px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .order-cycle-btn svg { width: 16px; height: 16px; flex: none; }
+.order-cycle-btn span { line-height: 1; }
 
 .order-cycle-btn--conceal {
-  border-color: #4a6a7a;
   color: #9fd3ea;
   background: rgba(74,106,122,0.14);
 }
 
 .order-cycle-btn--engage {
-  border-color: var(--danger);
   color: #ffb3ac;
   background: rgba(212,58,47,0.12);
 }
@@ -805,7 +874,9 @@ body::after {
 }
 
 .status-chip.is-on {
-  background: rgba(255,122,31,0.16);
+  background: transparent;
+  border-style: dashed;
+  border-width: 2px;
   border-color: var(--accent);
   color: var(--accent-bright);
 }
