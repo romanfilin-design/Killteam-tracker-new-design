@@ -761,17 +761,31 @@ body::after {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 12px 12px;
+  padding: 6px 12px 12px;
   font-variant-numeric: tabular-nums;
 }
 
+/* Цифра текущего HP — тот же размер (высота трека, 34px) и та же горизонтальная
+   позиция (padding 12px), что и первое деление wound-track прямо над ней, чтобы
+   читалось как прямое продолжение шкалы, а не отдельный элемент. */
 .wound-readout__num {
   flex: none;
+  width: 36px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--steel-dim);
+  background: var(--panel-inset);
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 18px;
   color: var(--accent-bright);
   letter-spacing: 0.02em;
 }
+
+/* Двузначный HP — ширина как у первых ДВУХ делений трека (36px + 3px gap + 36px),
+   а не одного, чтобы число не теснилось в узкой рамке. */
+.wound-readout__num--wide { width: 75px; }
 
 .wound-readout__num.hp-green { color: #8ed35d; }
 .wound-readout__num.hp-yellow { color: var(--caution); }
@@ -779,7 +793,7 @@ body::after {
 
 .operator__hp-buttons {
   display: flex;
-  gap: 4px;
+  gap: 3px;
   flex: 1;
   min-width: 0;
 }
@@ -787,9 +801,9 @@ body::after {
 .operator__hp-buttons .btn {
   flex: 1;
   min-width: 0;
-  min-height: 44px;
-  padding: 6px 2px;
-  font-size: 11px;
+  min-height: 34px;
+  padding: 4px 2px;
+  font-size: 10px;
 }
 
 .operator__controls {
@@ -985,6 +999,21 @@ body::after {
   text-align: left;
   font-weight: 700;
   color: var(--ink);
+}
+
+/* Кликабельный термин в таблице оружия — открывает памятку с объяснением на русском. */
+.term-clickable {
+  cursor: pointer;
+  text-decoration: underline dotted var(--ink-faint);
+  text-underline-offset: 2px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.weapon-table th.term-clickable { text-decoration-color: var(--steel-light); }
+
+.term-clickable:active, .term-clickable:focus-visible {
+  color: var(--accent-bright);
+  outline: none;
 }
 
 .ability-list { display: flex; flex-direction: column; gap: 10px; }

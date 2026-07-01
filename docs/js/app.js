@@ -40,9 +40,54 @@
   var ICON_ORDER_NEUTRAL_SVG =
     '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 
+  // Памятка по параметрам датакарты оператора — по клику на термин в таблице оружия.
+  // Ключи ниже покрывают ровно те термины, что реально встречаются в game_data.json
+  // (см. tools/ — список составлялся по фактическим данным, не "с потолка").
+  var TERM_GLOSSARY = {
+    'ATK': 'Atk — сколько кубиков атаки бросается при использовании этого оружия.',
+    'HIT': 'Hit — минимальный результат кубика, чтобы бросок засчитался как обычный успех (Normal Success).',
+    'DMG': 'Dmg — урон оружия: первое число — при обычном успехе (Normal Dmg), второе — при критическом (Critical Dmg).',
+    'WR': 'WR — Weapon Rules, особые правила этого оружия. Нажми на конкретный термин в столбце, чтобы узнать, что он значит.',
+    'Accurate': 'Accurate X — перед броском можно сразу засчитать до X кубиков атаки как обычные успехи, не бросая их.',
+    'Balanced': 'Balanced — один раз за эту атаку можно перебросить один из своих кубиков атаки.',
+    'Blast': 'Blast X" — оружие поражает не только основную цель, но и других операторов в пределах X" от неё (они автоматически становятся дополнительными целями).',
+    'Brutal': 'Brutal — защищающийся не может сохранять обычные успехи защиты как блок, заблокировать атаку может только критический успех защиты.',
+    'Ceaseless': 'Ceaseless — можно перебросить кубики атаки, показавшие результат 1.',
+    'Devastating': 'Devastating X — каждый несохранённый критический успех сразу наносит X урона, минуя обычное разрешение защиты.',
+    'Heavy': 'Heavy (Reposition only / Dash only) — с этим оружием нельзя в одной активации и стрелять, и свободно перемещаться: разрешено только движение указанного в скобках типа (Reposition или Dash).',
+    'Hot': 'Hot — после разрешения стрельбы бросается К6: на результате 1 оружие ранит собственного стрелка.',
+    'Lethal': 'Lethal X+ — кубики атаки с результатом X и выше (а не только 6) можно сохранять как критические успехи.',
+    'Limited': 'Limited X — эту позицию оружия можно использовать не более X раз за всю партию.',
+    'Piercing': 'Piercing X — ухудшает защиту цели: сохранить обычный успех защиты (блок) ей становится сложнее на X.',
+    'Piercing Crits': 'Piercing Crits X — как Piercing, но действует только против критических успехов защиты цели.',
+    'PSYCHIC': 'PSYCHIC — псайкерское действие или оружие; на него распространяются особые правила, направленные против операторов с ключевым словом PSYKER.',
+    'Range': 'Range X" — максимальная дальность стрельбы этим оружием, в дюймах.',
+    'Rending': 'Rending — часть обычных успехов атаки может быть пересчитана как критические, увеличивая шанс нанести Critical Dmg.',
+    'Saturate': 'Saturate — игнорирует укрытие (cover) цели при стрельбе.',
+    'Seek': 'Seek — можно стрелять по оператору, который не виден напрямую, если он виден другому дружественному оператору поблизости.',
+    'Seek Light': 'Seek Light — как Seek, но не требует, чтобы цель была видна другому дружественному оператору.',
+    'Severe': 'Severe — усиливает урон при критическом успехе (обычно даёт +1 к Critical Dmg этого оружия — уже учтено в значении Dmg на карточке).',
+    'Shock': 'Shock — цель не может использовать переброс защиты (например, Command Re-roll) в ответ на эту атаку.',
+    'Silent': 'Silent — оружие не выдаёт положение стрелка, как обычное дальнобойное оружие (не даёт врагу типичных подсказок для обнаружения).',
+    'Stun': 'Stun — цель, получившая урон этим оружием, проходит проверку Stun и может получить штраф к следующим действиям.',
+    'Torrent': 'Torrent X" — автоматически поражает всех операторов в пределах X" по шаблону, без броска Hit.',
+    'Anti-PSYKER': 'Anti-PSYKER — против оператора с ключевым словом PSYKER это оружие получает правило Lethal 5+ (точная формулировка — в способностях этого оператора).',
+    'Beam': 'Beam — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Beam»).',
+    'Force Impact': 'Force Impact — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Force Impact»).',
+    'Poison': 'Poison — особое правило фракции про яд/токены Poison; полное описание — в правиле фракции этой команды.',
+    'Shield': 'Shield — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Shield»).',
+    'Terrorchem': 'Terrorchem — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Terrorchem»).',
+    'Toxic': 'Toxic — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Toxic»).',
+  };
+
+  function normalizeWrTerm(raw) {
+    return raw.replace(/[\d"+]+/g, '').replace(/\s+\(.*?\)/g, '').replace(/\*$/, '').trim();
+  }
+
   var gameData = null;
   var appState = null;
   var pendingConfirm = null; // { message, onConfirm }
+  var pendingInfo = null; // { term, text } — памятка по параметру оружия
   var toastEl = null;
 
   // ------------------------------------------------------------------
@@ -174,6 +219,19 @@
 
   function renderModal() {
     var root = document.getElementById('modal-root');
+    if (pendingInfo) {
+      root.innerHTML =
+        '<div class="modal-overlay" data-action="closeInfo">' +
+          '<div class="modal-box">' +
+            '<h2>' + esc(pendingInfo.term) + '</h2>' +
+            '<p>' + esc(pendingInfo.text) + '</p>' +
+            '<div class="btn-row">' +
+              '<button class="btn btn--ghost" data-action="closeInfo">Закрыть</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      return;
+    }
     if (!pendingConfirm) { root.innerHTML = ''; return; }
     root.innerHTML =
       '<div class="modal-overlay" data-action="cancelConfirm">' +
@@ -190,6 +248,13 @@
 
   function askConfirm(message, onConfirm) {
     pendingConfirm = { message: message, onConfirm: onConfirm };
+    renderModal();
+  }
+
+  function showTermInfo(term) {
+    var text = TERM_GLOSSARY[term];
+    if (!text) return;
+    pendingInfo = { term: term, text: text };
     renderModal();
   }
 
@@ -607,7 +672,7 @@
 
         '<div class="wound-track">' + segs + '</div>' +
         '<div class="wound-readout">' +
-          '<span class="wound-readout__num ' + hpClass + '">' + op.wounds + '</span>' +
+          '<span class="wound-readout__num ' + hpClass + (String(op.wounds).length >= 2 ? ' wound-readout__num--wide' : '') + '">' + op.wounds + '</span>' +
           '<div class="operator__hp-buttons">' +
             '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="1">+1</button>' +
             '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="3">+3</button>' +
@@ -628,17 +693,34 @@
     );
   }
 
+  function termHeaderCell(label) {
+    return '<th class="term-clickable" data-action="showTermInfo" data-term="' + esc(label) + '" tabindex="0">' + esc(label) + '</th>';
+  }
+
+  function renderWrCell(wr) {
+    if (!wr || wr === '-') return esc(wr || '-');
+    return wr.split(',').map(function (part) {
+      var trimmed = part.trim();
+      if (!trimmed) return '';
+      var key = normalizeWrTerm(trimmed);
+      if (TERM_GLOSSARY[key]) {
+        return '<span class="term-clickable" data-action="showTermInfo" data-term="' + esc(key) + '" tabindex="0">' + esc(trimmed) + '</span>';
+      }
+      return esc(trimmed);
+    }).join(', ');
+  }
+
   function renderOperatorDatacard(op) {
     var weapons = op.weapons || [];
     var abilities = op.abilities || [];
     if (!weapons.length && !abilities.length) return '';
 
     var weaponRows = weapons.map(function (wp) {
-      return '<tr><td class="weapon-table__name">' + esc(wp.name) + '</td><td>' + esc(wp.atk) + '</td><td>' + esc(wp.hit) + '</td><td>' + esc(wp.dmg) + '</td><td>' + esc(wp.wr) + '</td></tr>';
+      return '<tr><td class="weapon-table__name">' + esc(wp.name) + '</td><td>' + esc(wp.atk) + '</td><td>' + esc(wp.hit) + '</td><td>' + esc(wp.dmg) + '</td><td>' + renderWrCell(wp.wr) + '</td></tr>';
     }).join('');
 
     var weaponTable = weapons.length
-      ? '<table class="weapon-table"><thead><tr><th>NAME</th><th>ATK</th><th>HIT</th><th>DMG</th><th>WR</th></tr></thead><tbody>' + weaponRows + '</tbody></table>'
+      ? '<table class="weapon-table"><thead><tr><th>NAME</th>' + termHeaderCell('ATK') + termHeaderCell('HIT') + termHeaderCell('DMG') + termHeaderCell('WR') + '</tr></thead><tbody>' + weaponRows + '</tbody></table>'
       : '';
 
     var abilityList = abilities.length
@@ -808,6 +890,9 @@
       renderModal();
       if (fn) fn();
     },
+
+    closeInfo: function () { pendingInfo = null; renderModal(); },
+    showTermInfo: function (ds) { showTermInfo(ds.term); },
   };
 
   function onClick(e) {
@@ -885,7 +970,16 @@
     }
   }
 
+  function onKeydown(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var target = e.target.closest('.term-clickable[data-action]');
+    if (!target) return;
+    e.preventDefault();
+    target.click();
+  }
+
   document.addEventListener('click', onClick);
+  document.addEventListener('keydown', onKeydown);
   document.addEventListener('change', onChange);
   document.addEventListener('input', onInput);
   document.addEventListener('submit', onSubmit);
