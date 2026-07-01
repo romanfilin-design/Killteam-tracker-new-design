@@ -37,6 +37,8 @@
       '<line x1="1" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="1.8"/>' +
       '<line x1="19" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.8"/>' +
     '</svg>';
+  var ICON_ORDER_NEUTRAL_SVG =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 
   var gameData = null;
   var appState = null;
@@ -165,7 +167,7 @@
     var app = document.getElementById('app');
     app.innerHTML = renderHeader() + '<main id="screen">' +
       (appState.phase === 'game' ? renderGameScreen() : renderSetupScreen()) +
-      '</main>' + (appState.phase === 'game' ? renderActionBar() : '');
+      '</main>';
     renderModal();
     restoreFocus(focusInfo);
   }
@@ -218,6 +220,7 @@
     var t = appState.team;
     var ready = isReadyToStart(appState);
     return (
+      renderPartyToolsPanel() +
       renderKillTeamPickPanel() +
       (t.killTeamName ? renderPoolPanel() : '') +
       renderRosterToolsPanel() +
@@ -227,6 +230,19 @@
       '<button class="btn btn--accent btn--block" style="min-height:56px;font-size:16px;" data-action="startGame" ' +
         (ready ? '' : 'disabled') + '>Начать партию</button>' +
       (!ready ? '<p class="empty-state">Нужно: выбрать Crit Op, набрать хотя бы одного оператора, выбрать архетип и Tac Op.</p>' : '')
+    );
+  }
+
+  function renderPartyToolsPanel() {
+    return (
+      '<section class="panel">' +
+        '<div class="btn-row">' +
+          '<label class="btn btn--ghost">Импорт партии' +
+            '<input type="file" accept="application/json" class="visually-hidden-input" data-action="importStateFile" /></label>' +
+          '<button class="btn btn--ghost" data-action="exportState">Экспорт партии</button>' +
+          '<button class="btn btn--danger" data-action="resetSetup">Новая партия</button>' +
+        '</div>' +
+      '</section>'
     );
   }
 
@@ -514,6 +530,9 @@
       ? '<div class="operator__stats"><span>APL <b>' + esc(op.apl || '—') + '</b></span><span>MOVE <b>' + esc(op.move || '—') + '</b></span><span>SAVE <b>' + esc(op.save || '—') + '</b></span></div>'
       : '';
 
+    var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);
+    var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : 'Приказ —');
+
     return (
       '<article class="operator' + (down ? ' is-down' : (injured ? ' is-injured' : '')) + '">' +
         '<div class="operator__top">' +
@@ -526,13 +545,15 @@
           '</div>' +
           '<button class="activate-toggle' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '" ' +
             'aria-pressed="' + (op.activated ? 'true' : 'false') + '" aria-label="' + (op.activated ? 'Активирован' : 'Не активирован') + '" title="' + (op.activated ? 'Активирован' : 'Не активирован') + '">' + ICON_ACTIVATED_SVG + '</button>' +
-          '<button class="operator__remove" data-action="removeOperator" data-op="' + op.id + '" aria-label="Удалить оператора">✕</button>' +
+        '</div>' +
+
+        '<div class="operator__status-row">' +
+          '<button class="order-cycle-btn order-cycle-btn--' + (op.order || 'neutral') + '" data-action="cycleOrder" data-op="' + op.id + '">' + orderIcon + '<span>' + orderLabel + '</span></button>' +
         '</div>' +
 
         '<div class="wound-track">' + segs + '</div>' +
         '<div class="wound-readout">' +
           '<span class="wound-readout__num ' + hpClass + '">' + op.wounds + '</span>' +
-          '<span class="wound-readout__max">из <input class="wound-readout__maxedit" type="number" min="1" data-focus-key="opmax-' + op.id + '" data-field="operatorMaxWounds" data-op="' + op.id + '" value="' + op.maxWounds + '" /></span>' +
         '</div>' +
         '<div class="operator__hp-buttons">' +
           '<button class="btn btn--sm" data-action="healOperator" data-op="' + op.id + '" data-amount="1">+1</button>' +
@@ -542,12 +563,6 @@
           '<button class="btn btn--sm btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="6">−6</button>' +
         '</div>' +
 
-        '<div class="order-toggle">' +
-          '<button class="order-toggle__btn order-toggle__btn--conceal' + (op.order === 'conceal' ? ' is-active' : '') + '" data-action="setOrder" data-op="' + op.id + '" data-value="conceal">' +
-            ICON_CONCEAL_SVG + '<span>Conceal</span></button>' +
-          '<button class="order-toggle__btn order-toggle__btn--engage' + (op.order === 'engage' ? ' is-active' : '') + '" data-action="setOrder" data-op="' + op.id + '" data-value="engage">' +
-            ICON_ENGAGE_SVG + '<span>Engage</span></button>' +
-        '</div>' +
         '<div class="operator__controls">' + quickChips + '</div>' +
         '<div class="token-row">' + tokenPills + '</div>' +
         '<form class="token-add" data-action-submit="addCustomToken" data-op="' + op.id + '">' +
@@ -654,17 +669,6 @@
     );
   }
 
-  function renderActionBar() {
-    return (
-      '<div class="action-bar">' +
-        '<button class="btn btn--ghost" data-action="goSetup">Подготовка</button>' +
-        '<label class="btn btn--ghost">Импорт<input type="file" accept="application/json" class="visually-hidden-input" data-action="importStateFile" /></label>' +
-        '<button class="btn btn--ghost" data-action="exportState">Экспорт</button>' +
-        '<button class="btn btn--accent" data-action="newGameKeepingRoster">Новая партия</button>' +
-      '</div>'
-    );
-  }
-
   // ==================================================================
   // Диспетчер событий
   // ==================================================================
@@ -722,14 +726,8 @@
     changeKillGrade: function (ds) { changeKillGrade(appState.team, parseInt(ds.delta, 10)); persist(); render(); },
 
     addOperator: function () { addOperator(appState.team); persist(); render(); },
-    removeOperator: function (ds) {
-      var op = findOp(ds.op);
-      askConfirm('Удалить оператора «' + (op ? op.name : '') + '»? Действие необратимо.', function () {
-        removeOperator(appState.team, ds.op); persist(); render();
-      });
-    },
     toggleActivated: function (ds) { var op = findOp(ds.op); if (op) { toggleActivated(op); persist(); render(); } },
-    setOrder: function (ds) { var op = findOp(ds.op); if (op) { setOrder(op, ds.value); persist(); render(); } },
+    cycleOrder: function (ds) { var op = findOp(ds.op); if (op) { cycleOrder(op); persist(); render(); } },
     healOperator: function (ds) { var op = findOp(ds.op); if (op) { healOperator(op, parseInt(ds.amount, 10)); persist(); render(); } },
     damageOperator: function (ds) { var op = findOp(ds.op); if (op) { damageOperator(op, parseInt(ds.amount, 10)); persist(); render(); } },
     setWoundSegment: function (ds) { var op = findOp(ds.op); if (op) { setWoundsFromTrackSegment(op, parseInt(ds.segment, 10)); persist(); render(); } },
@@ -742,9 +740,10 @@
       downloadJSON(exportState(appState), 'killteam-tracker-save.json');
       showToast('Состояние экспортировано');
     },
-    newGameKeepingRoster: function () {
-      askConfirm('Начать новую партию с тем же составом? Счётчики и здоровье будут сброшены.', function () {
-        startNewGameKeepingRoster(appState); persist(); render();
+    resetSetup: function () {
+      askConfirm('Обнулить все выборы и начать подготовку заново? Отменить нельзя.', function () {
+        appState = createInitialAppState();
+        persist(); render();
       });
     },
 
@@ -807,10 +806,6 @@
     if (target.dataset.field === 'operatorName') {
       var op = findOp(target.dataset.op);
       if (op) { renameOperator(op, target.value); persist(); }
-    }
-    if (target.dataset.field === 'operatorMaxWounds') {
-      var op2 = findOp(target.dataset.op);
-      if (op2) { setMaxWounds(op2, parseFloat(target.value)); persist(); render(); }
     }
   }
 
