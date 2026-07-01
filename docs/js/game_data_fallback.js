@@ -777,7 +777,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Anti-PSYKER",
               "text": "Когда это оружие используется против оператора с ключевым словом PSYKER, оно получает правило Lethal 5+."
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/superior.png"
         }
       ],
       "poolPick": 8,
@@ -809,7 +810,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Shield",
               "text": "Когда этот оператор сражается или отвечает (retaliating) с этим профилем оружия, каждый твой block может быть распределён, чтобы блокировать два неразрешённых успеха (вместо одного)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/abjuror.png"
         },
         {
           "name": "Insidiant Censor",
@@ -844,7 +846,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Anti-PSYKER",
               "text": "Когда это оружие используется против оператора с ключевым словом PSYKER, оно получает правило Lethal 5+."
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/censor.png"
         },
         {
           "name": "Insidiant Cremator",
@@ -889,7 +892,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Anti-PSYKER",
               "text": "Когда это оружие используется против оператора с ключевым словом PSYKER, оно получает правило Lethal 5+."
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/cremator.png"
         },
         {
           "name": "Insidiant Denuncia",
@@ -924,7 +928,8 @@ window.GAME_DATA_FALLBACK = {
               "cost": "1AP",
               "tag": "SUPPORT"
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/denuncia.png"
         },
         {
           "name": "Insidiant Mortisanctus",
@@ -951,7 +956,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Bladed Stance",
               "text": "Когда этот оператор сражается или отвечает (retaliating), можешь разрешить один из своих успехов до обычного порядка. Если делаешь так — этот успех должен быть использован для блока (block)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/mortisanctus.png"
         },
         {
           "name": "Insidiant Reliquarius",
@@ -995,7 +1001,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Anti-PSYKER",
               "text": "Когда это оружие используется против оператора с ключевым словом PSYKER, оно получает правило Lethal 5+."
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/reliquarius.png"
         },
         {
           "name": "Insidiant Warrior",
@@ -1036,7 +1043,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Anti-PSYKER",
               "text": "Когда это оружие используется против оператора с ключевым словом PSYKER, оно получает правило Lethal 5+."
             }
-          ]
+          ],
+          "portrait": "img/portraits/celestian-insidiants/warrior.png"
         }
       ]
     },
