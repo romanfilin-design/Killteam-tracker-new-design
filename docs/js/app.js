@@ -40,6 +40,22 @@
   var ICON_ORDER_NEUTRAL_SVG =
     '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 
+  // Краткие описания архетипов — показываются на выбранной кнопке, как у Tac Op.
+  var ARCHETYPE_DESCRIPTIONS = {
+    'Seek & Destroy': {
+      goals: 'Наносить максимальный урон противнику, устранять лидеров и бойцов поддержки, прореживая ряды неприятеля.'
+    },
+    'Infiltration': {
+      goals: 'Пробираться в тыл, блокировать маршруты противника и активировать точки взаимодействия, оставаясь незамеченными или недосягаемыми.'
+    },
+    'Recon': {
+      goals: 'Быстрый захват целей в начале партии, перемещение по всей доске и использование механик беспрепятственного или бесплатного рывка.'
+    },
+    'Security': {
+      goals: 'Сохранять контроль над своими целями, блокировать продвижение противника и минимизировать потери среди собственных бойцов.'
+    }
+  };
+
   // Памятка по параметрам датакарты оператора — по клику на термин в таблице оружия.
   // Ключи ниже покрывают ровно те термины, что реально встречаются в game_data.json
   // (см. tools/ — список составлялся по фактическим данным, не "с потолка").
@@ -292,6 +308,7 @@
       renderRosterToolsPanel() +
       renderCritOpPanel() +
       renderArchetypePanel() +
+      (appState.team.archetype ? renderTacOpPanel() : '') +
       renderEquipmentSetupPanel() +
       '<button class="btn btn--accent btn--block" style="min-height:56px;font-size:16px;" data-action="startGame" ' +
         (ready ? '' : 'disabled') + '>Начать партию</button>' +
@@ -474,32 +491,43 @@
 
     var archBtns = archetypes.map(function (a) {
       var isSel = t.archetype === a;
+      var desc = ARCHETYPE_DESCRIPTIONS[a];
       return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="toggleArchetype" data-value="' + esc(a) + '">' +
         '<span class="pick-card__name">' + esc(a) + '</span>' +
+        (isSel && desc ? '<span class="pick-card__detail">' +
+          '<div><b>Цель:</b> ' + esc(desc.goals) + '</div>' +
+        '</span>' : '') +
       '</button>';
     }).join('');
 
-    var tacOpsHtml = '';
-    if (t.archetype) {
-      var list = selectedFirst((gameData.tacOpsByArchetype || {})[t.archetype] || [], function (op) { return t.tacOpId === op.id; });
-      tacOpsHtml = '<div class="pick-stack" style="margin-top:10px;">' + list.map(function (op) {
-        var isSel = t.tacOpId === op.id;
-        return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="selectTacOp" data-value="' + esc(op.id) + '">' +
-          '<span class="pick-card__name">' + esc(op.name) + '</span>' +
-          (isSel ? '<span class="pick-card__detail">' +
-            '<div><b>Reveal:</b> ' + esc(op.reveal) + '</div>' +
-            '<div><b>Правила:</b> ' + esc(op.rules) + '</div>' +
-            '<div><b>VP:</b> ' + esc(op.vp) + '</div>' +
-          '</span>' : '') +
-        '</button>';
-      }).join('') + '</div>';
-    }
+    return (
+      '<section class="panel">' +
+        '<div class="panel__head"><span class="panel__title">Архетип</span></div>' +
+        '<div class="pick-stack">' + archBtns + '</div>' +
+      '</section>'
+    );
+  }
+
+  function renderTacOpPanel() {
+    var t = appState.team;
+    var list = selectedFirst((gameData.tacOpsByArchetype || {})[t.archetype] || [], function (op) { return t.tacOpId === op.id; });
+    var tacOpsHtml = list.map(function (op) {
+      var isSel = t.tacOpId === op.id;
+      return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="selectTacOp" data-value="' + esc(op.id) + '">' +
+        '<span class="pick-card__name">' + esc(op.name) + '</span>' +
+        (isSel ? '<span class="pick-card__detail">' +
+          '<div><b>Reveal:</b> ' + esc(op.reveal) + '</div>' +
+          '<div><b>Правила:</b> ' + esc(op.rules) + '</div>' +
+          '<div><b>VP:</b> ' + esc(op.vp) + '</div>' +
+        '</span>' : '') +
+      '</button>';
+    }).join('');
 
     return (
       '<section class="panel">' +
-        '<div class="panel__head"><span class="panel__title">Архетип &amp; Tac Op</span></div>' +
-        '<div class="pick-stack">' + archBtns + '</div>' +
-        tacOpsHtml +
+        '<div class="panel__head"><span class="panel__title">Tac Op' +
+          ' <small style="text-transform:none;letter-spacing:0;color:var(--ink-faint);font-weight:600;">— ' + esc(t.archetype) + '</small></span></div>' +
+        '<div class="pick-stack">' + tacOpsHtml + '</div>' +
       '</section>'
     );
   }
