@@ -336,11 +336,12 @@
   }
 
   function renderKillTeamPickPanel() {
-    var names = Object.keys(gameData.killTeams || {});
+    var names = Object.keys(gameData.killTeams || {}).sort(function (a, b) { return a.localeCompare(b); });
     var cards = names.map(function (name) {
       var isSel = appState.team.killTeamName === name;
       var def = gameData.killTeams[name];
-      var leaderPortrait = def.required && def.required[0] ? def.required[0].portrait : null;
+      var leaderSource = (def.required && def.required[0]) || (def.pool && def.pool[0]);
+      var leaderPortrait = leaderSource ? leaderSource.portrait : null;
       return '<button class="pick-card pick-card--team' + (isSel ? ' is-selected' : '') + '" data-action="selectKillTeam" data-value="' + esc(name) + '">' +
         '<span class="pick-card__commander">' + commanderIcon(leaderPortrait) + '</span>' +
         '<span class="pick-card__text">' +
@@ -692,7 +693,11 @@
     }).join('');
 
     var statLine = (op.apl || op.move || op.save)
-      ? '<div class="operator__stats"><span>APL <b>' + esc(op.apl || '—') + '</b></span><span>MOVE <b>' + esc(op.move || '—') + '</b></span><span>SAVE <b>' + esc(op.save || '—') + '</b></span></div>'
+      ? '<div class="operator__stats">' +
+          '<div class="operator__stat"><span class="operator__stat-label">APL</span><span class="operator__stat-value">' + esc(op.apl || '—') + '</span></div>' +
+          '<div class="operator__stat"><span class="operator__stat-label">Move</span><span class="operator__stat-value">' + esc(op.move || '—') + '</span></div>' +
+          '<div class="operator__stat"><span class="operator__stat-label">Save</span><span class="operator__stat-value">' + esc(op.save || '—') + '</span></div>' +
+        '</div>'
       : '';
 
     var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);

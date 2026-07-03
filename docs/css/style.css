@@ -37,6 +37,8 @@
   --danger-glow: rgba(201, 68, 52, 0.35);
   --caution: #c9a23a;
   --ok-dim: #7a8a5a;
+  --info: #3d6f92;
+  --info-bright: #6fa3c7;
 
   --chamfer: 0px;
   --chamfer-sm: 0px;
@@ -458,6 +460,9 @@ a { color: var(--accent-bright); }
   max-height: 214px;
   overflow-y: auto;
   scroll-snap-type: y proximity;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
 }
 
 .pick-list .pick-card--team {
@@ -709,7 +714,7 @@ a { color: var(--accent-bright); }
   color: var(--ink);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(10px, 3vw, 18px);
+  font-size: clamp(15px, 5.5vw, 20px);
   text-transform: uppercase;
   padding: 4px 0;
   width: 100%;
@@ -720,21 +725,44 @@ a { color: var(--accent-bright); }
 
 .operator__name-input:focus { outline: none; border-bottom-color: var(--accent); }
 
+/* Статы APL/MOVE/SAVE — сразу под именем, в той же узкой колонке рядом с
+   портретом (использует border-bottom имени как разделитель, отдельного
+   полноширинного ряда не создаёт — компактно). */
 .operator__stats {
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
-  margin-top: 6px;
-  font-size: clamp(11px, 3vw, 15px);
-  color: var(--ink-dim);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 4px;
 }
 
-.operator__stats span { flex: 1; white-space: nowrap; }
+.operator__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 2px 2px 0;
+  border-right: 1px solid var(--line-dim);
+}
 
-.operator__stats span b { color: var(--ink); }
+.operator__stat:first-child { align-items: flex-start; }
+.operator__stat:last-child { border-right: none; align-items: flex-end; }
+
+.operator__stat-label {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 700;
+}
+
+.operator__stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(13px, 4vw, 17px);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
 
 /* -- статус-бар: активация + приказ, полноширинные ячейки встык -- */
 
@@ -764,7 +792,7 @@ a { color: var(--accent-bright); }
 .activate-toggle svg { width: 18px; height: 18px; flex: none; }
 
 .activate-toggle.is-on {
-  background: var(--accent);
+  background: var(--ink);
   color: var(--bg-deep);
 }
 
@@ -789,8 +817,8 @@ a { color: var(--accent-bright); }
 .order-cycle-btn span { line-height: 1; }
 
 .order-cycle-btn--conceal {
-  color: var(--ink);
-  background: var(--panel-raised);
+  color: var(--bg-deep);
+  background: var(--info);
 }
 
 .order-cycle-btn--engage {
