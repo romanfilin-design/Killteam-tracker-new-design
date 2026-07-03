@@ -41,7 +41,7 @@
   --chamfer: 0px;
   --chamfer-sm: 0px;
   --gap: 12px;
-  --rule: 3px;
+  --rule: 2px;
   --rule-sm: 2px;
 
   --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
@@ -126,7 +126,7 @@ a { color: var(--accent-bright); }
   margin: 0 calc(-1 * var(--gap)) var(--gap);
   padding: 10px var(--gap);
   background: var(--bg);
-  border-bottom: 6px solid var(--line);
+  border-bottom: 4px solid var(--line);
 }
 
 .terminal-header__row {
@@ -163,7 +163,7 @@ a { color: var(--accent-bright); }
 }
 
 .mode-tabs button {
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-display);
@@ -191,7 +191,7 @@ a { color: var(--accent-bright); }
 
 .panel {
   background: var(--bg);
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   padding: 14px;
   margin-bottom: var(--gap);
   position: relative;
@@ -209,7 +209,7 @@ a { color: var(--accent-bright); }
   gap: 8px;
   margin-bottom: 10px;
   padding-bottom: 8px;
-  border-bottom: 3px solid var(--line);
+  border-bottom: 2px solid var(--line);
 }
 
 .panel__title {
@@ -248,7 +248,7 @@ a { color: var(--accent-bright); }
   gap: 6px;
   min-height: 44px;
   padding: 10px 16px;
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-display);
@@ -319,7 +319,7 @@ a { color: var(--accent-bright); }
 .counter {
   display: inline-flex;
   align-items: center;
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
 }
 
@@ -345,8 +345,8 @@ a { color: var(--accent-bright); }
   font-weight: 800;
   font-size: 20px;
   font-variant-numeric: tabular-nums;
-  border-left: 3px solid var(--line);
-  border-right: 3px solid var(--line);
+  border-left: 2px solid var(--line);
+  border-right: 2px solid var(--line);
   padding: 0 8px;
   height: 44px;
   display: flex;
@@ -396,7 +396,7 @@ a { color: var(--accent-bright); }
   display: block;
   width: 100%;
   text-align: left;
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
   padding: 10px 12px;
   min-height: 44px;
@@ -450,14 +450,23 @@ a { color: var(--accent-bright); }
 .pick-card.is-selected .pick-card__detail b { color: var(--bg-deep); }
 
 /* Список выбора Kill Team — сплошные ряды в полную ширину, рамки схлопнуты,
-   вместо решётки отдельных карточек. */
+   вместо решётки отдельных карточек. Высота ограничена ~3.5 рядами (карусель
+   с обычным вертикальным скроллом) — одинаково и в вебе, и на мобильном. */
 .pick-list {
   display: flex;
   flex-direction: column;
+  max-height: 214px;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+}
+
+.pick-list .pick-card--team {
+  scroll-snap-align: start;
+  flex: none;
 }
 
 .pick-list .pick-card--team + .pick-card--team {
-  margin-top: -3px;
+  margin-top: -2px;
 }
 
 .pick-card--team {
@@ -475,7 +484,7 @@ a { color: var(--accent-bright); }
   overflow: hidden;
   background: var(--panel-inset);
   border: none;
-  border-right: 3px solid var(--line);
+  border-right: 2px solid var(--line);
 }
 
 .pick-card.is-selected .pick-card__commander { border-right-color: var(--bg-deep); }
@@ -536,7 +545,7 @@ a { color: var(--accent-bright); }
   flex: 0 0 156px;
   scroll-snap-align: start;
   background: var(--bg);
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   display: flex;
   flex-direction: column;
 }
@@ -553,7 +562,7 @@ a { color: var(--accent-bright); }
 .pool-card__portrait {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-bottom: 3px solid var(--line);
+  border-bottom: 2px solid var(--line);
   overflow: hidden;
   background: var(--panel-inset);
 }
@@ -634,7 +643,7 @@ a { color: var(--accent-bright); }
   color: var(--ink-dim);
   margin-top: 10px;
   padding-top: 8px;
-  border-top: 3px solid var(--line);
+  border-top: 2px solid var(--line);
 }
 
 .limit-line strong {
@@ -650,7 +659,7 @@ a { color: var(--accent-bright); }
    ========================================================================== */
 
 .operator {
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
   margin-bottom: var(--gap);
   position: relative;
@@ -666,7 +675,7 @@ a { color: var(--accent-bright); }
   display: flex;
   align-items: stretch;
   gap: 0;
-  border-bottom: 3px solid var(--line);
+  border-bottom: 2px solid var(--line);
 }
 
 .operator__portrait {
@@ -675,7 +684,7 @@ a { color: var(--accent-bright); }
   flex: none;
   background: var(--panel-inset);
   border: none;
-  border-right: 3px solid var(--line);
+  border-right: 2px solid var(--line);
   object-fit: cover;
 }
 
@@ -731,14 +740,14 @@ a { color: var(--accent-bright); }
 
 .operator__status-row {
   display: flex;
-  border-bottom: 3px solid var(--line);
+  border-bottom: 2px solid var(--line);
 }
 
 .activate-toggle {
   flex: 1;
   min-height: 44px;
   border: none;
-  border-right: 3px solid var(--line);
+  border-right: 2px solid var(--line);
   background: var(--bg);
   color: var(--ink-faint);
   display: flex;
@@ -794,7 +803,7 @@ a { color: var(--accent-bright); }
 .wound-row {
   display: flex;
   align-items: stretch;
-  border-bottom: 3px solid var(--line);
+  border-bottom: 2px solid var(--line);
   height: 40px;
 }
 
@@ -807,7 +816,7 @@ a { color: var(--accent-bright); }
 }
 
 .wound-seg {
-  border-right: 3px solid var(--line);
+  border-right: 2px solid var(--line);
   background: var(--bg);
   min-width: 8px;
 }
@@ -838,7 +847,7 @@ a { color: var(--accent-bright); }
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 3px solid var(--line);
+  border-left: 2px solid var(--line);
   background: var(--accent);
   font-family: var(--font-display);
   font-weight: 800;
@@ -858,7 +867,7 @@ a { color: var(--accent-bright); }
 
 .operator__hp-buttons {
   display: flex;
-  border-bottom: 3px solid var(--line);
+  border-bottom: 2px solid var(--line);
 }
 
 .operator__hp-buttons .btn {
@@ -867,7 +876,7 @@ a { color: var(--accent-bright); }
   min-height: 38px;
   padding: 6px 2px;
   border: none;
-  border-right: 3px solid var(--line);
+  border-right: 2px solid var(--line);
   font-size: 12px;
 }
 
@@ -881,7 +890,7 @@ a { color: var(--accent-bright); }
 }
 
 .status-chip {
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
   color: var(--ink-dim);
   min-height: 38px;
@@ -910,7 +919,7 @@ a { color: var(--accent-bright); }
   align-items: center;
   gap: 6px;
   background: var(--bg);
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   color: var(--ink-dim);
   font-size: 12px;
   padding: 5px 6px 5px 10px;
@@ -938,7 +947,7 @@ a { color: var(--accent-bright); }
 .token-add input {
   flex: 1;
   background: var(--panel-inset);
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   color: var(--ink);
   padding: 8px 10px;
   min-height: 40px;
@@ -947,7 +956,7 @@ a { color: var(--accent-bright); }
 /* Датакарта оператора — оружие + скиллы, свёрнута по умолчанию, чтобы не мешать
    быстрым игровым кнопкам выше. */
 .operator-datacard {
-  border-top: 3px solid var(--line);
+  border-top: 2px solid var(--line);
 }
 
 .operator-datacard summary {
@@ -1079,7 +1088,7 @@ a { color: var(--accent-bright); }
 .field input[type="number"] {
   width: 100%;
   background: var(--panel-inset);
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   color: var(--ink);
   padding: 10px 12px;
   min-height: 44px;
@@ -1095,7 +1104,7 @@ a { color: var(--accent-bright); }
    ========================================================================== */
 
 .equip-item {
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
   padding: 10px 12px;
   margin-bottom: 8px;
@@ -1150,7 +1159,7 @@ a { color: var(--accent-bright); }
 .equip-toggle__box {
   width: 22px; height: 22px;
   flex: none;
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   background: var(--bg);
 }
 
@@ -1205,7 +1214,7 @@ a { color: var(--accent-bright); }
 .summary-strip {
   display: flex;
   gap: 0;
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   margin-bottom: var(--gap);
 }
 
@@ -1213,7 +1222,7 @@ a { color: var(--accent-bright); }
   flex: 1;
   min-width: 90px;
   background: var(--bg);
-  border-right: 3px solid var(--line);
+  border-right: 2px solid var(--line);
   padding: 10px;
   text-align: center;
 }
@@ -1275,7 +1284,7 @@ details.panel[open] summary::after { content: '−'; }
 .cheat-section {
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 3px solid var(--line);
+  border-top: 2px solid var(--line);
 }
 
 .cheat-section:first-child { margin-top: 0; padding-top: 0; border-top: none; }
@@ -1290,6 +1299,7 @@ details.panel[open] summary::after { content: '−'; }
   font-size: 12.5px;
   color: var(--ink-dim);
   line-height: 1.5;
+  white-space: pre-line;
   margin: 4px 0;
 }
 
@@ -1312,7 +1322,7 @@ details.panel[open] summary::after { content: '−'; }
   width: 100%;
   max-width: 380px;
   background: var(--panel-raised);
-  border: 3px solid var(--accent);
+  border: 2px solid var(--accent);
   padding: 18px;
 }
 
@@ -1341,7 +1351,7 @@ details.panel[open] summary::after { content: '−'; }
   left: 50%;
   transform: translateX(-50%);
   background: var(--panel-raised);
-  border: 3px solid var(--accent);
+  border: 2px solid var(--accent);
   color: var(--ink);
   padding: 10px 18px;
   font-size: 13px;

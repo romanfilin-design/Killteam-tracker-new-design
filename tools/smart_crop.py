@@ -1,121 +1,102 @@
 #!/usr/bin/env python3
 """
-Подготовка портретов миниатюр для карточек операторов: опциональный кроп
-по голове/плечам + вырезание белого фона в прозрачность. Результат —
-всегда PNG с альфа-каналом.
-
-Два режима входа:
-  1. Уже готовый квадрат (подготовлен вручную, например в Photoshop по
-     шаблону 600x600, белый фон) — используй --no-crop, скрипт только
-     срежет фон в прозрачность и подгонит размер.
-  2. Исходное фото миниатюры без кропа (белый фон, фигурка не отцентрована
-     как надо) — без --no-crop скрипт сам найдёт баунд-бокс фигурки и
-     кадрирует квадрат по голове/плечам:
-       a. Находит баунд-бокс не-белых пикселей (сама миниатюра + база).
-       b. Берёт квадрат размером с ширину баунд-бокса, начиная от его
-          верхней кромки (с небольшим отступом).
-       c. Центрирует этот квадрат по горизонтали на центре масс верхней
-          полосы баунд-бокса (голова/плечи), а не по центру всего бокса —
-          иначе поднятое оружие или штандарт в сторону утягивают кадр.
-
-Вырезание фона (включено по умолчанию, отключается --no-alpha):
-  Пиксели ближе к белому, чем BG_UPPER, становятся полностью прозрачными;
-  пиксели темнее BG_LOWER — полностью непрозрачными; между ними — плавный
-  переход (мягкое перо по краю миниатюры, без зазубрин).
+Подготовка портретов миниатюр для карточек операторов: вырезание фона
+(любого цвета, не только белого — через ML-модель rembg из общего venv
+Warhammer/.venv-tools/, тот же инструмент, что использует Spearhead) +
+обрезка по альфе с отступом + вписывание в квадрат нужного размера.
+Результат — всегда PNG с альфа-каналом.
 
 Использование:
-    # готовый квадрат из Photoshop — только вырезать фон
-    python3 tools/smart_crop.py "input/Night Lord Warrior.jpg" docs/img/portraits/nemesis-claw/warrior.png --no-crop
+    # одиночный файл — фон снимается автоматически, кроп по альфе
+    python3 tools/smart_crop.py "input/Night Lord Warrior.jpg" docs/img/portraits/nemesis-claw/warrior.png
 
-    # исходное неотцентрованное фото — кроп + вырезание фона
-    python3 tools/smart_crop.py input.jpg output.png
-
-    # ручной кроп координатами, если авто-кроп утянул кадр в сторону
-    # (так было с Ventrilokar — рядом со шлемом стоял штандарт)
+    # ручной кроп координатами перед снятием фона — если на фото несколько
+    # миниатюр или лишние предметы рядом (штандарт, база другого юнита)
     python3 tools/smart_crop.py input.jpg output.png --manual-box 350,260,660,570
 
-    # пакетная обработка целой папки (все *.jpg/*.jpeg/*.png -> output dir)
-    python3 tools/smart_crop.py --batch "input_dir/" docs/img/portraits/<team-slug>/ --no-crop
+    # без снятия фона — просто ресайз в квадрат (если фон уже прозрачный/не нужен)
+    python3 tools/smart_crop.py input.png output.png --no-alpha
+
+    # пакетная обработка целой папки (все *.jpg/*.jpeg/*.png/*.webp -> output dir)
+    python3 tools/smart_crop.py --batch "input_dir/" docs/img/portraits/<team-slug>/
 """
 import argparse
 import pathlib
+import subprocess
 import sys
 
-import numpy as np
 from PIL import Image
 
-BG_THRESHOLD = 235      # порог для поиска баунд-бокса фигурки (шаг кропа)
-TOP_BAND_FRAC = 0.30    # доля высоты баунд-бокса для поиска горизонтального центра головы
-TOP_PAD_FRAC = 0.04     # небольшой отступ над самой верхней точкой фигурки
-WIDTH_SLACK = 1.05      # запас по ширине, чтобы не срезать рога/шлем/наплечники
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+# Общее окружение для всех проектов Warhammer/ — см. Spearhead/source_portraits/README.md
+VENV_TOOLS = SCRIPT_DIR.parent.parent / ".venv-tools"
+REMBG = VENV_TOOLS / "bin" / "rembg"
 
-BG_UPPER = 235          # выше этого (ближе к белому) — полностью прозрачно
-BG_LOWER = 205          # ниже этого — полностью непрозрачно; между — плавный переход
-
-
-def smart_crop(img: Image.Image) -> Image.Image:
-    arr = np.asarray(img.convert("RGB"))
-    fg = arr.min(axis=2) < BG_THRESHOLD
-    rows = np.where(fg.any(axis=1))[0]
-    cols = np.where(fg.any(axis=0))[0]
-    if rows.size == 0 or cols.size == 0:
-        raise ValueError("не нашёл фигурку на фоне — изображение почти полностью белое/пустое")
-
-    top, bottom = rows.min(), rows.max()
-    left, right = cols.min(), cols.max()
-    bbox_h = bottom - top + 1
-    bbox_w = right - left + 1
-
-    pad = int(TOP_PAD_FRAC * bbox_h)
-    crop_top = max(0, top - pad)
-
-    band_bottom = top + int(TOP_BAND_FRAC * bbox_h)
-    band_mask = fg[top:band_bottom, left:right + 1]
-    col_counts = band_mask.sum(axis=0)
-    if col_counts.sum() > 0:
-        cx = int(np.average(np.arange(band_mask.shape[1]), weights=col_counts)) + left
-    else:
-        cx = (left + right) // 2
-
-    square = int(min(bbox_w, bbox_h) * WIDTH_SLACK)
-    half = square // 2
-    crop_left = cx - half
-    crop_right = cx + half
-    if crop_left < 0:
-        crop_right -= crop_left
-        crop_left = 0
-    if crop_right > arr.shape[1]:
-        crop_left -= (crop_right - arr.shape[1])
-        crop_right = arr.shape[1]
-    crop_left = max(0, crop_left)
-
-    crop_bottom = min(crop_top + (crop_right - crop_left), arr.shape[0])
-    return img.crop((crop_left, crop_top, crop_right, crop_bottom))
+PAD_PCT = 0.04   # отступ вокруг фигурки после обрезки по альфе, доля от размера бокса
+EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 
 
-def remove_white_bg(img: Image.Image) -> Image.Image:
-    arr = np.asarray(img.convert("RGB")).astype(np.float32)
-    min_ch = arr.min(axis=2)
-    alpha = np.clip((BG_UPPER - min_ch) / (BG_UPPER - BG_LOWER) * 255, 0, 255).astype(np.uint8)
-    rgba = np.dstack([arr.astype(np.uint8), alpha])
-    return Image.fromarray(rgba, mode="RGBA")
+def remove_bg(src: pathlib.Path, dest_tmp: pathlib.Path) -> None:
+    if not REMBG.exists():
+        sys.exit(
+            f"rembg не найден по пути {REMBG}\n"
+            "Ожидается общее окружение Warhammer/.venv-tools/ (см. Spearhead/source_portraits/README.md)."
+        )
+    subprocess.run([str(REMBG), "i", str(src), str(dest_tmp)], check=True)
 
 
-def process(src: pathlib.Path, dest: pathlib.Path, size: int, manual_box, no_crop: bool, no_alpha: bool):
-    img = Image.open(src).convert("RGB")
-    if no_crop:
-        out = img
-    elif manual_box:
-        out = img.crop(manual_box)
-    else:
-        out = smart_crop(img)
-    out = out.resize((size, size), Image.LANCZOS)
-    if not no_alpha:
-        out = remove_white_bg(out)
+def crop_alpha(im: Image.Image, pad_pct: float = PAD_PCT) -> Image.Image:
+    bbox = im.getbbox()
+    if not bbox:
+        return im
+    w, h = im.size
+    l, t, r, b = bbox
+    padx, pady = int((r - l) * pad_pct), int((b - t) * pad_pct)
+    l2, t2 = max(0, l - padx), max(0, t - pady)
+    r2, b2 = min(w, r + padx), min(h, b + pady)
+    return im.crop((l2, t2, r2, b2))
+
+
+def pad_to_square(im: Image.Image) -> Image.Image:
+    w, h = im.size
+    side = max(w, h)
+    if w == h:
+        return im
+    canvas = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    canvas.paste(im, ((side - w) // 2, (side - h) // 2), im)
+    return canvas
+
+
+def process(src: pathlib.Path, dest: pathlib.Path, size: int, manual_box, no_alpha: bool):
     dest = dest.with_suffix(".png")
     dest.parent.mkdir(parents=True, exist_ok=True)
-    out.save(dest)
-    print(f"{src.name} -> {dest} ({size}x{size}{', без альфы' if no_alpha else ''})")
+
+    work_src = src
+    manual_tmp = None
+    if manual_box:
+        cropped = Image.open(src).convert("RGB").crop(manual_box)
+        manual_tmp = dest.with_name(dest.stem + ".tmp_manual.png")
+        cropped.save(manual_tmp)
+        work_src = manual_tmp
+
+    if no_alpha:
+        out = Image.open(work_src).convert("RGB")
+        out = out.resize((size, size), Image.LANCZOS)
+        out.save(dest)
+    else:
+        nobg_tmp = dest.with_name(dest.stem + ".tmp_nobg.png")
+        remove_bg(work_src, nobg_tmp)
+        out = Image.open(nobg_tmp).convert("RGBA")
+        out = crop_alpha(out)
+        out = pad_to_square(out)
+        out = out.resize((size, size), Image.LANCZOS)
+        out.save(dest)
+        nobg_tmp.unlink(missing_ok=True)
+
+    if manual_tmp:
+        manual_tmp.unlink(missing_ok=True)
+
+    print(f"{src.name} -> {dest} ({size}x{size}{', без альфы' if no_alpha else ', фон снят'})")
 
 
 def main():
@@ -123,12 +104,11 @@ def main():
     ap.add_argument("input", help="файл или (с --batch) папка с исходниками")
     ap.add_argument("output", help="файл или (с --batch) папка для результатов (всегда сохраняется как .png)")
     ap.add_argument("--size", type=int, default=600, help="сторона квадрата на выходе, px (по умолчанию 600)")
-    ap.add_argument("--no-crop", action="store_true",
-                     help="не кадрировать — вход уже квадратный (подготовлен вручную), только вырезать фон и подогнать размер")
-    ap.add_argument("--no-alpha", action="store_true", help="не вырезать белый фон в прозрачность")
+    ap.add_argument("--no-alpha", action="store_true", help="не вырезать фон, только ресайз в квадрат")
     ap.add_argument("--manual-box", default=None,
-                     help="ручной кроп LEFT,TOP,RIGHT,BOTTOM в пикселях исходника вместо авто-алгоритма")
-    ap.add_argument("--batch", action="store_true", help="обработать все *.jpg/*.jpeg/*.png в папке input")
+                     help="ручной кроп LEFT,TOP,RIGHT,BOTTOM в пикселях исходника перед снятием фона "
+                          "(если на фото несколько миниатюр/лишние предметы рядом)")
+    ap.add_argument("--batch", action="store_true", help="обработать все файлы в папке input")
     args = ap.parse_args()
 
     manual_box = None
@@ -140,13 +120,13 @@ def main():
     if args.batch:
         in_dir = pathlib.Path(args.input)
         out_dir = pathlib.Path(args.output)
-        files = sorted([p for p in in_dir.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png")])
+        files = sorted([p for p in in_dir.iterdir() if p.suffix.lower() in EXTS])
         if not files:
-            sys.exit(f"В {in_dir} не найдено *.jpg/*.jpeg/*.png")
+            sys.exit(f"В {in_dir} не найдено файлов ({', '.join(sorted(EXTS))})")
         for f in files:
-            process(f, out_dir / f.stem.lower().replace(" ", "_"), args.size, manual_box, args.no_crop, args.no_alpha)
+            process(f, out_dir / f.stem.lower().replace(" ", "_"), args.size, manual_box, args.no_alpha)
     else:
-        process(pathlib.Path(args.input), pathlib.Path(args.output), args.size, manual_box, args.no_crop, args.no_alpha)
+        process(pathlib.Path(args.input), pathlib.Path(args.output), args.size, manual_box, args.no_alpha)
 
 
 if __name__ == "__main__":

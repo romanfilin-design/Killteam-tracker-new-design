@@ -477,6 +477,36 @@ window.GAME_DATA_FALLBACK = {
         "usesLabel": "1× за битву",
         "desc": "Один раз за битву, если дружественные операторы HEARTHKYN SALVAGER контестят два или более маркера цели, после броска на инициативу можно применить это правило — если применяешь, можно перебросить свои кубики."
       }
+    ],
+    "Angels of Death": [
+      {
+        "id": "purity_seals",
+        "name": "Purity Seals",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Награждённые капелланами Chapter'а, purity seals несут благословения и вдохновляют носителя сражаться с удвоенным рвением. Один раз за turning point, когда дружественный оператор ANGEL OF DEATH стреляет, дерётся или отвечает (retaliating), если ты выбросил два или более fail, можно отбросить один из них, чтобы удержать другой как normal success."
+      },
+      {
+        "id": "chapter_reliquaries",
+        "name": "Chapter Reliquaries",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Многие Space Marines носят зловещие реликвии, взятые с тел павших. Те, кто несёт эти вдохновляющие предметы, сражаются ещё яростнее, чтя жертву своих battle-brothers. Можно использовать firefight ploy Wrath of Vengeance за 0CP, если указанный дружественный оператор имеет Engage order."
+      },
+      {
+        "id": "tilting_shields",
+        "name": "Tilting Shields",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Помимо цветов роты и личной геральдики, наплечная пластина Space Marine защищает носителя в гуще ближнего боя. Один раз за turning point, когда дружественный оператор ANGEL OF DEATH дерётся или отвечает (retaliating), после того как противник бросил свои attack dice, но до re-roll, можно применить это правило. Если применяешь, противник не может удерживать результаты attack dice меньше 6 как critical success в этой последовательности (например, в результате weapon rules Lethal, Rending или Severe)."
+      },
+      {
+        "id": "auspex",
+        "name": "Auspex",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Auspex бывают разных форм. Эти сканирующие устройства способны обнаруживать движение, анализировать состав атмосферы и выявлять тепловые сигнатуры. Один раз за turning point, когда дружественный оператор ANGEL OF DEATH выполняет действие Shoot и ты выбираешь допустимую цель, можно применить это правило. Если применяешь, до конца этой активации/counteract вражеские операторы в пределах 8\" от этого дружественного оператора не могут быть obscured."
+      }
     ]
   },
   "killTeams": {
@@ -2186,6 +2216,566 @@ window.GAME_DATA_FALLBACK = {
         {
           "name": "Grudge",
           "text": "Когда вражеский оператор выводит из строя (incapacitate) дружественного оператора HEARTHKYN SALVAGER, тот вражеский оператор получает один из твоих токенов Grudge на всю битву. Когда дружественный оператор HEARTHKYN SALVAGER стреляет, дерётся или отвечает (retaliating) против вражеского оператора, за каждый токен Grudge у этого врага можно сохранить один свой обычный success как critical success (включая обычные successes, уже сохранённые за счёт правила Accurate). Токены Grudge при этом не убираются."
+        }
+      ]
+    },
+    "Angels of Death": {
+      "archetypes": [
+        "Security",
+        "Seek & Destroy"
+      ],
+      "required": [],
+      "pool": [
+        {
+          "name": "Space Marine Captain",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 15,
+          "portrait": "img/portraits/angels-of-death/space_marine_captain.png",
+          "weapons": [
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Power fist",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "5/7",
+              "wr": "Brutal"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Heroic Leader",
+              "text": "Один раз за turning point можешь сделать одно из следующего: использовать firefight ploy за 0CP, если это именно этот оператор ANGEL OF DEATH (кроме Command Re-roll); использовать strategy ploy Combat Doctrine при активации дружественного оператора ANGEL OF DEATH, если этот оператор находится в killzone и вне control range вражеских операторов (оплачивая его CP как обычно) — нельзя, если этот ploy уже использовался в этот turning point; использовать firefight ploy Adjust Doctrine за 0CP, если этот оператор находится в killzone и вне control range вражеских операторов."
+            },
+            {
+              "name": "Iron Halo",
+              "text": "Один раз за битву, когда кубик атаки наносит Normal Dmg этому оператору, можно проигнорировать этот нанесённый урон."
+            }
+          ]
+        },
+        {
+          "name": "Assault Intercessor Sergeant",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 15,
+          "portrait": "img/portraits/angels-of-death/assault_intercessor_sergeant.png",
+          "weapons": [
+            {
+              "name": "Hand flamer",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 6\", Saturate, Torrent 1\""
+            },
+            {
+              "name": "Heavy bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Piercing Crits 1"
+            },
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Power fist",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "5/7",
+              "wr": "Brutal"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Thunder hammer",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "5/6",
+              "wr": "Shock, Stun"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Doctrine Warfare",
+              "text": "Можно делать каждое из следующего один раз за битву: когда ты используешь strategy ploy Combat Doctrine и выбираешь Assault, если этот оператор находится в killzone, это стоит 0CP; когда ты используешь strategy ploy Combat Doctrine и выбираешь Tactical, если этот оператор находится в killzone, это стоит 0CP."
+            },
+            {
+              "name": "Chapter Veteran",
+              "text": "В конце Select Operatives step, если этот оператор выбран для развёртывания, выбери один дополнительный CHAPTER TACTIC для него на эту битву. В отличие от primary и secondary CHAPTER TACTICS, для него не обязательно выбирать тот же самый в каждой битве кампании или турнира."
+            }
+          ]
+        },
+        {
+          "name": "Intercessor Sergeant",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 15,
+          "portrait": "img/portraits/angels-of-death/intercessor_sergeant.png",
+          "weapons": [
+            {
+              "name": "Auto bolt rifle",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Torrent 1\""
+            },
+            {
+              "name": "Bolt rifle",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Stalker bolt rifle (heavy)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Heavy (Dash only), Lethal 5+, Piercing Crits 1"
+            },
+            {
+              "name": "Stalker bolt rifle (mobile)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Power fist",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/7",
+              "wr": "Brutal"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Thunder hammer",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/6",
+              "wr": "Shock, Stun"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Doctrine Warfare",
+              "text": "Можно делать каждое из следующего один раз за битву: когда ты используешь strategy ploy Combat Doctrine и выбираешь Devastator, если этот оператор находится в killzone, это стоит 0CP; когда ты используешь strategy ploy Combat Doctrine и выбираешь Tactical, если этот оператор находится в killzone, это стоит 0CP."
+            },
+            {
+              "name": "Chapter Veteran",
+              "text": "В конце Select Operatives step, если этот оператор выбран для развёртывания, выбери один дополнительный CHAPTER TACTIC для него на эту битву. В отличие от primary и secondary CHAPTER TACTICS, для него не обязательно выбирать тот же самый в каждой битве кампании или турнира."
+            }
+          ]
+        },
+        {
+          "name": "Assault Intercessor Grenadier",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "portrait": "img/portraits/angels-of-death/assault_inercessor_grenadier.png",
+          "weapons": [
+            {
+              "name": "Heavy bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Piercing Crits 1"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Grenadier",
+              "text": "Этот оператор может использовать frag и krak grenades (см. universal equipment). Их использование не расходует лимит применений, если ты также выбрал эти гранаты из equipment для других операторов. Когда он их использует, улучшай Hit stat этого оружия на 1."
+            }
+          ]
+        },
+        {
+          "name": "Assault Intercessor Warrior",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "maxCopies": 5,
+          "portrait": "img/portraits/angels-of-death/assault_intercessor_warrior.png",
+          "weapons": [
+            {
+              "name": "Heavy bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Piercing Crits 1"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": []
+        },
+        {
+          "name": "Heavy Intercessor Gunner",
+          "apl": 3,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 18,
+          "portrait": "img/portraits/angels-of-death/heavy_intercessor_gunner.png",
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Heavy bolter (focused)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Heavy bolter (sweeping)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Piercing Crits 1, Torrent 1\""
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": []
+        },
+        {
+          "name": "Intercessor Gunner",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "portrait": "img/portraits/angels-of-death/intercessor_gunner.png",
+          "weapons": [
+            {
+              "name": "Auto bolt rifle",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Torrent 1\""
+            },
+            {
+              "name": "Auxiliary grenade launcher (frag)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/4",
+              "wr": "Blast 2\""
+            },
+            {
+              "name": "Auxiliary grenade launcher (krak)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Bolt rifle",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Stalker bolt rifle (heavy)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Heavy (Dash only), Lethal 5+, Piercing Crits 1"
+            },
+            {
+              "name": "Stalker bolt rifle (mobile)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": []
+        },
+        {
+          "name": "Intercessor Warrior",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "maxCopies": 5,
+          "portrait": "img/portraits/angels-of-death/intercessor_warrior.png",
+          "weapons": [
+            {
+              "name": "Auto bolt rifle",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Torrent 1\""
+            },
+            {
+              "name": "Bolt rifle",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Stalker bolt rifle (heavy)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Heavy (Dash only), Lethal 5+, Piercing Crits 1"
+            },
+            {
+              "name": "Stalker bolt rifle (mobile)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": []
+        },
+        {
+          "name": "Eliminator Sniper",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "portrait": "img/portraits/angels-of-death/eliminator_sniper.png",
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Bolt sniper rifle (executioner)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/4",
+              "wr": "Heavy (Dash only), Saturate, Seek Light, Silent"
+            },
+            {
+              "name": "Bolt sniper rifle (hyperfrag)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "2/4",
+              "wr": "Blast 1\", Heavy (Dash only), Silent"
+            },
+            {
+              "name": "Bolt sniper rifle (mortis)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, Heavy (Dash only), Piercing 1, Silent"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Camo Cloak",
+              "text": "Когда оператор стреляет по этому оператору, игнорируй weapon rule Saturate. Этот оператор имеет CHAPTER TACTIC Stealthy. Если ты выбрал этот CHAPTER TACTIC, можешь применить оба его варианта (то есть удержать два cover save — один normal и один critical success)."
+            },
+            {
+              "name": "Optics",
+              "text": "До начала следующей активации этого оператора, когда он стреляет, вражеские операторы не могут быть obscured. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        }
+      ],
+      "poolPick": 6,
+      "equipment": "Angels of Death",
+      "lore": {
+        "intro": "Генетически модифицированные трансчеловеческие воины, Space Marines — одни из самых элитных боевых сил Человечества. Отряды Angels of Death составлены из элитных специалистов, обученных бесчисленным формам боя и способных одолеть практически любого врага.",
+        "operatives": [
+          {
+            "name": "Space Marine Captain",
+            "text": "Чтобы достичь звания Captain, Space Marine должен в совершенстве овладеть войной. Они одинаково искусны как в проведении военных кампаний планетарного масштаба, так и в поединках с отдельными врагами."
+          },
+          {
+            "name": "Assault Intercessor Sergeant",
+            "text": "Эти командиры миссии знают оптимальный момент для начала атаки. Они — образцовые бойцы ближнего боя, рассекающие врагов своим смертоносным оружием."
+          },
+          {
+            "name": "Intercessor Sergeant",
+            "text": "Intercessor Sergeants ведут свои отряды, обрушивая шквалы огня на цели в постоянно меняющихся killzone. Они часто берут в бой специализированное оружие для поддержки своих братьев по оружию."
+          },
+          {
+            "name": "Assault Intercessor Grenadier",
+            "text": "Вооружённые набором смертоносных гранат, эти специалисты обеспечивают поддержку ближнего боя против роёв слабых противников или тяжело бронированных целей."
+          },
+          {
+            "name": "Assault Intercessor Warrior",
+            "text": "Защищённые доспехами Mk X Tacticus, Assault Intercessor Warriors врываются в бой с крупными chainsword наперевес, ведя огонь из пистолетов зарядами mass-reactive."
+          },
+          {
+            "name": "Intercessor Gunner",
+            "text": "Эти специалисты обеспечивают дальнюю поддерживающую стрельбу из подствольного auxiliary grenade launcher своей винтовки. Они способны доставлять взрывные заряды, наносящие максимальные разрушения самым укреплённым или защищённым позициям."
+          },
+          {
+            "name": "Intercessor Warrior",
+            "text": "Intercessor Warriors ведут сокрушительные залпы огня из своих bolt rifle. Их тактика и снаряжение адаптируются к бесчисленным ситуациям, что делает их основой любого Intercession Squad."
+          },
+          {
+            "name": "Eliminator Sniper",
+            "text": "Eliminators владеют специализированными снайперскими винтовками с боеприпасами на любого врага — от тяжёлых бронебойных Mortis-патронов до осколочных зарядов, опустошающих скопления целей."
+          },
+          {
+            "name": "Heavy Intercessor Gunner",
+            "text": "Heavy Intercessors подобны ходячим огневым точкам. Их heavy bolter позволяют им сокрушать врагов губительными шквалами взрывного огня — как сметающими массы пехоты, так и сфокусированными залпами."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Astartes",
+          "text": "Эти генетически модифицированные трансчеловеки созданы лишь для одной цели: войны. Во время активации каждого дружественного оператора ANGEL OF DEATH он может выполнить либо два действия Shoot, либо два действия Fight. Если это два Shoot, то хотя бы для одного из них должно быть выбрано bolt-оружие, а если это bolt sniper rifle или heavy bolter, то на второе действие тем же оружием нужно потратить 1 дополнительный AP. Каждый дружественный оператор ANGEL OF DEATH может выполнять counteract независимо от своего order."
+        },
+        {
+          "name": "Chapter Tactics",
+          "text": "Каждый Space Marine Chapter — боевое братство со своей собственной военной философией, отточенной под уникальные навыки и темперамент его battle-brothers. Эти заветы войны могут быть облечены в замысловатые ритуалы, складывавшиеся тысячелетиями, но остаются столь же беспощадно эффективны, как и в момент своего создания.\n\nПри выборе kill team выбери primary и secondary CHAPTER TACTIC, которые получат дружественные операторы ANGEL OF DEATH на битву. Несколько экземпляров одного и того же CHAPTER TACTIC не суммируются.\n\n1. AGGRESSIVE: оружие ближнего боя этого оператора получает weapon rule Rending.\n2. DUELLER: когда этот оператор дерётся или отвечает (retaliating), каждый его normal success может заблокировать один неразрешённый critical success (если оружие вражеского оператора не имеет weapon rule Brutal).\n3. RESOLUTE: можно игнорировать любые изменения APL stat этого оператора, и на него не действует weapon rule Shock вражеских операторов.\n4. STEALTHY: когда оператор стреляет по этому оператору, если можно удержать любые cover save, можно удержать один дополнительный cover save, либо удержать один cover save как critical success. Не суммируется с улучшенными cover save от Vantage terrain.\n5. MOBILE: этот оператор может выполнить действие Fall Back за 1 AP меньше; этот оператор может выполнить действие Charge, находясь в пределах control range вражеского оператора, и может покинуть его control range для этого (но затем действуют обычные требования для этого движения).\n6. HARDY: когда оператор стреляет по этому оператору, результаты defence dice 5+ являются critical success. Когда этот оператор отвечает (retaliating), первый раз, когда кубик атаки наносит Normal Dmg 3 или больше этому оператору в этой последовательности, этот кубик наносит на 1 урона меньше.\n7. SHARPSHOOTER: когда этот оператор стреляет во время активации, в которой он не выполнял действие Charge, Fall Back или Reposition, его bolt-оружие получает weapon rules Accurate 1 и Severe.\n8. SIEGE SPECIALIST: ranged-оружие этого оператора получает weapon rule Saturate. Когда этот оператор дерётся или отвечает (retaliating), вражеские операторы не могут assist."
+        },
+        {
+          "name": "Combat Doctrine",
+          "text": "Space Marines чтут учения Codex Astartes превыше всего, применяя его гибкие боевые доктрины, чтобы уничтожать врагов.\n\nВыбери один COMBAT DOCTRINE из представленных ниже. Когда дружественный оператор ANGEL OF DEATH делает X, его оружие получает weapon rule Balanced, где X — выбранный тобой COMBAT DOCTRINE.\n\n- Devastator Doctrine: стреляет по оператору дальше чем 6\" от него.\n- Tactical Doctrine: стреляет по оператору в пределах 6\" от него.\n- Assault Doctrine: дерётся или отвечает (retaliating).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "And They Shall Know No Fear",
+          "text": "Space Marines обладают исключительной храбростью и абсолютно невозмутимы перед лицом ужасающих кошмаров и подавляющего превосходства сил противника. Можно игнорировать любые изменения статов дружественных операторов ANGEL OF DEATH, вызванные ранениями (включая статы их оружия).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Adaptive Tactics",
+          "text": "Немного воинов Adeptus Astartes сравнятся тактической гибкостью. Дополняя учения Codex Astartes собственным опытом, Space Marines способны скорректировать стратегию в любой момент. Смени свой secondary CHAPTER TACTIC. Этот ploy действует только до конца turning point, после чего возвращается исходный secondary CHAPTER TACTIC.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Indomitus",
+          "text": "Это эпоха Indomitus. Империум ведёт крестовые походы галактического масштаба, отбрасывая ужасы, терзающие её, и battle-brothers Adeptus Astartes вдохновлены этой праведной целью. Когда оператор стреляет по дружественному оператору ANGEL OF DEATH, если ты выбросил два или более fail, можно отбросить один из них, чтобы удержать другой как normal success.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Adjust Doctrine",
+          "text": "Kill team Adeptus Astartes на ходу адаптируют свои стратегии, чтобы одолеть врага. Стремительные жесты руками и резкие переговоры по воксу возвещают смену доктрины. Используй во время активации дружественного оператора ANGEL OF DEATH, до или после выполнения им действия. Если в этот turning point ты уже использовал strategy ploy Combat Doctrine, смени выбранный COMBAT DOCTRINE.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Transhuman Physiology",
+          "text": "Генетически модифицированная физиология Space Marine способна выдерживать раны, которые убили бы существо послабее. Используй, когда оператор стреляет по дружественному оператору ANGEL OF DEATH, на этапе Roll Defence Dice. Можно удержать один из своих normal success как critical success.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Shock Assault",
+          "text": "Adeptus Astartes атакуют с исключительной скоростью и силой — рёв chainsword и жестокие натиски несут смерть врагам. Используй, когда дружественный оператор ANGEL OF DEATH выполняет действие Fight во время активации, в которой он выполнял действие Charge, в начале этапа Resolve Attack Dice. До конца этого действия: его оружие ближнего боя получает weapon rule Shock; первый раз, когда ты наносишь удар в этой последовательности, нанеси на 1 урона больше (максимум до 7).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Wrath of Vengeance",
+          "text": "Разгневанный battle-brother Adeptus Astartes способен на исключительную силу и атлетизм. Используй, когда дружественный оператор ANGEL OF DEATH выполняет counteract. Он может выполнить дополнительное 1AP действие бесплатно во время этого counteract, но оба действия должны быть разными.",
+          "cost": "Firefight Ploy"
         }
       ]
     }
