@@ -299,7 +299,7 @@
 
   function renderSetupScreen() {
     var t = appState.team;
-    var ready = isReadyToStart(appState);
+    var ready = isReadyToStart(gameData, appState);
     return (
       renderPartyToolsPanel() +
       renderKillTeamPickPanel() +
@@ -309,11 +309,28 @@
       renderCritOpPanel() +
       renderArchetypePanel() +
       (appState.team.archetype ? renderTacOpPanel() : '') +
+      renderFactionChoicesSetupPanel() +
       renderEquipmentSetupPanel() +
       '<button class="btn btn--accent btn--block" style="min-height:56px;font-size:16px;" data-action="startGame" ' +
         (ready ? '' : 'disabled') + '>Начать партию</button>' +
-      (!ready ? '<p class="empty-state">Нужно: выбрать Crit Op, набрать хотя бы одного оператора, выбрать архетип и Tac Op.</p>' : '')
+      (!ready ? renderStartRequirementsHint(t) : '')
     );
+  }
+
+  function renderStartRequirementsHint(t) {
+    var missing = [];
+    if (!appState.critOpId) missing.push('Crit Op');
+    if (!t.operators.length) missing.push('оператора в составе');
+    if (!t.archetype) missing.push('архетип');
+    else if (!t.tacOpId) missing.push('Tac Op');
+    var killTeamDef = findKillTeamDef(gameData, t.killTeamName);
+    (killTeamDef && killTeamDef.factionChoices || []).filter(function (c) { return c.scope === 'setup'; }).forEach(function (c) {
+      var value = (t.factionChoices || {})[c.id];
+      var incomplete = !value || value.length !== c.pick || value.some(function (v) { return !v; });
+      if (incomplete) missing.push(c.label);
+    });
+    if (!missing.length) return '';
+    return '<p class="empty-state">Нужно выбрать: ' + missing.join(', ') + '.</p>';
   }
 
   function renderPartyToolsPanel() {
@@ -533,6 +550,44 @@
     );
   }
 
+  // Faction-choices сеттапа (Chapter Tactics и т.п. — "выбери N из списка" на
+  // уровне команды, а не оператора). Один под-блок на слот (Primary/Secondary),
+  // уже занятый в другом слоте вариант дизейблится, чтобы не дублировать зря.
+  function renderFactionChoicesSetupPanel() {
+    var t = appState.team;
+    var killTeamDef = findKillTeamDef(gameData, t.killTeamName);
+    var choices = (killTeamDef && killTeamDef.factionChoices || []).filter(function (c) { return c.scope === 'setup'; });
+    if (!choices.length) return '';
+
+    return choices.map(function (choice) {
+      var current = (t.factionChoices || {})[choice.id] || [];
+      var slotsHtml = '';
+      for (var slot = 0; slot < choice.pick; slot++) {
+        var selectedId = current[slot] || null;
+        var slotLabel = (choice.pickLabels && choice.pickLabels[slot]) || ('Вариант ' + (slot + 1));
+        var options = selectedFirst(choice.options, function (o) { return o.id === selectedId; });
+        var optionsHtml = options.map(function (o) {
+          var isSel = o.id === selectedId;
+          var usedElsewhere = !isSel && current.indexOf(o.id) >= 0;
+          return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" ' +
+            'data-action="setFactionChoiceSlot" data-choice="' + esc(choice.id) + '" data-slot="' + slot + '" data-value="' + esc(o.id) + '" ' +
+            (usedElsewhere ? 'disabled' : '') + '>' +
+            '<span class="pick-card__name">' + esc(o.name) + '</span>' +
+            (isSel && o.text ? '<span class="pick-card__detail"><div>' + esc(o.text) + '</div></span>' : '') +
+          '</button>';
+        }).join('');
+        slotsHtml += '<div class="panel__title" style="margin:' + (slot ? '14px' : '0') + ' 0 6px;">' + esc(slotLabel) + '</div>' +
+          '<div class="pick-stack">' + optionsHtml + '</div>';
+      }
+      return (
+        '<section class="panel">' +
+          '<div class="panel__head"><span class="panel__title">' + esc(choice.label) + '</span></div>' +
+          slotsHtml +
+        '</section>'
+      );
+    }).join('');
+  }
+
   function equipmentUniqueList() {
     var t = appState.team;
     var universal = (gameData.universalEquipment || []).map(function (e) { return { uid: 'u:' + e.id, item: e }; });
@@ -581,6 +636,7 @@
       renderTurningPointPanel() +
       renderCountersPanel() +
       renderSummaryStrip(activatedCount, downCount, t.operators.length) +
+      renderFactionChoicesGamePanel() +
       renderFactionRulePanel() +
       renderOperatorsList() +
       '<button class="btn btn--ghost btn--block" data-action="addOperator" style="margin-bottom:12px;">+ Добавить оператора</button>' +
@@ -603,6 +659,44 @@
         '<summary>Правило фракции: ' + esc(appState.team.killTeamName) + '</summary>' +
         '<div class="cheat-body">' + rulesHtml + '</div>' +
       '</details>'
+    );
+  }
+
+  // Игровой экран: напоминание setup-выборов фракции (Chapter Tactics и т.п.,
+  // выбраны один раз при сборке, тут только для справки) + живой переключатель
+  // scope:'game' choices (Combat Doctrine — можно менять по ходу партии).
+  function renderFactionChoicesGamePanel() {
+    var t = appState.team;
+    var killTeamDef = findKillTeamDef(gameData, t.killTeamName);
+    var allChoices = (killTeamDef && killTeamDef.factionChoices) || [];
+    if (!allChoices.length) return '';
+
+    var setupReminder = allChoices.filter(function (c) { return c.scope === 'setup'; }).map(function (c) {
+      var value = (t.factionChoices || {})[c.id] || [];
+      var names = value.map(function (optId) {
+        var opt = c.options.find(function (o) { return o.id === optId; });
+        return opt ? opt.name : '—';
+      });
+      return '<div><b>' + esc(c.label) + ':</b> ' + names.map(esc).join(' / ') + '</div>';
+    }).join('');
+
+    var gameChoicesHtml = allChoices.filter(function (c) { return c.scope === 'game'; }).map(function (c) {
+      var selectedId = ((t.factionChoices || {})[c.id] || [])[0] || null;
+      var btnsHtml = c.options.map(function (o) {
+        var isSel = o.id === selectedId;
+        return '<button class="btn btn--sm' + (isSel ? ' btn--pressed' : '') + '" ' +
+          'data-action="setFactionChoiceSlot" data-choice="' + esc(c.id) + '" data-slot="0" data-value="' + esc(o.id) + '">' +
+          esc(o.name) + '</button>';
+      }).join('');
+      return '<div class="field"><span class="field__label">' + esc(c.label) + '</span><div class="btn-row">' + btnsHtml + '</div></div>';
+    }).join('');
+
+    return (
+      '<section class="panel">' +
+        '<div class="panel__head"><span class="panel__title">Правила фракции: выборы</span></div>' +
+        (setupReminder ? '<div class="cheat-section" style="margin-top:0;padding-top:0;border-top:none;">' + setupReminder + '</div>' : '') +
+        gameChoicesHtml +
+      '</section>'
     );
   }
 
@@ -682,12 +776,13 @@
         '" data-action="setWoundSegment" data-op="' + op.id + '" data-segment="' + i + '" aria-label="Здоровье ' + (i + 1) + '"></button>';
     }
 
-    var quickChips = QUICK_STATUS_TOKENS.map(function (tok) {
+    var quickTokens = friendlyStatusTokenNames(gameData, appState.team.killTeamName);
+    var quickChips = quickTokens.map(function (tok) {
       var on = op.tokens.indexOf(tok) >= 0;
       return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleToken" data-op="' + op.id + '" data-value="' + esc(tok) + '">' + esc(tok) + '</button>';
     }).join('');
 
-    var otherTokens = op.tokens.filter(function (tok) { return QUICK_STATUS_TOKENS.indexOf(tok) === -1; });
+    var otherTokens = op.tokens.filter(function (tok) { return quickTokens.indexOf(tok) === -1; });
     var tokenPills = otherTokens.map(function (tok) {
       return '<span class="token-pill">' + esc(tok) + '<button data-action="removeToken" data-op="' + op.id + '" data-value="' + esc(tok) + '">×</button></span>';
     }).join('');
@@ -866,14 +961,14 @@
     goSetup: function () { backToSetup(appState); persist(); render(); },
     goGame: function () {
       if (appState.phase === 'game') return;
-      if (!isReadyToStart(appState)) {
-        showToast('Нужно: Crit Op, оператор в составе, архетип и Tac Op.');
+      if (!isReadyToStart(gameData, appState)) {
+        showToast('Нужно: Crit Op, оператор в составе, архетип, Tac Op и правила фракции.');
         return;
       }
-      startGame(appState); persist(); render();
+      startGame(gameData, appState); persist(); render();
     },
     startGame: function () {
-      if (startGame(appState)) { persist(); render(); }
+      if (startGame(gameData, appState)) { persist(); render(); }
     },
 
     selectKillTeam: function (ds) {
@@ -901,6 +996,11 @@
     },
     toggleArchetype: function (ds) { toggleArchetype(appState.team, ds.value); persist(); render(); },
     selectTacOp: function (ds) { selectTacOp(appState.team, ds.value); persist(); render(); },
+    setFactionChoiceSlot: function (ds) {
+      if (setFactionChoiceSlot(gameData, appState.team, ds.choice, parseInt(ds.slot, 10), ds.value)) {
+        persist(); render();
+      }
+    },
     toggleEquipment: function (ds) {
       toggleEquipment(gameData, appState.team, ds.value);
       persist(); render();

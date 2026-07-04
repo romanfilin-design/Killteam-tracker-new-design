@@ -819,6 +819,13 @@ window.GAME_DATA_FALLBACK = {
           "name": "Disgustingly Resilient",
           "text": "Последователи Нургла обладают чрезвычайной стойкостью к пуле и клинку, ибо их отвратительные тела раздуты смертью, тленом и болезнью. Когда кубик атаки наносит урон 3 или больше дружественному оператору PLAGUE MARINE, брось один D6: на 4+ вычти 1 из того нанесённого урона."
         }
+      ],
+      "statusTokens": [
+        {
+          "id": "poison",
+          "name": "Poison",
+          "target": "enemy"
+        }
       ]
     },
     "Celestian Insidiants": {
@@ -1207,6 +1214,33 @@ window.GAME_DATA_FALLBACK = {
         {
           "name": "Inspiration",
           "text": "Когда дружественный оператор CELESTIAN INSIDIANT выводит из строя (incapacitate) вражеского оператора с характеристикой Wounds 6 или больше — этот дружественный оператор становится INSPIRING. Когда он выполняет действие Charge — перед перемещением он становится INSPIRING. Когда дружественный оператор CELESTIAN INSIDIANT является INSPIRING, оружие на его datacard получает правило Severe."
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "inspiring",
+          "name": "INSPIRING",
+          "target": "friendly"
+        },
+        {
+          "id": "ardour",
+          "name": "Ardour",
+          "target": "friendly"
+        },
+        {
+          "id": "wrath",
+          "name": "Wrath",
+          "target": "friendly"
+        },
+        {
+          "id": "restoration",
+          "name": "Restoration",
+          "target": "friendly"
+        },
+        {
+          "id": "exigence",
+          "name": "Exigence",
+          "target": "friendly"
         }
       ]
     },
@@ -1645,7 +1679,8 @@ window.GAME_DATA_FALLBACK = {
           "name": "In Midnight Clad",
           "text": "Night Lords едины с тьмой, используя её как союзника и оружие. Когда вражеский оператор стреляет по дружественному оператору NEMESIS CLAW, тот дружественный оператор считается obscured, если верны оба условия: он более чем в 8\" от вражеских операторов, которым он виден; он в пределах 1\" от Heavy terrain, не ниже него, либо хотя бы часть его базы находится под Vantage terrain."
         }
-      ]
+      ],
+      "statusTokens": []
     },
     "Hearthkyn Salvagers": {
       "archetypes": [
@@ -2217,6 +2252,13 @@ window.GAME_DATA_FALLBACK = {
           "name": "Grudge",
           "text": "Когда вражеский оператор выводит из строя (incapacitate) дружественного оператора HEARTHKYN SALVAGER, тот вражеский оператор получает один из твоих токенов Grudge на всю битву. Когда дружественный оператор HEARTHKYN SALVAGER стреляет, дерётся или отвечает (retaliating) против вражеского оператора, за каждый токен Grudge у этого врага можно сохранить один свой обычный success как critical success (включая обычные successes, уже сохранённые за счёт правила Accurate). Токены Grudge при этом не убираются."
         }
+      ],
+      "statusTokens": [
+        {
+          "id": "grudge",
+          "name": "Grudge",
+          "target": "enemy"
+        }
       ]
     },
     "Angels of Death": {
@@ -2776,6 +2818,84 @@ window.GAME_DATA_FALLBACK = {
           "name": "Wrath of Vengeance",
           "text": "Разгневанный battle-brother Adeptus Astartes способен на исключительную силу и атлетизм. Используй, когда дружественный оператор ANGEL OF DEATH выполняет counteract. Он может выполнить дополнительное 1AP действие бесплатно во время этого counteract, но оба действия должны быть разными.",
           "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [],
+      "factionChoices": [
+        {
+          "id": "chapter_tactics",
+          "label": "Chapter Tactics",
+          "scope": "setup",
+          "pick": 2,
+          "pickLabels": [
+            "Primary",
+            "Secondary"
+          ],
+          "options": [
+            {
+              "id": "aggressive",
+              "name": "Aggressive",
+              "text": "Оружие ближнего боя этого оператора получает weapon rule Rending."
+            },
+            {
+              "id": "dueller",
+              "name": "Dueller",
+              "text": "Когда этот оператор дерётся или отвечает (retaliating), каждый его normal success может заблокировать один неразрешённый critical success (если оружие вражеского оператора не имеет weapon rule Brutal)."
+            },
+            {
+              "id": "resolute",
+              "name": "Resolute",
+              "text": "Можно игнорировать любые изменения APL stat этого оператора, и на него не действует weapon rule Shock вражеских операторов."
+            },
+            {
+              "id": "stealthy",
+              "name": "Stealthy",
+              "text": "Когда оператор стреляет по этому оператору, если можно удержать любые cover save, можно удержать один дополнительный cover save, либо удержать один cover save как critical success. Не суммируется с улучшенными cover save от Vantage terrain."
+            },
+            {
+              "id": "mobile",
+              "name": "Mobile",
+              "text": "Этот оператор может выполнить действие Fall Back за 1 AP меньше; может выполнить действие Charge в пределах control range вражеского оператора и покинуть его control range для этого."
+            },
+            {
+              "id": "hardy",
+              "name": "Hardy",
+              "text": "Когда оператор стреляет по этому оператору, результаты defence dice 5+ — critical success. Когда этот оператор отвечает (retaliating), первый кубик атаки с Normal Dmg 3+ в этой последовательности наносит на 1 урона меньше."
+            },
+            {
+              "id": "sharpshooter",
+              "name": "Sharpshooter",
+              "text": "Когда этот оператор стреляет во время активации, в которой не выполнял Charge, Fall Back или Reposition, его bolt-оружие получает weapon rules Accurate 1 и Severe."
+            },
+            {
+              "id": "siege_specialist",
+              "name": "Siege Specialist",
+              "text": "Ranged-оружие этого оператора получает weapon rule Saturate. Когда этот оператор дерётся или отвечает (retaliating), вражеские операторы не могут assist."
+            }
+          ]
+        },
+        {
+          "id": "combat_doctrine",
+          "label": "Combat Doctrine",
+          "scope": "game",
+          "pick": 1,
+          "options": [
+            {
+              "id": "devastator",
+              "name": "Devastator",
+              "text": "Стреляет по оператору дальше чем 6\" от него — оружие получает weapon rule Balanced."
+            },
+            {
+              "id": "tactical",
+              "name": "Tactical",
+              "text": "Стреляет по оператору в пределах 6\" от него — оружие получает weapon rule Balanced."
+            },
+            {
+              "id": "assault",
+              "name": "Assault",
+              "text": "Дерётся или отвечает (retaliating) — оружие получает weapon rule Balanced."
+            }
+          ]
         }
       ]
     }

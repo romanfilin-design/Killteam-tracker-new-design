@@ -142,6 +142,30 @@ python3 tools/smart_crop.py "input/Night Lord Ventrilokar.jpg" \
      текст сам перед мёржем, не полагаясь на то, что "и так сойдёт";
    - вписываю проверенный кусок в `game_data.json` в корне проекта (по
      той же структуре, что уже используют существующие команды);
+   - **если в правилах команды есть выбор вида «выбери N из списка» на
+     уровне команды** (а не оператора) — например, Chapter Tactics/Combat
+     Doctrine у Angels of Death — описываю это через `factionChoices`
+     (массив на уровне `killTeams.<Команда>`, см. Angels of Death как
+     референс): `{id, label, scope: 'setup'|'game', pick, pickLabels?,
+     options:[{id,name,text}]}`. `scope:'setup'` — выбор один раз при
+     сборке команды (рендерится в `renderFactionChoicesSetupPanel`),
+     `scope:'game'` — можно менять по ходу партии, обычно как Strategy
+     Ploy (рендерится в `renderFactionChoicesGamePanel` на игровом
+     экране). Если у команды нет такой механики — просто не добавляю
+     это поле, ничего не сломается (проверено на всех текущих командах);
+   - **если у команды есть особый токен/статус для операторов** (как
+     Poison у Plague Marines, INSPIRING у Celestian Insidiants, Grudge у
+     Hearthkyn Salvagers) — добавляю `statusTokens` (массив на уровне
+     `killTeams.<Команда>`): `{id, name, target: 'friendly'|'enemy'}`.
+     `target:'friendly'` — токен вешается на своего оператора, попадает
+     в быстрые чипы на карточке оператора (`friendlyStatusTokenNames` в
+     `tracker_logic.js`). `target:'enemy'` — по правилу токен вешается
+     на **вражеского** оператора; трекер сейчас ведёт только свою
+     команду (см. FUNCTIONAL_SPEC.md), поэтому такие токены **не
+     рендерятся как чипы**, но данные всё равно сохраняю — это задел под
+     будущую комнату синхронизации игроков (см. Dashboard/data.js,
+     backlog Killteam Tracker), когда появится карточка оператора
+     противника и туда можно будет реально вешать такие токены;
    - сопоставляю файлы из `incoming_portraits/` с операторами по именам
      и прогоняю их через `smart_crop.py --batch` в
      `docs/img/portraits/<team-slug>/` (если в официальных именах

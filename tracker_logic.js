@@ -64,6 +64,7 @@ function createTeam(id, name) {
     equipmentIds: [],       // массив уникальных id вида "u:<id>" | "f:<id>"
     equipmentUsed: {},      // { uniqueEquipmentId: timesUsed }
     operators: [],
+    factionChoices: {},     // { choiceId: [optionId, ...] } — см. killTeamDef.factionChoices
   };
 }
 
@@ -189,6 +190,7 @@ function rebuildOperatorsFromKillTeam(gameData, team) {
 function selectKillTeam(gameData, team, killTeamName) {
   team.killTeamName = killTeamName || null;
   team.poolCounts = {};
+  team.factionChoices = {};
   if (killTeamName) {
     rebuildOperatorsFromKillTeam(gameData, team);
   } else {
@@ -241,6 +243,7 @@ function importRoster(team, operatorsList, teamName) {
   team.operators = operatorsList.map(o => createOperator(o.name || 'Оператор', o.wounds || o.maxWounds || 10));
   team.killTeamName = null;
   team.poolCounts = {};
+  team.factionChoices = {};
   filterEquipmentAfterTeamChange(team);
   if (teamName) team.name = teamName;
   return team;
@@ -286,6 +289,53 @@ function selectTacOp(team, tacOpId) {
 }
 
 // ============================================================
+// Faction-choices — общий механизм под правила вида "выбери N из списка" на
+// уровне команды (Chapter Tactics/Combat Doctrine у Angels of Death и т.п.),
+// описывается в killTeamDef.factionChoices:
+//   { id, label, scope: 'setup'|'game', pick, pickLabels?: string[],
+//     options: [{id, name, text}] }
+// team.factionChoices[choiceId] — массив длиной `pick`, слоты хранят optionId
+// или null, пока не выбраны.
+// ============================================================
+
+function findFactionChoiceDef(gameData, killTeamName, choiceId) {
+  const killTeamDef = findKillTeamDef(gameData, killTeamName);
+  if (!killTeamDef) return null;
+  return (killTeamDef.factionChoices || []).find(c => c.id === choiceId) || null;
+}
+
+/**
+ * Устанавливает optionId в указанный слот выбора. Не даёт выбрать один и тот
+ * же вариант одновременно в двух разных слотах одного choice (по большинству
+ * таких правил повтор не даёт эффекта — проще не путать игрока).
+ */
+function setFactionChoiceSlot(gameData, team, choiceId, slotIndex, optionId) {
+  const def = findFactionChoiceDef(gameData, team.killTeamName, choiceId);
+  if (!def) return false;
+  const valid = def.options.some(o => o.id === optionId);
+  if (!valid) return false;
+
+  const current = (team.factionChoices[choiceId] || new Array(def.pick).fill(null)).slice();
+  const usedElsewhere = current.some((v, i) => i !== slotIndex && v === optionId);
+  if (usedElsewhere) return false;
+
+  current[slotIndex] = optionId;
+  team.factionChoices[choiceId] = current;
+  return true;
+}
+
+/** true, если все setup-scope faction-choices команды полностью заполнены. */
+function areFactionChoicesComplete(gameData, killTeamName, team) {
+  const killTeamDef = findKillTeamDef(gameData, killTeamName);
+  if (!killTeamDef) return true;
+  const setupChoices = (killTeamDef.factionChoices || []).filter(c => c.scope === 'setup');
+  return setupChoices.every(c => {
+    const value = team.factionChoices[c.id];
+    return Boolean(value) && value.length === c.pick && value.every(v => Boolean(v));
+  });
+}
+
+// ============================================================
 // Подготовка: снаряжение
 // ============================================================
 
@@ -306,13 +356,14 @@ function toggleEquipment(gameData, team, uniqueId) {
 }
 
 /** Готовность начать партию: см. FUNCTIONAL_SPEC §4.1. */
-function isReadyToStart(appState) {
+function isReadyToStart(gameData, appState) {
   const t = appState.team;
-  return Boolean(appState.critOpId) && t.operators.length > 0 && Boolean(t.archetype) && Boolean(t.tacOpId);
+  return Boolean(appState.critOpId) && t.operators.length > 0 && Boolean(t.archetype) && Boolean(t.tacOpId) &&
+    areFactionChoicesComplete(gameData, t.killTeamName, t);
 }
 
-function startGame(appState) {
-  if (!isReadyToStart(appState)) return false;
+function startGame(gameData, appState) {
+  if (!isReadyToStart(gameData, appState)) return false;
   appState.phase = 'game';
   return true;
 }
@@ -429,8 +480,17 @@ function isIncapacitated(op) { return op.wounds <= 0; }
 function isInjured(op) { return !isIncapacitated(op) && op.wounds <= op.maxWounds / 2; }
 
 // ---- токены/статусы ----
+// Быстрые чипы статусов больше не общий список на все команды — они читаются
+// из killTeamDef.statusTokens (см. game_data.json), с полем target:
+// 'friendly' (свой оператор) | 'enemy' (вражеский — трекер сейчас ведёт только
+// свою команду, эти токены не показываются как чипы, но остаются в данных на
+// будущее, когда появится комната синхронизации игроков и карточки соперника).
 
-const QUICK_STATUS_TOKENS = ['Poison', 'INSPIRING', 'Suspicion'];
+function friendlyStatusTokenNames(gameData, killTeamName) {
+  const killTeamDef = findKillTeamDef(gameData, killTeamName);
+  const tokens = (killTeamDef && killTeamDef.statusTokens) || [];
+  return tokens.filter(t => t.target === 'friendly').map(t => t.name);
+}
 
 function toggleToken(op, tokenText) {
   const idx = op.tokens.indexOf(tokenText);
@@ -534,6 +594,7 @@ function importState(rawState) {
   if (!t.poolCounts) t.poolCounts = {};
   if (!t.equipmentIds) t.equipmentIds = [];
   if (!t.equipmentUsed) t.equipmentUsed = {};
+  if (!t.factionChoices) t.factionChoices = {};
   (t.operators || []).forEach(o => {
     if (o.order === undefined) o.order = null;
     if (o.apl === undefined) o.apl = null;
@@ -596,6 +657,9 @@ if (typeof module !== 'undefined' && module.exports) {
     selectRandomCritOp,
     toggleArchetype,
     selectTacOp,
+    findFactionChoiceDef,
+    setFactionChoiceSlot,
+    areFactionChoicesComplete,
     toggleEquipment,
     isReadyToStart,
     startGame,
@@ -619,7 +683,7 @@ if (typeof module !== 'undefined' && module.exports) {
     setMaxWounds,
     isIncapacitated,
     isInjured,
-    QUICK_STATUS_TOKENS,
+    friendlyStatusTokenNames,
     toggleToken,
     addCustomToken,
     removeToken,
