@@ -10,6 +10,11 @@
 
   var STORAGE_KEY = 'kt_solo_tracker_state_v1';
 
+  // Общее число официальных Kill Team в игре (не все ещё добавлены в трекер) —
+  // используется только для счётчика "x / N" в шапке выбора команды на
+  // экране подготовки. Обновляй вручную, если официальный список пополнится.
+  var TOTAL_KILL_TEAMS_PLANNED = 33;
+
   // Заглушка-силуэт оператора — показывается, когда у оператора нет портрета.
   var PORTRAIT_PLACEHOLDER_SVG =
     '<svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">' +
@@ -378,7 +383,7 @@
     }).join('');
     return (
       '<section class="panel">' +
-        '<div class="panel__head"><span class="panel__title">Kill Team</span></div>' +
+        '<div class="panel__head"><span class="panel__title">Kill Team</span><span class="panel__badge">' + names.length + ' / ' + TOTAL_KILL_TEAMS_PLANNED + '</span></div>' +
         '<div class="pick-list">' + cards + '</div>' +
       '</section>'
     );
