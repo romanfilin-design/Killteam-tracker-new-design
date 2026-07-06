@@ -41,6 +41,7 @@ function createOperator(name, wounds, stats = {}) {
     activated: false,
     order: null, // null | 'conceal' | 'engage'
     tokens: [],  // произвольные текстовые статусы, включая "Poison"/"INSPIRING"/"Suspicion"
+    tokenCounts: {}, // { tokenId: number } — для statusTokens с counter:true (напр. Damnation Points)
     apl: stats.apl ?? null,
     move: stats.move ?? null,
     save: stats.save ?? null,
@@ -65,6 +66,8 @@ function createTeam(id, name) {
     equipmentUsed: {},      // { uniqueEquipmentId: timesUsed }
     operators: [],
     factionChoices: {},     // { choiceId: [optionId, ...] } — см. killTeamDef.factionChoices
+    factionChoiceUsedOptions: {}, // { choiceId: [optionId, ...] } — для choice с oncePerBattle:true
+    enemyMarkers: [],       // [{id, name, tokens: {tokenId: bool|number}}] — см. killTeamDef.statusTokens (target:'enemy')
   };
 }
 
@@ -331,8 +334,19 @@ function setFactionChoiceSlot(gameData, team, choiceId, slotIndex, optionId) {
   const usedElsewhere = current.some((v, i) => i !== slotIndex && v === optionId);
   if (usedElsewhere) return false;
 
+  if (def.oncePerBattle) {
+    const usedOptions = team.factionChoiceUsedOptions[choiceId] || [];
+    if (current[slotIndex] !== optionId && usedOptions.includes(optionId)) return false;
+  }
+
   current[slotIndex] = optionId;
   team.factionChoices[choiceId] = current;
+
+  if (def.oncePerBattle) {
+    const usedOptions = team.factionChoiceUsedOptions[choiceId] || [];
+    if (!usedOptions.includes(optionId)) team.factionChoiceUsedOptions[choiceId] = [...usedOptions, optionId];
+  }
+
   return true;
 }
 
@@ -498,10 +512,16 @@ function isInjured(op) { return !isIncapacitated(op) && op.wounds <= op.maxWound
 // свою команду, эти токены не показываются как чипы, но остаются в данных на
 // будущее, когда появится комната синхронизации игроков и карточки соперника).
 
-function friendlyStatusTokenNames(gameData, killTeamName) {
+function friendlyStatusTokenDefs(gameData, killTeamName) {
   const killTeamDef = findKillTeamDef(gameData, killTeamName);
   const tokens = (killTeamDef && killTeamDef.statusTokens) || [];
-  return tokens.filter(t => t.target === 'friendly').map(t => t.name);
+  return tokens.filter(t => t.target === 'friendly');
+}
+
+function enemyStatusTokenDefs(gameData, killTeamName) {
+  const killTeamDef = findKillTeamDef(gameData, killTeamName);
+  const tokens = (killTeamDef && killTeamDef.statusTokens) || [];
+  return tokens.filter(t => t.target === 'enemy');
 }
 
 function toggleToken(op, tokenText) {
@@ -520,6 +540,61 @@ function addCustomToken(op, tokenText) {
 function removeToken(op, tokenText) {
   op.tokens = op.tokens.filter(t => t !== tokenText);
   return op.tokens;
+}
+
+// ---- счётчики токенов (statusTokens с counter:true, напр. Damnation Points, Markerlight) ----
+
+function clampTokenCount(value, max) {
+  return Math.max(0, Math.min(max, value));
+}
+
+function setOpTokenCount(op, tokenId, value, max) {
+  op.tokenCounts[tokenId] = clampTokenCount(value, max);
+  return op.tokenCounts[tokenId];
+}
+
+function incrementOpTokenCount(op, tokenId, max) {
+  return setOpTokenCount(op, tokenId, (op.tokenCounts[tokenId] || 0) + 1, max);
+}
+
+function decrementOpTokenCount(op, tokenId, max) {
+  return setOpTokenCount(op, tokenId, (op.tokenCounts[tokenId] || 0) - 1, max);
+}
+
+// ---- лёгкая enemy-панель ("метки врага") — см. enemyStatusTokenDefs выше ----
+
+function addEnemyMarker(team, name = 'Враг') {
+  const marker = { id: generateId(), name, tokens: {} };
+  team.enemyMarkers.push(marker);
+  return marker;
+}
+
+function removeEnemyMarker(team, markerId) {
+  team.enemyMarkers = team.enemyMarkers.filter(m => m.id !== markerId);
+}
+
+function findEnemyMarker(team, markerId) {
+  return team.enemyMarkers.find(m => m.id === markerId) || null;
+}
+
+function renameEnemyMarker(team, markerId, name) {
+  const marker = findEnemyMarker(team, markerId);
+  if (marker) marker.name = name;
+  return marker;
+}
+
+function setEnemyMarkerToken(team, markerId, tokenId, value) {
+  const marker = findEnemyMarker(team, markerId);
+  if (!marker) return null;
+  marker.tokens[tokenId] = value;
+  return marker;
+}
+
+function setEnemyMarkerTokenCount(team, markerId, tokenId, delta, max) {
+  const marker = findEnemyMarker(team, markerId);
+  if (!marker) return null;
+  marker.tokens[tokenId] = clampTokenCount((marker.tokens[tokenId] || 0) + delta, max);
+  return marker;
 }
 
 // ============================================================
@@ -573,10 +648,13 @@ function startNewGameKeepingRoster(appState) {
   t.vp = 0;
   t.killGrade = 0;
   t.equipmentUsed = {};
+  t.enemyMarkers = [];
+  t.factionChoiceUsedOptions = {};
   t.operators.forEach(o => {
     o.wounds = o.maxWounds;
     o.activated = false;
     o.tokens = [];
+    o.tokenCounts = {};
     o.order = null;
   });
   return appState;
@@ -607,6 +685,8 @@ function importState(rawState) {
   if (!t.equipmentIds) t.equipmentIds = [];
   if (!t.equipmentUsed) t.equipmentUsed = {};
   if (!t.factionChoices) t.factionChoices = {};
+  if (!t.factionChoiceUsedOptions) t.factionChoiceUsedOptions = {};
+  if (!t.enemyMarkers) t.enemyMarkers = [];
   (t.operators || []).forEach(o => {
     if (o.order === undefined) o.order = null;
     if (o.apl === undefined) o.apl = null;
@@ -615,6 +695,7 @@ function importState(rawState) {
     if (o.portrait === undefined) o.portrait = null;
     if (!o.weapons) o.weapons = [];
     if (!o.abilities) o.abilities = [];
+    if (!o.tokenCounts) o.tokenCounts = {};
   });
 
   return s;
@@ -695,10 +776,20 @@ if (typeof module !== 'undefined' && module.exports) {
     setMaxWounds,
     isIncapacitated,
     isInjured,
-    friendlyStatusTokenNames,
+    friendlyStatusTokenDefs,
+    enemyStatusTokenDefs,
     toggleToken,
     addCustomToken,
     removeToken,
+    setOpTokenCount,
+    incrementOpTokenCount,
+    decrementOpTokenCount,
+    addEnemyMarker,
+    removeEnemyMarker,
+    findEnemyMarker,
+    renameEnemyMarker,
+    setEnemyMarkerToken,
+    setEnemyMarkerTokenCount,
     getEquipmentMaxUses,
     getEquipmentRemainingUses,
     useEquipment,

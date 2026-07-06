@@ -102,6 +102,7 @@
     'Vicious Blows': 'Vicious Blows — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Vicious Blows»).',
     'Headtaker': 'Headtaker — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Headtaker»).',
     'Tactual Hunter': 'Tactual Hunter — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Tactual Hunter»).',
+    'Explosive': 'Explosive — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Explosive»).',
   };
 
   function normalizeWrTerm(raw) {
@@ -648,8 +649,52 @@
       renderFactionRulePanel() +
       renderOperatorsList() +
       '<button class="btn btn--ghost btn--block" data-action="addOperator" style="margin-bottom:12px;">+ Добавить оператора</button>' +
+      renderEnemyMarkersPanel() +
       renderEquipmentGamePanel() +
       renderCheatSheet()
+    );
+  }
+
+  // Лёгкая панель для токенов, которые правила ставят на вражеских
+  // операторов (Markerlight, Poison, Grudge и т.п.) — трекер не ведёт
+  // карточки противника, поэтому это просто список именованных меток с
+  // чипами/счётчиками по enemy-статус-токенам текущей команды.
+  function renderEnemyMarkersPanel() {
+    var t = appState.team;
+    var tokenDefs = enemyStatusTokenDefs(gameData, t.killTeamName);
+    if (!tokenDefs.length) return '';
+
+    var markersHtml = (t.enemyMarkers || []).map(function (marker) {
+      var controlsHtml = tokenDefs.map(function (tok) {
+        if (tok.counter) {
+          var count = marker.tokens[tok.id] || 0;
+          return '<div class="counter counter--sm">' +
+            '<button data-action="decrementEnemyMarkerToken" data-marker="' + marker.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">−</button>' +
+            '<span class="counter__value">' + esc(tok.name) + ' ' + count + '</span>' +
+            '<button data-action="incrementEnemyMarkerToken" data-marker="' + marker.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">+</button>' +
+          '</div>';
+        }
+        var on = !!marker.tokens[tok.id];
+        return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleEnemyMarkerToken" data-marker="' + marker.id + '" data-token="' + esc(tok.id) + '">' + esc(tok.name) + '</button>';
+      }).join('');
+
+      return (
+        '<div class="enemy-marker">' +
+          '<div class="enemy-marker__head">' +
+            '<input class="enemy-marker__name-input" type="text" data-field="enemyMarkerName" data-marker="' + marker.id + '" value="' + esc(marker.name) + '" />' +
+            '<button class="btn btn--sm btn--danger" data-action="removeEnemyMarker" data-marker="' + marker.id + '">×</button>' +
+          '</div>' +
+          '<div class="enemy-marker__controls">' + controlsHtml + '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    return (
+      '<section class="panel">' +
+        '<div class="panel__head"><span class="panel__title">Метки врага</span></div>' +
+        markersHtml +
+        '<button class="btn btn--ghost btn--block" data-action="addEnemyMarker">+ Добавить метку врага</button>' +
+      '</section>'
     );
   }
 
@@ -697,11 +742,14 @@
 
     var gameChoicesHtml = allChoices.filter(function (c) { return c.scope === 'game'; }).map(function (c) {
       var selectedId = ((t.factionChoices || {})[c.id] || [])[0] || null;
+      var usedOptions = (t.factionChoiceUsedOptions || {})[c.id] || [];
       var btnsHtml = c.options.map(function (o) {
         var isSel = o.id === selectedId;
+        var isLocked = c.oncePerBattle && !isSel && usedOptions.indexOf(o.id) >= 0;
         return '<button class="btn btn--sm' + (isSel ? ' btn--pressed' : '') + '" ' +
-          'data-action="setFactionChoiceSlot" data-choice="' + esc(c.id) + '" data-slot="0" data-value="' + esc(o.id) + '">' +
-          esc(o.name) + '</button>';
+          'data-action="setFactionChoiceSlot" data-choice="' + esc(c.id) + '" data-slot="0" data-value="' + esc(o.id) + '" ' +
+          (isLocked ? 'disabled' : '') + '>' +
+          esc(o.name) + (isLocked ? ' (использовано)' : '') + '</button>';
       }).join('');
       // Подсказка-описание — по выбранному варианту, если есть, иначе по всем
       // сразу (чтобы можно было прочитать доктрины до выбора, не только после).
@@ -799,10 +847,19 @@
         '" data-action="setWoundSegment" data-op="' + op.id + '" data-segment="' + i + '" aria-label="Здоровье ' + (i + 1) + '"></button>';
     }
 
-    var quickTokens = friendlyStatusTokenNames(gameData, appState.team.killTeamName);
-    var quickChips = quickTokens.map(function (tok) {
-      var on = op.tokens.indexOf(tok) >= 0;
-      return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleToken" data-op="' + op.id + '" data-value="' + esc(tok) + '">' + esc(tok) + '</button>';
+    var quickTokenDefs = friendlyStatusTokenDefs(gameData, appState.team.killTeamName);
+    var quickTokens = quickTokenDefs.map(function (tok) { return tok.name; });
+    var quickChips = quickTokenDefs.map(function (tok) {
+      if (tok.counter) {
+        var count = op.tokenCounts[tok.id] || 0;
+        return '<div class="counter counter--sm" data-token-label="' + esc(tok.name) + '">' +
+          '<button data-action="decrementOpToken" data-op="' + op.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">−</button>' +
+          '<span class="counter__value">' + esc(tok.name) + ' ' + count + '</span>' +
+          '<button data-action="incrementOpToken" data-op="' + op.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">+</button>' +
+        '</div>';
+      }
+      var on = op.tokens.indexOf(tok.name) >= 0;
+      return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleToken" data-op="' + op.id + '" data-value="' + esc(tok.name) + '">' + esc(tok.name) + '</button>';
     }).join('');
 
     var otherTokens = op.tokens.filter(function (tok) { return quickTokens.indexOf(tok) === -1; });
@@ -1055,6 +1112,17 @@
     setWoundSegment: function (ds) { var op = findOp(ds.op); if (op) { setWoundsFromTrackSegment(op, parseInt(ds.segment, 10)); persist(); render(); } },
     toggleToken: function (ds) { var op = findOp(ds.op); if (op) { toggleToken(op, ds.value); persist(); render(); } },
     removeToken: function (ds) { var op = findOp(ds.op); if (op) { removeToken(op, ds.value); persist(); render(); } },
+    incrementOpToken: function (ds) { var op = findOp(ds.op); if (op) { incrementOpTokenCount(op, ds.token, parseInt(ds.max, 10)); persist(); render(); } },
+    decrementOpToken: function (ds) { var op = findOp(ds.op); if (op) { decrementOpTokenCount(op, ds.token, parseInt(ds.max, 10)); persist(); render(); } },
+
+    addEnemyMarker: function () { addEnemyMarker(appState.team); persist(); render(); },
+    removeEnemyMarker: function (ds) { removeEnemyMarker(appState.team, ds.marker); persist(); render(); },
+    toggleEnemyMarkerToken: function (ds) {
+      var marker = findEnemyMarker(appState.team, ds.marker);
+      if (marker) { setEnemyMarkerToken(appState.team, ds.marker, ds.token, !marker.tokens[ds.token]); persist(); render(); }
+    },
+    incrementEnemyMarkerToken: function (ds) { setEnemyMarkerTokenCount(appState.team, ds.marker, ds.token, 1, parseInt(ds.max, 10)); persist(); render(); },
+    decrementEnemyMarkerToken: function (ds) { setEnemyMarkerTokenCount(appState.team, ds.marker, ds.token, -1, parseInt(ds.max, 10)); persist(); render(); },
 
     useEquipment: function (ds) { if (useEquipment(gameData, appState.team, ds.value)) { persist(); render(); } },
 
@@ -1132,6 +1200,9 @@
       var op = findOp(target.dataset.op);
       if (op) { renameOperator(op, target.value); persist(); }
     }
+    if (target.dataset.field === 'enemyMarkerName') {
+      renameEnemyMarker(appState.team, target.dataset.marker, target.value); persist();
+    }
   }
 
   function onInput(e) {
@@ -1140,6 +1211,9 @@
     if (target.dataset.field === 'operatorName') {
       var op = findOp(target.dataset.op);
       if (op) { renameOperator(op, target.value); persist(); }
+    }
+    if (target.dataset.field === 'enemyMarkerName') {
+      renameEnemyMarker(appState.team, target.dataset.marker, target.value); persist();
     }
   }
 

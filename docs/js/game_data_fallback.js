@@ -597,6 +597,96 @@ window.GAME_DATA_FALLBACK = {
         "usesLabel": "Пассив",
         "desc": "Можно игнорировать любые изменения Move stat дружественных операторов FELLGOR RAVAGER, вызванные состоянием injured."
       }
+    ],
+    "Kommandos": [
+      {
+        "id": "choppas",
+        "name": "Choppas",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы KOMMANDO (кроме BOMB SQUIG и GROT) получают следующее оружие ближнего боя (если оно лучше того, что уже есть у оператора — используй лучший вариант): Choppa — Atk 3, Hit 3+, Dmg 4/5."
+      },
+      {
+        "id": "dynamite",
+        "name": "Dynamite",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, дружественный оператор KOMMANDO (кроме BOMB SQUIG и GROT) может использовать следующее ranged-оружие: Dynamite — Atk 5, Hit 4+, Dmg 4/5, WR Range 4\", Blast 1\", Heavy (Reposition only), Saturate."
+      },
+      {
+        "id": "harpoon",
+        "name": "Harpoon",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, дружественный оператор KOMMANDO (кроме BOMB SQUIG и GROT) может использовать следующее ranged-оружие: Harpoon — Atk 4, Hit 4+, Dmg 4/5, WR Range 8\", Lethal 5+, Stun."
+      },
+      {
+        "id": "collapsible_stocks",
+        "name": "Collapsible Stocks",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Убери weapon rule Range со следующего ranged-оружия дружественных операторов KOMMANDO: Shokka pistol; Slugga."
+      }
+    ],
+    "Murderwing": [
+      {
+        "id": "bladefins",
+        "name": "Bladefins",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы MURDERWING могут выполнить следующее уникальное действие:\n\nSlice from Above (1AP), BOOST action. Нанеси D3+1 урона одному вражескому оператору в пределах BOOST ZONE этого оператора.\n\nОператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Fall Back или Reposition после установки из BOOST."
+      },
+      {
+        "id": "clawed_armour",
+        "name": "Clawed Armour",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы MURDERWING могут выполнить следующее уникальное действие:\n\nClawed Charge (0AP), BOOST action. Нанеси 1 урон одному вражескому оператору в пределах control range этого оператора, затем действие Charge заканчивается.\n\nОператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Charge после установки из BOOST."
+      },
+      {
+        "id": "warp_fuel",
+        "name": "Warp Fuel",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда вражеский оператор заканчивает действие Fall Back во время своей активации, если хотя бы один дружественный оператор MURDERWING был в пределах его control range в начале того действия, можно применить это правило. Один из тех дружественных операторов может сразу выполнить свободное действие Reposition или Charge, но не может использовать более 3\" дистанции движения."
+      },
+      {
+        "id": "vox_casters",
+        "name": "Vox-casters",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, один дружественный оператор MURDERWING может выполнить следующее уникальное действие:\n\nVox-Cry (1AP). Каждый вражеский оператор в пределах 2\" от этого оператора проходит stun test. Для прохождения, брось один D6: при результате 3+, вычти 1 из его APL stat до конца его следующей активации.\n\nОператор не может выполнять это действие, имея Conceal order."
+      }
+    ],
+    "Pathfinders": [
+      {
+        "id": "target_analysis_optic",
+        "name": "Target Analysis Optic",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор PATHFINDER (кроме DRONE) выполняет действие Shoot и ты выбираешь допустимую цель, можно применить это правило. Если применяешь, до конца этого действия, если у цели есть хотя бы один твой Markerlight token, считай, что у неё на один больше. Если ranged-оружие имеет weapon rule Blast или Torrent, затрагивается только первичная цель."
+      },
+      {
+        "id": "high_intensity_markerlight",
+        "name": "High-Intensity Markerlight",
+        "uses": 2,
+        "usesLabel": "до 2× за turning point",
+        "desc": "Up to twice per turning point, когда дружественный оператор PATHFINDER (кроме MV7 MARKER DRONE) выполняет действие Markerlight, можно применить это правило. Если применяешь, выбранный вражеский оператор получает два твоих Markerlight token (вместо одного)."
+      },
+      {
+        "id": "photon_grenade",
+        "name": "Photon Grenade",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point дружественный оператор PATHFINDER, у которого есть действие Markerlight на его datacard, может выполнить следующее уникальное действие:\n\nPhoton Grenade (1AP). Выбери одного вражеского оператора, видимого этому оператору, и брось один D6: при 3+, до конца следующей активации того оператора, отними 2\" от его Move stat.\n\nОператор не может выполнять это действие, находясь в пределах control range вражеского оператора."
+      },
+      {
+        "id": "orbital_survey_uplink",
+        "name": "Orbital Survey Uplink",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор PATHFINDER выполняет действие Markerlight, можно применить это правило. Если применяешь, можно выбрать одного вражеского оператора в killzone целью вместо этого (ему не нужно быть видимым). Не суммируется с High-Intensity Markerlight или Analyse."
+      }
     ]
   },
   "killTeams": {
@@ -4696,6 +4786,1708 @@ window.GAME_DATA_FALLBACK = {
           "id": "pelting_firepower",
           "name": "Pelting Firepower",
           "target": "enemy"
+        }
+      ]
+    },
+    "Kommandos": {
+      "archetypes": [
+        "Infiltration",
+        "Seek & Destroy"
+      ],
+      "required": [
+        {
+          "name": "Kommando Boss Nob",
+          "apl": 3,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 14,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Slugga",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Big choppa",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "-"
+            },
+            {
+              "name": "Power klaw",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/7",
+              "wr": "Brutal, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Krumpin' Time",
+              "text": "Этот оператор может выполнить два действия Fight во время своей активации."
+            },
+            {
+              "name": "Get It Done!",
+              "text": "SUPPORT. Выбери одного другого дружественного оператора KOMMANDO (кроме BOMB SQUIG), видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время counteract.",
+              "cost": "1AP"
+            }
+          ]
+        }
+      ],
+      "pool": [
+        {
+          "name": "Kommando Bomb Squig",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 5,
+          "weapons": [
+            {
+              "name": "Explosives",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Blast 1\", Limited 1, Explosive*"
+            },
+            {
+              "name": "Bite",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Explosive",
+              "text": "Этот оператор может выполнить действие Shoot этим оружием, находясь в пределах control range вражеского оператора. Не выбирай допустимую цель — этот оператор всегда является первичной целью и не может быть in cover или obscured."
+            },
+            {
+              "name": "Boom!",
+              "text": "Если этот оператор incapacitated в битве, в которой он ещё не использовал свои explosives, брось D6, либо D6 дважды и выбери результат, если хочешь, если любой результат 4+. Если так, этот оператор выполняет свободное действие Shoot своими explosives, прежде чем будет убран из killzone."
+            },
+            {
+              "name": "Stoopid",
+              "text": "В Firefight phase, когда определяешь order этого оператора, нельзя выбрать Conceal. Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fight, Reposition и Shoot. Он не может использовать никакое оружие, отсутствующее на его карточке."
+            },
+            {
+              "name": "Expendable",
+              "text": "Этот оператор игнорируется для kill op твоего оппонента (когда он incapacitated), а также при определении твоего starting number of operatives. Он также игнорируется для victory conditions или scoring VPs, если они требуют, чтобы операторы escape, survive или были incapacitated вражескими операторами."
+            }
+          ]
+        },
+        {
+          "name": "Kommando Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Slugga",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Choppa",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Taktikal Wot-notz",
+              "text": "Once per turning point можно выполнить каждое из следующих действий: одним дружественным оператором KOMMANDO BOY выполнить действие Smoke Grenade; одним дружественным оператором KOMMANDO BOY выполнить действие Stun Grenade.\n\nПравила для этих действий находятся в universal equipment. Выполнение этих действий с помощью этого правила не учитывается в лимитах действий (т.е. если также выбираешь эти гранаты из equipment)."
+            }
+          ]
+        },
+        {
+          "name": "Kommando Breacha Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Slugga",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Breacha ram",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/5",
+              "wr": "Brutal, Severe, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Breach",
+              "text": "1AP. Размести один свой Breach marker в пределах control range этого оператора как можно ближе к элементу террейна в пределах его control range. Пока оператор в пределах 1\" от этого маркера, части того элемента террейна толщиной не более 1\" считаются Accessible terrain.\n\nЭтот оператор может выполнить это действие во время действия Charge или Reposition, и в этом случае оно стоит на 1 AP меньше; оставшуюся дистанцию движения можно использовать после этого.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или если элемент террейна не в пределах его control range."
+            }
+          ]
+        },
+        {
+          "name": "Kommando Burna Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Burna (standard)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 8\", Saturate, Torrent 2\""
+            },
+            {
+              "name": "Burna (deluge)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 4\", Saturate, Seek, Torrent 0\"*"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Torrent 0\"",
+              "text": "Torrent 0\" означает, что нельзя выбирать дополнительные вторичные цели, но это оружие всё равно имеет weapon rule Torrent для всех прочих игровых целей (например, правило Condensed Stronghold)."
+            }
+          ]
+        },
+        {
+          "name": "Kommando Comms Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Shokka pistol",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "1/0",
+              "wr": "Range 8\", Devastating 2, Severe, Stun"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "I Got a Plan, Ladz",
+              "text": "Once во время каждой активации этого оператора он может выполнить действие Pick Up Marker, Place Marker или mission-действие за 1 AP меньше."
+            },
+            {
+              "name": "Listen In",
+              "text": "SUPPORT. Выбери одного другого дружественного оператора KOMMANDO (кроме BOMB SQUIG), видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Kommando Dakka Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Dakka shoota (short range)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 9\", Ceaseless"
+            },
+            {
+              "name": "Dakka shoota (long range)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Dakka Dash",
+              "text": "Выполни свободное действие Dash и свободное действие Shoot этим оператором в любом порядке. Для этого действия Shoot можно выбрать только dakka shoota.\n\nЭтот оператор не может выполнять это действие, имея Conceal order, или находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Kommando Grot",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 5,
+          "weapons": [
+            {
+              "name": "Grot choppa",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "1/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Sneaky Zogger",
+              "text": "Этот оператор не может иметь Engage order. Пока этот оператор in cover, его нельзя выбрать в качестве допустимой цели, что имеет приоритет над всеми прочими правилами (например, Seek, Vantage terrain), кроме нахождения в пределах 2\"."
+            },
+            {
+              "name": "Grappling Hook",
+              "text": "Выбери видимую точку на элементе террейна для этого оператора. Убери этого оператора из killzone и размести его заново в пределах 1\" по горизонтали от той точки, в месте, куда его можно разместить, не в пределах control range вражеских операторов, и с той точкой, видимой ему.\n\nЭто действие считается действием Reposition. Этот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время активации, в которой он выполнил действие Charge или Fall Back (и наоборот).",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Kommando Rokkit Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Rokkit launcha (aimed)",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Blast 1\", Ceaseless, Heavy (Dash only)"
+            },
+            {
+              "name": "Rokkit launcha (mobile)",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Blast 1\""
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": []
+        },
+        {
+          "name": "Kommando Slasha Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Throwing knives",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/5",
+              "wr": "Range 6\", Silent"
+            },
+            {
+              "name": "Twin choppas",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Ceaseless, Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Dat All You Got?",
+              "text": "После того как этот оператор дерётся или отвечает (retaliating), если он не incapacitated, можно нанести D3 урона вражескому оператору в этой последовательности."
+            }
+          ]
+        },
+        {
+          "name": "Kommando Snipa Boy",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Scoped big shoota (concealed)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Devastating 2, Heavy, Silent, Concealed Position*"
+            },
+            {
+              "name": "Scoped big shoota (stationary)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Devastating 2, Heavy"
+            },
+            {
+              "name": "Scoped big shoota (sweeping)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Heavy (Dash only), Torrent 1\""
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Concealed Position",
+              "text": "Этот оператор может использовать это оружие только в первый раз, когда он выполняет действие Shoot за битву."
+            }
+          ]
+        }
+      ],
+      "poolPick": 9,
+      "equipment": "Kommandos",
+      "lore": {
+        "intro": "Kommandos — необычные для Ork'ов мастера скрытности. Они используют любые нечестные и хитрые приёмы, какие только могут придумать, чтобы достичь своих целей. Но стоит начаться бою, как их природная любовь к насилию берёт верх.",
+        "operatives": [
+          {
+            "name": "Kommando Boss Nob",
+            "text": "Самые хитрые из хитрых гитов, Kommando Nob-ы одновременно жестоки и достаточно хитроумны, чтобы командовать самыми коварными представителями своего вида."
+          },
+          {
+            "name": "Kommando Bomb Squig",
+            "text": "Bomb squig-и — одни из самых опасных представителей своего вида. Помимо того, что они прожорливые хищники, как следует из названия, они несут на себе всевозможную взрывчатку. В бою они мчатся к врагу, подрывая вражеские войска и уничтожая их укрепления."
+          },
+          {
+            "name": "Kommando Boy",
+            "text": "Kommando-ы воплощают орочью добродетель хитрости. Мало что делает их счастливее, чем подкрасться к ничего не подозревающему врагу и изрубить, изрешетить и расстрелять его прежде, чем тот успеет дать отпор."
+          },
+          {
+            "name": "Kommando Breacha Boy",
+            "text": "Kommando Breacha Boy-ям поручено вламываться в помещения и врагов, круша их своими Breacha ram-ами. Это занятие им по душе, а те, кто видел их в деле и выжил, вскоре начинают особенно бояться этих жестоких зеленокожих."
+          },
+          {
+            "name": "Kommando Burna Boy",
+            "text": "Burna Boy-и все как один — пироманьяки, одержимые полыхающими инферно — чем больше и жарче, тем лучше. Те из Kommando-ов, что исполняют эту роль, проявляют исключительное терпение, зная, что ожидание делает опустошение, которое они сеют своими burna, ещё более удовлетворяющим."
+          },
+          {
+            "name": "Kommando Comms Boy",
+            "text": "Нет оправдания тому, чтобы не следовать плану босса, каким бы сомнительно разумным он ни казался. Kommando Comms Boy-и следят за тем, чтобы ни один Ork не «забыл» свои приказы на поле боя, передавая указания босса."
+          },
+          {
+            "name": "Kommando Dakka Boy",
+            "text": "Звук ревущей dakka — музыка для ушей многих Ork'ов, и не в последнюю очередь для Kommando Dakka Boy-ев. Они с превеликим удовольствием обрушивают на врага огромные объёмы пуль, уничтожая лёгкое укрытие, обращая врагов в бегство и сея панику."
+          },
+          {
+            "name": "Kommando Grot",
+            "text": "Чтобы продержаться в жестоких реалиях орочьего общества, Grot-ам приходится учиться лгать, обманывать, воровать, подлизываться и строить планы — все эти качества ценны для Kommando kill team."
+          },
+          {
+            "name": "Kommando Rokkit Boy",
+            "text": "Поднимаясь из укрытых позиций, Kommando Rokkit Boy-и обстреливают ракетами бункеры, топливные хранилища, склады боеприпасов или прямо гущу ничего не подозревающего врага — и всё это с широкой ухмылкой при виде причинённого хаоса."
+          },
+          {
+            "name": "Kommando Slasha Boy",
+            "text": "Slasha Boy-и любят оказываться в самой гуще боя, даже по орочьим меркам. Увешанные всевозможными клинками, они прорубаются сквозь врага за врагом."
+          },
+          {
+            "name": "Kommando Snipa Boy",
+            "text": "Хотя немногим Ork'ам хватает терпения быть Kommando Snipa Boy, те, кто исполняет эту роль, — настоящие эксперты в поиске лучших позиций для стрельбы по врагу, убийстве цели и наблюдении за тем, как выжившие мечутся и паникуют в замешательстве."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Throat Slittas",
+          "text": "Каждый дружественный оператор KOMMANDO (кроме BOMB SQUIG) может выполнить действие Charge, имея Conceal order."
+        },
+        {
+          "name": "Dakka! Dakka! Dakka!",
+          "text": "Ranged-оружие дружественных операторов KOMMANDO получает weapon rule Punishing.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Waaagh!",
+          "text": "Оружие ближнего боя дружественных операторов KOMMANDO получает weapon rule Balanced.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Skulk About",
+          "text": "Когда вражеский оператор стреляет по дружественному оператору KOMMANDO, имеющему Conceal order, можно удержать один свой defence dice как normal success, не бросая его (в дополнение к cover save, если есть).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Ssssshhhh!",
+          "text": "Каждый дружественный оператор KOMMANDO, который не является допустимой целью для вражеских операторов, либо имеет Conceal order и находится более чем в 6\" от вражеских операторов, может сразу выполнить свободное действие Dash. Нельзя использовать этот ploy в течение первого turning point.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Just a Scratch",
+          "text": "Используй этот firefight ploy, когда кубик атаки должен нанести Normal Dmg дружественному оператору KOMMANDO (кроме BOMB SQUIG и GROT). Проигнорируй этот нанесённый урон.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Krump 'Em!",
+          "text": "Используй этот firefight ploy в конце Firefight phase. Выбери одного дружественного оператора KOMMANDO. Он может сразу выполнить свободное действие Fight.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Kunnin' But Brutal",
+          "text": "Используй этот firefight ploy, когда дружественный оператор KOMMANDO, имеющий Conceal order, дерётся во время активации, в которой он выполнил действие Charge, ты разрешаешь первый кубик атаки, и это strike с normal success. Считай тот normal success critical success вместо этого.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Shake It Off",
+          "text": "Используй этот firefight ploy, когда дружественный оператор KOMMANDO активируется, или когда изменяется его APL stat. До начала следующего turning point можно игнорировать любые изменения его APL stat.",
+          "cost": "Firefight Ploy"
+        }
+      ]
+    },
+    "Murderwing": {
+      "archetypes": [
+        "Recon",
+        "Seek & Destroy"
+      ],
+      "required": [
+        {
+          "name": "Murderwing Chaos Lord",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 15,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Lightning claw",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Lethal 5+, Rending"
+            },
+            {
+              "name": "Power fist",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/7",
+              "wr": "Brutal, Shock"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Relic lightning claws",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Ceaseless, Lethal 5+, Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Path to Damnation",
+              "text": "Этот оператор начинает битву с 1 Damnation point. Once per action, можно попытаться применить один Boon of Damnation, когда это указано. Если применяешь, брось один D6 и сравни результат с числом Damnation points у этого оператора; если результат:\n- Higher: разреши правило, затем этот оператор получает 1 Damnation point.\n- Equal: не разрешай правило.\n- Less: нанеси этому оператору урон, равный его числу Damnation points, и не разрешай правило.\n\nЕсли у этого оператора 6 Damnation points, разреши правило без броска. Нельзя предпринимать попытку больше одного раза за действие, вне зависимости от результата D6."
+            },
+            {
+              "name": "Boons of Damnation",
+              "text": "Boons of Damnation разрешаются броском D6, см. выше:\n- Когда кубик атаки должен нанести этому оператору урон 3 или более, можно игнорировать количество урона, равное числу Damnation points этого оператора.\n- Когда этот оператор дерётся или отвечает (retaliating) и наносит удар (strike) кубиком атаки, можно нанести дополнительный урон, равный числу Damnation points этого оператора."
+            }
+          ]
+        }
+      ],
+      "pool": [
+        {
+          "name": "Murderwing Champion",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Power fist",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/7",
+              "wr": "Brutal, Shock"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Chaos Champion",
+              "text": "STRATEGIC GAMBIT. Убери свой Challenge token с вражеского оператора, у которого он есть (если есть), затем выбери одного вражеского оператора, чтобы получить твой Challenge token. Когда этот оператор дерётся против или отвечает (retaliating) против оператора, у которого есть его Challenge token, на этапе Select Weapons можно выбрать одно из следующих weapon rules для оружия ближнего боя этого оператора до конца последовательности: Balanced, Brutal, Punishing, Severe, Shock."
+            },
+            {
+              "name": "Path to Glory",
+              "text": "Каждый раз, когда этот оператор выводит из строя вражеского оператора, у которого есть его Challenge token, ты получаешь 1CP."
+            }
+          ]
+        },
+        {
+          "name": "Murderwing Curseclaw",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Mutated claws",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Frenzied Attack",
+              "text": "Если этот оператор выведен из строя во время действия Fight, можно нанести удар (strike) вражескому оператору в этой последовательности одним из своих неразрешённых successes, прежде чем этот оператор будет убран из killzone."
+            },
+            {
+              "name": "Snatch",
+              "text": "1AP. BOOST action. Выбери одного вражеского оператора в пределах BOOST ZONE этого оператора. Оба игрока бросают по одному D6 и добавляют результат к Wounds stat своего оператора. Если твой результат выше, убери того вражеского оператора из killzone и поставь его обратно в пределах BOOST ZONE этого оператора или его control range. Он должен быть размещён в месте, где может быть размещён, и не может быть размещён дальше от этого оператора, чем был при уборке.\n\nЭтот оператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Fall Back или Reposition после установки из BOOST."
+            }
+          ]
+        },
+        {
+          "name": "Murderwing Depredator",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Great chainaxe",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "5/7",
+              "wr": "Brutal"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Horrifying Dismemberment",
+              "text": "Каждый раз, когда этот оператор выводит из строя вражеского оператора, деясь или отвечая (retaliating), выбери одного другого вражеского оператора, видимого этому или выведенному из строя вражескому оператору и в пределах 3\" от одного из них. Вычти 1 из APL stat того вражеского оператора до конца его следующей активации."
+            },
+            {
+              "name": "Carving Blow",
+              "text": "1AP. Нанеси 2D3 урона каждому оператору, видимому этому оператору и в пределах 2\" от него, в выбранном тобой порядке (разрешай каждый отдельно).\n\nЭтот оператор не может выполнять это действие, имея Conceal order, или во время той же активации, в которой он выполнил действие Slice from Above (см. Bladefins faction equipment), действие Clawed Charge (см. Clawed Armour faction equipment) или два действия Fight (и наоборот)."
+            }
+          ]
+        },
+        {
+          "name": "Murderwing Huntmaster",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Power weapon",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Pinned Prey",
+              "text": "Каждый раз, когда вражеский оператор будет выполнять действие Fall Back в пределах control range этого оператора, если нет других дружественных операторов в пределах control range этого вражеского оператора, можно применить это правило. Если применяешь, брось два D6, либо один D6, если у того вражеского оператора Wounds stat выше, чем у этого оператора. Если любой результат — 4+, тот вражеский оператор не может выполнить это действие во время этой активации/counteract-а (AP за него не тратится)."
+            },
+            {
+              "name": "Strike from Above",
+              "text": "1AP. BOOST action. Нанеси 2D3+1 урона одному вражескому оператору в пределах BOOST ZONE этого оператора.\n\nЭтот оператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Fall Back или Reposition после установки из BOOST."
+            }
+          ]
+        },
+        {
+          "name": "Murderwing Raptor",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "maxCopies": 5,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Thrill of Flight",
+              "text": "Каждый раз, когда этот оператор выполняет BOOST во время своей активации:\n- Можно убрать любые изменения его APL stat.\n- Можно игнорировать любые изменения его stats от ранения (including его weapons' stats) до конца активации."
+            }
+          ]
+        },
+        {
+          "name": "Murderwing Shrieker",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Chainsword",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Modified Vox-casters",
+              "text": "Каждый раз, когда вражеский оператор в пределах 3\" от этого оператора, твой оппонент должен потратить 1 дополнительный AP, чтобы тот вражеский оператор выполнил действие Pick Up Marker и mission-действия.\n\nПри определении контроля маркера, считай общий APL stat вражеских операторов, оспаривающих его, на 1 меньше, если хотя бы один из тех операторов в пределах 3\" от этого оператора. Это не изменение APL stat, поэтому такие изменения суммируются с этим."
+            },
+            {
+              "name": "Shriek",
+              "text": "1AP. Выбери одного вражеского оператора, видимого этому оператору и в пределах 6\" от него. Как альтернатива, выбери одного вражеского оператора в пределах BOOST ZONE этого оператора (в этот момент он становится BOOST). Если вражеские операторы в пределах control range этого оператора, нельзя выбрать вражеского оператора, который не в их числе. Нанеси D3 урона выбранному оператору и вычти 1 из его APL stat до конца его следующей активации.\n\nЭтот оператор не может выполнять это действие, имея Conceal order. Если выбираешь вражеского оператора в пределах BOOST ZONE этого оператора, этот оператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Fall Back или Reposition после установки из BOOST."
+            }
+          ]
+        },
+        {
+          "name": "Murderwing Skysear",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Flamer",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 8\", Saturate, Torrent 2\""
+            },
+            {
+              "name": "Meltagun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "6/3",
+              "wr": "Range 6\", Devastating 4, Piercing 2"
+            },
+            {
+              "name": "Plasma gun (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Plasma gun (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": []
+        },
+        {
+          "name": "Murderwing Warp Talon",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "weapons": [
+            {
+              "name": "Lightning claws",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Ceaseless, Lethal 5+, Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Slice the Veil",
+              "text": "При установке этого оператора перед битвой, можно вместо этого установить его в warp: помести его в сторону от killzone. В первую Firefight phase, когда этот оператор активируется, помести один свой Warp marker полностью в пределах своей территории, затем разверни этого оператора им.\n\nВо вторую Firefight phase, когда этот оператор активируется, установи его полностью в пределах своей drop zone либо полностью в пределах своей территории, оспаривая свой Warp marker. Продолжай его активацию как обычно, но во время неё нельзя потратить более 2AP на него, и нельзя использовать более 4\" дистанции движения. До Ready step следующей Strategy phase, этот оператор obscured для операторов на расстоянии более 3\" от него.\n\nПока этот оператор в warp, он считается ready дружественным оператором MURDERWING для firefight ploy Malicious Narcissism."
+            }
+          ]
+        }
+      ],
+      "poolPick": 5,
+      "equipment": "Murderwing",
+      "lore": {
+        "intro": "Murderwing — банда Chaos Space Marine Raptors и Warp Talons, обрушивающихся на врагов сверху на реактивных ранцах, среди столбов пламени. Их операторы — садистские убийцы, чьи одержимости отражены в мутациях, доспехах и оружии, которое они несут в бой. Все они — безжалостные охотники, объединяющие свои умения, чтобы избранная добыча не смогла ускользнуть.",
+        "operatives": [
+          {
+            "name": "Murderwing Chaos Lord",
+            "text": "Многие Chaos Lord-ы наслаждаются трепетом воздушного боя, упиваясь ужасом, который они внушают своей добыче. Возглавляющие Murderwing делают это личным примером, обрушиваясь во главе атаки, чтобы избивать врагов power weapons, lightning claws и power fists и рвать своих жертв на части."
+          },
+          {
+            "name": "Murderwing Champion",
+            "text": "Murderwing Champion-ы добиваются главенства над союзниками через запугивание и кровопролитие. Это грозные воины, демонстрирующие своё мастерство, выискивая, вступая в бой и убивая вражеских лидеров и героев, тем самым укрепляя собственный авторитет."
+          },
+          {
+            "name": "Murderwing Huntmaster",
+            "text": "Huntmaster — прецизионный убийца, выбирающий цели перед тем, как обрушиться с небес, чтобы пронзить их своим power glaive. Часто жертвы оставляются корчиться на острие его копья, наблюдая, как их союзников разрывают на части."
+          },
+          {
+            "name": "Murderwing Depredator",
+            "text": "Беспорядочный убийца, Depredator обрушивается в самую гущу схватки, скашивая множество врагов каждым жестоким взмахом своего гигантского двуручного оружия."
+          },
+          {
+            "name": "Murderwing Shrieker",
+            "text": "Одержимые желанием вселять леденящий душу ужас, Shrieker-ы украшают свои варварские доспехи громкоговорителями и vox-casters, усиливающими их леденящие кровь вопли, когда они обрушиваются в самую гущу врагов."
+          },
+          {
+            "name": "Murderwing Curseclaw",
+            "text": "Полностью приняв свою звериную природу, Curseclaw-ы — жутко мутировавшие создания, движимые инстинктом. Они сражаются и убивают в исступлении, используя когтистые руки и ноги."
+          },
+          {
+            "name": "Murderwing Skysear",
+            "text": "Предпочитая уничтожать врагов вспышками пламени или лучами тепловой энергии, Skysear-ы используют свою мобильность, чтобы занять идеальные позиции для убийства."
+          },
+          {
+            "name": "Murderwing Warp Talon",
+            "text": "Дикие до крайности, Warp Talon-ы спускаются с цепи, как охотничьи псы. Их чувства, настроенные эмпирически, позволяют им выслеживать и устраивать засады на добычу с безошибочной точностью и свирепостью."
+          },
+          {
+            "name": "Murderwing Raptor",
+            "text": "Презираемые союзниками за своё чванливое высокомерие, Raptor-ы тем не менее ценятся многими Chaos Lord-ами за боевые навыки. Они заслуженно известны своим садизмом, стремясь не только разорвать врагов на части, но и вселить в них полный ужас перед тем, как нанести смертельный удар."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Jump Pack",
+          "text": "Каждый раз, когда дружественный оператор MURDERWING выполняет действие Charge, Fall Back или Reposition во время своей активации, в начале любого straight-line increment, если ни одна часть его базы не находится под Vantage terrain, он может выполнить BOOST на этот increment. Если делает это, он не двигается на этот increment; вместо этого уберите его из killzone и установите его обратно полностью в пределах x\" по горизонтали от его исходного местоположения. X — дистанция по твоему выбору (округлённая до целого дюйма), но она добавляется к общей дистанции движения, использованной для этого действия. Если это BOOST во время действия Charge, не добавляй дополнительные 2\" к его move allowance.\n\nЭтот оператор должен быть установлен в месте, где он может быть размещён, и не может быть установлен в пределах control range вражеского оператора, если это не действие Charge."
+        },
+        {
+          "name": "Astartes",
+          "text": "Во время каждой активации дружественного оператора MURDERWING он может выполнить либо два действия Shoot, либо два действия Fight. Если это два действия Shoot, для хотя бы одного из них должен быть выбран bolt pistol.\n\nКаждый дружественный оператор MURDERWING может выполнить counteract вне зависимости от своего order."
+        },
+        {
+          "name": "Predators Above",
+          "text": "Каждый раз, когда дружественный оператор MURDERWING находится как минимум на 2\" выше пола killzone, его оружие получает weapon rule Balanced. Каждый раз, когда дружественный оператор MURDERWING выполняет BOOST, его оружие получает weapon rule Balanced до конца этой активации.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Cull the Weak",
+          "text": "Каждый раз, когда дружественный оператор MURDERWING стреляет или дерётся, его оружие получает weapon rule Punishing, если верно любое из следующего для оператора, против которого стреляет или дерётся дружественный оператор:\n- Он как минимум на 2\" ниже того дружественного оператора.\n- Его APL stat меньше нормального.\n- Он был wounded в начале активации/counteract-а.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Nightmare on High",
+          "text": "Каждый раз, когда оператор стреляет по дружественному оператору MURDERWING, который как минимум на 2\" выше пола killzone или выполнил BOOST в этот turning point, можно перебросить один свой кубик защиты.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Instil Fear",
+          "text": "Каждый раз, когда дружественный оператор MURDERWING дерётся, Normal Dmg 3 или более наносит на 1 меньше урона.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Malicious Narcissism",
+          "text": "Используй этот firefight ploy, когда наступает твоя очередь активироваться с дружественным оператором, если только один дружественный оператор MURDERWING ready. До конца turning point, каждый раз, когда у тебя меньше ready дружественных операторов, чем у оппонента, можно пропустить свою активацию. Нельзя выполнять counteract, пока тот дружественный оператор MURDERWING не будет активирован.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Murderous Descent",
+          "text": "Используй этот firefight ploy, когда вражеский оператор заканчивает действие Charge, Dash, Fall Back или Reposition в пределах 3\" по горизонтали и более чем на 2\" ниже дружественного оператора MURDERWING. Прерви активацию/counteract того вражеского оператора и сразу выполни свободное действие Charge тем дружественным оператором. Он должен закончить это действие в пределах control range того вражеского оператора. Если это невозможно, прерывание отменяется, и это правило не считается использованным.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Long Forgotten Honour",
+          "text": "Используй этот firefight ploy, когда дружественный оператор MURDERWING дерётся или отвечает (retaliating), когда ты разрешаешь critical success. Вместо нанесения удара (strike) или блока, заверши последовательность (оставшиеся кубики атаки отбрасываются) и сразу выполни свободное действие Fall Back на расстояние до 3\" тем оператором (затем действие Fight заканчивается). Этот оператор может сделать это, даже если он выполнил действие, запрещающее ему выполнять действие Fall Back.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Wings of Darkness",
+          "text": "Используй этот firefight ploy, когда дружественный оператор MURDERWING выполняет действие Fall Back или Reposition, когда он выполняет BOOST. Этот оператор может быть установлен на дополнительные 3\" дальше от этого BOOST, но не может выполнить действие Shoot, Fight или Carving Blow (см. оператор DEPREDATOR) до следующего turning point. Нельзя использовать этот ploy в первый turning point.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "damnation_points",
+          "name": "Damnation Points",
+          "target": "friendly",
+          "counter": true,
+          "max": 6
+        },
+        {
+          "id": "challenge_token",
+          "name": "Challenge Token",
+          "target": "enemy"
+        }
+      ]
+    },
+    "Pathfinders": {
+      "archetypes": [
+        "Infiltration",
+        "Recon"
+      ],
+      "required": [
+        {
+          "name": "Shas'ui Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Pulse carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            }
+          ]
+        }
+      ],
+      "pool": [
+        {
+          "name": "Assault Grenadier Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Fusion grenade",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/3",
+              "wr": "Range 6\", Devastating 2, Limited 1, Piercing 2, Saturate"
+            },
+            {
+              "name": "Pulse carbine",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Grenadier Specialist",
+              "text": "Этот оператор может использовать frag и krak grenades (см. universal equipment). Это не считается за лимит limited uses, даже если ты также выбрал эти grenades для других операторов. Каждый раз, когда он это делает, улучши Hit stat того оружия на 1."
+            }
+          ]
+        },
+        {
+          "name": "Blooded Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Suppressed pulse carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Silent"
+            },
+            {
+              "name": "Bionic arm",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Veteran",
+              "text": "Во время turning point, в котором дружественный оператор SHAS'UI использовал свой Strategic Gambit Art of War и был выбран Mont'ka, этот оператор может использовать Kauyon вместо этого во время своей активации (и наоборот)."
+            }
+          ]
+        },
+        {
+          "name": "Comms Specialist Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Pulse carbine",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Signal",
+              "text": "SUPPORT. Выбери одного другого дружественного оператора PATHFINDER, видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Drone Controller Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Pulse carbine",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Drone Controller",
+              "text": "Пока этот оператор в killzone: добавь 2\" к Move stat дружественных операторов PATHFINDER DRONE; firefight ploy Saviour Protocols стоит для тебя 0CP."
+            },
+            {
+              "name": "Remote Pilot",
+              "text": "Один дружественный оператор PATHFINDER DRONE может сразу выполнить одно свободное действие, но не может переместиться более чем на 2\" во время этого действия.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Marksman Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Marksman rail rifle (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/4",
+              "wr": "Devastating 2, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Marksman rail rifle (dart round)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Piercing 1, Silent"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Inertial Dampener",
+              "text": "Можно игнорировать любые изменения Hit stat этого оператора marksman rail rifle."
+            }
+          ]
+        },
+        {
+          "name": "Medical Technician Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Pulse carbine",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Medic!",
+              "text": "Первый раз в течение каждого turning point, когда другой дружественный оператор PATHFINDER (кроме DRONE) должен быть выведен из строя, будучи видимым этому оператору и в пределах 3\" от него, можно использовать это правило, если ни этот, ни тот оператор не в пределах control range вражеского оператора. Если используешь, тот дружественный оператор не выводится из строя, имеет 1 оставшийся wound и не может быть выведен из строя до конца этого действия. После этого действия тот дружественный оператор может сразу выполнить свободное действие Dash, но должен закончить это движение в пределах control range этого оператора. Отними 1 от APL stat того оператора до конца его следующей активации."
+            },
+            {
+              "name": "Medikit",
+              "text": "Выбери одного дружественного оператора PATHFINDER (кроме DRONE) в пределах control range этого оператора, чтобы он восстановил до 2D3 потерянных wounds. Он не может быть оператором, для которого было использовано правило Medic! в течение этого turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Shas'la Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Pulse carbine",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Group Activation",
+              "text": "Каждый раз, когда этот оператор становится expended, ты должен затем активировать другого ready дружественного оператора SHAS'LA (если возможно) прежде, чем активируется твой оппонент."
+            },
+            {
+              "name": "Fearless on the Frontline",
+              "text": "Этот оператор может выполнять действие Markerlight, находясь в пределах control range вражеского оператора. Кроме того, этот оператор может выполнять действие Fall Back за 1 AP меньше."
+            },
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "Transpectral Interference Pathfinder",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Pulse carbine",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "System Jam",
+              "text": "Выбери одного вражеского оператора, видимого этому оператору. До конца следующей активации того оператора отними 1 от его APL stat.\n\nЭтот оператор не может выполнять это действие, имея Conceal order, или находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Multi-Dimensional Vision",
+              "text": "Когда этот оператор стреляет, вражеские операторы не могут быть obscured."
+            }
+          ]
+        },
+        {
+          "name": "Weapons Expert Pathfinder",
+          "maxCopies": 2,
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Ion rifle (standard)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Ion rifle (overcharge)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Rail rifle",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/4",
+              "wr": "Devastating 2, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": []
+        },
+        {
+          "name": "MB3 Recon Drone",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Burst cannon (focused)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Ceaseless, Heavy (Reposition only), Piercing 1"
+            },
+            {
+              "name": "Burst cannon (sweeping)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Ceaseless, Heavy (Reposition only), Punishing, Torrent 1\""
+            },
+            {
+              "name": "Ram",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Analyse",
+              "text": "Каждый раз, когда этот оператор выполняет действие Markerlight, каждый другой вражеский оператор, видимый этому оператору и в пределах 3\" от вражеского оператора, выбранного для этого действия, также получает один твой Markerlight token."
+            },
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Markerlight, Reposition и Shoot. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
+            }
+          ]
+        },
+        {
+          "name": "MV1 Gun Drone",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Twin pulse carbine",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Ceaseless"
+            },
+            {
+              "name": "Ram",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Reposition и Shoot. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
+            }
+          ]
+        },
+        {
+          "name": "MV4 Shield Drone",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Ram",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight и Reposition. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
+            },
+            {
+              "name": "Shield Generator",
+              "text": "Этот оператор игнорирует weapon rule Piercing. Once per turning point, когда кубик атаки должен нанести Normal Dmg этому оператору, можно проигнорировать этот нанесённый урон. Можно использовать firefight ploy Saviour Protocols за 0CP, если этот оператор — указанный DRONE."
+            }
+          ]
+        },
+        {
+          "name": "MV7 Marker Drone",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Ram",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "High-intensity Markerlight",
+              "text": "Каждый раз, когда этот оператор выполняет действие Markerlight, выбранный вражеский оператор получает два твоих Markerlight token (вместо одного)."
+            },
+            {
+              "name": "Markerlight",
+              "text": "См. faction rule Markerlights.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Markerlight и Reposition. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
+            }
+          ]
+        },
+        {
+          "name": "MV31 Pulse Accelerator Drone",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Ram",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Pulse Accelerator и Reposition. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
+            },
+            {
+              "name": "Pulse Accelerator",
+              "text": "До начала следующей активации этого оператора или пока он не выведен из строя (смотря что раньше): каждый раз, когда другой дружественный оператор PATHFINDER стреляет из pulse weapon в пределах 3\" от этого оператора, то оружие получает weapon rules Lethal 5+ и Severe.",
+              "cost": "1AP"
+            }
+          ]
+        },
+        {
+          "name": "MV33 Grav-inhibitor Drone",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Ram",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight и Reposition. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
+            },
+            {
+              "name": "Grav-inhibitor",
+              "text": "Каждый раз, когда вражеский оператор выполняет действие, в котором он перемещается (кроме Dash), если он переместился бы так, чтобы быть видимым и в пределах 6\" от этого оператора, считай эту дистанцию как дополнительные 2\" и игнорируй дополнительные дистанции от Obstructing и Accessible terrain rules. Каждый раз, когда вражеский оператор дерётся или отвечает (retaliating), будучи видимым и в пределах 6\" от этого оператора, ухудшай Hit stat оружия ближнего боя того вражеского оператора на 1. Это суммируется с injured."
+            }
+          ]
+        }
+      ],
+      "poolPick": 11,
+      "equipment": "Pathfinders",
+      "lore": {
+        "intro": "Специализированная разведывательная пехота, T'au Pathfinders продвигаются далеко впереди своих союзников. Kill team Pathfinder способна действовать независимо от основных сил T'au и оснащена почти для любой ситуации. Их продвинутое снаряжение и мощное вооружение позволяют им нарушать коммуникации, проводить диверсии и уничтожать цели.",
+        "operatives": [
+          {
+            "name": "Shas'ui Pathfinder",
+            "text": "Shas'ui Pathfinder-ы — ветераны, прошедшие множество кампаний. Они прошли через опасные испытания огнём, чтобы достичь этого звания, и являются динамичными и опытными тактиками, вполне способными вести команду к победе."
+          },
+          {
+            "name": "Assault Grenadier Pathfinder",
+            "text": "Самые горячие головы среди Pathfinder-ов обучены проводить крайне опасные атаки на вражеские позиции, используя свои гранаты для оглушения вражеских войск и уничтожения бункеров. Они также оснащены продвинутыми шлемами, делающими их невосприимчивыми к попыткам оглушить их самих."
+          },
+          {
+            "name": "Blooded Pathfinder",
+            "text": "Многие опытные и уважаемые Pathfinder-ы заслуживают личное имя Mont'yr, что переводится как «Blooded». Многие носят продвинутую бионику вместо утраченных конечностей и им доверяют специализированные технологии, такие как suppressed pulse carbine."
+          },
+          {
+            "name": "Comms Specialist Pathfinder",
+            "text": "Comms Specialist-ы встречаются в большинстве Pathfinder kill team, обеспечивая связь с Commander-ами команды, другими kill team и жизненно важными вспомогательными ресурсами."
+          },
+          {
+            "name": "Drone Controller Pathfinder",
+            "text": "Drone Controller Pathfinder-ы проходят дополнительную подготовку по дистанционному управлению дронами, которые часто сопровождают их команды. Тщательной работой и терпением они способны заставить дрона выполнять сложные задачи, недоступные ему при самостоятельном программировании."
+          },
+          {
+            "name": "Marksman Pathfinder",
+            "text": "Marksman Pathfinder-ы носят кастомизированные rail rifle с продвинутой оптикой и сложными демпферами инерции, обеспечивающими невероятную точность. Этим Pathfinder-ам также выдаются экспериментальные dart-боеприпасы, практически бесшумные при выстреле."
+          },
+          {
+            "name": "Medical Technician Pathfinder",
+            "text": "В Pathfinder kill team жизни T'au часто находятся в руках Medical Technician-а. Эти самоотверженные целители идут под шквал вражеского огня, чтобы добраться до раненых."
+          },
+          {
+            "name": "Shas'la Pathfinder",
+            "text": "Даже рядовой состав Pathfinder team — самоотверженные приверженцы Greater Good, охотно вызывающиеся на самые опасные миссии. Они действуют вблизи от противника, чтобы узнать о нём всё, а также вступают с ним в бой при необходимости."
+          },
+          {
+            "name": "Transpectral Interference Pathfinder",
+            "text": "Transpectral Interference Pathfinder-ам поручено глушить вражеские коммуникации с помощью сложных сигнальных скремблеров, способных выводить из строя электронные системы."
+          },
+          {
+            "name": "Weapons Expert Pathfinder",
+            "text": "Weapons Expert Pathfinder-ы владеют тяжёлым вооружением своей kill team. Их задача относительно проста — убить или уничтожить то, что им прикажет их Shas'ui, или что они сочтут важной целью."
+          },
+          {
+            "name": "MB3 Recon Drone",
+            "text": "Эти крупные дроны способны собирать массивы жизненно важных полевых данных, которые могут решить исход битвы. Благодаря большим размерам их также можно оснащать более тяжёлым вооружением — их burst cannon способен эффективно подавлять или выкашивать вражескую пехоту."
+          },
+          {
+            "name": "MV1 Gun Drone",
+            "text": "Используя антигравитационные двигатели и реактивные ускорители, Gun Drone-ы парят над местностью, быстро перемещаясь, чтобы вступить в бой с врагом и фиксировать полевые данные."
+          },
+          {
+            "name": "MV4 Shield Drone",
+            "text": "Shield Drone-ы оснащены генераторами щитов вместо оружия. Их задача — защищать Pathfinder-ов, которых они сопровождают."
+          },
+          {
+            "name": "MV7 Marker Drone",
+            "text": "Высокоинтенсивные markerlight, используемые Marker Drone-ами, жизненно важны для синергии сил T'au. Они указывают приоритетные цели как для Pathfinder-ов, рядом с которыми действуют, так и для других мощных активов T'au."
+          },
+          {
+            "name": "MV31 Pulse Accelerator Drone",
+            "text": "Pulse Accelerator Drone-ы усиливают pulse-оружие, которое несут Pathfinder-ы, делая эту технологию гораздо мощнее и давая жизненно важное преимущество перед врагом."
+          },
+          {
+            "name": "MV33 Grav-inhibitor Drone",
+            "text": "Grav-inhibitor Drone-ы способны манипулировать гравитацией вокруг себя и значительно замедлять продвижение вражеских войск."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Markerlights",
+          "text": "Markerlight — 1AP. Выбери одного вражеского оператора, видимого этому оператору. Тот вражеский оператор получает один твой Markerlight token (максимум до четырёх).\n\nОператор не может выполнять это действие, находясь в пределах control range вражеского оператора.\n\nХотя действие Markerlight могут выполнять только некоторые операторы PATHFINDER, все операторы PATHFINDER могут получать выгоду от его эффектов. Каждый раз, когда дружественный оператор PATHFINDER стреляет оружием со своего datacard (кроме fusion grenade у ASSAULT GRENADIER), если у цели есть твои Markerlight token, то оружие получает дополнительные правила в зависимости от числа token на цели. Эти правила суммируются.\n\nТаблица дополнительных правил по числу Markerlight token:\n1 — Weapon rules Saturate и Balanced.\n2 — Улучши Hit stat того оружия дружественного оператора на 1 (максимум до 3+).\n3 — Цель не может быть obscured.\n4 — Weapon rule Seek Light.\n\nOnce per activation каждого вражеского оператора, каждый раз, когда вражеский оператор, у которого есть твои Markerlight token, выполняет действие Dash, Charge, Fall Back или Reposition, убери один из этих token."
+        },
+        {
+          "name": "Recon Sweep",
+          "text": "Выбери один killzone edge (кроме своего). Каждый дружественный оператор PATHFINDER, полностью находящийся в пределах 6\" от того края, может сразу выполнить свободное действие Dash в выбранном тобой порядке, но каждый, кто это делает, должен закончить это движение полностью в пределах 6\" от killzone edge (кроме своего). Нельзя использовать этот ploy в течение первого turning point.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Suppressing Fire",
+          "text": "Каждый раз, когда вражеский оператор выполняет действие Shoot, если цель (или первичная цель, если оружие имеет weapon rules Blast или Torrent) — не ближайшая допустимая цель, твой оппонент не может перебрасывать (re-roll) свои кубики атаки. Игнорируй дружественных операторов PATHFINDER, имеющих Conceal order, или obscured, при определении этого.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Bonded",
+          "text": "Каждый раз, когда дружественный оператор PATHFINDER (кроме DRONE) стреляет или отвечает (retaliating) ranged-оружием, если он в пределах 3\" от другого дружественного оператора PATHFINDER (кроме DRONE), ranged-оружие того первого дружественного оператора получает weapon rule Accurate 1.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Take Cover",
+          "text": "Каждый раз, когда оператор стреляет по дружественному оператору PATHFINDER, если можно удержать любые cover save, улучши Save stat того дружественного оператора на 1.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "A Worthy Cause",
+          "text": "Используй этот firefight ploy в начале Firefight phase. Один дружественный оператор PATHFINDER (кроме DRONE) может сразу выполнить свободное mission-действие.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Supporting Fire",
+          "text": "Используй этот firefight ploy, когда дружественный оператор PATHFINDER выполняет действие Shoot и ты выбираешь допустимую цель в пределах 6\" от него. Наличие других дружественных операторов PATHFINDER в пределах control range вражеского оператора не мешает выбрать того оператора целью.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Saviour Protocols",
+          "text": "Используй этот firefight ploy, когда дружественный оператор PATHFINDER (кроме DRONE) выбран допустимой целью действия Shoot. Выбери одного дружественного оператора PATHFINDER DRONE, видимого и в пределах 3\" от того первого дружественного оператора, чтобы он стал допустимой целью вместо него. Тот дружественный оператор DRONE считается в cover или obscured только если исходная цель была в cover или obscured. Этот ploy не имеет эффекта, если ranged-оружие имеет weapon rule Blast или Torrent.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Point-Blank Fusillade",
+          "text": "Используй этот firefight ploy, когда дружественный оператор PATHFINDER (кроме DRONE) отвечает (retaliating), если он не был в пределах control range вражеских операторов в начале той активации/counteract. Можно использовать одно из его ranged-оружий как оружие ближнего боя в этой последовательности (кроме оружия со словом «grenade» в названии). Если делаешь это, нельзя блокировать (block) в этой последовательности, и следующие weapon rules не имеют эффекта на его оружии до конца этой последовательности: Devastating, Piercing, Torrent.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "markerlight",
+          "name": "Markerlight",
+          "target": "enemy",
+          "counter": true,
+          "max": 4
+        },
+        {
+          "id": "photon_grenade",
+          "name": "Photon Grenade",
+          "target": "enemy"
+        },
+        {
+          "id": "pulse_accelerator",
+          "name": "Pulse Accelerator",
+          "target": "friendly"
+        },
+        {
+          "id": "medic_used",
+          "name": "Medic",
+          "target": "friendly"
+        }
+      ],
+      "factionChoices": [
+        {
+          "id": "art_of_war",
+          "label": "Art of War",
+          "scope": "game",
+          "pick": 1,
+          "oncePerBattle": true,
+          "options": [
+            {
+              "id": "montka",
+              "name": "Mont'ka",
+              "text": "Добавь 1\" к Move stat дружественных операторов PATHFINDER."
+            },
+            {
+              "id": "kauyon",
+              "name": "Kauyon",
+              "text": "Дружественные операторы PATHFINDER могут выполнить свободное действие Markerlight во время своей активации, если у них Conceal order."
+            }
+          ]
         }
       ]
     }

@@ -981,6 +981,59 @@ a { color: var(--accent-bright); }
   min-height: 40px;
 }
 
+/* Компактный степпер для счётчиков statusTokens (Damnation Points, Markerlight) */
+.counter--sm {
+  height: 32px;
+}
+
+.counter--sm button {
+  width: 30px;
+  height: 32px;
+  font-size: 15px;
+}
+
+.counter--sm .counter__value {
+  height: 32px;
+  min-width: auto;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Лёгкая панель "меток врага" — для statusTokens с target:'enemy' */
+.enemy-marker {
+  border: 2px solid var(--line);
+  background: var(--bg);
+  margin: 0 12px 10px;
+  padding: 8px;
+}
+
+.enemy-marker__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.enemy-marker__name-input {
+  flex: 1;
+  background: var(--panel-inset);
+  border: 2px solid var(--line);
+  color: var(--ink);
+  padding: 6px 10px;
+  min-height: 34px;
+  font-weight: 700;
+}
+
+.enemy-marker__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 /* Датакарта оператора — оружие + скиллы, свёрнута по умолчанию, чтобы не мешать
    быстрым игровым кнопкам выше. */
 .operator-datacard {
