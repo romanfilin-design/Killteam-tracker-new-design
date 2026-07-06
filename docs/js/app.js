@@ -655,8 +655,15 @@
 
   function renderFactionRulePanel() {
     var def = findKillTeamDef(gameData, appState.team.killTeamName);
-    var rules = def ? def.factionRules : null;
-    if (!rules || !rules.length) return '';
+    var allRules = def ? def.factionRules : null;
+    if (!allRules || !allRules.length) return '';
+
+    // Правила, уже вынесенные в интерактивный выбор (factionChoices) выше по
+    // экрану — не дублируем их полным текстом здесь, вариант и так виден
+    // игроку в живом виде (см. renderFactionChoicesGamePanel).
+    var choiceLabels = (def.factionChoices || []).map(function (c) { return c.label; });
+    var rules = allRules.filter(function (r) { return choiceLabels.indexOf(r.name) === -1; });
+    if (!rules.length) return '';
 
     var rulesHtml = rules.map(function (r) {
       return '<div class="cheat-section"><h3>' + esc(r.name) + '</h3><p>' + esc(r.text) + '</p></div>';
@@ -696,7 +703,15 @@
           'data-action="setFactionChoiceSlot" data-choice="' + esc(c.id) + '" data-slot="0" data-value="' + esc(o.id) + '">' +
           esc(o.name) + '</button>';
       }).join('');
-      return '<div class="field"><span class="field__label">' + esc(c.label) + '</span><div class="btn-row">' + btnsHtml + '</div></div>';
+      // Подсказка-описание — по выбранному варианту, если есть, иначе по всем
+      // сразу (чтобы можно было прочитать доктрины до выбора, не только после).
+      var selectedOpt = c.options.find(function (o) { return o.id === selectedId; });
+      var hintHtml = selectedOpt && selectedOpt.text
+        ? '<div class="pick-card__detail"><div>' + esc(selectedOpt.text) + '</div></div>'
+        : '<div class="pick-card__detail">' + c.options.map(function (o) {
+            return o.text ? '<div><b>' + esc(o.name) + ':</b> ' + esc(o.text) + '</div>' : '';
+          }).join('') + '</div>';
+      return '<div class="field"><span class="field__label">' + esc(c.label) + '</span><div class="btn-row">' + btnsHtml + '</div>' + hintHtml + '</div>';
     }).join('');
 
     return (
@@ -937,6 +952,16 @@
       '</tr>';
     }).join('');
 
+    var killTeamDef = findKillTeamDef(gameData, t.killTeamName);
+    var factionChoicesHtml = ((killTeamDef && killTeamDef.factionChoices) || []).map(function (c) {
+      var value = (t.factionChoices || {})[c.id] || [];
+      var chosen = value.map(function (optId) { return c.options.find(function (o) { return o.id === optId; }); }).filter(Boolean);
+      var body = chosen.length
+        ? chosen.map(function (o) { return '<p><b>' + esc(o.name) + '</b>' + (o.text ? ' — ' + esc(o.text) : '') + '</p>'; }).join('')
+        : '<p>Не выбрано.</p>';
+      return '<div class="cheat-section"><h3>' + esc(c.label) + '</h3>' + body + '</div>';
+    }).join('');
+
     return (
       '<details class="panel" open>' +
         '<summary>Карточки этой партии</summary>' +
@@ -949,6 +974,7 @@
             '<h3>Tac Op</h3>' +
             (tacOp ? '<p><b>' + esc(tacOp.name) + '</b></p><p>Reveal: ' + esc(tacOp.reveal) + '</p><p>' + esc(tacOp.rules) + '</p><p>VP: ' + esc(tacOp.vp) + '</p>' : '<p>Не выбрана.</p>') +
           '</div>' +
+          factionChoicesHtml +
           '<div class="cheat-section">' +
             '<h3>Kill Op — ' + esc(killOp.desc) + '</h3>' +
             '<table class="killop-table"><thead>' + headHtml + '</thead><tbody>' + bodyHtml + '</tbody></table>' +
@@ -982,6 +1008,7 @@
     selectKillTeam: function (ds) {
       selectKillTeam(gameData, appState.team, ds.value);
       appState.team.name = ds.value;
+      appState.critOpId = null;
       persist(); render();
     },
     adjustPool: function (ds) {

@@ -187,10 +187,22 @@ function rebuildOperatorsFromKillTeam(gameData, team) {
  * вызывающая сторона должна отфильтровать невалидные id при смене команды,
  * см. filterEquipmentAfterTeamChange().
  */
+/**
+ * Смена Kill Team сбрасывает весь остальной сеттап (архетип, Tac Op,
+ * снаряжение, faction-choices), а не только состав пула — иначе выбор
+ * из старой команды (например, id снаряжения фракции) остаётся висеть
+ * в состоянии новой команды и путает лимиты/чекбоксы на экране
+ * подготовки. Crit Op общий на партию, а не завязан на команду,
+ * поэтому его сбрасывает вызывающая сторона (см. ACTIONS.selectKillTeam).
+ */
 function selectKillTeam(gameData, team, killTeamName) {
   team.killTeamName = killTeamName || null;
   team.poolCounts = {};
   team.factionChoices = {};
+  team.archetype = null;
+  team.tacOpId = null;
+  team.equipmentIds = [];
+  team.equipmentUsed = {};
   if (killTeamName) {
     rebuildOperatorsFromKillTeam(gameData, team);
   } else {
