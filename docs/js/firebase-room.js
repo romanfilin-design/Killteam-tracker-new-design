@@ -117,6 +117,16 @@ function toggleEnemyTokenMark(code, opponentUid, opId, tokenId, isOn) {
   return updateDoc(roomRef, update);
 }
 
+// Счётные enemy-токены (Markerlight и т.п., max > 1) — значение хранится
+// числом по тому же ключу; клиент сам передаёт уже посчитанное значение
+// (он знает текущее из живой подписки на комнату), здесь только пишем.
+function setEnemyTokenMarkCount(code, opponentUid, opId, tokenId, value) {
+  var roomRef = doc(db, 'rooms', code);
+  var update = {};
+  update['enemyTokenMarks.' + enemyTokenKey(opponentUid, opId, tokenId)] = value > 0 ? value : deleteField();
+  return updateDoc(roomRef, update);
+}
+
 window.KTRoom = {
   ready: authReady,
   createRoom: createRoom,
@@ -127,6 +137,7 @@ window.KTRoom = {
   setRoomCritOp: setRoomCritOp,
   lockRoomCritOp: lockRoomCritOp,
   toggleEnemyTokenMark: toggleEnemyTokenMark,
+  setEnemyTokenMarkCount: setEnemyTokenMarkCount,
   enemyTokenKey: enemyTokenKey
 };
 window.dispatchEvent(new CustomEvent('ktroom-ready'));

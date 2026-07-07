@@ -187,6 +187,19 @@ a { color: var(--accent-bright); }
   color: var(--bg-deep);
 }
 
+.room-btn {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: none;
+}
+
+@media (max-width: 480px) {
+  .terminal-header__row { flex-wrap: wrap; row-gap: 8px; }
+  .room-btn { flex: 1 0 100%; max-width: none; order: 3; }
+}
+
 /* ==========================================================================
    Панели (карточки)
    ========================================================================== */
@@ -934,6 +947,17 @@ a { color: var(--accent-bright); }
   border-color: var(--accent);
   color: var(--bg-deep);
 }
+
+/* Свои статус-токены (target:'friendly') — зелёный текст, накладываются на
+   собственных операторов. Вражеские (target:'enemy') — красный, показывают
+   эффект, который на нас накладывает соперник (или который мы накладываем
+   на него — см. вкладка «Противник»). */
+.status-chip--friendly { color: var(--ok-dim); border-color: var(--ok-dim); }
+.status-chip--friendly.is-on { background: var(--ok-dim); border-color: var(--ok-dim); color: var(--bg-deep); }
+
+.status-chip--enemy { color: var(--danger); border-color: var(--danger); }
+.status-chip--enemy.is-on { background: var(--danger); border-color: var(--danger); color: var(--bg-deep); }
+.status-chip--enemy:disabled { opacity: 0.7; cursor: default; }
 
 .token-row {
   display: flex;

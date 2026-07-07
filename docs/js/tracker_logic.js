@@ -67,7 +67,6 @@ function createTeam(id, name) {
     operators: [],
     factionChoices: {},     // { choiceId: [optionId, ...] } — см. killTeamDef.factionChoices
     factionChoiceUsedOptions: {}, // { choiceId: [optionId, ...] } — для choice с oncePerBattle:true
-    enemyMarkers: [],       // [{id, name, tokens: {tokenId: bool|number}}] — см. killTeamDef.statusTokens (target:'enemy')
   };
 }
 
@@ -561,42 +560,6 @@ function decrementOpTokenCount(op, tokenId, max) {
   return setOpTokenCount(op, tokenId, (op.tokenCounts[tokenId] || 0) - 1, max);
 }
 
-// ---- лёгкая enemy-панель ("метки врага") — см. enemyStatusTokenDefs выше ----
-
-function addEnemyMarker(team, name = 'Враг') {
-  const marker = { id: generateId(), name, tokens: {} };
-  team.enemyMarkers.push(marker);
-  return marker;
-}
-
-function removeEnemyMarker(team, markerId) {
-  team.enemyMarkers = team.enemyMarkers.filter(m => m.id !== markerId);
-}
-
-function findEnemyMarker(team, markerId) {
-  return team.enemyMarkers.find(m => m.id === markerId) || null;
-}
-
-function renameEnemyMarker(team, markerId, name) {
-  const marker = findEnemyMarker(team, markerId);
-  if (marker) marker.name = name;
-  return marker;
-}
-
-function setEnemyMarkerToken(team, markerId, tokenId, value) {
-  const marker = findEnemyMarker(team, markerId);
-  if (!marker) return null;
-  marker.tokens[tokenId] = value;
-  return marker;
-}
-
-function setEnemyMarkerTokenCount(team, markerId, tokenId, delta, max) {
-  const marker = findEnemyMarker(team, markerId);
-  if (!marker) return null;
-  marker.tokens[tokenId] = clampTokenCount((marker.tokens[tokenId] || 0) + delta, max);
-  return marker;
-}
-
 // ============================================================
 // Игра: снаряжение — использование
 // ============================================================
@@ -648,7 +611,6 @@ function startNewGameKeepingRoster(appState) {
   t.vp = 0;
   t.killGrade = 0;
   t.equipmentUsed = {};
-  t.enemyMarkers = [];
   t.factionChoiceUsedOptions = {};
   t.operators.forEach(o => {
     o.wounds = o.maxWounds;
@@ -686,7 +648,7 @@ function importState(rawState) {
   if (!t.equipmentUsed) t.equipmentUsed = {};
   if (!t.factionChoices) t.factionChoices = {};
   if (!t.factionChoiceUsedOptions) t.factionChoiceUsedOptions = {};
-  if (!t.enemyMarkers) t.enemyMarkers = [];
+  delete t.enemyMarkers;
   (t.operators || []).forEach(o => {
     if (o.order === undefined) o.order = null;
     if (o.apl === undefined) o.apl = null;
@@ -784,12 +746,6 @@ if (typeof module !== 'undefined' && module.exports) {
     setOpTokenCount,
     incrementOpTokenCount,
     decrementOpTokenCount,
-    addEnemyMarker,
-    removeEnemyMarker,
-    findEnemyMarker,
-    renameEnemyMarker,
-    setEnemyMarkerToken,
-    setEnemyMarkerTokenCount,
     getEquipmentMaxUses,
     getEquipmentRemainingUses,
     useEquipment,

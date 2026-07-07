@@ -124,7 +124,7 @@
   // Комната синхронизации (Firebase) — see docs/js/firebase-room.js
   // ------------------------------------------------------------------
   var ROOM_STORAGE_KEY = 'kt_room_code_v1';
-  var roomState = { code: null, others: [], enemyTokenMarks: {} };
+  var roomState = { code: null, others: [], enemyTokenMarks: {}, critOpId: null, critOpLocked: false };
   var pendingRoom = null; // { mode: 'menu' | 'join', input }
   var publishTimer = null;
   var roomUnsubscribers = [];
@@ -148,6 +148,15 @@
     stopRoomSubscriptions();
     roomUnsubscribers.push(window.KTRoom.subscribeRoom(code, function (data) {
       roomState.enemyTokenMarks = (data && data.enemyTokenMarks) || {};
+      roomState.critOpId = (data && data.critOpId) || null;
+      roomState.critOpLocked = !!(data && data.critOpLocked);
+      // Общий Crit Op комнаты — источник истины, пока мы в комнате: зеркалим
+      // его в локальное состояние, чтобы существующая логика готовности к
+      // партии (isReadyToStart) и панель Crit Op работали без переделки.
+      if (appState && roomState.critOpId && appState.critOpId !== roomState.critOpId) {
+        appState.critOpId = roomState.critOpId;
+        persist();
+      }
       render();
     }));
     roomUnsubscribers.push(window.KTRoom.subscribeOthers(code, roomState.uid, function (others) {
@@ -167,7 +176,7 @@
 
   function leaveRoomState() {
     stopRoomSubscriptions();
-    roomState = { code: null, others: [], enemyTokenMarks: {} };
+    roomState = { code: null, others: [], enemyTokenMarks: {}, critOpId: null, critOpLocked: false };
     persistRoomCode(null);
     if (appState && appState.phase === 'opponent') { appState.phase = 'setup'; }
     render();
@@ -441,7 +450,7 @@
             '<button class="' + (appState.phase === 'game' ? 'active' : '') + '" data-action="goGame">Игра</button>' +
             (roomState.code ? '<button class="' + (appState.phase === 'opponent' ? 'active' : '') + '" data-action="goOpponent">Противник</button>' : '') +
           '</div>' +
-          '<button class="btn btn--ghost btn--sm" data-action="openRoomModal">' + esc(roomLabel) + '</button>' +
+          '<button class="btn btn--ghost btn--sm room-btn" data-action="openRoomModal">' + esc(roomLabel) + '</button>' +
         '</div>' +
       '</header>'
     );
@@ -635,19 +644,23 @@
   }
 
   function renderCritOpPanel() {
+    var inRoom = !!roomState.code;
+    var locked = inRoom && roomState.critOpLocked;
     var list = selectedFirst(gameData.critOps || [], function (op) { return appState.critOpId === op.id; });
     var cards = list.map(function (op) {
       var isSel = appState.critOpId === op.id;
-      return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="selectCritOp" data-value="' + esc(op.id) + '">' +
+      return '<button class="pick-card' + (isSel ? ' is-selected' : '') + '" data-action="selectCritOp" data-value="' + esc(op.id) + '" ' +
+        (locked ? 'disabled' : '') + '>' +
         '<span class="pick-card__name">' + esc(op.name) + '</span>' +
         (isSel ? '<span class="pick-card__detail"><div><b>Действие:</b> ' + esc(op.action) + '</div><div><b>VP:</b> ' + esc(op.vp) + '</div></span>' : '') +
       '</button>';
     }).join('');
     return (
       '<section class="panel">' +
-        '<div class="panel__head"><span class="panel__title">Crit Op</span>' +
-          '<button class="btn btn--sm btn--ghost" data-action="randomCritOp">Случайно</button>' +
+        '<div class="panel__head"><span class="panel__title">Crit Op' + (inRoom ? ' (общий)' : '') + '</span>' +
+          '<button class="btn btn--sm btn--ghost" data-action="randomCritOp" ' + (locked ? 'disabled' : '') + '>Случайно</button>' +
         '</div>' +
+        (locked ? '<p class="empty-state">Crit Op зафиксирован — партия уже начата.</p>' : '') +
         '<div class="pick-stack">' + cards + '</div>' +
       '</section>'
     );
@@ -794,7 +807,6 @@
       renderFactionRulePanel() +
       renderOperatorsList() +
       '<button class="btn btn--ghost btn--block" data-action="addOperator" style="margin-bottom:12px;">+ Добавить оператора</button>' +
-      renderEnemyMarkersPanel() +
       renderEquipmentGamePanel() +
       renderCheatSheet()
     );
@@ -828,15 +840,30 @@
 
   function renderOpponentOperatorCard(op, opponentUid, tokenDefs) {
     var down = op.wounds <= 0;
-    var hpPct = op.maxWounds > 0 ? (op.wounds / op.maxWounds) * 100 : 0;
+    var maxWounds = op.maxWounds || 0;
+    var hpPct = maxWounds > 0 ? (op.wounds / maxWounds) * 100 : 0;
     var hpClass = hpPct >= 60 ? 'hp-green' : (hpPct >= 30 ? 'hp-yellow' : 'hp-red');
+    var segCount = Math.max(1, maxWounds);
+    var segs = '';
+    for (var i = 0; i < segCount; i++) {
+      var filled = op.wounds > i;
+      segs += '<span class="wound-seg' + (filled ? ' is-filled ' + hpClass : '') + '" aria-hidden="true"></span>';
+    }
     var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);
     var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : '—');
     var marks = roomState.enemyTokenMarks || {};
     var chipsHtml = tokenDefs.map(function (tok) {
       var key = window.KTRoom.enemyTokenKey(opponentUid, op.id, tok.id);
+      if (tok.counter) {
+        var count = marks[key] || 0;
+        return '<div class="counter counter--sm">' +
+          '<button data-action="decrementEnemyTokenMark" data-uid="' + esc(opponentUid) + '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-value="' + count + '">−</button>' +
+          '<span class="counter__value">' + esc(tok.name) + ' ' + count + '</span>' +
+          '<button data-action="incrementEnemyTokenMark" data-uid="' + esc(opponentUid) + '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-value="' + count + '" data-max="' + tok.max + '">+</button>' +
+        '</div>';
+      }
       var on = !!marks[key];
-      return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleEnemyTokenMark" data-uid="' + esc(opponentUid) +
+      return '<button class="status-chip status-chip--enemy' + (on ? ' is-on' : '') + '" data-action="toggleEnemyTokenMark" data-uid="' + esc(opponentUid) +
         '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-on="' + (on ? '0' : '1') + '">' + esc(tok.name) + '</button>';
     }).join('');
 
@@ -854,52 +881,12 @@
           '<span class="order-cycle-btn order-cycle-btn--' + (op.order || 'neutral') + '" aria-hidden="true">' + orderIcon +
             '<span>Приказ: ' + orderLabel + '</span></span>' +
         '</div>' +
-        '<div class="wound-row"><span class="wound-readout__num ' + hpClass + '">' + op.wounds + ' / ' + op.maxWounds + '</span></div>' +
+        '<div class="wound-row">' +
+          '<div class="wound-track">' + segs + '</div>' +
+          '<span class="wound-readout__num ' + hpClass + (String(op.wounds).length >= 2 ? ' wound-readout__num--wide' : '') + '">' + op.wounds + '</span>' +
+        '</div>' +
         (chipsHtml ? '<div class="operator__controls">' + chipsHtml + '</div>' : '') +
       '</article>'
-    );
-  }
-
-  // Лёгкая панель для токенов, которые правила ставят на вражеских
-  // операторов (Markerlight, Poison, Grudge и т.п.) — ручной фолбэк на
-  // случай игры без комнаты синхронизации (см. renderOpponentScreen выше
-  // для варианта с реальными карточками соперника через Firebase).
-  function renderEnemyMarkersPanel() {
-    var t = appState.team;
-    var tokenDefs = enemyStatusTokenDefs(gameData, t.killTeamName);
-    if (!tokenDefs.length) return '';
-
-    var markersHtml = (t.enemyMarkers || []).map(function (marker) {
-      var controlsHtml = tokenDefs.map(function (tok) {
-        if (tok.counter) {
-          var count = marker.tokens[tok.id] || 0;
-          return '<div class="counter counter--sm">' +
-            '<button data-action="decrementEnemyMarkerToken" data-marker="' + marker.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">−</button>' +
-            '<span class="counter__value">' + esc(tok.name) + ' ' + count + '</span>' +
-            '<button data-action="incrementEnemyMarkerToken" data-marker="' + marker.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">+</button>' +
-          '</div>';
-        }
-        var on = !!marker.tokens[tok.id];
-        return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleEnemyMarkerToken" data-marker="' + marker.id + '" data-token="' + esc(tok.id) + '">' + esc(tok.name) + '</button>';
-      }).join('');
-
-      return (
-        '<div class="enemy-marker">' +
-          '<div class="enemy-marker__head">' +
-            '<input class="enemy-marker__name-input" type="text" data-field="enemyMarkerName" data-marker="' + marker.id + '" value="' + esc(marker.name) + '" />' +
-            '<button class="btn btn--sm btn--danger" data-action="removeEnemyMarker" data-marker="' + marker.id + '">×</button>' +
-          '</div>' +
-          '<div class="enemy-marker__controls">' + controlsHtml + '</div>' +
-        '</div>'
-      );
-    }).join('');
-
-    return (
-      '<section class="panel">' +
-        '<div class="panel__head"><span class="panel__title">Метки врага</span></div>' +
-        markersHtml +
-        '<button class="btn btn--ghost btn--block" data-action="addEnemyMarker">+ Добавить метку врага</button>' +
-      '</section>'
     );
   }
 
@@ -1039,6 +1026,29 @@
     return t.operators.map(renderOperatorCard).join('');
   }
 
+  // Метки, которые соперник наложил на МОЕГО оператора (target:'enemy'
+  // статус-токены его фракции — например Markerlight/Photon Grenade у
+  // Pathfinders). Читаются из общей комнаты, только для просмотра —
+  // назначать их может только сам соперник со своей вкладки «Противник».
+  function renderMyEnemyMarksRow(op) {
+    if (!roomState.code || !roomState.uid) return '';
+    var opponent = (roomState.others || [])[0];
+    if (!opponent) return '';
+    var tokenDefs = enemyStatusTokenDefs(gameData, opponent.teamName);
+    if (!tokenDefs.length) return '';
+    var marks = roomState.enemyTokenMarks || {};
+    var chips = tokenDefs.map(function (tok) {
+      var key = window.KTRoom ? window.KTRoom.enemyTokenKey(roomState.uid, op.id, tok.id) : '';
+      if (tok.counter) {
+        var count = marks[key] || 0;
+        return '<span class="status-chip status-chip--enemy' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>';
+      }
+      var on = !!marks[key];
+      return '<span class="status-chip status-chip--enemy' + (on ? ' is-on' : '') + '">' + esc(tok.name) + '</span>';
+    }).join('');
+    return '<div class="operator__controls">' + chips + '</div>';
+  }
+
   function renderOperatorCard(op) {
     var down = isIncapacitated(op);
     var injured = isInjured(op);
@@ -1064,13 +1074,15 @@
         '</div>';
       }
       var on = op.tokens.indexOf(tok.name) >= 0;
-      return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleToken" data-op="' + op.id + '" data-value="' + esc(tok.name) + '">' + esc(tok.name) + '</button>';
+      return '<button class="status-chip status-chip--friendly' + (on ? ' is-on' : '') + '" data-action="toggleToken" data-op="' + op.id + '" data-value="' + esc(tok.name) + '">' + esc(tok.name) + '</button>';
     }).join('');
 
     var otherTokens = op.tokens.filter(function (tok) { return quickTokens.indexOf(tok) === -1; });
     var tokenPills = otherTokens.map(function (tok) {
       return '<span class="token-pill">' + esc(tok) + '<button data-action="removeToken" data-op="' + op.id + '" data-value="' + esc(tok) + '">×</button></span>';
     }).join('');
+
+    var enemyMarksHtml = renderMyEnemyMarksRow(op);
 
     var statLine = (op.apl || op.move || op.save)
       ? '<div class="operator__stats">' +
@@ -1114,6 +1126,7 @@
         '</div>' +
 
         '<div class="operator__controls">' + quickChips + '</div>' +
+        enemyMarksHtml +
         '<div class="token-row">' + tokenPills + '</div>' +
         '<form class="token-add" data-action-submit="addCustomToken" data-op="' + op.id + '">' +
           '<input type="text" placeholder="Свой статус-токен…" data-op="' + op.id + '" />' +
@@ -1262,9 +1275,13 @@
         return;
       }
       startGame(gameData, appState); persist(); render();
+      if (roomState.code && window.KTRoom) window.KTRoom.lockRoomCritOp(roomState.code);
     },
     startGame: function () {
-      if (startGame(gameData, appState)) { persist(); render(); }
+      if (startGame(gameData, appState)) {
+        persist(); render();
+        if (roomState.code && window.KTRoom) window.KTRoom.lockRoomCritOp(roomState.code);
+      }
     },
 
     goOpponent: function () { appState.phase = 'opponent'; render(); },
@@ -1307,11 +1324,22 @@
       if (!window.KTRoom || !roomState.code) return;
       window.KTRoom.toggleEnemyTokenMark(roomState.code, ds.uid, ds.op, ds.token, ds.on === '1');
     },
+    incrementEnemyTokenMark: function (ds) {
+      if (!window.KTRoom || !roomState.code) return;
+      var next = Math.min(parseInt(ds.value, 10) + 1, parseInt(ds.max, 10));
+      window.KTRoom.setEnemyTokenMarkCount(roomState.code, ds.uid, ds.op, ds.token, next);
+    },
+    decrementEnemyTokenMark: function (ds) {
+      if (!window.KTRoom || !roomState.code) return;
+      var next = Math.max(parseInt(ds.value, 10) - 1, 0);
+      window.KTRoom.setEnemyTokenMarkCount(roomState.code, ds.uid, ds.op, ds.token, next);
+    },
 
     selectKillTeam: function (ds) {
       selectKillTeam(gameData, appState.team, ds.value);
       appState.team.name = ds.value;
       appState.critOpId = null;
+      if (roomState.code && window.KTRoom) window.KTRoom.setRoomCritOp(roomState.code, null);
       persist(); render();
     },
     adjustPool: function (ds) {
@@ -1326,9 +1354,16 @@
         clearRoster(appState.team); persist(); render();
       });
     },
-    selectCritOp: function (ds) { selectCritOp(appState, ds.value); persist(); render(); },
+    selectCritOp: function (ds) {
+      if (roomState.code && roomState.critOpLocked) { showToast('Crit Op зафиксирован — партия уже начата'); return; }
+      selectCritOp(appState, ds.value);
+      if (roomState.code && window.KTRoom) window.KTRoom.setRoomCritOp(roomState.code, ds.value);
+      persist(); render();
+    },
     randomCritOp: function () {
+      if (roomState.code && roomState.critOpLocked) { showToast('Crit Op зафиксирован — партия уже начата'); return; }
       var picked = selectRandomCritOp(gameData, appState);
+      if (roomState.code && window.KTRoom) window.KTRoom.setRoomCritOp(roomState.code, picked.id);
       persist(); render();
       showToast('Выбрано: ' + picked.name);
     },
@@ -1360,15 +1395,6 @@
     removeToken: function (ds) { var op = findOp(ds.op); if (op) { removeToken(op, ds.value); persist(); render(); } },
     incrementOpToken: function (ds) { var op = findOp(ds.op); if (op) { incrementOpTokenCount(op, ds.token, parseInt(ds.max, 10)); persist(); render(); } },
     decrementOpToken: function (ds) { var op = findOp(ds.op); if (op) { decrementOpTokenCount(op, ds.token, parseInt(ds.max, 10)); persist(); render(); } },
-
-    addEnemyMarker: function () { addEnemyMarker(appState.team); persist(); render(); },
-    removeEnemyMarker: function (ds) { removeEnemyMarker(appState.team, ds.marker); persist(); render(); },
-    toggleEnemyMarkerToken: function (ds) {
-      var marker = findEnemyMarker(appState.team, ds.marker);
-      if (marker) { setEnemyMarkerToken(appState.team, ds.marker, ds.token, !marker.tokens[ds.token]); persist(); render(); }
-    },
-    incrementEnemyMarkerToken: function (ds) { setEnemyMarkerTokenCount(appState.team, ds.marker, ds.token, 1, parseInt(ds.max, 10)); persist(); render(); },
-    decrementEnemyMarkerToken: function (ds) { setEnemyMarkerTokenCount(appState.team, ds.marker, ds.token, -1, parseInt(ds.max, 10)); persist(); render(); },
 
     useEquipment: function (ds) { if (useEquipment(gameData, appState.team, ds.value)) { persist(); render(); } },
 
@@ -1446,9 +1472,6 @@
       var op = findOp(target.dataset.op);
       if (op) { renameOperator(op, target.value); persist(); }
     }
-    if (target.dataset.field === 'enemyMarkerName') {
-      renameEnemyMarker(appState.team, target.dataset.marker, target.value); persist();
-    }
     if (target.dataset.field === 'roomCodeInput' && pendingRoom) {
       pendingRoom.input = target.value;
     }
@@ -1460,9 +1483,6 @@
     if (target.dataset.field === 'operatorName') {
       var op = findOp(target.dataset.op);
       if (op) { renameOperator(op, target.value); persist(); }
-    }
-    if (target.dataset.field === 'enemyMarkerName') {
-      renameEnemyMarker(appState.team, target.dataset.marker, target.value); persist();
     }
     if (target.dataset.field === 'roomCodeInput' && pendingRoom) {
       pendingRoom.input = target.value;
