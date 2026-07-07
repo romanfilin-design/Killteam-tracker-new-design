@@ -352,12 +352,13 @@ a { color: var(--accent-bright); }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: clamp(9px, 3vw, 14px);
 }
 
 @media (max-width: 480px) {
-  .btn-row--tight .btn { font-size: 11px; padding: 8px 4px; min-height: 38px; }
+  .btn-row--tight .btn { min-height: 38px; }
 }
 
 /* Счётчики +/- */
@@ -445,6 +446,7 @@ a { color: var(--accent-bright); }
   .mode-tabs__icon-btn svg { width: 15px; height: 15px; }
 
   .status-chip { min-height: 30px; padding: 4px 8px; font-size: 10px; }
+  .counter--sm, .counter--sm button, .counter--sm .counter__value { height: 30px; }
 }
 
 .counter-block__label {
@@ -1001,6 +1003,10 @@ a { color: var(--accent-bright); }
 }
 
 .status-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   border: 2px solid var(--line);
   background: var(--bg);
   color: var(--ink-dim);
@@ -1010,6 +1016,7 @@ a { color: var(--accent-bright); }
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .status-chip.is-on {
@@ -1075,19 +1082,21 @@ a { color: var(--accent-bright); }
   min-height: 40px;
 }
 
-/* Компактный степпер для счётчиков statusTokens (Damnation Points, Markerlight) */
+/* Компактный степпер для счётчиков statusTokens (Damnation Points, Markerlight)
+   — высота всегда совпадает с .status-chip (38px / 30px на мобильном),
+   чтобы счётчики и кнопки-переключатели статусов стояли в ряд ровно. */
 .counter--sm {
-  height: 32px;
+  height: 38px;
 }
 
 .counter--sm button {
   width: 30px;
-  height: 32px;
+  height: 38px;
   font-size: 15px;
 }
 
 .counter--sm .counter__value {
-  height: 32px;
+  height: 38px;
   min-width: auto;
   padding: 0 8px;
   font-size: 12px;
