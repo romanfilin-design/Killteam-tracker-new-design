@@ -44,6 +44,11 @@
     '</svg>';
   var ICON_ORDER_NEUTRAL_SVG =
     '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+  var ICON_ROOM_SVG =
+    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M3 11 L12 4 L21 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="M5 10 V20 H19 V10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '</svg>';
 
   // Краткие описания архетипов — показываются на выбранной кнопке, как у Tac Op.
   var ARCHETYPE_DESCRIPTIONS = {
@@ -440,7 +445,7 @@
 
   function renderHeader() {
     var team = appState.team;
-    var roomLabel = roomState.code ? ('Комната: ' + roomState.code) : 'Комната';
+    var roomTitle = roomState.code ? ('Комната: ' + roomState.code) : 'Комната синхронизации';
     return (
       '<header class="terminal-header">' +
         '<div class="terminal-header__row">' +
@@ -449,8 +454,8 @@
             '<button class="' + (appState.phase === 'setup' ? 'active' : '') + '" data-action="goSetup">Подготовка</button>' +
             '<button class="' + (appState.phase === 'game' ? 'active' : '') + '" data-action="goGame">Игра</button>' +
             (roomState.code ? '<button class="' + (appState.phase === 'opponent' ? 'active' : '') + '" data-action="goOpponent">Противник</button>' : '') +
+            '<button class="mode-tabs__icon-btn' + (roomState.code ? ' is-active-room' : '') + '" data-action="openRoomModal" title="' + esc(roomTitle) + '" aria-label="' + esc(roomTitle) + '">' + ICON_ROOM_SVG + '</button>' +
           '</div>' +
-          '<button class="btn btn--ghost btn--sm room-btn" data-action="openRoomModal">' + esc(roomLabel) + '</button>' +
         '</div>' +
       '</header>'
     );
@@ -855,7 +860,7 @@
     var chipsHtml = tokenDefs.map(function (tok) {
       var key = window.KTRoom.enemyTokenKey(opponentUid, op.id, tok.id);
       if (tok.counter) {
-        var count = marks[key] || 0;
+        var count = Number(marks[key]) || 0;
         return '<div class="counter counter--sm">' +
           '<button data-action="decrementEnemyTokenMark" data-uid="' + esc(opponentUid) + '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-value="' + count + '">−</button>' +
           '<span class="counter__value">' + esc(tok.name) + ' ' + count + '</span>' +
@@ -967,7 +972,7 @@
     return (
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Turning Point</span></div>' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
+        '<div class="turning-point-row">' +
           '<div class="counter-block">' +
             '<div class="counter">' +
               '<button data-action="changeTurningPoint" data-delta="-1">−</button>' +
@@ -975,7 +980,7 @@
               '<button data-action="changeTurningPoint" data-delta="1">+</button>' +
             '</div>' +
           '</div>' +
-          '<button class="btn btn--accent" data-action="resetTurningPointMarks">Сброс отметок раунда</button>' +
+          '<button class="btn btn--accent turning-point-row__reset" data-action="resetTurningPointMarks">Сброс отметок раунда</button>' +
         '</div>' +
       '</section>'
     );
@@ -983,13 +988,15 @@
 
   function renderCountersPanel() {
     var t = appState.team;
+    var auto = computeAutoKillGrade();
     return (
       '<section class="panel">' +
-        '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:space-around;">' +
+        '<div class="counters-row">' +
           counterBlock('CP', t.cp, 'changeCP') +
           counterBlock('VP', t.vp, 'changeVP') +
-          counterBlock('KILL GRADE', t.killGrade, 'changeKillGrade') +
+          (auto ? counterBlock('KILL GRADE', auto.grade, null) : counterBlock('KILL GRADE', t.killGrade, 'changeKillGrade')) +
         '</div>' +
+        (auto ? '<p class="empty-state">Kill Grade считается автоматически: выведено из строя ' + auto.downCount + ' операторов соперника.</p>' : '') +
         '<div class="field" style="margin-top:14px;margin-bottom:0;">' +
           '<label class="field__label">Операторов противника на старте</label>' +
           '<input type="number" min="1" max="20" data-focus-key="enemyCount" data-field="enemyCount" value="' + appState.enemyOperativeCount + '" />' +
@@ -999,6 +1006,14 @@
   }
 
   function counterBlock(label, value, action) {
+    if (!action) {
+      return (
+        '<div class="counter-block">' +
+          '<span class="counter-block__label">' + label + '</span>' +
+          '<div class="counter"><span class="counter__value">' + value + '</span></div>' +
+        '</div>'
+      );
+    }
     return (
       '<div class="counter-block">' +
         '<span class="counter-block__label">' + label + '</span>' +
@@ -1009,6 +1024,24 @@
         '</div>' +
       '</div>'
     );
+  }
+
+  // Kill Grade можно считать автоматически, когда мы в комнате синхронизации:
+  // данные о выведенных из строя операторах соперника уже приходят вживую
+  // через вкладку «Противник» (op.wounds), не нужно вести их вручную.
+  function computeAutoKillGrade() {
+    var others = roomState.others || [];
+    if (!roomState.code || !others.length) return null;
+    var downCount = 0;
+    others.forEach(function (p) {
+      (p.operators || []).forEach(function (op) { if ((op.wounds || 0) <= 0) downCount++; });
+    });
+    var row = getKillGradeRow(gameData, appState.enemyOperativeCount);
+    var grade = 0;
+    for (var i = row.grades.length - 1; i >= 0; i--) {
+      if (downCount >= row.grades[i]) { grade = i + 1; break; }
+    }
+    return { grade: grade, downCount: downCount };
   }
 
   function renderSummaryStrip(activated, down, total) {
@@ -1030,23 +1063,22 @@
   // статус-токены его фракции — например Markerlight/Photon Grenade у
   // Pathfinders). Читаются из общей комнаты, только для просмотра —
   // назначать их может только сам соперник со своей вкладки «Противник».
-  function renderMyEnemyMarksRow(op) {
+  function renderMyEnemyMarksChips(op) {
     if (!roomState.code || !roomState.uid) return '';
     var opponent = (roomState.others || [])[0];
     if (!opponent) return '';
     var tokenDefs = enemyStatusTokenDefs(gameData, opponent.teamName);
     if (!tokenDefs.length) return '';
     var marks = roomState.enemyTokenMarks || {};
-    var chips = tokenDefs.map(function (tok) {
+    return tokenDefs.map(function (tok) {
       var key = window.KTRoom ? window.KTRoom.enemyTokenKey(roomState.uid, op.id, tok.id) : '';
       if (tok.counter) {
-        var count = marks[key] || 0;
+        var count = Number(marks[key]) || 0;
         return '<span class="status-chip status-chip--enemy' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>';
       }
       var on = !!marks[key];
       return '<span class="status-chip status-chip--enemy' + (on ? ' is-on' : '') + '">' + esc(tok.name) + '</span>';
     }).join('');
-    return '<div class="operator__controls">' + chips + '</div>';
   }
 
   function renderOperatorCard(op) {
@@ -1082,7 +1114,7 @@
       return '<span class="token-pill">' + esc(tok) + '<button data-action="removeToken" data-op="' + op.id + '" data-value="' + esc(tok) + '">×</button></span>';
     }).join('');
 
-    var enemyMarksHtml = renderMyEnemyMarksRow(op);
+    var enemyMarksChips = renderMyEnemyMarksChips(op);
 
     var statLine = (op.apl || op.move || op.save)
       ? '<div class="operator__stats">' +
@@ -1125,8 +1157,7 @@
           '<button class="btn btn--danger" data-action="damageOperator" data-op="' + op.id + '" data-amount="6">−6</button>' +
         '</div>' +
 
-        '<div class="operator__controls">' + quickChips + '</div>' +
-        enemyMarksHtml +
+        '<div class="operator__controls">' + quickChips + enemyMarksChips + '</div>' +
         '<div class="token-row">' + tokenPills + '</div>' +
         '<form class="token-add" data-action-submit="addCustomToken" data-op="' + op.id + '">' +
           '<input type="text" placeholder="Свой статус-токен…" data-op="' + op.id + '" />' +
@@ -1216,12 +1247,14 @@
     var tacOp = t.archetype ? findTacOp(gameData, t.archetype, t.tacOpId) : null;
     var killOp = gameData.killOp;
     var row = getKillGradeRow(gameData, appState.enemyOperativeCount);
+    var autoKillGrade = computeAutoKillGrade();
+    var effectiveKillGrade = autoKillGrade ? autoKillGrade.grade : t.killGrade;
     var headHtml = '<tr><th>Против.</th>' + killOp.table.headers.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr>';
     var bodyHtml = killOp.table.rows.map(function (r) {
       var isActiveRow = r === row;
       return '<tr>' + '<td' + (isActiveRow ? ' class="is-active-row"' : '') + '>' + r.start + '+</td>' +
         r.grades.map(function (g, idx) {
-          var isTarget = isActiveRow && (idx + 1) === (t.killGrade + 1) && t.killGrade < 5;
+          var isTarget = isActiveRow && (idx + 1) === (effectiveKillGrade + 1) && effectiveKillGrade < 5;
           return '<td class="' + (isActiveRow ? 'is-active-row ' : '') + (isTarget ? 'is-target' : '') + '">' + g + '</td>';
         }).join('') +
       '</tr>';
@@ -1253,7 +1286,7 @@
           '<div class="cheat-section">' +
             '<h3>Kill Op — ' + esc(killOp.desc) + '</h3>' +
             '<table class="killop-table"><thead>' + headHtml + '</thead><tbody>' + bodyHtml + '</tbody></table>' +
-            '<p>Текущий kill grade: <b>' + t.killGrade + '</b></p>' +
+            '<p>Текущий kill grade: <b>' + effectiveKillGrade + '</b>' + (autoKillGrade ? ' (авто)' : '') + '</p>' +
           '</div>' +
         '</div>' +
       '</details>'
@@ -1326,12 +1359,14 @@
     },
     incrementEnemyTokenMark: function (ds) {
       if (!window.KTRoom || !roomState.code) return;
-      var next = Math.min(parseInt(ds.value, 10) + 1, parseInt(ds.max, 10));
+      var current = parseInt(ds.value, 10) || 0;
+      var next = Math.min(current + 1, parseInt(ds.max, 10));
       window.KTRoom.setEnemyTokenMarkCount(roomState.code, ds.uid, ds.op, ds.token, next);
     },
     decrementEnemyTokenMark: function (ds) {
       if (!window.KTRoom || !roomState.code) return;
-      var next = Math.max(parseInt(ds.value, 10) - 1, 0);
+      var current = parseInt(ds.value, 10) || 0;
+      var next = Math.max(current - 1, 0);
       window.KTRoom.setEnemyTokenMarkCount(roomState.code, ds.uid, ds.op, ds.token, next);
     },
 
