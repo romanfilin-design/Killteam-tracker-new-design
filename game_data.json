@@ -3231,7 +3231,8 @@
               "text": "Выбери одного дружественного оператора EXACTION SQUAD в пределах control range этого оператора, чтобы он восстановил до 2К3 потерянных wounds. Это не может быть оператор, на котором в этот turning point уже было применено правило Medic!. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/chirurgant.png"
         },
         {
           "name": "Arbites Leashmaster",
@@ -3598,7 +3599,8 @@
               "text": "SUPPORT. Выбери другого дружественного оператора EXACTION SQUAD, видимого этому оператору. До конца следующей активации того оператора добавь 1 к его APL stat. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/vox_signifier.png"
         }
       ],
       "equipment": "Exaction Squad",
@@ -4376,7 +4378,8 @@
               "text": "До начала следующей активации этого оператора или пока он не incapacitated (что наступит раньше): когда оператор стреляет по этому оператору, улучши Save stat этого оператора на 1 и игнорируй weapon rule Piercing.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/deathknell.png"
         },
         {
           "name": "Fellgor Fluxbray",
@@ -4518,7 +4521,8 @@
               "text": "SUPPORT. Выбери другого дружественного оператора FELLGOR RAVAGER (кроме SHAMAN или IRONHORN), видимого и в пределах 3\" от этого оператора. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/herd-goad.png"
         },
         {
           "name": "Fellgor Mangler",
@@ -4657,7 +4661,8 @@
               "text": "Нанеси D3+1 урона каждому другому оператору, видимому и в пределах 2\" от этого оператора.\n\nЭтот оператор не может выполнять это действие, пока у него приказ Conceal.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/vandal.png"
         },
         {
           "name": "Fellgor Warrior",
@@ -6243,7 +6248,8 @@
               "name": "Drone",
               "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Markerlight, Reposition и Shoot. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/recon_drone.png"
         },
         {
           "name": "MV1 Gun Drone",
@@ -6272,7 +6278,8 @@
               "name": "Drone",
               "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Reposition и Shoot. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/gun_drone.png"
         },
         {
           "name": "MV4 Shield Drone",
@@ -6298,7 +6305,8 @@
               "name": "Shield Generator",
               "text": "Этот оператор игнорирует weapon rule Piercing. Once per turning point, когда кубик атаки должен нанести Normal Dmg этому оператору, можно проигнорировать этот нанесённый урон. Можно использовать firefight ploy Saviour Protocols за 0CP, если этот оператор — указанный DRONE."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/shield_drone.png"
         },
         {
           "name": "MV7 Marker Drone",
@@ -6329,7 +6337,8 @@
               "name": "Drone",
               "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Markerlight и Reposition. Он не может использовать оружие, которого нет на его datacard. При определении контроля над маркером цели этот APL stat считается на 1 меньше — это не изменение самого APL stat, поэтому изменения APL суммируются с этим."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/marker_drone.png"
         },
         {
           "name": "MV31 Pulse Accelerator Drone",
@@ -6356,7 +6365,8 @@
               "text": "До начала следующей активации этого оператора или пока он не выведен из строя (смотря что раньше): каждый раз, когда другой дружественный оператор PATHFINDER стреляет из pulse weapon в пределах 3\" от этого оператора, то оружие получает weapon rules Lethal 5+ и Severe.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/pulse_accel_drone.png"
         },
         {
           "name": "MV33 Grav-inhibitor Drone",
@@ -6382,7 +6392,8 @@
               "name": "Grav-inhibitor",
               "text": "Каждый раз, когда вражеский оператор выполняет действие, в котором он перемещается (кроме Dash), если он переместился бы так, чтобы быть видимым и в пределах 6\" от этого оператора, считай эту дистанцию как дополнительные 2\" и игнорируй дополнительные дистанции от Obstructing и Accessible terrain rules. Каждый раз, когда вражеский оператор дерётся или отвечает (retaliating), будучи видимым и в пределах 6\" от этого оператора, ухудшай Hit stat оружия ближнего боя того вражеского оператора на 1. Это суммируется с injured."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/grav_drone.png"
         }
       ],
       "poolPick": 11,
