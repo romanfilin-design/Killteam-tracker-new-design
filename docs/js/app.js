@@ -198,7 +198,8 @@
           return {
             id: op.id, name: op.name, portrait: op.portrait || null,
             wounds: op.wounds, maxWounds: op.maxWounds,
-            order: op.order || null, activated: !!op.activated
+            order: op.order || null, activated: !!op.activated,
+            tokens: op.tokens || [], tokenCounts: op.tokenCounts || {}
           };
         })
       });
@@ -832,8 +833,9 @@
     var tokenDefs = enemyStatusTokenDefs(gameData, appState.team.killTeamName);
     return others.map(function (player) {
       var ops = player.operators || [];
+      var friendlyDefs = friendlyStatusTokenDefs(gameData, player.teamName);
       var opsHtml = ops.length
-        ? ops.map(function (op) { return renderOpponentOperatorCard(op, player.uid, tokenDefs); }).join('')
+        ? ops.map(function (op) { return renderOpponentOperatorCard(op, player.uid, tokenDefs, friendlyDefs); }).join('')
         : '<p class="empty-state">У соперника пока нет операторов в составе.</p>';
       return (
         '<section class="panel">' +
@@ -843,7 +845,7 @@
     }).join('');
   }
 
-  function renderOpponentOperatorCard(op, opponentUid, tokenDefs) {
+  function renderOpponentOperatorCard(op, opponentUid, tokenDefs, friendlyDefs) {
     var down = op.wounds <= 0;
     var maxWounds = op.maxWounds || 0;
     var hpPct = maxWounds > 0 ? (op.wounds / maxWounds) * 100 : 0;
@@ -872,6 +874,20 @@
         '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-on="' + (on ? '0' : '1') + '">' + esc(tok.name) + '</button>';
     }).join('');
 
+    // Свои статус-токены соперника (его же friendly-токены — Inspiring,
+    // Conceal-related и т.п.) — только для просмотра, зелёным, наравне со
+    // своими токенами на карточке "Игра".
+    var opTokens = op.tokens || [];
+    var opTokenCounts = op.tokenCounts || {};
+    var friendlyChipsHtml = (friendlyDefs || []).map(function (tok) {
+      if (tok.counter) {
+        var count = Number(opTokenCounts[tok.id]) || 0;
+        return '<span class="status-chip status-chip--friendly' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>';
+      }
+      var on = opTokens.indexOf(tok.name) >= 0;
+      return '<span class="status-chip status-chip--friendly' + (on ? ' is-on' : '') + '">' + esc(tok.name) + '</span>';
+    }).join('');
+
     return (
       '<article class="operator' + (down ? ' is-down' : '') + '">' +
         '<div class="operator__top">' +
@@ -890,7 +906,7 @@
           '<div class="wound-track">' + segs + '</div>' +
           '<span class="wound-readout__num ' + hpClass + (String(op.wounds).length >= 2 ? ' wound-readout__num--wide' : '') + '">' + op.wounds + '</span>' +
         '</div>' +
-        (chipsHtml ? '<div class="operator__controls">' + chipsHtml + '</div>' : '') +
+        ((friendlyChipsHtml || chipsHtml) ? '<div class="operator__controls">' + friendlyChipsHtml + chipsHtml + '</div>' : '') +
       '</article>'
     );
   }
@@ -1245,20 +1261,6 @@
     var t = appState.team;
     var critOp = findCritOp(gameData, appState.critOpId);
     var tacOp = t.archetype ? findTacOp(gameData, t.archetype, t.tacOpId) : null;
-    var killOp = gameData.killOp;
-    var row = getKillGradeRow(gameData, appState.enemyOperativeCount);
-    var autoKillGrade = computeAutoKillGrade();
-    var effectiveKillGrade = autoKillGrade ? autoKillGrade.grade : t.killGrade;
-    var headHtml = '<tr><th>Против.</th>' + killOp.table.headers.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr>';
-    var bodyHtml = killOp.table.rows.map(function (r) {
-      var isActiveRow = r === row;
-      return '<tr>' + '<td' + (isActiveRow ? ' class="is-active-row"' : '') + '>' + r.start + '+</td>' +
-        r.grades.map(function (g, idx) {
-          var isTarget = isActiveRow && (idx + 1) === (effectiveKillGrade + 1) && effectiveKillGrade < 5;
-          return '<td class="' + (isActiveRow ? 'is-active-row ' : '') + (isTarget ? 'is-target' : '') + '">' + g + '</td>';
-        }).join('') +
-      '</tr>';
-    }).join('');
 
     var killTeamDef = findKillTeamDef(gameData, t.killTeamName);
     var factionChoicesHtml = ((killTeamDef && killTeamDef.factionChoices) || []).map(function (c) {
@@ -1283,11 +1285,6 @@
             (tacOp ? '<p><b>' + esc(tacOp.name) + '</b></p><p>Reveal: ' + esc(tacOp.reveal) + '</p><p>' + esc(tacOp.rules) + '</p><p>VP: ' + esc(tacOp.vp) + '</p>' : '<p>Не выбрана.</p>') +
           '</div>' +
           factionChoicesHtml +
-          '<div class="cheat-section">' +
-            '<h3>Kill Op — ' + esc(killOp.desc) + '</h3>' +
-            '<table class="killop-table"><thead>' + headHtml + '</thead><tbody>' + bodyHtml + '</tbody></table>' +
-            '<p>Текущий kill grade: <b>' + effectiveKillGrade + '</b>' + (autoKillGrade ? ' (авто)' : '') + '</p>' +
-          '</div>' +
         '</div>' +
       '</details>'
     );

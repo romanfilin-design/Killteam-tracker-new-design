@@ -135,7 +135,7 @@ a { color: var(--accent-bright); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--gap);
+  gap: 10px;
 }
 
 .terminal-title {
@@ -151,6 +151,8 @@ a { color: var(--accent-bright); }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .terminal-title__dot {
@@ -162,6 +164,7 @@ a { color: var(--accent-bright); }
 .mode-tabs {
   display: flex;
   gap: 0;
+  flex: none;
 }
 
 .mode-tabs button {
@@ -410,6 +413,13 @@ a { color: var(--accent-bright); }
   .counter__value { min-width: 30px; height: 34px; font-size: 15px; padding: 0 4px; }
   .counter-block__label { font-size: 9px; letter-spacing: 0.05em; }
   .turning-point-row__reset { font-size: 11px; padding: 8px 8px; min-height: 38px; }
+
+  .terminal-title { font-size: 13px; gap: 6px; }
+  .mode-tabs button { padding: 7px 6px; font-size: 10px; min-height: 38px; }
+  .mode-tabs__icon-btn { width: 38px; }
+  .mode-tabs__icon-btn svg { width: 15px; height: 15px; }
+
+  .status-chip { min-height: 30px; padding: 4px 8px; font-size: 10px; }
 }
 
 .counter-block__label {
