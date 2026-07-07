@@ -169,21 +169,29 @@ python3 tools/smart_crop.py "input/Night Lord Ventrilokar.jpg" \
      Hearthkyn Salvagers) — добавляю `statusTokens` (массив на уровне
      `killTeams.<Команда>`): `{id, name, target: 'friendly'|'enemy'}`.
      `target:'friendly'` — токен вешается на своего оператора, попадает
-     в быстрые чипы на карточке оператора (`friendlyStatusTokenDefs` в
-     `tracker_logic.js`). `target:'enemy'` — по правилу токен вешается
-     на **вражеского** оператора; трекер не ведёт полноценные карточки
-     противника, но на игровом экране есть лёгкая панель «Метки врага»
-     (`renderEnemyMarkersPanel` в `docs/js/app.js`) — список произвольных
-     именованных меток с чипами/счётчиками по всем `target:'enemy'`
-     токенам текущей команды. Полноценная карточка оператора противника —
-     всё ещё задел под будущую комнату синхронизации игроков (см.
-     Dashboard/data.js, backlog Killteam Tracker);
+     в быстрые зелёные чипы на карточке оператора (`friendlyStatusTokenDefs`
+     в `tracker_logic.js`, рендер — `renderOperatorCard` в `docs/js/app.js`).
+     `target:'enemy'` — по правилу токен вешается на **вражеского**
+     оператора; назначается только со стороны игрока, чья фракция его
+     накладывает, через вкладку «Противник» в комнате синхронизации
+     (`renderOpponentOperatorCard`, `enemyStatusTokenDefs`) — тот, на кого
+     наложили, видит его read-only красным чипом на своей карточке в
+     «Игра» (`renderMyEnemyMarksChips`). Без активной комнаты синхронизации
+     enemy-токены нигде не отображаются — трекер не ведёт карточку
+     противника без Firebase-комнаты;
    - **если токен числовой, а не просто вкл/выкл** (например Damnation
      Points 0-6 у Murderwing, Markerlight 0-4 у Pathfinders) — добавляй
      `counter: true, max: N` к записи `statusTokens`. Рендерится как
-     компактный степпер (`.counter--sm`) вместо чипа-переключателя, и на
-     карточке оператора (`friendly`), и в панели «Метки врага»
-     (`enemy`);
+     компактный степпер (`.counter--sm`) вместо чипа-переключателя;
+   - **если токен по правилам может появиться только у конкретного типа
+     оператора** (например Damnation Points — только у Murderwing Chaos
+     Lord, attack patterns Aggressive/Swift/Defensive у Exaction Squad —
+     только у R-VR Cyber-Mastiff, Pulse Accelerator у Pathfinders — только
+     у MV31 Pulse Accelerator Drone) — добавляй `restrictToOperator: "<Точное
+     имя оператора>"` к записи `statusTokens`. Без этого поля токен
+     показывается на карточках всех операторов команды — проверяй текст
+     способностей/faction rules на упоминание "этот оператор начинает..."
+     или аналогичных формулировок, привязывающих токен к одному профилю;
    - сопоставляю файлы из `incoming_portraits/` с операторами по именам
      и прогоняю их через `smart_crop.py --batch` в
      `docs/img/portraits/<team-slug>/` (если в официальных именах

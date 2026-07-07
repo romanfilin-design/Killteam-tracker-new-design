@@ -119,6 +119,16 @@
     return raw.replace(/[\d"+]+/g, '').replace(/\s+\(.*?\)/g, '').replace(/\*$/, '').trim();
   }
 
+  // Некоторые статус-токены привязаны правилами к конкретному типу оператора
+  // (например, Damnation Points — только у Murderwing Chaos Lord) — такие
+  // помечены в game_data.json полем restrictToOperator и не должны
+  // показываться на карточках остальных операторов команды.
+  function filterTokenDefsForOperator(defs, opName) {
+    return (defs || []).filter(function (tok) {
+      return !tok.restrictToOperator || tok.restrictToOperator === opName;
+    });
+  }
+
   var gameData = null;
   var appState = null;
   var pendingConfirm = null; // { message, onConfirm }
@@ -526,7 +536,7 @@
   function renderPartyToolsPanel() {
     return (
       '<section class="panel">' +
-        '<div class="btn-row">' +
+        '<div class="btn-row btn-row--tight">' +
           '<label class="btn btn--ghost">Импорт партии' +
             '<input type="file" accept="application/json" class="visually-hidden-input" data-action="importStateFile" /></label>' +
           '<button class="btn btn--ghost" data-action="exportState">Экспорт партии</button>' +
@@ -647,7 +657,7 @@
     return (
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Ростер · операторов: ' + t.operators.length + '</span></div>' +
-        '<div class="btn-row">' +
+        '<div class="btn-row btn-row--tight">' +
           '<label class="btn btn--ghost">Импорт ростера' +
             '<input type="file" accept="application/json" class="visually-hidden-input" data-action="importRosterFile" />' +
           '</label>' +
@@ -900,7 +910,7 @@
     // своими токенами на карточке "Игра".
     var opTokens = op.tokens || [];
     var opTokenCounts = op.tokenCounts || {};
-    var friendlyChipsHtml = (friendlyDefs || []).map(function (tok) {
+    var friendlyChipsHtml = filterTokenDefsForOperator(friendlyDefs || [], op.name).map(function (tok) {
       if (tok.counter) {
         var count = Number(opTokenCounts[tok.id]) || 0;
         return '<span class="status-chip status-chip--friendly' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>';
@@ -1033,11 +1043,11 @@
           counterBlock('VP', t.vp, 'changeVP') +
           (auto ? counterBlock('KILL GRADE', auto.grade, null) : counterBlock('KILL GRADE', t.killGrade, 'changeKillGrade')) +
         '</div>' +
-        (auto ? '<p class="empty-state">Kill Grade считается автоматически: выведено из строя ' + auto.downCount + ' операторов соперника.</p>' : '') +
         '<div class="field" style="margin-top:14px;margin-bottom:0;">' +
           '<label class="field__label">Операторов противника на старте</label>' +
           '<input type="number" min="1" max="20" data-focus-key="enemyCount" data-field="enemyCount" value="' + appState.enemyOperativeCount + '" />' +
         '</div>' +
+        (auto ? '<p class="field-hint">Kill Grade считается автоматически: выведено из строя ' + auto.downCount + ' операторов соперника.</p>' : '') +
       '</section>'
     );
   }
@@ -1131,7 +1141,7 @@
         '" data-action="setWoundSegment" data-op="' + op.id + '" data-segment="' + i + '" aria-label="Здоровье ' + (i + 1) + '"></button>';
     }
 
-    var quickTokenDefs = friendlyStatusTokenDefs(gameData, appState.team.killTeamName);
+    var quickTokenDefs = filterTokenDefsForOperator(friendlyStatusTokenDefs(gameData, appState.team.killTeamName), op.name);
     var quickTokens = quickTokenDefs.map(function (tok) { return tok.name; });
     var quickChips = quickTokenDefs.map(function (tok) {
       if (tok.counter) {

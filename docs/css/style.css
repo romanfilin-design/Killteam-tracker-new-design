@@ -340,6 +340,26 @@ a { color: var(--accent-bright); }
   flex-wrap: wrap;
 }
 
+/* Ряды, которые всегда должны помещаться в одну строку (импорт/экспорт
+   партии, инструменты ростера) — кнопки ужимаются вместо переноса. */
+.btn-row--tight {
+  flex-wrap: nowrap;
+}
+
+.btn-row--tight .btn {
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+@media (max-width: 480px) {
+  .btn-row--tight .btn { font-size: 11px; padding: 8px 4px; min-height: 38px; }
+}
+
 /* Счётчики +/- */
 .counter {
   display: inline-flex;
@@ -808,8 +828,7 @@ a { color: var(--accent-bright); }
   border-right: 1px solid var(--line-dim);
 }
 
-.operator__stat:first-child { align-items: flex-start; }
-.operator__stat:last-child { border-right: none; align-items: flex-end; }
+.operator__stat:last-child { border-right: none; }
 
 .operator__stat-label {
   font-size: 9px;
@@ -1532,6 +1551,14 @@ details.panel[open] summary::after { content: '−'; }
   color: var(--ink-faint);
   padding: 24px 10px;
   font-size: 13px;
+}
+
+/* Короткая пояснительная строка сразу под полем — без просторного паддинга
+   .empty-state (тот рассчитан на "экран пуст", а не на инлайн-подсказку). */
+.field-hint {
+  color: var(--ink-faint);
+  font-size: 12px;
+  margin: 6px 0 0;
 }
 
 /* ==========================================================================

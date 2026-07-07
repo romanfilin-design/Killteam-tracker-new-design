@@ -3732,17 +3732,20 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "aggressive_pattern",
           "name": "Aggressive",
-          "target": "friendly"
+          "target": "friendly",
+          "restrictToOperator": "R-VR Cyber-Mastiff"
         },
         {
           "id": "swift_pattern",
           "name": "Swift",
-          "target": "friendly"
+          "target": "friendly",
+          "restrictToOperator": "R-VR Cyber-Mastiff"
         },
         {
           "id": "defensive_pattern",
           "name": "Defensive",
-          "target": "friendly"
+          "target": "friendly",
+          "restrictToOperator": "R-VR Cyber-Mastiff"
         },
         {
           "id": "medic_used",
@@ -5809,7 +5812,8 @@ window.GAME_DATA_FALLBACK = {
           "name": "Damnation Points",
           "target": "friendly",
           "counter": true,
-          "max": 6
+          "max": 6,
+          "restrictToOperator": "Murderwing Chaos Lord"
         },
         {
           "id": "challenge_token",
@@ -6531,7 +6535,8 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "pulse_accelerator",
           "name": "Pulse Accelerator",
-          "target": "friendly"
+          "target": "friendly",
+          "restrictToOperator": "MV31 Pulse Accelerator Drone"
         },
         {
           "id": "medic_used",
