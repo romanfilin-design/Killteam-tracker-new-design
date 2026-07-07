@@ -3794,7 +3794,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Victory Shriek",
               "text": "Когда твоя mark выведена из строя, можно выбрать одного дружественного оператора FARSTALKER KINBAND в пределах 6\" от этого оператора. До конца битвы оружие этого оператора получает weapon rule Balanced. Каждый дружественный оператор может быть выбран для этого правила только один раз за битву."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/killbroker.png"
         }
       ],
       "pool": [
@@ -3839,7 +3840,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Energise",
               "text": "1AP. До конца turning point или пока этот оператор не выстрелил из своего accelerator bow (смотря что наступит раньше), все профили его accelerator bow получают weapon rule Lethal 5+.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/bowhunter.png"
         },
         {
           "name": "Kroot Cold-Blood",
@@ -3872,7 +3874,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Cold-blooded",
               "text": "Когда этот оператор стреляет против, дерётся против или отвечает (retaliating) против раненого (wounded) вражеского оператора, оружие этого оператора получает weapon rule Lethal 5+; если этот вражеский оператор также injured, оружие этого оператора также получает weapon rule Rending."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/coldblood.png"
         },
         {
           "name": "Kroot Cut-Skin",
@@ -3898,7 +3901,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Savage Assault",
               "text": "Первый раз, когда этот оператор выполняет действие Fight во время каждой своей активации, если ни он, ни вражеский оператор в этой последовательности не выведены из строя, этот оператор может сразу выполнить свободное действие Fight после этого, но нельзя выбрать другого вражеского оператора для этого действия (и только если всё ещё допустимо драться против него). Это имеет приоритет над ограничениями действий."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/cutskin.png"
         },
         {
           "name": "Kroot Heavy Gunner",
@@ -3929,7 +3933,8 @@ window.GAME_DATA_FALLBACK = {
               "wr": "-"
             }
           ],
-          "abilities": []
+          "abilities": [],
+          "portrait": "img/portraits/farstalker-kinband/heavy_gunner.png"
         },
         {
           "name": "Kroot Hound",
@@ -3960,7 +3965,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Gather",
               "text": "1AP. Выполни свободное действие Dash или Reposition этим оператором. Во время этого движения он может выполнить свободное действие Pick Up Marker или Place Marker (можно определять контроль во время этого действия, чтобы сделать это), и оставшуюся дистанцию движения от действия Dash или Reposition можно использовать после этого."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/hound.png"
         },
         {
           "name": "Kroot Long-Sight",
@@ -4007,7 +4013,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Long-Sight",
               "text": "1AP. До начала следующей активации этого оператора: concealed и stationary профили его Kroot hunting rifle получают weapon rule Lethal 5+; когда он стреляет из своего Kroot hunting rifle, вражеские операторы не могут быть obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/longsight.png"
         },
         {
           "name": "Kroot Pistolier",
@@ -4047,7 +4054,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Salvo",
               "text": "Выбери до двух разных допустимых целей, которые не в пределах control range дружественных операторов. Стреляй этим оружием по обеим в выбранном порядке (разрешай каждую последовательность отдельно)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/pistoler.png"
         },
         {
           "name": "Kroot Stalker",
@@ -4080,7 +4088,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Stealth Attack",
               "text": "2AP. Выполни свободное действие Charge этим оператором, но не превышай его Move stat (т.е. не добавляй 2\"). Затем сразу выполни свободное действие Fight этим оператором. В первый раз, когда ты наносишь удар (strike) во время этого действия, можно сразу разрешить ещё один свой success как strike (прежде оппонента).\n\nЭтот оператор не может выполнять это действие, имея Engage order, находясь в пределах control range вражеского оператора, или если он не в пределах 1\" от Light или Heavy terrain."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/stalker.png"
         },
         {
           "name": "Kroot Tracker",
@@ -4113,7 +4122,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "From The Eye Above",
               "text": "1AP. SUPPORT. Выбери одного другого дружественного оператора FARSTALKER KINBAND, видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/tracker.png"
         },
         {
           "name": "Kroot Warrior",
@@ -4150,7 +4160,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Ready for Anything",
               "text": "Once per turning point, во время активации дружественного оператора WARRIOR, можно применить правило Meat, Piercing Shot или Toxin Shot (см. faction equipment) для этого оператора. Это не считается за его лимит once per turning point."
             }
-          ]
+          ],
+          "portrait": "img/portraits/farstalker-kinband/warrior.png"
         }
       ],
       "poolPick": 11,
@@ -4853,7 +4864,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "SUPPORT. Выбери одного другого дружественного оператора KOMMANDO (кроме BOMB SQUIG), видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время counteract.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/kommandonob.png"
         }
       ],
       "pool": [
@@ -4896,7 +4908,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Expendable",
               "text": "Этот оператор игнорируется для kill op твоего оппонента (когда он incapacitated), а также при определении твоего starting number of operatives. Он также игнорируется для victory conditions или scoring VPs, если они требуют, чтобы операторы escape, survive или были incapacitated вражескими операторами."
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/bombsquigkommando.png"
         },
         {
           "name": "Kommando Boy",
@@ -4925,7 +4938,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Taktikal Wot-notz",
               "text": "Once per turning point можно выполнить каждое из следующих действий: одним дружественным оператором KOMMANDO BOY выполнить действие Smoke Grenade; одним дружественным оператором KOMMANDO BOY выполнить действие Stun Grenade.\n\nПравила для этих действий находятся в universal equipment. Выполнение этих действий с помощью этого правила не учитывается в лимитах действий (т.е. если также выбираешь эти гранаты из equipment)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/kommandoboy.png"
         },
         {
           "name": "Kommando Breacha Boy",
@@ -4954,7 +4968,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Breach",
               "text": "1AP. Размести один свой Breach marker в пределах control range этого оператора как можно ближе к элементу террейна в пределах его control range. Пока оператор в пределах 1\" от этого маркера, части того элемента террейна толщиной не более 1\" считаются Accessible terrain.\n\nЭтот оператор может выполнить это действие во время действия Charge или Reposition, и в этом случае оно стоит на 1 AP меньше; оставшуюся дистанцию движения можно использовать после этого.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или если элемент террейна не в пределах его control range."
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/breacha_boy.png"
         },
         {
           "name": "Kommando Burna Boy",
@@ -4990,7 +5005,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Torrent 0\"",
               "text": "Torrent 0\" означает, что нельзя выбирать дополнительные вторичные цели, но это оружие всё равно имеет weapon rule Torrent для всех прочих игровых целей (например, правило Condensed Stronghold)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/burnaboy.png"
         },
         {
           "name": "Kommando Comms Boy",
@@ -5024,7 +5040,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "SUPPORT. Выбери одного другого дружественного оператора KOMMANDO (кроме BOMB SQUIG), видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/comms_boy.png"
         },
         {
           "name": "Kommando Dakka Boy",
@@ -5061,7 +5078,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выполни свободное действие Dash и свободное действие Shoot этим оператором в любом порядке. Для этого действия Shoot можно выбрать только dakka shoota.\n\nЭтот оператор не может выполнять это действие, имея Conceal order, или находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/dakka_boy.png"
         },
         {
           "name": "Kommando Grot",
@@ -5088,7 +5106,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выбери видимую точку на элементе террейна для этого оператора. Убери этого оператора из killzone и размести его заново в пределах 1\" по горизонтали от той точки, в месте, куда его можно разместить, не в пределах control range вражеских операторов, и с той точкой, видимой ему.\n\nЭто действие считается действием Reposition. Этот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время активации, в которой он выполнил действие Charge или Fall Back (и наоборот).",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/kommando_grot.png"
         },
         {
           "name": "Kommando Rokkit Boy",
@@ -5119,7 +5138,8 @@ window.GAME_DATA_FALLBACK = {
               "wr": "-"
             }
           ],
-          "abilities": []
+          "abilities": [],
+          "portrait": "img/portraits/kommandos/rokkitboy.png"
         },
         {
           "name": "Kommando Slasha Boy",
@@ -5148,7 +5168,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Dat All You Got?",
               "text": "После того как этот оператор дерётся или отвечает (retaliating), если он не incapacitated, можно нанести D3 урона вражескому оператору в этой последовательности."
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/slasha_boy.png"
         },
         {
           "name": "Kommando Snipa Boy",
@@ -5191,7 +5212,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Concealed Position",
               "text": "Этот оператор может использовать это оружие только в первый раз, когда он выполняет действие Shoot за битву."
             }
-          ]
+          ],
+          "portrait": "img/portraits/kommandos/snipa_boy.png"
         }
       ],
       "poolPick": 9,
@@ -5826,7 +5848,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "См. faction rule Markerlights.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/shasuipathfinder.png"
         }
       ],
       "pool": [
@@ -5869,7 +5892,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Grenadier Specialist",
               "text": "Этот оператор может использовать frag и krak grenades (см. universal equipment). Это не считается за лимит limited uses, даже если ты также выбрал эти grenades для других операторов. Каждый раз, когда он это делает, улучши Hit stat того оружия на 1."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/grenadierpathfinder.png"
         },
         {
           "name": "Blooded Pathfinder",
@@ -5903,7 +5927,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Veteran",
               "text": "Во время turning point, в котором дружественный оператор SHAS'UI использовал свой Strategic Gambit Art of War и был выбран Mont'ka, этот оператор может использовать Kauyon вместо этого во время своей активации (и наоборот)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/bloodedpc.png"
         },
         {
           "name": "Comms Specialist Pathfinder",
@@ -5938,7 +5963,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "SUPPORT. Выбери одного другого дружественного оператора PATHFINDER, видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/communicationsspecialistpathfinder.png"
         },
         {
           "name": "Drone Controller Pathfinder",
@@ -5977,7 +6003,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Один дружественный оператор PATHFINDER DRONE может сразу выполнить одно свободное действие, но не может переместиться более чем на 2\" во время этого действия.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/dronecontrollerpathfinder.png"
         },
         {
           "name": "Marksman Pathfinder",
@@ -6013,7 +6040,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Inertial Dampener",
               "text": "Можно игнорировать любые изменения Hit stat этого оператора marksman rail rifle."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/marksmanpathfinder.png"
         },
         {
           "name": "Medical Technician Pathfinder",
@@ -6052,7 +6080,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выбери одного дружественного оператора PATHFINDER (кроме DRONE) в пределах control range этого оператора, чтобы он восстановил до 2D3 потерянных wounds. Он не может быть оператором, для которого было использовано правило Medic! в течение этого turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/medicaltechnicianpathfinder.png"
         },
         {
           "name": "Shas'la Pathfinder",
@@ -6090,7 +6119,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "См. faction rule Markerlights.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/shaslapathfinder.png"
         },
         {
           "name": "Transpectral Interference Pathfinder",
@@ -6129,7 +6159,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Multi-Dimensional Vision",
               "text": "Когда этот оператор стреляет, вражеские операторы не могут быть obscured."
             }
-          ]
+          ],
+          "portrait": "img/portraits/pathfinders/transpectralinterferencepathfinder.png"
         },
         {
           "name": "Weapons Expert Pathfinder",
@@ -6168,7 +6199,8 @@ window.GAME_DATA_FALLBACK = {
               "wr": "-"
             }
           ],
-          "abilities": []
+          "abilities": [],
+          "portrait": "img/portraits/pathfinders/weaponsexpertpathfinder.png"
         },
         {
           "name": "MB3 Recon Drone",
