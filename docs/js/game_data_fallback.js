@@ -3143,7 +3143,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Если твой маркер Nuncio-aquila не в killzone, размести его в пределах 6\" по горизонтали от этого оператора; в противном случае можно передвинуть маркер Nuncio-aquila до 6\" по горизонтали. Если этот оператор убран из killzone, убери и маркер Nuncio-aquila из killzone. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "0AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/proctor-exactant.png"
         }
       ],
       "poolPick": 10,
@@ -3190,7 +3191,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Castigator's Arrest",
               "text": "Каждый раз, когда вражеский оператор находится в пределах control range этого оператора, если в пределах control range этого оператора нет других вражеских операторов, этот вражеский оператор не может выполнить действие Fall Back."
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/castigatorarbites.png"
         },
         {
           "name": "Arbites Chirurgant",
@@ -3283,7 +3285,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выбери одного дружественного оператора EXACTION SQUAD R-VR CYBER-MASTIFF и смени один из его attack patterns.",
               "cost": "0AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/leashmaster.png"
         },
         {
           "name": "R-VR Cyber-Mastiff",
@@ -3310,7 +3313,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выбери одного вражеского оператора в пределах control range этого оператора. Пока тот вражеский оператор не покинет пределы control range этого оператора, или пока этот оператор не выполнит это действие снова (что наступит раньше) — ухудши Hit stat оружия того вражеского оператора на 1 (это не суммируется с состоянием injured); кроме того, тот вражеский оператор не может выполнить действие Fall Back. Нельзя выполнять это действие, если в пределах control range этого оператора нет вражеского оператора.",
               "cost": "0AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/new_mastiff.png"
         },
         {
           "name": "Arbites Gunner",
@@ -3356,7 +3360,8 @@ window.GAME_DATA_FALLBACK = {
               "wr": "-"
             }
           ],
-          "abilities": []
+          "abilities": [],
+          "portrait": "img/portraits/exaction-squad/gunner.png"
         },
         {
           "name": "Arbites Malocator",
@@ -3397,7 +3402,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выбери одного вражеского оператора, видимого этому оператору. До начала следующей активации этого оператора, пока тот вражеский оператор не incapacitated, или пока это действие не выполнено снова (что наступит раньше) — каждый раз, когда дружественный оператор EXACTION SQUAD стреляет по этому вражескому оператору, дерётся против него или отвечает (retaliating) против него, оружие того дружественного оператора получает weapon rules Lethal 5+ и Severe; если у оружия уже есть это правило, оно также получает Lethal 5+. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/malocator.png"
         },
         {
           "name": "Arbites Marksman",
@@ -3445,7 +3451,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "До начала следующей активации этого оператора: concealed- и stationary-профили его executioner shotgun получают weapon rule Lethal 5+; каждый раз, когда он стреляет из executioner shotgun, вражеские операторы не могут быть obscured. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/agunner_sniper.png"
         },
         {
           "name": "Arbites Revelatum",
@@ -3486,7 +3493,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "SUPPORT. Выбери одного вражеского оператора, видимого этому оператору и находящегося в пределах 8\" от него. До конца turning point, каждый раз, когда дружественный оператор EXACTION SQUAD в пределах 3\" от этого оператора стреляет по тому вражескому оператору, можно применить этот эффект. Если применяешь: оружие того дружественного оператора получает weapon rule Seek Light; тот вражеский оператор не может быть obscured. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/relevatum.png"
         },
         {
           "name": "Arbites Subductor",
@@ -3516,7 +3524,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Stubborn Subjugator",
               "text": "Можно игнорировать любые изменения Hit stat оружия ближнего боя этого оператора."
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/subdugator.png"
         },
         {
           "name": "Arbites Vigilant",
@@ -3553,7 +3562,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Close Quarters Vigilance",
               "text": "Этот оператор может выполнить действие Shoot (кроме Guard), находясь в пределах control range вражеского оператора, но только если он не выполнял действие Charge во время этой активации, или если это counteraction. Обрати внимание: это не запрещает этому оператору выполнить действие Charge после действия Shoot."
             }
-          ]
+          ],
+          "portrait": "img/portraits/exaction-squad/vigilant.png"
         },
         {
           "name": "Arbites Vox-Signifier",
@@ -4314,7 +4324,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Call the Attack",
               "text": "STRATEGIC GAMBIT, если у этого оператора нет одного из твоих Frenzy tokens. Выбери одного дружественного оператора FELLGOR RAVAGER, видимого и в пределах 6\" от этого оператора. Выбранный оператор и каждый другой дружественный оператор FELLGOR RAVAGER, видимый и в пределах 2\" от него, может немедленно выполнить бесплатное действие Dash в порядке по твоему выбору."
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/ironhorn.png"
         }
       ],
       "poolPick": 9,
@@ -4384,7 +4395,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выполни бесплатное действие Reposition этим оператором. Во время этого действия он может переместиться на дополнительные 2\" и может заходить в пределы control range вражеских операторов (но не может начинать или заканчивать движение там). Нанеси D3+1 урона каждому вражескому оператору, в пределы control range которого он зашёл (бросай отдельно за каждого, в порядке, в котором он заходил в их control range).\n\nЭтот оператор не может выполнять это действие, пока у него приказ Conceal.",
               "cost": "2AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/fluxbray.png"
         },
         {
           "name": "Fellgor Gnarlscar",
@@ -4419,7 +4431,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Выполни бесплатное действие Fight этим оператором, затем бесплатное действие Shoot этим оператором (или наоборот). Этот оператор может выполнить это действие Shoot, находясь в пределах control range вражеского оператора, но если делает так — должен выбрать целью вражеского оператора в пределах своего control range (даже если другие дружественные операторы находятся в пределах control range того вражеского оператора). Для этого действия Shoot можно выбрать только autopistol.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/gnarlscar.png"
         },
         {
           "name": "Fellgor Gorehorn",
@@ -4453,7 +4466,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "* Headtaker",
               "text": "Когда этот оператор incapacitates оператора этим оружием, брось один D3:\n- Этот оператор восстанавливает число потерянных wounds, равное результату (если у него нет Frenzy token).\n- До конца битвы добавь результат к Critical Dmg stat skullcleaver этого оператора (максимум до 8)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/gorehorn.png"
         },
         {
           "name": "Fellgor Herd-Goad",
@@ -4526,7 +4540,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Savage",
               "text": "Первый раз, когда этот оператор выполняет действие Fight во время каждой своей активации, если он не incapacitated, он может немедленно выполнить бесплатное действие Fight после этого (не обязательно против того же вражеского оператора). Это имеет приоритет над ограничениями действий, и firefight ploy Ruthless Rampage нельзя использовать между этими двумя действиями Fight."
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/mangler.png"
         },
         {
           "name": "Fellgor Shaman",
@@ -4569,7 +4584,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "PSYCHIC. До начала следующей активации этого оператора или пока он не incapacitated (что наступит раньше): когда дружественный оператор FELLGOR RAVAGER виден и в пределах 3\" от этого оператора, имеет приказ Conceal и находится в укрытии (cover), тот дружественный оператор не может быть выбран как допустимая цель — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме нахождения в пределах 2\".\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
               "cost": "1AP"
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/fellgor_shaman.png"
         },
         {
           "name": "Fellgor Toxhorn",
@@ -4603,7 +4619,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Pox Bomb",
               "text": "Этот оператор может использовать stun grenades (см. universal equipment). Их использование не расходует лимит применений (то есть если ты также выбрал эту гранату из equipment для других операторов). Когда вражеский оператор проходит проверку stun в результате действия Stun Grenade этого оператора, если результат 3+, дополнительно нанеси этому вражескому оператору урон, равный результату кубика, делённому на 2 (округляя вверх)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/fellgor-ravagers/toxhorn.png"
         },
         {
           "name": "Fellgor Vandal",
@@ -4668,7 +4685,8 @@ window.GAME_DATA_FALLBACK = {
               "text": "Когда у этого оператора есть один из твоих Frenzy tokens, он не может быть injured. Это правило имеет приоритет над обычными правилами Frenzy."
             }
           ],
-          "maxCopies": 9
+          "maxCopies": 9,
+          "portrait": "img/portraits/fellgor-ravagers/fellgor.png"
         }
       ],
       "lore": {
@@ -5347,7 +5365,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Boons of Damnation",
               "text": "Boons of Damnation разрешаются броском D6, см. выше:\n- Когда кубик атаки должен нанести этому оператору урон 3 или более, можно игнорировать количество урона, равное числу Damnation points этого оператора.\n- Когда этот оператор дерётся или отвечает (retaliating) и наносит удар (strike) кубиком атаки, можно нанести дополнительный урон, равный числу Damnation points этого оператора."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/chaos_lord_with_jump_pack.png"
         }
       ],
       "pool": [
@@ -5403,7 +5422,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Path to Glory",
               "text": "Каждый раз, когда этот оператор выводит из строя вражеского оператора, у которого есть его Challenge token, ты получаешь 1CP."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/murderwing_champion.png"
         },
         {
           "name": "Murderwing Curseclaw",
@@ -5436,7 +5456,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Snatch",
               "text": "1AP. BOOST action. Выбери одного вражеского оператора в пределах BOOST ZONE этого оператора. Оба игрока бросают по одному D6 и добавляют результат к Wounds stat своего оператора. Если твой результат выше, убери того вражеского оператора из killzone и поставь его обратно в пределах BOOST ZONE этого оператора или его control range. Он должен быть размещён в месте, где может быть размещён, и не может быть размещён дальше от этого оператора, чем был при уборке.\n\nЭтот оператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Fall Back или Reposition после установки из BOOST."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/curseclaw.png"
         },
         {
           "name": "Murderwing Depredator",
@@ -5469,7 +5490,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Carving Blow",
               "text": "1AP. Нанеси 2D3 урона каждому оператору, видимому этому оператору и в пределах 2\" от него, в выбранном тобой порядке (разрешай каждый отдельно).\n\nЭтот оператор не может выполнять это действие, имея Conceal order, или во время той же активации, в которой он выполнил действие Slice from Above (см. Bladefins faction equipment), действие Clawed Charge (см. Clawed Armour faction equipment) или два действия Fight (и наоборот)."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/depredator.png"
         },
         {
           "name": "Murderwing Huntmaster",
@@ -5502,7 +5524,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Strike from Above",
               "text": "1AP. BOOST action. Нанеси 2D3+1 урона одному вражескому оператору в пределах BOOST ZONE этого оператора.\n\nЭтот оператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Fall Back или Reposition после установки из BOOST."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/huntmaster.png"
         },
         {
           "name": "Murderwing Raptor",
@@ -5546,7 +5569,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Thrill of Flight",
               "text": "Каждый раз, когда этот оператор выполняет BOOST во время своей активации:\n- Можно убрать любые изменения его APL stat.\n- Можно игнорировать любые изменения его stats от ранения (including его weapons' stats) до конца активации."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/murderwing_raptor.png"
         },
         {
           "name": "Murderwing Shrieker",
@@ -5579,7 +5603,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Shriek",
               "text": "1AP. Выбери одного вражеского оператора, видимого этому оператору и в пределах 6\" от него. Как альтернатива, выбери одного вражеского оператора в пределах BOOST ZONE этого оператора (в этот момент он становится BOOST). Если вражеские операторы в пределах control range этого оператора, нельзя выбрать вражеского оператора, который не в их числе. Нанеси D3 урона выбранному оператору и вычти 1 из его APL stat до конца его следующей активации.\n\nЭтот оператор не может выполнять это действие, имея Conceal order. Если выбираешь вражеского оператора в пределах BOOST ZONE этого оператора, этот оператор не может выполнять это действие обычным образом. Вместо этого он выполняет это действие во время действия Fall Back или Reposition после установки из BOOST."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/shrieker.png"
         },
         {
           "name": "Murderwing Skysear",
@@ -5631,7 +5656,8 @@ window.GAME_DATA_FALLBACK = {
               "wr": "-"
             }
           ],
-          "abilities": []
+          "abilities": [],
+          "portrait": "img/portraits/murderwing/murderwing_skysear.png"
         },
         {
           "name": "Murderwing Warp Talon",
@@ -5653,7 +5679,8 @@ window.GAME_DATA_FALLBACK = {
               "name": "Slice the Veil",
               "text": "При установке этого оператора перед битвой, можно вместо этого установить его в warp: помести его в сторону от killzone. В первую Firefight phase, когда этот оператор активируется, помести один свой Warp marker полностью в пределах своей территории, затем разверни этого оператора им.\n\nВо вторую Firefight phase, когда этот оператор активируется, установи его полностью в пределах своей drop zone либо полностью в пределах своей территории, оспаривая свой Warp marker. Продолжай его активацию как обычно, но во время неё нельзя потратить более 2AP на него, и нельзя использовать более 4\" дистанции движения. До Ready step следующей Strategy phase, этот оператор obscured для операторов на расстоянии более 3\" от него.\n\nПока этот оператор в warp, он считается ready дружественным оператором MURDERWING для firefight ploy Malicious Narcissism."
             }
-          ]
+          ],
+          "portrait": "img/portraits/murderwing/warp_talon.png"
         }
       ],
       "poolPick": 5,
