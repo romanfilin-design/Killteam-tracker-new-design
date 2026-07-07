@@ -209,7 +209,8 @@
             id: op.id, name: op.name, portrait: op.portrait || null,
             wounds: op.wounds, maxWounds: op.maxWounds,
             order: op.order || null, activated: !!op.activated,
-            tokens: op.tokens || [], tokenCounts: op.tokenCounts || {}
+            tokens: op.tokens || [], tokenCounts: op.tokenCounts || {},
+            apl: op.apl || null, move: op.move || null, save: op.save || null
           };
         })
       });
@@ -889,6 +890,13 @@
     }
     var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);
     var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : '—');
+    var statLine = (op.apl || op.move || op.save)
+      ? '<div class="operator__stats">' +
+          '<div class="operator__stat"><span class="operator__stat-label">APL</span><span class="operator__stat-value">' + esc(op.apl || '—') + '</span></div>' +
+          '<div class="operator__stat"><span class="operator__stat-label">Move</span><span class="operator__stat-value">' + esc(op.move || '—') + '</span></div>' +
+          '<div class="operator__stat"><span class="operator__stat-label">Save</span><span class="operator__stat-value">' + esc(op.save || '—') + '</span></div>' +
+        '</div>'
+      : '';
     var marks = roomState.enemyTokenMarks || {};
     var chipsHtml = tokenDefs.map(function (tok) {
       var key = window.KTRoom.enemyTokenKey(opponentUid, op.id, tok.id);
@@ -925,7 +933,7 @@
           (op.portrait
             ? '<img class="operator__portrait" src="' + esc(op.portrait) + '" alt="">'
             : '<span class="operator__portrait operator__portrait--placeholder" aria-hidden="true">' + PORTRAIT_PLACEHOLDER_SVG + '</span>') +
-          '<div class="operator__id"><span class="operator__name-input" style="display:inline-block;">' + esc(op.name) + '</span></div>' +
+          '<div class="operator__id"><span class="operator__name-input" style="display:inline-block;">' + esc(op.name) + '</span>' + statLine + '</div>' +
         '</div>' +
         '<div class="operator__status-row">' +
           '<span class="activate-toggle' + (op.activated ? ' is-on' : '') + '" aria-hidden="true">' + ICON_ACTIVATED_SVG +
