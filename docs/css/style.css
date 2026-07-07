@@ -352,13 +352,12 @@ a { color: var(--accent-bright); }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 4px;
-  padding-right: 4px;
-  font-size: clamp(9px, 3vw, 14px);
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 @media (max-width: 480px) {
-  .btn-row--tight .btn { min-height: 38px; }
+  .btn-row--tight .btn { min-height: 38px; font-size: 12px; }
 }
 
 /* Счётчики +/- */

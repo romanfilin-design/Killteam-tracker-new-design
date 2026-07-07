@@ -537,10 +537,10 @@
     return (
       '<section class="panel">' +
         '<div class="btn-row btn-row--tight">' +
-          '<label class="btn btn--ghost">Импорт партии' +
+          '<label class="btn btn--ghost" title="Импорт партии">Импорт' +
             '<input type="file" accept="application/json" class="visually-hidden-input" data-action="importStateFile" /></label>' +
-          '<button class="btn btn--ghost" data-action="exportState">Экспорт партии</button>' +
-          '<button class="btn btn--danger" data-action="resetSetup">Новая партия</button>' +
+          '<button class="btn btn--ghost" data-action="exportState" title="Экспорт партии">Экспорт</button>' +
+          '<button class="btn btn--danger" data-action="resetSetup" title="Новая партия">Сброс</button>' +
         '</div>' +
       '</section>'
     );
@@ -658,10 +658,10 @@
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Ростер · операторов: ' + t.operators.length + '</span></div>' +
         '<div class="btn-row btn-row--tight">' +
-          '<label class="btn btn--ghost">Импорт ростера' +
+          '<label class="btn btn--ghost" title="Импорт ростера">Импорт' +
             '<input type="file" accept="application/json" class="visually-hidden-input" data-action="importRosterFile" />' +
           '</label>' +
-          '<button class="btn btn--danger" data-action="clearRoster">Очистить состав</button>' +
+          '<button class="btn btn--danger" data-action="clearRoster" title="Очистить состав">Очистить</button>' +
         '</div>' +
       '</section>'
     );
