@@ -334,12 +334,32 @@
     }
   }
 
+  // Скролл горизонтальных каруселей (пул операторов, выбор Kill Team) иначе
+  // сбрасывается в начало при каждом ре-рендере, потому что innerHTML
+  // полностью пересоздаёт элемент — браузер не помнит scrollLeft для нового DOM-узла.
+  var SCROLL_PRESERVE_SELECTORS = ['.pool-carousel', '.pick-list'];
+
+  function captureScrollPositions() {
+    return SCROLL_PRESERVE_SELECTORS.map(function (sel) {
+      var el = document.querySelector(sel);
+      return el ? { sel: sel, left: el.scrollLeft, top: el.scrollTop } : null;
+    }).filter(Boolean);
+  }
+
+  function restoreScrollPositions(positions) {
+    positions.forEach(function (pos) {
+      var el = document.querySelector(pos.sel);
+      if (el) { el.scrollLeft = pos.left; el.scrollTop = pos.top; }
+    });
+  }
+
   // ------------------------------------------------------------------
   // Render — точка входа
   // ------------------------------------------------------------------
 
   function render() {
     var focusInfo = captureFocus();
+    var scrollPositions = captureScrollPositions();
     var app = document.getElementById('app');
     app.innerHTML = renderHeader() + '<main id="screen">' +
       (appState.phase === 'game' ? renderGameScreen() :
@@ -347,6 +367,7 @@
       '</main>';
     renderModal();
     restoreFocus(focusInfo);
+    restoreScrollPositions(scrollPositions);
   }
 
   function renderModal() {
@@ -452,9 +473,9 @@
         '<div class="terminal-header__row">' +
           '<div class="terminal-title"><span class="terminal-title__dot"></span><span class="terminal-title__text">' + esc(team.name || 'ОПЕРАТОР') + '</span></div>' +
           '<div class="mode-tabs">' +
-            '<button class="' + (appState.phase === 'setup' ? 'active' : '') + '" data-action="goSetup" title="Подготовка">Старт</button>' +
-            '<button class="' + (appState.phase === 'game' ? 'active' : '') + '" data-action="goGame" title="Игра">Бой</button>' +
-            (roomState.code ? '<button class="' + (appState.phase === 'opponent' ? 'active' : '') + '" data-action="goOpponent" title="Противник">Враг</button>' : '') +
+            '<button class="' + (appState.phase === 'setup' ? 'active' : '') + '" data-action="goSetup" title="Подготовка">Prep</button>' +
+            '<button class="' + (appState.phase === 'game' ? 'active' : '') + '" data-action="goGame" title="Игра">Game</button>' +
+            (roomState.code ? '<button class="' + (appState.phase === 'opponent' ? 'active' : '') + '" data-action="goOpponent" title="Противник">Enemy</button>' : '') +
             '<button class="mode-tabs__icon-btn' + (roomState.code ? ' is-active-room' : '') + '" data-action="openRoomModal" title="' + esc(roomTitle) + '" aria-label="' + esc(roomTitle) + '">' + ICON_ROOM_SVG + '</button>' +
           '</div>' +
         '</div>' +
