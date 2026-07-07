@@ -121,6 +121,90 @@
   var toastEl = null;
 
   // ------------------------------------------------------------------
+  // Комната синхронизации (Firebase) — see docs/js/firebase-room.js
+  // ------------------------------------------------------------------
+  var ROOM_STORAGE_KEY = 'kt_room_code_v1';
+  var roomState = { code: null, others: [], enemyTokenMarks: {} };
+  var pendingRoom = null; // { mode: 'menu' | 'join', input }
+  var publishTimer = null;
+  var roomUnsubscribers = [];
+
+  function loadRoomCode() {
+    try { return localStorage.getItem(ROOM_STORAGE_KEY) || null; } catch (e) { return null; }
+  }
+  function persistRoomCode(code) {
+    try {
+      if (code) localStorage.setItem(ROOM_STORAGE_KEY, code);
+      else localStorage.removeItem(ROOM_STORAGE_KEY);
+    } catch (e) { /* noop */ }
+  }
+
+  function stopRoomSubscriptions() {
+    roomUnsubscribers.forEach(function (unsub) { try { unsub(); } catch (e) { /* noop */ } });
+    roomUnsubscribers = [];
+  }
+
+  function attachRoomSubscriptions(code) {
+    stopRoomSubscriptions();
+    roomUnsubscribers.push(window.KTRoom.subscribeRoom(code, function (data) {
+      roomState.enemyTokenMarks = (data && data.enemyTokenMarks) || {};
+      render();
+    }));
+    roomUnsubscribers.push(window.KTRoom.subscribeOthers(code, roomState.uid, function (others) {
+      roomState.others = others;
+      render();
+    }));
+  }
+
+  function enterRoom(code, uid) {
+    roomState.code = code;
+    roomState.uid = uid;
+    persistRoomCode(code);
+    attachRoomSubscriptions(code);
+    publishOwnState();
+    render();
+  }
+
+  function leaveRoomState() {
+    stopRoomSubscriptions();
+    roomState = { code: null, others: [], enemyTokenMarks: {} };
+    persistRoomCode(null);
+    if (appState && appState.phase === 'opponent') { appState.phase = 'setup'; }
+    render();
+  }
+
+  function publishOwnState() {
+    if (!roomState.code || !roomState.uid || !window.KTRoom) return;
+    window.clearTimeout(publishTimer);
+    publishTimer = window.setTimeout(function () {
+      var t = appState.team;
+      window.KTRoom.publishSelf(roomState.code, roomState.uid, {
+        teamName: t.killTeamName || t.name,
+        operators: t.operators.map(function (op) {
+          return {
+            id: op.id, name: op.name, portrait: op.portrait || null,
+            wounds: op.wounds, maxWounds: op.maxWounds,
+            order: op.order || null, activated: !!op.activated
+          };
+        })
+      });
+    }, 400);
+  }
+
+  function initRoomIfSaved() {
+    var savedCode = loadRoomCode();
+    if (!savedCode || !window.KTRoom) return;
+    window.KTRoom.ready.then(function (uid) {
+      roomState.uid = uid;
+      window.KTRoom.joinRoom(savedCode).then(function () {
+        enterRoom(savedCode, uid);
+      }).catch(function () {
+        persistRoomCode(null);
+      });
+    });
+  }
+
+  // ------------------------------------------------------------------
   // Загрузка данных / состояния
   // ------------------------------------------------------------------
 
@@ -154,6 +238,7 @@
     } catch (e) {
       console.warn('[KillTeamTracker] не удалось сохранить состояние', e);
     }
+    publishOwnState();
   }
 
   function boot() {
@@ -163,6 +248,7 @@
       backfillOperatorStatsFromKillTeam(gameData, appState);
       persist();
       render();
+      initRoomIfSaved();
     });
   }
 
@@ -241,7 +327,8 @@
     var focusInfo = captureFocus();
     var app = document.getElementById('app');
     app.innerHTML = renderHeader() + '<main id="screen">' +
-      (appState.phase === 'game' ? renderGameScreen() : renderSetupScreen()) +
+      (appState.phase === 'game' ? renderGameScreen() :
+        (appState.phase === 'opponent' ? renderOpponentScreen() : renderSetupScreen())) +
       '</main>';
     renderModal();
     restoreFocus(focusInfo);
@@ -249,6 +336,10 @@
 
   function renderModal() {
     var root = document.getElementById('modal-root');
+    if (pendingRoom) {
+      root.innerHTML = renderRoomModal();
+      return;
+    }
     if (pendingInfo) {
       root.innerHTML =
         '<div class="modal-overlay" data-action="closeInfo">' +
@@ -276,6 +367,52 @@
       '</div>';
   }
 
+  function renderRoomModal() {
+    if (roomState.code) {
+      return (
+        '<div class="modal-overlay" data-action="closeRoomModal">' +
+          '<div class="modal-box" data-action="noop">' +
+            '<h2>Комната синхронизации</h2>' +
+            '<p>Код комнаты: <b>' + esc(roomState.code) + '</b><br>Сообщите его сопернику, чтобы он подключился.</p>' +
+            '<div class="btn-row">' +
+              '<button class="btn btn--danger" data-action="leaveRoom">Покинуть комнату</button>' +
+              '<button class="btn btn--ghost" data-action="closeRoomModal">Закрыть</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+    if (pendingRoom.mode === 'join') {
+      return (
+        '<div class="modal-overlay" data-action="closeRoomModal">' +
+          '<div class="modal-box" data-action="noop">' +
+            '<h2>Войти в комнату</h2>' +
+            '<div class="field">' +
+              '<label class="field__label">Код комнаты</label>' +
+              '<input type="text" data-focus-key="roomCodeInput" data-field="roomCodeInput" value="' + esc(pendingRoom.input || '') + '" maxlength="8" style="text-transform:uppercase;" />' +
+            '</div>' +
+            '<div class="btn-row">' +
+              '<button class="btn btn--ghost" data-action="backToRoomMenu">Назад</button>' +
+              '<button class="btn btn--accent" data-action="submitJoinRoom">Войти</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+    return (
+      '<div class="modal-overlay" data-action="closeRoomModal">' +
+        '<div class="modal-box" data-action="noop">' +
+          '<h2>Комната синхронизации</h2>' +
+          '<p>Создайте комнату для игры вдвоём с общим Crit Op и вкладкой «Противник», или войдите по коду соперника.</p>' +
+          '<div class="btn-row">' +
+            '<button class="btn btn--accent" data-action="createRoom">Создать комнату</button>' +
+            '<button class="btn btn--ghost" data-action="showJoinForm">Войти по коду</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
   function askConfirm(message, onConfirm) {
     pendingConfirm = { message: message, onConfirm: onConfirm };
     renderModal();
@@ -294,6 +431,7 @@
 
   function renderHeader() {
     var team = appState.team;
+    var roomLabel = roomState.code ? ('Комната: ' + roomState.code) : 'Комната';
     return (
       '<header class="terminal-header">' +
         '<div class="terminal-header__row">' +
@@ -301,7 +439,9 @@
           '<div class="mode-tabs">' +
             '<button class="' + (appState.phase === 'setup' ? 'active' : '') + '" data-action="goSetup">Подготовка</button>' +
             '<button class="' + (appState.phase === 'game' ? 'active' : '') + '" data-action="goGame">Игра</button>' +
+            (roomState.code ? '<button class="' + (appState.phase === 'opponent' ? 'active' : '') + '" data-action="goOpponent">Противник</button>' : '') +
           '</div>' +
+          '<button class="btn btn--ghost btn--sm" data-action="openRoomModal">' + esc(roomLabel) + '</button>' +
         '</div>' +
       '</header>'
     );
@@ -660,10 +800,70 @@
     );
   }
 
+  // ==================================================================
+  // ЭКРАН ПРОТИВНИКА (комната синхронизации, см. docs/js/firebase-room.js)
+  // ==================================================================
+
+  function renderOpponentScreen() {
+    if (!roomState.code) {
+      return '<p class="empty-state">Вы не в комнате. Нажмите «Комната» вверху, чтобы создать её или войти по коду.</p>';
+    }
+    var others = roomState.others || [];
+    if (!others.length) {
+      return '<p class="empty-state">Комната «' + esc(roomState.code) + '» открыта. Ждём подключения соперника…</p>';
+    }
+    var tokenDefs = enemyStatusTokenDefs(gameData, appState.team.killTeamName);
+    return others.map(function (player) {
+      var ops = player.operators || [];
+      var opsHtml = ops.length
+        ? ops.map(function (op) { return renderOpponentOperatorCard(op, player.uid, tokenDefs); }).join('')
+        : '<p class="empty-state">У соперника пока нет операторов в составе.</p>';
+      return (
+        '<section class="panel">' +
+          '<div class="panel__head"><span class="panel__title">Противник: ' + esc(player.teamName || 'Команда соперника') + '</span></div>' +
+        '</section>' + opsHtml
+      );
+    }).join('');
+  }
+
+  function renderOpponentOperatorCard(op, opponentUid, tokenDefs) {
+    var down = op.wounds <= 0;
+    var hpPct = op.maxWounds > 0 ? (op.wounds / op.maxWounds) * 100 : 0;
+    var hpClass = hpPct >= 60 ? 'hp-green' : (hpPct >= 30 ? 'hp-yellow' : 'hp-red');
+    var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);
+    var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : '—');
+    var marks = roomState.enemyTokenMarks || {};
+    var chipsHtml = tokenDefs.map(function (tok) {
+      var key = window.KTRoom.enemyTokenKey(opponentUid, op.id, tok.id);
+      var on = !!marks[key];
+      return '<button class="status-chip' + (on ? ' is-on' : '') + '" data-action="toggleEnemyTokenMark" data-uid="' + esc(opponentUid) +
+        '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-on="' + (on ? '0' : '1') + '">' + esc(tok.name) + '</button>';
+    }).join('');
+
+    return (
+      '<article class="operator' + (down ? ' is-down' : '') + '">' +
+        '<div class="operator__top">' +
+          (op.portrait
+            ? '<img class="operator__portrait" src="' + esc(op.portrait) + '" alt="">'
+            : '<span class="operator__portrait operator__portrait--placeholder" aria-hidden="true">' + PORTRAIT_PLACEHOLDER_SVG + '</span>') +
+          '<div class="operator__id"><span class="operator__name-input" style="display:inline-block;">' + esc(op.name) + '</span></div>' +
+        '</div>' +
+        '<div class="operator__status-row">' +
+          '<span class="activate-toggle' + (op.activated ? ' is-on' : '') + '" aria-hidden="true">' + ICON_ACTIVATED_SVG +
+            '<span>' + (op.activated ? 'Активирован' : 'Не активирован') + '</span></span>' +
+          '<span class="order-cycle-btn order-cycle-btn--' + (op.order || 'neutral') + '" aria-hidden="true">' + orderIcon +
+            '<span>Приказ: ' + orderLabel + '</span></span>' +
+        '</div>' +
+        '<div class="wound-row"><span class="wound-readout__num ' + hpClass + '">' + op.wounds + ' / ' + op.maxWounds + '</span></div>' +
+        (chipsHtml ? '<div class="operator__controls">' + chipsHtml + '</div>' : '') +
+      '</article>'
+    );
+  }
+
   // Лёгкая панель для токенов, которые правила ставят на вражеских
-  // операторов (Markerlight, Poison, Grudge и т.п.) — трекер не ведёт
-  // карточки противника, поэтому это просто список именованных меток с
-  // чипами/счётчиками по enemy-статус-токенам текущей команды.
+  // операторов (Markerlight, Poison, Grudge и т.п.) — ручной фолбэк на
+  // случай игры без комнаты синхронизации (см. renderOpponentScreen выше
+  // для варианта с реальными карточками соперника через Firebase).
   function renderEnemyMarkersPanel() {
     var t = appState.team;
     var tokenDefs = enemyStatusTokenDefs(gameData, t.killTeamName);
@@ -1067,6 +1267,47 @@
       if (startGame(gameData, appState)) { persist(); render(); }
     },
 
+    goOpponent: function () { appState.phase = 'opponent'; render(); },
+
+    openRoomModal: function () { pendingRoom = { mode: 'menu', input: '' }; renderModal(); },
+    closeRoomModal: function () { pendingRoom = null; renderModal(); },
+    showJoinForm: function () { pendingRoom = { mode: 'join', input: '' }; renderModal(); },
+    backToRoomMenu: function () { pendingRoom = { mode: 'menu', input: '' }; renderModal(); },
+    createRoom: function () {
+      if (!window.KTRoom) { showToast('Firebase ещё не загрузился, попробуйте через секунду'); return; }
+      window.KTRoom.createRoom().then(function (res) {
+        roomState.uid = res.uid;
+        enterRoom(res.code, res.uid);
+        pendingRoom = { mode: 'menu', input: '' };
+        renderModal(); render();
+        showToast('Комната создана: ' + res.code);
+      }).catch(function () { showToast('Не удалось создать комнату'); });
+    },
+    submitJoinRoom: function () {
+      var code = (pendingRoom && pendingRoom.input || '').trim().toUpperCase();
+      if (!code) { showToast('Введите код комнаты'); return; }
+      if (!window.KTRoom) { showToast('Firebase ещё не загрузился, попробуйте через секунду'); return; }
+      window.KTRoom.ready.then(function (uid) {
+        roomState.uid = uid;
+        return window.KTRoom.joinRoom(code);
+      }).then(function (res) {
+        enterRoom(res.code, res.uid);
+        pendingRoom = null;
+        renderModal(); render();
+        showToast('Вы вошли в комнату ' + res.code);
+      }).catch(function () { showToast('Комната не найдена'); });
+    },
+    leaveRoom: function () {
+      pendingRoom = null;
+      askConfirm('Покинуть комнату синхронизации?', function () {
+        leaveRoomState();
+      });
+    },
+    toggleEnemyTokenMark: function (ds) {
+      if (!window.KTRoom || !roomState.code) return;
+      window.KTRoom.toggleEnemyTokenMark(roomState.code, ds.uid, ds.op, ds.token, ds.on === '1');
+    },
+
     selectKillTeam: function (ds) {
       selectKillTeam(gameData, appState.team, ds.value);
       appState.team.name = ds.value;
@@ -1208,6 +1449,9 @@
     if (target.dataset.field === 'enemyMarkerName') {
       renameEnemyMarker(appState.team, target.dataset.marker, target.value); persist();
     }
+    if (target.dataset.field === 'roomCodeInput' && pendingRoom) {
+      pendingRoom.input = target.value;
+    }
   }
 
   function onInput(e) {
@@ -1219,6 +1463,9 @@
     }
     if (target.dataset.field === 'enemyMarkerName') {
       renameEnemyMarker(appState.team, target.dataset.marker, target.value); persist();
+    }
+    if (target.dataset.field === 'roomCodeInput' && pendingRoom) {
+      pendingRoom.input = target.value;
     }
   }
 
