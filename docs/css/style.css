@@ -148,11 +148,16 @@ a { color: var(--accent-bright); }
   display: flex;
   align-items: center;
   gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.terminal-title__text {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1 1 auto;
   min-width: 0;
+  flex: 1 1 auto;
 }
 
 .terminal-title__dot {

@@ -450,11 +450,11 @@
     return (
       '<header class="terminal-header">' +
         '<div class="terminal-header__row">' +
-          '<div class="terminal-title"><span class="terminal-title__dot"></span>' + esc(team.name || 'ОПЕРАТОР') + '</div>' +
+          '<div class="terminal-title"><span class="terminal-title__dot"></span><span class="terminal-title__text">' + esc(team.name || 'ОПЕРАТОР') + '</span></div>' +
           '<div class="mode-tabs">' +
-            '<button class="' + (appState.phase === 'setup' ? 'active' : '') + '" data-action="goSetup">Подготовка</button>' +
-            '<button class="' + (appState.phase === 'game' ? 'active' : '') + '" data-action="goGame">Игра</button>' +
-            (roomState.code ? '<button class="' + (appState.phase === 'opponent' ? 'active' : '') + '" data-action="goOpponent">Противник</button>' : '') +
+            '<button class="' + (appState.phase === 'setup' ? 'active' : '') + '" data-action="goSetup" title="Подготовка">Старт</button>' +
+            '<button class="' + (appState.phase === 'game' ? 'active' : '') + '" data-action="goGame" title="Игра">Бой</button>' +
+            (roomState.code ? '<button class="' + (appState.phase === 'opponent' ? 'active' : '') + '" data-action="goOpponent" title="Противник">Враг</button>' : '') +
             '<button class="mode-tabs__icon-btn' + (roomState.code ? ' is-active-room' : '') + '" data-action="openRoomModal" title="' + esc(roomTitle) + '" aria-label="' + esc(roomTitle) + '">' + ICON_ROOM_SVG + '</button>' +
           '</div>' +
         '</div>' +
