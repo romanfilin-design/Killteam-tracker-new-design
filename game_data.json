@@ -685,6 +685,156 @@
         "usesLabel": "1× за turning point",
         "desc": "Once per turning point, когда дружественный оператор PATHFINDER выполняет действие Markerlight, можно применить это правило. Если применяешь, можно выбрать одного вражеского оператора в killzone целью вместо этого (ему не нужно быть видимым). Не суммируется с High-Intensity Markerlight или Analyse."
       }
+    ],
+    "Tempestus Aquilons": [
+      {
+        "id": "tempestus_daggers",
+        "name": "Tempestus Daggers",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы TEMPESTUS AQUILON (кроме SERVO-SENTRY) получают следующее оружие ближнего боя: Tempestus dagger — Atk 3, Hit 4+, Dmg 3/4."
+      },
+      {
+        "id": "combat_stimms",
+        "name": "Combat Stimms",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Можно игнорировать любые изменения Move stat дружественных операторов TEMPESTUS AQUILON от получения ранений (injured)."
+      },
+      {
+        "id": "drop_augury",
+        "name": "Drop Augury",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, когда активируется дружественный оператор TEMPESTUS AQUILON, установленный above, до того как он expend или lands, можно снова передвинуть один из своих Drop markers. Однако его нельзя передвигать ближе к drop zone оппонента."
+      },
+      {
+        "id": "remote_overseer",
+        "name": "Remote Overseer",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, после броска на определение initiative можно перебросить свои кубики."
+      }
+    ],
+    "Vespid Stingwings": [
+      {
+        "id": "neurostimulant",
+        "name": "Neurostimulant",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "В Ready step каждой Strategy phase, при определении, сколько Communion points получить, можно бросить два D3 и выбрать один D3 для использования."
+      },
+      {
+        "id": "convergence_stimulant",
+        "name": "Convergence Stimulant",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point дружественный оператор VESPID STINGWING может выполнить действие Pick Up Marker или mission-действие, не тратя Communion point."
+      },
+      {
+        "id": "accelerant_stimulant",
+        "name": "Accelerant Stimulant",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Когда дружественный оператор VESPID STINGWING (кроме OVERSIGHT DRONE) выполняет действие Charge или Dash, он может переместиться на дополнительный 1\". Если использует FLY для этого действия, можно разместить его на дополнительный 1\" дальше."
+      },
+      {
+        "id": "aggression_stimulant",
+        "name": "Aggression Stimulant",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Когда дружественный оператор VESPID STINGWING (кроме OVERSIGHT DRONE) дерётся, его оружие ближнего боя получает weapon rule Ceaseless."
+      }
+    ],
+    "Void-Dancer Troupe": [
+      {
+        "id": "wraithbone_talisman",
+        "name": "Wraithbone Talisman",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор VOID-DANCER TROUPE стреляет, дерётся или отвечает (retaliating), если выпало два или более fail, можно один из них сохранить как обычный success вместо этого."
+      },
+      {
+        "id": "shrieker_toxin_rounds",
+        "name": "Shrieker Toxin Rounds",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор VOID-DANCER TROUPE выполняет действие Shoot и ты выбираешь shuriken pistol или shrieker cannon (focused), можно применить это правило. Если применяешь, до конца этого действия то оружие получает weapon rule Devastating 1."
+      },
+      {
+        "id": "death_mask",
+        "name": "Death Mask",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Ведётся Tragedy tally. Каждый раз, когда дружественный оператор VOID-DANCER TROUPE, имеющий правило ACCOLADE, выведен из строя, добавь 1 к своему Tragedy tally. Когда Tragedy tally достигает 3, получи 1CP и обнули tally."
+      },
+      {
+        "id": "understudys_mask",
+        "name": "Understudy's Mask",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, когда активируется дружественный оператор VOID-DANCER TROUPE, если дружественный оператор, имеющий PIVOTAL ROLE, выведен из строя, можно применить это правило. Если применяешь, активированный оператор получает PIVOTAL ROLE на битву."
+      }
+    ],
+    "Wrecka Krew": [
+      {
+        "id": "drill_rokkits",
+        "name": "Drill Rokkits",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор WRECKA KREW выполняет действие Shoot и ты выбираешь rokkit launcha или 'eavy rokkit launcha, можно использовать это правило. Если используешь, до конца этого действия то оружие теряет weapon rule Blast, но получает weapon rule Piercing 1."
+      },
+      {
+        "id": "extra_armour",
+        "name": "Extra Armour",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Вычти 1\" из Move stat дружественных операторов WRECKA KREW и улучши их Save stat на 1. Это исключает операторов BOMB SQUIG и не суммируется с правилом Protective от Portable Barricade из universal equipment."
+      },
+      {
+        "id": "engine_oil",
+        "name": "Engine Oil",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда активируется дружественный оператор WRECKA KREW (кроме BOMB SQUIG), можно использовать это правило. Если используешь, до конца этой активации можно игнорировать любые изменения статов этого оператора от being injured (включая статы его оружия)."
+      },
+      {
+        "id": "glyphs",
+        "name": "Glyphs",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Когда выбирается этот предмет снаряжения, также выбери strategy ploy Waaagh! или Destruction. Первый раз, когда используешь тот ploy в этой битве, он стоит 0CP; каждый следующий раз, когда используешь его, он стоит 0CP, если у тебя есть хотя бы один Wrecka point."
+      }
+    ],
+    "Wolf Scout": [
+      {
+        "id": "frost_weapons",
+        "name": "Frost Weapons",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Когда дружественный оператор WOLF SCOUT полностью в пределах твоего STORM, его combat blade (если есть) получает weapon rule Lethal 5+."
+      },
+      {
+        "id": "runic_charms",
+        "name": "Runic Charms",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда оператор стреляет по дружественному оператору WOLF SCOUT (кроме FENRISIAN WOLF), полностью находящемуся в пределах твоего STORM, в начале этапа Roll Defence Dice можно применить это правило. Если применяешь, ухудши x у weapon rule Piercing на 1 (если есть) до конца этой последовательности. Учти, что Piercing 1 в этом случае будет проигнорирован."
+      },
+      {
+        "id": "wolfteeth_necklaces",
+        "name": "Wolfteeth Necklaces",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор WOLF SCOUT (кроме FENRISIAN WOLF) стреляет, дерётся или отвечает (retaliating), если ты выбросил два или более fail, можно отбросить один из них, чтобы удержать другой как normal success вместо этого."
+      },
+      {
+        "id": "talismanic_trophies",
+        "name": "Talismanic Trophies",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Когда дружественный оператор WOLF SCOUT (кроме FENRISIAN WOLF), полностью находящийся в пределах своего STORM, дерётся или отвечает (retaliating), на этапе Resolve Attack Dice можно вычесть 1 из урона, наносимого ему одним normal success."
+      }
     ]
   },
   "killTeams": {
@@ -6561,6 +6711,2021 @@
               "text": "Дружественные операторы PATHFINDER могут выполнить свободное действие Markerlight во время своей активации, если у них Conceal order."
             }
           ]
+        }
+      ]
+    },
+    "Tempestus Aquilons": {
+      "archetypes": [
+        "Recon",
+        "Seek & Destroy"
+      ],
+      "required": [
+        {
+          "name": "Aquilon Tempestor",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Hot-shot lascarbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Hot-shot laspistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Relic bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Lethal 5+"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Tempestus Veteran",
+              "text": "Once per battle, можно либо использовать firefight ploy за 0CP, если это указанный оператор TEMPESTUS AQUILON, либо использовать firefight ploy Command Re-roll, если это оператор, за которого кидались кубики атаки или защиты."
+            },
+            {
+              "name": "Command",
+              "text": "SUPPORT. Выбери одного другого дружественного оператора TEMPESTUS AQUILON (кроме SERVO-SENTRY), видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора добавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_tempestor.png"
+        },
+        {
+          "name": "Aquilon Servo-Sentry",
+          "apl": 2,
+          "move": "4\"",
+          "save": "3+",
+          "wounds": 10,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Flamer",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 8\", Saturate, Torrent 2\""
+            },
+            {
+              "name": "Grenade launcher (frag)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/4",
+              "wr": "Blast 2\""
+            },
+            {
+              "name": "Grenade launcher (krak)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Hot-shot volley gun (focused)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Hot-shot volley gun (sweeping)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1, Torrent 1\""
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Machine",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Dash, Fall Back, Reposition и Shoot. Он не может отвечать (retaliate), помогать в драке или использовать оружие, которого нет на его карточке."
+            },
+            {
+              "name": "Turret",
+              "text": "Этот оператор может выполнить действие Shoot дважды во время своей активации."
+            }
+          ],
+          "portrait": "img/portraits/tempestus-aquilons/servo_sentry.png"
+        }
+      ],
+      "pool": [
+        {
+          "name": "Aquilon Grenadier",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Hot-shot laspistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Melta bomb",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/3",
+              "wr": "Range 3\", Devastating 3, Heavy (Reposition only), Limited 1, Piercing 2"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Grenadier",
+              "text": "Этот оператор может использовать frag, krak, smoke и stun grenades (см. universal equipment). Это не учитывается в лимите limited use, если у тебя также выбраны эти гранаты в снаряжении для других операторов. Всякий раз, когда этот оператор использует frag или krak grenade, улучши Hit stat этого оружия на 1."
+            }
+          ],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_grenadier.png"
+        },
+        {
+          "name": "Aquilon Gunfighter",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Hot-shot laspistols (focused)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Ceaseless, Rending"
+            },
+            {
+              "name": "Hot-shot laspistols (salvo)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Salvo*"
+            },
+            {
+              "name": "Hot-shot laspistols (point-blank)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Ceaseless"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Salvo",
+              "text": "Выбери до двух разных допустимых целей, которые не в пределах control range дружественных операторов. Стреляй этим оружием по обеим в выбранном порядке (разрешай каждую последовательность отдельно)."
+            },
+            {
+              "name": "Gunfight",
+              "text": "Всякий раз, когда вражеский оператор в пределах 8\" от этого оператора стреляет по этому оператору, отслеживай каждый кубик атаки, отброшенный как fail. После этого, до того как выведенные из строя операторы будут убраны (включая этого, если применимо), этот оператор может выполнить свободное действие Shoot (можно сменить его order на Engage для этого), но может выбрать целью только того вражеского оператора, используя свои hot-shot laspistols (focused), и бросает количество кубиков атаки, равное числу отброшенных кубиков атаки оппонента плюс один (максимум четыре)."
+            }
+          ],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_gunfighter.png"
+        },
+        {
+          "name": "Aquilon Gunner (Melta)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Melta carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "6/3",
+              "wr": "Range 6\", Devastating 4, Piercing 2"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_gunner.png"
+        },
+        {
+          "name": "Aquilon Gunner (Plasma)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Plasma carbine (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Plasma carbine (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_gunner.png"
+        },
+        {
+          "name": "Aquilon Marksman",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Hot-shot long-las (concealed)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, Heavy, Silent, Concealed Position*"
+            },
+            {
+              "name": "Hot-shot long-las (mobile)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Hot-shot long-las (stationary)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, Heavy"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Sniper's Vantage",
+              "text": "Всякий раз, когда этот оператор на Vantage terrain и стреляет по оператору с Engage order, находящемуся как минимум на 2\" ниже него, все профили его hot-shot long-las получают weapon rule Severe."
+            },
+            {
+              "name": "* Concealed Position",
+              "text": "Этот оператор может использовать это оружие только в первый раз, когда он выполняет действие Shoot за битву."
+            }
+          ],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_marksman.png"
+        },
+        {
+          "name": "Aquilon Precursor",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Hot-shot laspistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Tempestus dagger",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Ceaseless, Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Vicious Knife Fighter",
+              "text": "Всякий раз, когда этот оператор дерётся, после разрешения своего первого кубика атаки в этой последовательности, можно сразу разрешить ещё один (прежде оппонента)."
+            },
+            {
+              "name": "Dynamic",
+              "text": "Всякий раз, когда этот оператор выполняет действие Shoot или Fight, он может сразу выполнить свободное действие Dash после этого. Он может сделать это, даже если выполнял действие Charge во время этой активации, но может использовать только оставшуюся дистанцию движения от того действия Charge (максимум 3\")."
+            }
+          ],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_precursor.png"
+        },
+        {
+          "name": "Aquilon Trooper",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 9,
+          "weapons": [
+            {
+              "name": "Hot-shot lascarbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Rapid Insertion",
+              "text": "Strategic Gambit в первый turning point. Каждый дружественный оператор TEMPESTUS AQUILON TROOPER, находящийся полностью в пределах твоей drop zone, может сразу выполнить свободное действие Reposition, но должен закончить это движение полностью в пределах 3\" от твоей drop zone."
+            },
+            {
+              "name": "Swift Landing",
+              "text": "Когда этот оператор приземляется (lands), можно установить его в пределах 4\" по горизонтали от одного из твоих Drop markers, что имеет приоритет над обычным требованием дистанции."
+            }
+          ],
+          "portrait": "img/portraits/tempestus-aquilons/aquilon_trooper.png"
+        }
+      ],
+      "poolPick": 9,
+      "equipment": "Tempestus Aquilons",
+      "lore": {
+        "intro": "Tempestus Aquilons — элитные штурмовые отряды Militarum Tempestus, специализирующиеся на десантировании прямо в гущу боя. Облачённые в прочную carapace armour и вооружённые мощными hot-shot lascarbine, эти бойцы отличаются дисциплиной, точностью и стойкостью, а десантирование через гудящие grav-chute делает их появление особенно грозным.",
+        "operatives": [
+          {
+            "name": "Aquilon Tempestor",
+            "text": "Tempestor ведёт свою kill team в самую гущу боя. Помимо боевых навыков, он обладает тактическим чутьём и способностью к импровизации, что жизненно важно во время долгих операций в тылу врага."
+          },
+          {
+            "name": "Aquilon Grenadier",
+            "text": "Пройдя дополнительную подготовку по молитвам и ритуалам активации боеприпасов, Grenadier — специалист по взрывчатке в составе своей kill team. Способен как вывести из строя вражеский генераторум точным melta bomb, так и разить врагов krak-зарядами."
+          },
+          {
+            "name": "Aquilon Gunfighter",
+            "text": "Некоторые Aquilon-ы отличаются точностью, агрессией и реакцией, необходимыми, чтобы стать Gunfighter-ом. Вооружённые hot-shot laspistol, они обрушивают шквал огня на близкой дистанции, особенно опасные в перестрелках среди укреплений или коридоров voidship."
+          },
+          {
+            "name": "Aquilon Gunner (Melta)",
+            "text": "Tempestus Aquilons нередко сталкиваются с мощными вражескими целями без поддержки — бронетехникой или элитными воинами. В таких случаях melta carbine оказывается незаменимым: одного заряда достаточно, чтобы свалить неистового Genestealer Patriarch или Heretic Astartes Legionary."
+          },
+          {
+            "name": "Aquilon Gunner (Plasma)",
+            "text": "Tempestus Aquilons нередко сталкиваются с мощными вражескими целями без поддержки — бронетехникой или элитными воинами. В таких случаях plasma carbine оказывается незаменимым: одного заряда достаточно, чтобы свалить неистового Genestealer Patriarch или Heretic Astartes Legionary."
+          },
+          {
+            "name": "Aquilon Marksman",
+            "text": "Готовит ли он смертельный выстрел для завершения покушения или выбивает элитных вражеских операторов ради поддержки товарищей, Marksman оказывает бесценную поддержку своей kill team. Его hot-shot long-las — крайне мощное оружие, чей характерный свист и треск становится последним звуком для бесчисленных врагов Империума."
+          },
+          {
+            "name": "Aquilon Precursor",
+            "text": "Десантирование на территорию врага рискует попасть под шквал вражеского огня ещё в воздухе. Precursor специализируется на том, чтобы приземлиться первым, максимально быстро и скрытно, а затем вывести из строя или отвлечь самые опасные наземные средства обороны, помогая товарищам десантироваться невредимыми."
+          },
+          {
+            "name": "Aquilon Servo-Sentry",
+            "text": "Servo-sentry — боевой мехалоид, десантирующийся с помощью grav-impeller моторов и обеспечивающий kill team Aquilon огневой поддержкой. Медлительный, но способный перемещаться во время боя, он подчиняется защитным подпрограммам, прикрывая фланги своей команды или ведя арьергардные бои, пока товарищи отступают."
+          },
+          {
+            "name": "Aquilon Trooper",
+            "text": "Trooper-ы Tempestus Aquilon — далеко не рядовые пехотинцы. Облачённые в прочную carapace armour и вооружённые мощными hot-shot lascarbine, эти строго обученные бойцы сочетают дисциплину, точность и стойкость с шоковым эффектом десантирования через гудящие grav-chute."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Drop Insertion",
+          "text": "При расстановке kill team TEMPESTUS AQUILON перед битвой первая треть твоей kill team должна быть расставлена как обычно. Каждую следующую треть можно вместо этого установить above (над killzone) сбоку от неё. За каждую треть, установленную above, нужно установить above всю эту треть целиком (не часть), затем разместить один из своих Drop markers полностью в пределах своей drop zone.\n\nВ качестве Strategic Gambit в первый и второй turning point можно передвинуть свои Drop markers до 4\" по горизонтали.\n\nВ Firefight phase дружественные операторы TEMPESTUS AQUILON, установленные above, активируются как обычно. При этом можно либо израсходовать (expend), либо приземлить (land) этого оператора. Если он приземляется, установи его в killzone в месте, где это разрешено, следующим образом (он больше не считается above):\n- В пределах 3\" по горизонтали от одного из своих Drop markers, либо полностью в пределах своей drop zone.\n- Не в пределах control range вражеских операторов (если только не устанавливается оператор PRECURSOR, который можно установить в пределах control range вражеского оператора).\n- Ни одна часть его базы не под Vantage terrain.\n- С любым order по своему выбору.\n\nОператор считается выполняющим действие Reposition (трать AP соответственно), затем продолжает свою активацию как обычно. Он obscured до конца следующей активации или конца turning point (смотря что наступит раньше).\n\nМенее половины твоих операторов может быть установлено above к концу первого turning point.\n\nПри readying своих операторов во время второго и третьего turning point убери один из своих Drop markers. Это значит, что операторы, всё ещё установленные above, выводятся из строя в конце второго turning point."
+        },
+        {
+          "name": "Grav-Chute",
+          "text": "Всякий раз, когда дружественный оператор TEMPESTUS AQUILON dropping (десантируется), игнорируй вертикальную дистанцию."
+        },
+        {
+          "name": "Sudden Offensive",
+          "text": "Посчитай количество дружественных операторов TEMPESTUS AQUILON, которые не выведены из строя, затем раздели результат пополам (округляя вверх), чтобы получить x. До конца своей активации оружие операторов TEMPESTUS AQUILON получает weapon rule Balanced, если они являются первыми x дружественными операторами, активированными в этот turning point.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Maintain Momentum",
+          "text": "Всякий раз, когда дружественный оператор TEMPESTUS AQUILON стреляет против или дерётся против ready вражеского оператора, оружие этого дружественного оператора получает weapon rule Severe.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Eye Above",
+          "text": "Выбери одного вражеского оператора. Этот оператор и каждый другой вражеский оператор в пределах 3\" от него получает один из твоих Detected токенов до конца turning point. Всякий раз, когда вражеский оператор, имеющий этот токен:\n- Стреляет по дружественному оператору TEMPESTUS AQUILON, можно перебросить один из своих кубиков защиты.\n- Дерётся или отвечает (retaliating) против дружественного оператора TEMPESTUS AQUILON, один из твоих blocks можно назначить, чтобы заблокировать два неразрешённых success (вместо одного).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Drop and Secure",
+          "text": "Выбери один маркер.\n- До Ready step следующей Strategy phase, при определении контроля этого маркера, считай суммарный APL stat дружественных операторов TEMPESTUS AQUILON, оспаривающих его, на 1 выше, если хотя бы один дружественный оператор TEMPESTUS AQUILON оспаривает этот маркер.\n- Всякий раз, когда дружественный оператор TEMPESTUS AQUILON находится в пределах 3\" от этого маркера, добавь 1 к Atk stat его оружия ближнего боя (максимум до 4).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Hot Drop",
+          "text": "Используй этот firefight ploy после броска кубиков атаки за дружественного оператора TEMPESTUS AQUILON, полностью находящегося на территории оппонента, либо приземлившегося (landed) или десантировавшегося (dropped) с Vantage terrain как минимум на 2\" выше пола killzone во время этой активации. Если цель в пределах 6\" от него, можно перебросить любые свои кубики атаки.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Adjust Coordinates",
+          "text": "Используй этот firefight ploy, когда дружественный оператор TEMPESTUS AQUILON приземляется (lands). Можно установить его в пределах 5\" по горизонтали от одного из своих Drop markers, что имеет приоритет над обычным требованием дистанции. Он не может выполнять действия Dash, Shoot или Fight в этот turning point.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Tempestus Exemplars",
+          "text": "Используй этот firefight ploy во время активации дружественного оператора TEMPESTUS AQUILON (кроме SERVO-SENTRY и любого оператора с APL stat выше 2). Во время этой активации тот оператор может выполнить действие Pick Up Marker, Place Marker или mission-действие за 1 AP меньше.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Progena",
+          "text": "Используй этот firefight ploy, когда активируется дружественный оператор TEMPESTUS AQUILON (кроме SERVO-SENTRY). Он восстанавливает до 2D3 потерянных wounds, и во время этой активации можно игнорировать любые изменения его APL stat.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "detected",
+          "name": "Detected",
+          "target": "enemy"
+        }
+      ]
+    },
+    "Vespid Stingwings": {
+      "archetypes": [
+        "Recon",
+        "Seek & Destroy"
+      ],
+      "required": [
+        {
+          "name": "Vespid Strain Leader",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 10,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Neutron blaster",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Devastating 2"
+            },
+            {
+              "name": "Claws",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Communion Helm",
+              "text": "Один раз за каждую активацию этого оператора можно бесплатно применить один из эффектов, обычно требующих траты Communion point (сам Communion point при этом не тратится)."
+            },
+            {
+              "name": "Commune",
+              "text": "При выборе операторов на битву также выбери один strategy ploy VESPID STINGWING. Когда этот оператор в killzone и не в пределах control range вражеских операторов, тот ploy стоит тебе 0CP."
+            }
+          ],
+          "portrait": "img/portraits/vespid-stingwings/vespid_strain_leader.png"
+        },
+        {
+          "name": "Vespid Oversight Drone",
+          "apl": 2,
+          "move": "8\"",
+          "save": "2+",
+          "wounds": 5,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Ram",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "1/2",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Evasive Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Aerial Guidance, Charge, Dash, Fall Back, Fight и Reposition.\nПри определении контроля над objective marker считай его APL stat на 1 меньше. Это не является изменением APL stat, поэтому прочие изменения суммируются с этим.\nПри определении того, что видно этому оператору, круглый диск в верхней части модели считается его головой.\nПока у этого оператора Conceal order и он in cover, он не может быть выбран допустимой целью — это имеет приоритет над всеми прочими правилами (например, Seek, Vantage terrain), кроме нахождения в пределах 2\".\nКогда оператор стреляет по этому оператору, игнорируй weapon rule Piercing."
+            },
+            {
+              "name": "Aerial Guidance",
+              "text": "SUPPORT. До начала следующей активации этого оператора, когда другой дружественный оператор VESPID STINGWING, видимый этому оператору и в пределах 6\" от него, стреляет по вражескому оператору, видимому этому оператору, ranged-оружие того дружественного оператора получает weapon rules Lethal 5+ и Saturate.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/vespid-stingwings/oversight-drone.png"
+        }
+      ],
+      "pool": [
+        {
+          "name": "Vespid Longsting",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 9,
+          "weapons": [
+            {
+              "name": "Neutron rail rifle (standard)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/4",
+              "wr": "Devastating 2, Neutron Fragment*"
+            },
+            {
+              "name": "Neutron rail rifle (aimed)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/4",
+              "wr": "Devastating 2, Heavy (Dash only), Lethal 5+, Neutron Fragment*"
+            },
+            {
+              "name": "Claws",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Neutron Fragment",
+              "text": "Если цель этого оружия не выведена из строя, но ты разрешил любые кубики атаки, цель получает один из твоих Neutron Fragment tokens. Когда активируется оператор, у которого есть один из твоих Neutron Fragment tokens, нанеси ему D3 урона за каждый Neutron Fragment token, который у него есть (бросай отдельно за каждый)."
+            }
+          ],
+          "portrait": "img/portraits/vespid-stingwings/vespid_longsting.png"
+        },
+        {
+          "name": "Vespid Shadestrain",
+          "apl": 2,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 9,
+          "weapons": [
+            {
+              "name": "Neutron sting",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/3",
+              "wr": "Range 8\", Devastating 2"
+            },
+            {
+              "name": "Neutron grenade",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/3",
+              "wr": "Range 6\", Blast 2\", Devastating 2, Limited 1, Saturate"
+            },
+            {
+              "name": "Claws",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Ghost Rig",
+              "text": "Пока у этого оператора Conceal order, оппонент не может выбрать его допустимой целью, если он не в пределах 6\" от оператора, пытающегося его выбрать."
+            },
+            {
+              "name": "Camouflaged",
+              "text": "Когда оператор стреляет по этому оператору, игнорируй weapon rule Piercing, и все cover save удерживаются как critical success."
+            }
+          ],
+          "portrait": "img/portraits/vespid-stingwings/vespid_shadestrain.png"
+        },
+        {
+          "name": "Vespid Skyblast",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 9,
+          "weapons": [
+            {
+              "name": "Neutron grenade launcher",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/3",
+              "wr": "Blast 2\", Devastating 2, Neutron Bombardment*"
+            },
+            {
+              "name": "Claws",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Neutron Bombardment",
+              "text": "Размести один из своих Neutron Fallout markers в пределах control range первичной цели."
+            },
+            {
+              "name": "Neutron Fallout",
+              "text": "Once за каждую активацию вражеского оператора, как только он окажется в пределах 2\" от одного из твоих Neutron Fallout markers, нанеси ему D3 урона (несколько маркеров не суммируются)."
+            }
+          ],
+          "portrait": "img/portraits/vespid-stingwings/vespid_skyblast.png"
+        },
+        {
+          "name": "Vespid Swarmguard",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 9,
+          "weapons": [
+            {
+              "name": "Flamer (standard)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 8\", Saturate, Torrent 2\""
+            },
+            {
+              "name": "Flamer (skytorch)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Saturate, Torrent 0\", Skytorch*"
+            },
+            {
+              "name": "Claws",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Skytorch",
+              "text": "Оператор может использовать это оружие только во время действия Skytorch Assault. Если использует, не выбирай допустимую цель. Вместо этого стреляй по каждому оператору в пределах его torch zone (кроме операторов, полностью находящихся под Vantage terrain); они не считаются in cover или obscured. Разрешай каждую последовательность отдельно, начиная с самого дальнего оператора к ближайшему. Torch zone — это горизонтальная область между текущим и предыдущим местоположением оператора. \"Torrent 0\"\" означает, что нельзя выбирать вторичные цели за пределами его torch zone, но это оружие всё ещё имеет weapon rule Torrent для всех прочих целей."
+            },
+            {
+              "name": "Skytorch Assault",
+              "text": "Выполни свободное действие Reposition этим оператором. Во время этого действия он должен использовать FLY и может переместиться на дополнительные 2\". Затем выполни свободное действие Shoot. Для этого действия Shoot можно выбрать только flamer (skytorch).\n\nЭтот оператор не может выполнять это действие, имея Conceal order, или находясь в пределах control range вражеского оператора.",
+              "cost": "2AP"
+            }
+          ],
+          "portrait": "img/portraits/vespid-stingwings/vespid_swarmguard.png"
+        },
+        {
+          "name": "Vespid Warrior",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 9,
+          "maxCopies": 9,
+          "weapons": [
+            {
+              "name": "Neutron blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/3",
+              "wr": "Devastating 2"
+            },
+            {
+              "name": "Claws",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Warrior Instincts",
+              "text": "Когда этот оператор стреляет, если ты не тратишь Communion points во время этой последовательности, его neutron blaster получает weapon rule Accurate 1 до конца этой последовательности."
+            }
+          ],
+          "portrait": "img/portraits/vespid-stingwings/vespid_warrior.png"
+        }
+      ],
+      "poolPick": 9,
+      "equipment": "Vespid Stingwings",
+      "lore": {
+        "intro": "Vespid Stingwings — стремительные летающие ксеносы, интегрированные в состав T'au Empire. Их сплочённые отряды называются Mal'kor. T'au управляют инстинктами Vespid через технологические средства связи — прежде всего через communion helms, помогающие поддерживать тактическую сосредоточенность этих хищных летунов в бою.",
+        "operatives": [
+          {
+            "name": "Vespid Strain Leader",
+            "text": "Задача Strain Leader — трактовать приказы куратора kill team и следить за тем, чтобы операторы им подчинялись. Какую именно роль этот грозный летающий воин занимает в загадочной иерархии своего народа, неясно, но подчинённые ему Vespid в большинстве случаев повинуются беспрекословно."
+          },
+          {
+            "name": "Vespid Oversight Drone",
+            "text": "MV44 Oversight Drone — адаптация разведывательных дронов, изначально применявшихся кастой Air для разведки потенциально враждебных миров перед вторжением. Связанный напрямую с куратором kill team, он служит бесценным источником актуальных тактических данных."
+          },
+          {
+            "name": "Vespid Longsting",
+            "text": "Хотя большинство Mal'kor склонны к агрессивным ближним перестрелкам, некоторые направляют свои хищные инстинкты на то, чтобы выцеливать врагов издалека. Самые талантливые из них становятся Longsting."
+          },
+          {
+            "name": "Vespid Shadestrain",
+            "text": "Хотя Shadestrain всё ещё редкость на полях сражений 41-го тысячелетия, он — грозный актив для любой kill team Vespid. Его ghost rig скрывает его за маскирующим полем, гасящим звук, свет и даже энергетические сигнатуры."
+          },
+          {
+            "name": "Vespid Skyblast",
+            "text": "Vespid Skyblast с большим успехом использует недавно разработанный neutron grenade launcher. Неизбирательные разрывы этого оружия снижают потребность в точности, поэтому этот оператор часто остаётся в движении, забрасывая плотные группы врагов залпами огня."
+          },
+          {
+            "name": "Vespid Swarmguard",
+            "text": "Хотя у Vespid есть естественные преимущества в ближнем бою, их отряды рискуют быть смяты особенно многочисленным или свирепым противником. Отражать такие атаки — задача Swarmguard, чей T'au flamer испускает бушующие струи химического огня."
+          },
+          {
+            "name": "Vespid Warrior",
+            "text": "Основу большинства kill team Mal'kor составляют Warrior. Выносливые, быстрые и сильные, они прирождённые бойцы."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Communion",
+          "text": "В Ready step каждой Strategy phase ты получаешь D3 Communion points, плюс 1, если дружественный оператор OVERSIGHT DRONE в killzone. Communion points используются следующим образом (операторы OVERSIGHT DRONE не подвержены следующему):\n\n1. Когда дружественный оператор VESPID STINGWING выполняет действие Shoot, он может выбрать целью только ближайшего вражеского оператора в пределах 8\" от него (кроме вражеских операторов в пределах control range других дружественных операторов VESPID STINGWING), если не потратишь 1 свой Communion point. Для оружия с weapon rules Blast и Torrent так нужно выбирать только первую цель.\n2. Когда дружественный оператор VESPID STINGWING (кроме DRONE) выполняет действие Charge, он должен закончить действие в пределах control range ближайшего вражеского оператора, до которого может дотянуться, если не потратишь 1 свой Communion point.\n3. Когда ты выполняешь действие Pick Up Marker или mission-действие (кроме Operate Hatch) дружественным оператором VESPID STINGWING, ты также должен потратить 1 свой Communion point, чтобы сделать это.\n4. Когда дружественный оператор VESPID STINGWING стреляет, можно потратить 1 (и только 1) свой Communion point, чтобы перебросить один из своих кубиков атаки."
+        },
+        {
+          "name": "Neutron Charge",
+          "text": "Neutron-оружие — это любое оружие, в названии которого есть слово \"neutron\". Когда дружественный оператор VESPID STINGWING перемещается или использует FLY, его neutron-оружие получает weapon rule Piercing 1 до конца turning point."
+        },
+        {
+          "name": "Fly",
+          "text": "Когда дружественный оператор VESPID STINGWING выполняет действие, во время которого он перемещается, он может использовать FLY. Если использует, не перемещай его обычным образом — вместо этого убери его из killzone и размести целиком в пределах дистанции, равной его Move stat (или 3\", если это было действие Dash), по горизонтали от исходного местоположения. Он не получает дополнительной дистанции при выполнении действия Charge. Он должен быть размещён в месте, где может быть размещён, и, если это не действие Charge, не может быть размещён в пределах control range вражеского оператора."
+        },
+        {
+          "name": "Hardened Exoskeleton",
+          "text": "Когда дружественный оператор VESPID STINGWING (кроме OVERSIGHT DRONE) дерётся или отвечает (retaliating), Normal Dmg 4 или больше наносит ему на 1 урона меньше.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Aerial Agility",
+          "text": "Когда оператор стреляет по дружественному оператору VESPID STINGWING во время counteract-а, или во время активации, в которой этот стреляющий оператор двигался или был размещён, бросай один D6 каждый раз, когда кубик атаки должен нанести Normal Dmg: при результате 5+ игнорируй этот нанесённый урон. Нельзя игнорировать больше одного кубика атаки за последовательность действия Shoot этим способом.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Airborne Predators",
+          "text": "Когда дружественный оператор VESPID STINGWING перемещается или использует FLY во время своей активации, его оружие получает weapon rule Balanced до конца этой активации.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Sting",
+          "text": "Улучши Hit stat claws дружественных операторов VESPID STINGWING на 1, и это оружие получает weapon rules Lethal 5+ и Shock.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Ocelli",
+          "text": "Используй этот firefight ploy, когда дружественный оператор VESPID STINGWING выполняет действие Shoot во время активации, в которой он использовал FLY. До конца этого действия он получает все преимущества первой и второй основных особенностей Vantage terrain. При определении разницы высот между операторами для правил Vantage terrain считай, что этот дружественный оператор на 3\" выше, чем есть на самом деле (но не при определении дистанции для Communion).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Darting Flight",
+          "text": "Используй этот firefight ploy, когда дружественный оператор VESPID STINGWING выполняет действие Reposition. До конца этого действия он может переместиться на дополнительные D3\", либо, если использует FLY, быть размещён на дополнительные D3\" дальше. В любом случае он не может выполнять действия Shoot или Fight до конца этого turning point.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Neutron Overload",
+          "text": "Используй этот firefight ploy, когда ты разрешаешь critical success для дружественного оператора VESPID STINGWING, стреляющего neutron-оружием во время активации, в которой он двигался или использовал FLY. Если цель в пределах 4\" от него, нанеси ей D3 дополнительного урона.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Vicious Venom",
+          "text": "Используй этот firefight ploy, когда дружественный оператор VESPID STINGWING (кроме OVERSIGHT DRONE) дерётся и ты наносишь удар с critical success. Нанеси D3 дополнительного урона.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "factionChoices": [
+        {
+          "id": "commune",
+          "label": "Commune",
+          "scope": "setup",
+          "pick": 1,
+          "options": [
+            {
+              "id": "hardened_exoskeleton",
+              "name": "Hardened Exoskeleton",
+              "text": "Когда дружественный оператор VESPID STINGWING (кроме OVERSIGHT DRONE) дерётся или отвечает (retaliating), Normal Dmg 4 или больше наносит ему на 1 урона меньше."
+            },
+            {
+              "id": "aerial_agility",
+              "name": "Aerial Agility",
+              "text": "Когда оператор стреляет по дружественному оператору VESPID STINGWING во время counteract-а, или во время активации, в которой этот стреляющий оператор двигался или был размещён, бросай один D6 каждый раз, когда кубик атаки должен нанести Normal Dmg: при результате 5+ игнорируй этот нанесённый урон."
+            },
+            {
+              "id": "airborne_predators",
+              "name": "Airborne Predators",
+              "text": "Когда дружественный оператор VESPID STINGWING перемещается или использует FLY во время своей активации, его оружие получает weapon rule Balanced до конца этой активации."
+            },
+            {
+              "id": "sting",
+              "name": "Sting",
+              "text": "Улучши Hit stat claws дружественных операторов VESPID STINGWING на 1, и это оружие получает weapon rules Lethal 5+ и Shock."
+            }
+          ]
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "communion_points",
+          "name": "Communion Points",
+          "target": "friendly",
+          "counter": true,
+          "max": 6
+        },
+        {
+          "id": "neutron_fragment",
+          "name": "Neutron Fragment",
+          "target": "enemy",
+          "counter": true,
+          "max": 6
+        }
+      ]
+    },
+    "Void-Dancer Troupe": {
+      "archetypes": [
+        "Infiltration",
+        "Recon"
+      ],
+      "required": [
+        {
+          "name": "Lead Player",
+          "apl": 3,
+          "move": "7\"",
+          "save": "4+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Fusion pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/3",
+              "wr": "Range 3\", Devastating 3, Piercing 2"
+            },
+            {
+              "name": "Neuro disruptor",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Piercing 1, Stun"
+            },
+            {
+              "name": "Shuriken pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Rending"
+            },
+            {
+              "name": "Blade",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "-"
+            },
+            {
+              "name": "Caress",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending"
+            },
+            {
+              "name": "Embrace",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Brutal"
+            },
+            {
+              "name": "Kiss",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/7",
+              "wr": "-"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Lead the Performance",
+              "text": "Once per battle Strategic Gambit. Если этот оператор в killzone, можно сменить Allegory, выбранный для своей kill team на битву. Правило ACCOLADE у дружественных операторов, имеющих его, тоже изменится."
+            }
+          ],
+          "portrait": "img/portraits/void-dancer-troupe/lead_player.png"
+        }
+      ],
+      "pool": [
+        {
+          "name": "Death Jester",
+          "apl": 3,
+          "move": "7\"",
+          "save": "4+",
+          "wounds": 9,
+          "weapons": [
+            {
+              "name": "Shrieker cannon (focused)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending, Heavy (Reposition only), Humbling Cruelty*"
+            },
+            {
+              "name": "Shrieker cannon (sweeping)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending, Heavy (Dash only), Torrent 2\", Humbling Cruelty*"
+            },
+            {
+              "name": "Shrieker blade",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Humbling Cruelty",
+              "text": "Если цель этого оружия не выведена из строя, но хотя бы одна из твоих костей атаки нанесла урон, цель получает один твой Humbling Cruelty token (если у неё его ещё нет). Пока вражеский оператор имеет один из твоих Humbling Cruelty token, отними 2\" от его Move stat и ухудши Hit stat его оружия на 1. Это не суммируется с being injured. В конце следующей активации этого вражеского оператора убери его Humbling Cruelty token."
+            }
+          ],
+          "portrait": "img/portraits/void-dancer-troupe/death_jester.png"
+        },
+        {
+          "name": "Player",
+          "apl": 3,
+          "move": "7\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 7,
+          "weapons": [
+            {
+              "name": "Fusion pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/3",
+              "wr": "Range 3\", Devastating 3, Piercing 2"
+            },
+            {
+              "name": "Neuro disruptor",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Piercing 1, Stun"
+            },
+            {
+              "name": "Shuriken pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Rending"
+            },
+            {
+              "name": "Blade",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "-"
+            },
+            {
+              "name": "Caress",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending"
+            },
+            {
+              "name": "Embrace",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Brutal"
+            },
+            {
+              "name": "Kiss",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/7",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Luck of the Laughing God",
+              "text": "Once per turning point можно применить это правило. Если применяешь, можно использовать firefight ploy за 0CP, если он указан для этого оператора VOID-DANCER TROUPE (включая Command Re-roll, если для этого оператора бросаются кубики атаки или защиты). Нельзя выбрать один и тот же firefight ploy для этого правила больше одного раза за битву."
+            }
+          ],
+          "portrait": "img/portraits/void-dancer-troupe/player.png"
+        },
+        {
+          "name": "Shadowseer",
+          "apl": 3,
+          "move": "7\"",
+          "save": "4+",
+          "wounds": 9,
+          "weapons": [
+            {
+              "name": "Hallucinogen grenade",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "1/1",
+              "wr": "Range 6\", Blast 2\", Lethal 5+, Seek Light, Silent, Stun"
+            },
+            {
+              "name": "Neuro disruptor",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Piercing 1, Stun"
+            },
+            {
+              "name": "Shuriken pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Rending"
+            },
+            {
+              "name": "Miststave",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/4",
+              "wr": "Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Mirror of Minds",
+              "text": "PSYCHIC. Выбери одного вражеского оператора, являющегося допустимой целью, в пределах 8\" от этого оператора. Оба игрока бросают по пять D6. Разрешай кубики попарно по совпадающим результатам. За каждую совпавшую пару нанеси D3 урона (максимум до 8) тому вражескому оператору.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Fog of Dreams",
+              "text": "PSYCHIC. Выбери одного готового (ready) вражеского оператора, видимого этому оператору, и брось один D6. До конца turning point тот вражеский оператор не может быть активирован или выполнять действия, пока не наступит очередь последнего оператора быть активированным, либо пока твой оппонент не активировал количество вражеских операторов, равное результату этого D6 (смотря что наступит раньше), после выполнения этого действия.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/void-dancer-troupe/shadowseer.png"
+        }
+      ],
+      "poolPick": 7,
+      "equipment": "Void-Dancer Troupe",
+      "lore": {
+        "intro": "Даже среди подвижных Aeldari, Harlequin-ы Void-Dancer Troupe демонстрируют почти неестественный уровень ловкости и мастерства. Представление и война сливаются воедино в их действиях, точно направленных, чтобы определить судьбу их расы.",
+        "operatives": [
+          {
+            "name": "Lead Player",
+            "text": "Хореографы конфликта, Lead Player-ы — опытные Harlequin-ы, облачённые в экстравагантные одеяния. Они направляют реакции своих товарищей на превратности битвы и следят, чтобы представление их труппы в театре войны было как можно более совершенным."
+          },
+          {
+            "name": "Death Jester",
+            "text": "Появление Death Jester в killzone возвещается шипящим шквалом огня shrieker cannon. Вражеская пехота разрывается на части, пока генные токсины оружия заставляют их гореть изнутри."
+          },
+          {
+            "name": "Player",
+            "text": "Harlequin Player-ы выступают с захватывающим мастерством, будь их сценой амфитеатр из wraithbone и стекла, залитый кристальным светом, или адское пекло поля боя. Они кувыркаются, бегут и прыгают, и каждое нажатие на спусковой крючок и взмах клинка несёт срежиссированную смерть врагу."
+          },
+          {
+            "name": "Shadowseer",
+            "text": "Shadowseer-ы способны ослеплять врагов и сводить их с ума своими психическими силами. Пока они окутывают иллюзиями своих союзников, они обстреливают противника галлюциногенными гранатами, вызывающими дезориентацию или смерть."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Saedath",
+          "text": "Strategic Gambit в первый turning point: нужно выбрать Allegory (Epic или Melodrama) для своей kill team на битву и одного дружественного оператора VOID-DANCER TROUPE, который получает PIVOTAL ROLE на битву. Пока дружественный оператор имеет PIVOTAL ROLE, он имеет правило ACCOLADE твоего Allegory на битву.\n\nStrategic Gambit в каждый последующий turning point: можно выбрать одного дружественного оператора VOID-DANCER TROUPE, который получает правило ACCOLADE твоего Allegory на битву.\n\nOnce per turning point, когда дружественный оператор, имеющий PIVOTAL ROLE, завершает Performance своего Allegory, можно выбрать одного дружественного оператора VOID-DANCER TROUPE, который получает правило ACCOLADE твоего Allegory на битву."
+        },
+        {
+          "name": "Harlequin's Panoply",
+          "text": "Когда оператор стреляет по дружественному оператору VOID-DANCER TROUPE, и любые его кубики атаки сохранены как critical success, ухудши x правила Piercing этого оружия на 1 (если есть). Piercing 1 в этом случае игнорируется.\n\nКогда дружественный оператор VOID-DANCER TROUPE выполняет climb up, вертикальную дистанцию можно считать за 2\" (независимо от того, насколько далеко оператор реально движется по вертикали).\n\nДружественные операторы VOID-DANCER TROUPE могут двигаться в пределах control range вражеских операторов (они всё ещё должны начинать и заканчивать движение, соблюдая все требования для этого движения)."
+        },
+        {
+          "name": "Darting Salvo",
+          "text": "Когда дружественный оператор VOID-DANCER TROUPE выполняет действие Reposition во время своей активации, он может выполнить действие Shoot во время этого действия (это нужно сделать в месте, где его можно разместить, а любую оставшуюся дистанцию движения от действия Reposition можно использовать после этого).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Rising Crescendo",
+          "text": "Дружественные операторы VOID-DANCER TROUPE могут выполнить действие Dash во время той же активации, в которой они выполнили действие Charge, но не наоборот.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Prismatic Blur",
+          "text": "Когда оператор стреляет по дружественному оператору VOID-DANCER TROUPE, который выполнил действие, включающее движение в этот turning point, можно перебросить одну свою защитную кость.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Cegorach's Jest",
+          "text": "Когда дружественный оператор VOID-DANCER TROUPE дерётся или отвечает (retaliating), и твой оппонент наносит удар (strike) обычным success, можно бросить один D6: если результат меньше Hit stat выбранного оружия оппонента, этот удар засчитывается как блокирующий одну из твоих костей вместо этого, и нельзя использовать это правило снова до конца этой последовательности.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Murderous Entrance",
+          "text": "Примени этот firefight ploy, когда дружественный оператор VOID-DANCER TROUPE дерётся во время активации, в которой он выполнил действие Charge, после того как ты нанёс удар (strike). Можно сразу разрешить ещё один свой обычный success как strike (прежде оппонента), либо один critical success, если обычных success не осталось.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "The Curtain Falls",
+          "text": "Примени этот firefight ploy, когда дружественный оператор VOID-DANCER TROUPE дерётся, после того как ты нанёс удар (strike) с critical success, если вражеский оператор не выведен из строя. Заверши эту последовательность (оставшиеся кубики атаки отбрасываются) и сразу выполни этим оператором свободное действие Fall Back на расстояние до 3\" (затем действие Fight заканчивается).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Elusive Target",
+          "text": "Примени этот firefight ploy во время активации дружественного оператора VOID-DANCER TROUPE. До начала его следующей активации, пока у этого оператора Conceal order и он находится в cover, его нельзя выбрать допустимой целью — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме нахождения в пределах 2\".",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Domino Field",
+          "text": "Примени этот firefight ploy, когда оператор стреляет по дружественному оператору VOID-DANCER TROUPE, во время этапа Resolve Defence Dice. Можно назначить одну свою удачно брошенную (successful) кость так, чтобы заблокировать все кости атаки оппонента с совпадающим результатом.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "factionChoices": [
+        {
+          "id": "allegory",
+          "label": "Allegory",
+          "scope": "game",
+          "pick": 1,
+          "oncePerBattle": true,
+          "options": [
+            {
+              "id": "epic",
+              "name": "Epic",
+              "text": "Performance: этот оператор выводит из строя вражеского оператора, деря́сь с ним (fighting).\n\nAccolade: пока этот оператор дерётся, его оружие ближнего боя получает weapon rule Balanced."
+            },
+            {
+              "id": "melodrama",
+              "name": "Melodrama",
+              "text": "Performance: этот оператор выводит из строя вражеского оператора, стреляя (shooting) в него.\n\nAccolade: ranged-оружие этого оператора получает weapon rule Balanced."
+            }
+          ]
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "humbling_cruelty",
+          "name": "Humbling Cruelty",
+          "target": "enemy"
+        }
+      ]
+    },
+    "Wrecka Krew": {
+      "archetypes": [
+        "Security",
+        "Seek & Destroy"
+      ],
+      "required": [
+        {
+          "name": "Wrecka Boss Nob",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 14,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Rokkit pistol",
+              "atk": 6,
+              "hit": "5+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Blast 1\""
+            },
+            {
+              "name": "Two rokkit pistols (focused)",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Blast 1\", Ceaseless"
+            },
+            {
+              "name": "Two rokkit pistols (salvo)",
+              "atk": 6,
+              "hit": "5+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Blast 1\", Salvo*"
+            },
+            {
+              "name": "Choppa",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Smash hammer",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "Brutal"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Wrecka Boss",
+              "text": "Каждый раз, когда этот оператор выполняет действие Shoot или Fight (кроме Guard), получи 1 Wrecka point."
+            },
+            {
+              "name": "* Salvo",
+              "text": "Выбери до двух разных допустимых целей, не находящихся в пределах control range дружественных операторов. Выстрели этим оружием по обеим primary целям в выбранном порядке, затем по всем оставшимся secondary целям таким же образом (разрешай каждую последовательность отдельно). Каждая цель не может быть обстреляна из этого оружия более одного раза за это действие."
+            }
+          ],
+          "portrait": "img/portraits/wrecka-krew/wrecka_boss_nob.png"
+        },
+        {
+          "name": "Wrecka Bomb Squig",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 5,
+          "count": 2,
+          "weapons": [
+            {
+              "name": "Explosives",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Blast 1\", Limited 1, Explosive*"
+            },
+            {
+              "name": "Bite",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Explosive",
+              "text": "Этот оператор может выполнять действие Shoot этим оружием, находясь в пределах control range вражеского оператора. Не выбирай допустимую цель — вместо этого этот оператор всегда является primary target и не может быть in cover или obscured."
+            },
+            {
+              "name": "Stoopid",
+              "text": "В Firefight phase, когда определяешь order этого оператора, можно выбрать только Conceal. Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fight, Reposition и Shoot. Он не может использовать оружие, которого нет на его датакарте."
+            },
+            {
+              "name": "Boom!",
+              "text": "Если этот оператор выведен из строя в битве, в которой он не использовал свои explosives, брось D6, либо два D6 по желанию. Если любой результат 4+, этот оператор выполняет действие Shoot своими explosives перед тем, как быть убранным из killzone."
+            },
+            {
+              "name": "Expendable",
+              "text": "Этот оператор игнорируется для kill/elimination op твоего оппонента (при его incapacitation), а также при определении твоего стартового числа операторов. Он также игнорируется для victory conditions и подсчёта VP, если они требуют, чтобы операторы 'escape', 'survive' или были incapacitated вражескими операторами."
+            }
+          ],
+          "portrait": "img/portraits/wrecka-krew/wrecka_bomb_squig.png"
+        }
+      ],
+      "pool": [
+        {
+          "name": "Breaka Boy Fighter",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 12,
+          "maxCopies": 4,
+          "weapons": [
+            {
+              "name": "Smash hammer",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "Brutal"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Break Stuff",
+              "text": "Выбери элемент террейна в пределах control range этого оператора. Если это equipment terrain feature, убери его. Иначе размести один из своих Breach markers в пределах control range этого оператора как можно ближе к этому элементу террейна. Когда оператор находится в пределах 1\" от этого маркера, он считает части того элемента террейна толщиной не более 1\" Accessible terrain.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или если элемент террейна не в пределах его control range.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/wrecka-krew/fighter.png"
+        },
+        {
+          "name": "Tankbusta Gunner",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 12,
+          "maxCopies": 4,
+          "weapons": [
+            {
+              "name": "'Eavy rokkit launcha",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Blast 1\", Heavy (Dash only)"
+            },
+            {
+              "name": "Rokkit launcha",
+              "atk": 6,
+              "hit": "5+",
+              "dmg": "4/5",
+              "wr": "Blast 1\""
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Kompetitive Streak",
+              "text": "Once per Shoot action, если этот оператор стреляет по вражескому оператору, по которому уже стрелял другой дружественный оператор в этом turning point, ты получаешь 1 Wrecka point. Определяй это при выборе допустимой цели, но можно учитывать любые secondary targets при этом (например, от weapon rule Blast)."
+            }
+          ],
+          "portrait": "img/portraits/wrecka-krew/tankbustagunner.png"
+        },
+        {
+          "name": "Breaka Boy Demolisha",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Tankhammer (bash)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Tankhammer (detonate)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "-",
+              "wr": "Lethal 5+, Limited 1, Detonate*"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Reckless Temperament",
+              "text": "Normal Dmg значением 4 или более наносит этому оператору на 1 меньше урона; если у этого оператора Engage order, Critical Dmg значением 4 или более также наносит на 1 меньше урона этому оператору."
+            },
+            {
+              "name": "* Detonate",
+              "text": "Первый раз, когда этот weapon profile должен нанести урон вражескому оператору за битву, нанеси D6+6 урона тому вражескому оператору и каждому другому оператору в пределах его control range, если это normal success, либо 2D6+6 урона, если это critical success (разрешай отдельно для каждого). Затем действие заканчивается, и ты получаешь 1 Wrecka point, плюс 1 за каждого оператора, выведенного из строя во время этого действия. Урон от этого weapon rule нельзя игнорировать или уменьшать."
+            }
+          ],
+          "portrait": "img/portraits/wrecka-krew/demolisha.png"
+        },
+        {
+          "name": "Breaka Boy Krusha",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Knucklebustas",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "Brutal, Shock, Smash*"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Smash",
+              "text": "Каждый раз, когда ты наносишь strike, можно передвинуть вражеского оператора по прямой на расстояние до 1\". Если делаешь это, он должен закончить движение дальше от этого оператора и в месте, где он может быть размещён. Затем передвинь этого оператора по прямой на расстояние до 1\", но он должен закончить это движение в пределах control range того вражеского оператора (если то или другое невозможно, нельзя передвигать их)."
+            },
+            {
+              "name": "Armoured Up",
+              "text": "Когда вражеский оператор стреляет по этому оператору, либо этот оператор дерётся или отвечает (retaliating), твой оппонент не может retain результаты кубиков атаки менее 6 как critical successes."
+            }
+          ],
+          "portrait": "img/portraits/wrecka-krew/breaka_boy_krusha.png"
+        },
+        {
+          "name": "Tankbusta Rokkiteer",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Pulsa rokkit",
+              "atk": 6,
+              "hit": "5+",
+              "dmg": "-",
+              "wr": "Heavy (Reposition only), Limited 1, Pulsa*"
+            },
+            {
+              "name": "Rokkit launcha",
+              "atk": 6,
+              "hit": "5+",
+              "dmg": "4/5",
+              "wr": "Blast 1\""
+            },
+            {
+              "name": "Rokkit rack",
+              "atk": 6,
+              "hit": "5+",
+              "dmg": "4/5",
+              "wr": "Blast 2\", Heavy (Reposition only), Limited 1, Relentless"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "* Pulsa",
+              "text": "Не выбирай допустимую цель. Вместо этого размести свой Pulsa marker в зоне видимости этого оператора, либо на Vantage terrain элемента террейна, видимого этому оператору. Этот маркер получает 1 Pulsa point, затем брось кубики атаки: он получает 1 дополнительный Pulsa point за каждый success (максимум 3 дополнительных point). Отдельно нанеси D3 урона каждому оператору, полностью находящемуся в пределах x\" от этого маркера, где x — количество Pulsa points этого маркера. Затем действие заканчивается."
+            },
+            {
+              "name": "Shokkwave",
+              "text": "Когда оператор находится в пределах x\" от твоего Pulsa marker (см. Pulsa), вычти 2\" из его Move stat и ухудши Hit stat его оружия на 1. Это суммируется с being injured. В Ready step каждой Strategy phase вычитай 1 из points твоего Pulsa marker. Если у Pulsa marker когда-либо становится 0 points, убери его."
+            }
+          ],
+          "portrait": "img/portraits/wrecka-krew/180px-tankbustarokiteer.png"
+        }
+      ],
+      "poolPick": 5,
+      "equipment": "Wrecka Krew",
+      "lore": {
+        "intro": "Звуки взрывов, едкий запах дыма и крики битвы гонят Wrecka Krew вперёд, к ещё более разрушительным поступкам.",
+        "operatives": [
+          {
+            "name": "Wrecka Boss Nob",
+            "text": "Самый большой, сильный и злобный Tankbusta или Breaka Boy обычно становится во главе Wrecka Krew как его Boss Nob."
+          },
+          {
+            "name": "Wrecka Bomb Squig",
+            "text": "Орки выводят всевозможных squig'ов. Самые узнаваемые среди них — шарообразные двуногие существа с множеством зубов и невероятно скверным характером. Wrecka Krew берут многих из этих созданий в бой, приматывая к ним взрывчатку и направляя прямо на врага."
+          },
+          {
+            "name": "Breaka Boy Demolisha",
+            "text": "Demolisha не довольствуются простым замахом молотом по выбранной цели. Вместо этого они приматывают взрывные ракеты к головкам своего оружия перед тем, как замахнуться им в ярости."
+          },
+          {
+            "name": "Breaka Boy Fighter",
+            "text": "Wrecka, набранные из Breaka Boy mob, предпочитают ближний бой. Их оружие — попросту именуемое smash hammer — незамысловато по конструкции, но от этого не менее эффективно."
+          },
+          {
+            "name": "Breaka Boy Krusha",
+            "text": "Облачённые в громоздкую броню из металлолома, Breaka Boy Krusha часто возглавляют наступление Wrecka Krew. Их пневматические knucklebustas делают их отличными взломщиками укреплений."
+          },
+          {
+            "name": "Tankbusta Gunner",
+            "text": "Вооружённые различными видами rokkit launcha, Tankbusta Gunner отличаются невероятно чесоточным пальцем на спусковом крючке."
+          },
+          {
+            "name": "Tankbusta Rokkiteer",
+            "text": "Не удовлетворившись огневой мощью обычного rokkit launcha, Tankbusta Rokkiteer потратили все свои teef на дополнительные взрывоопасные gubbinz в виде rokkit rack и pulsa rokkit."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Wrecka Rampage",
+          "text": "Когда дружественный оператор WRECKA KREW стреляет, дерётся или отвечает (retaliating), на этапе Roll Attack Dice:\n- За каждый результат кубика атаки 6, который ты retain, получи 1 Wrecka point.\n- Можно потратить до 2 своих Wrecka points (если это BOMB SQUIG, тратить нельзя вообще). За каждый потраченный таким образом point retain один из своих fails как обычный success вместо того, чтобы отбросить его.\n\nНельзя иметь более 6 Wrecka points одновременно."
+        },
+        {
+          "name": "Tanked Up",
+          "text": "Первый раз, когда дружественный оператор WRECKA KREW (кроме BOMB SQUIG), имеющий Engage order, выполняет действие Charge, Shoot или Fight (кроме Guard) во время каждой своей активации/counteraction, добавь 1 к его APL stat до начала его следующей активации."
+        },
+        {
+          "name": "Waaagh!",
+          "text": "Оружие ближнего боя дружественных операторов WRECKA KREW получает weapon rule Balanced.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Tuff Gitz",
+          "text": "Когда оператор стреляет по дружественному оператору WRECKA KREW, имеющему Engage order, можно перебросить один свой defence dice.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Destruction",
+          "text": "Дальнобойное (ranged) оружие дружественных операторов WRECKA KREW получает weapon rule Saturate.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Amped Up",
+          "text": "Каждый дружественный оператор WRECKA KREW, имеющий Engage order, сразу восстанавливает до D3+1 потерянных wounds (бросай отдельно для каждого).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Just a Scratch",
+          "text": "Примени этот firefight ploy, когда кубик атаки наносит Normal Dmg дружественному оператору WRECKA KREW (кроме BOMB SQUIG). Игнорируй этот нанесённый урон.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Demolition Job",
+          "text": "Примени этот firefight ploy после того, как дружественный оператор WRECKA KREW выполнил действие Shoot или Fight, непосредственно перед тем, как выведенные из строя операторы убираются (если есть). Размести один из своих Demolition markers в пределах control range цели. Когда дружественный оператор WRECKA KREW (кроме BOMB SQUIG) стреляет против, дерётся против или отвечает (retaliating) против оператора, находящегося в пределах 3\" от этого маркера, можно потратить 1 Wrecka point бесплатно (даже если у тебя их нет). В Ready step следующей Strategy phase убери этот маркер.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Proppa Scrap",
+          "text": "Примени этот firefight ploy во время активации дружественного оператора WRECKA KREW BREAKA BOY или WRECKA KREW BOSS NOB. Во время этой активации тот оператор может выполнить действие Fight дважды.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Kaboom!",
+          "text": "Примени этот firefight ploy, когда дружественный оператор WRECKA KREW выполняет действие Shoot и выбрано оружие с weapon rule Blast. До конца этого действия добавь 1\" к Blast этого оружия, и оно получает weapon rule Severe при стрельбе по primary target. Нельзя использовать этот ploy и правило Drill Rokkits (см. faction equipment) в одном и том же действии.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "wrecka_points",
+          "name": "Wrecka Points",
+          "target": "friendly",
+          "counter": true,
+          "max": 6
+        },
+        {
+          "id": "tanked_up",
+          "name": "Tanked Up",
+          "target": "friendly"
+        }
+      ]
+    },
+    "Wolf Scout": {
+      "archetypes": [
+        "Recon",
+        "Seek & Destroy"
+      ],
+      "required": [
+        {
+          "name": "Fenrisian Wolf",
+          "apl": 2,
+          "move": "8\"",
+          "save": "5+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Fangs",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Instinctive Predator",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Guard и Reposition. Он не может использовать оружие, которого нет на его карточке. Этот оператор может выполнять действие Charge, имея Conceal order."
+            },
+            {
+              "name": "Pounce",
+              "text": "Once per battle. Если APL stat этого оператора 2 или больше, этот оператор может выполнить свободное действие Charge, Fall Back или Reposition. Если он это делает, до конца его следующей активации вычти 1 из его APL stat, и он не может выполнять ни одно из вышеперечисленных действий.",
+              "cost": "Strategic Gambit"
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/wolf.png"
+        }
+      ],
+      "pool": [
+        {
+          "name": "Wolf Scout Pack Leader",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "weapons": [
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Lupine Guile",
+              "text": "Once per battle, после броска за инициативу (roll-off), если этот оператор в killzone, можно перебросить свой кубик."
+            },
+            {
+              "name": "Grizzled Veteran",
+              "text": "В первый раз, когда этот оператор должен быть выведен из строя в этой битве, он не выводится из строя, у него остаётся 1 wound, и его нельзя вывести из строя до конца этого действия. Все оставшиеся кубики атаки отбрасываются (включая твои, если этот оператор дерётся или отвечает). Нельзя использовать firefight ploy Counterattack или наносить урон в результате strategy ploy Savage Fighters в конце этого действия."
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/ws_pack_leader.png"
+        },
+        {
+          "name": "Wolf Scout Fangbearer",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "weapons": [
+            {
+              "name": "Absolvor bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 9\", Piercing Crits 1"
+            },
+            {
+              "name": "Combat blade",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Spiritual Chirurgy",
+              "text": "Можно игнорировать любые изменения характеристик дружественных операторов WOLF SCOUT (кроме FENRISIAN WOLF) от ранения (injured), включая характеристики их оружия."
+            },
+            {
+              "name": "Healing Balms",
+              "text": "Выбери одного дружественного оператора WOLF SCOUT в пределах control range этого оператора, чтобы он восстановил до D3+3 потерянных wounds.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/wolf_scout_fangbearer.png"
+        },
+        {
+          "name": "Wolf Scout Frosteye",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "weapons": [
+            {
+              "name": "Instigator bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1, Silent"
+            },
+            {
+              "name": "Combat blade",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Storm-veiled Execution",
+              "text": "Пока этот оператор в пределах своего STORM: он может выполнять действие Guard независимо от типа killzone; он может выполнять действие Guard, имея Conceal order."
+            },
+            {
+              "name": "Hunter's Senses",
+              "text": "Выбери одно из следующих правил, которое instigator bolt carbine этого оператора получит до начала его следующей активации:\n- Severe.\n- Saturate, и когда этот оператор стреляет из этого оружия, вражеские операторы не могут быть obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/wolf_scout_frosteye.png"
+        },
+        {
+          "name": "Wolf Scout Gunner",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "weapons": [
+            {
+              "name": "Plasma gun (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Plasma gun (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Combat blade",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Tempest's Fury",
+              "text": "Пока этот оператор в пределах своего STORM: все профили его plasma gun получают weapon rule Punishing; его plasma gun (supercharge) не имеет weapon rule Hot."
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/ws_gunner.png"
+        },
+        {
+          "name": "Wolf Scout Trapmaster",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "weapons": [
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Combat blade",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Haywire Mine",
+              "text": "Этот оператор несёт свой маркер Haywire Mine. Он может выполнять действие Pick Up Marker на этом маркере, но этот маркер нельзя разместить в пределах control range другого оператора."
+            },
+            {
+              "name": "Proximity Mine",
+              "text": "Первый раз, когда маркер Haywire Mine оказывается в пределах control range другого оператора, убери этот маркер, вычти 1 из APL stat того оператора до конца его следующей активации и нанеси ему 2D3+3 урона (или D3+6, если этот маркер в пределах 6\" по горизонтали от твоего Storm marker); если он не выведен из строя, закончи его действие (если есть)."
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/wolf_scout_trapmaster.png"
+        },
+        {
+          "name": "Wolf Scout Rune Priest Skjald",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Jaws of the World Wolf",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "PSYCHIC, Blast 2\", Severe"
+            },
+            {
+              "name": "Thunderclap",
+              "atk": 5,
+              "hit": "2+",
+              "dmg": "2/2",
+              "wr": "PSYCHIC, Range 6\", Saturate, Seek Light, Stun, Torrent 2\""
+            },
+            {
+              "name": "Runic stave",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "PSYCHIC, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Cast the Runes",
+              "text": "После выбора этого оператора, перед битвой, брось три D6 и отложи их. За каждый результат 1-4 можно один раз использовать firefight ploy Command Re-roll за 0CP во время turning point, соответствующего этому результату. За каждый результат 5-6 получи 1CP."
+            },
+            {
+              "name": "Call the Storm",
+              "text": "PSYCHIC. Убери свой Storm marker из killzone (если есть), затем размести его в killzone.\n\nPSYCHIC. Вместо этого можно разрешить следующий эффект: выбери одного дружественного оператора WOLF SCOUT. До начала следующей активации этого оператора, пока он не выведен из строя или пока это действие не выполнено снова (смотря что раньше), когда этот дружественный оператор в пределах своего STORM и более чем в 3\" от активного оператора, он obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/wolf_scout_rune_priest.png"
+        },
+        {
+          "name": "Wolf Scout Hunter",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "maxCopies": 5,
+          "weapons": [
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Combat blade",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Fierce Temperament",
+              "text": "Пока этот оператор в пределах своего STORM, его оружие получает weapon rule Severe."
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/ws_hunter.png"
+        }
+      ],
+      "poolPick": 5,
+      "equipment": "Wolf Scout",
+      "lore": {
+        "intro": "Kill team Wolf Scouts — самые опасные и результативные охотники своей Great Company, действующие далеко впереди штурмовых сил Space Wolves в одиночных операциях без поддержки. Они сеют смерть и хаос в тылу врага через убийства, диверсии и не только, зачастую скрываясь в странных туманах или свирепых штормах.",
+        "operatives": [
+          {
+            "name": "Fenrisian Wolf",
+            "text": "Множество волчьих зверей родом с родного мира Space Wolves. Те, что связаны узами со стаями Wolf Scout, — чуткие охотники и безжалостные убийцы."
+          },
+          {
+            "name": "Wolf Scout Pack Leader",
+            "text": "Pack Leader-ы — непревзойдённые охотники, способные в одиночку выслеживать величайшие ужасы галактики и возвращаться с окровавленными трофеями."
+          },
+          {
+            "name": "Wolf Scout Fangbearer",
+            "text": "Fangbearer-ы — знатоки многих уникальных генетических особенностей своего Ордена. Перед битвой они проводят шаманские ритуалы, укрепляя тело и дух своего kill team перед грядущими опасностями."
+          },
+          {
+            "name": "Wolf Scout Frosteye",
+            "text": "В сагах некоторым Frosteye приписывают способность видеть сердце врага и замораживать его одним взглядом. Непревзойдённые стрелки, они разят с дальней дистанции из instigator bolt carbine."
+          },
+          {
+            "name": "Wolf Scout Gunner",
+            "text": "Gunner-ы — специалисты по вооружению, использующие мощные plasma gun. Это опасное оружие позволяет охотничьей стае Wolf Scout уничтожать самых стойких врагов на большей дистанции."
+          },
+          {
+            "name": "Wolf Scout Trapmaster",
+            "text": "Trapmaster-ы — диверсанты и специалисты по взрывчатке, мастерски устанавливающие свои эзотерические haywire mines, способные выжечь как чувствительную механику, так и нервную систему цели."
+          },
+          {
+            "name": "Wolf Scout Rune Priest Skjald",
+            "text": "Подобно Librarian-ам других Орденов, Rune Priest Skjald — боевые псайкеры, черпающие силу Варпа для уничтожения врагов."
+          },
+          {
+            "name": "Wolf Scout Hunter",
+            "text": "Hunter-ы из стай Wolf Scout — суровые и опытные воины, редко довольные, если не выслеживают добычу."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Elemental Storm",
+          "text": "Убери свой Storm marker из killzone (если есть), затем размести его в killzone. Когда оператор в пределах 6\" по горизонтали от твоего Storm marker, он в пределах твоего STORM.\n\nКаждый дружественный оператор WOLF SCOUT может выполнять действие Charge, имея Conceal order, если заканчивает это действие в пределах твоего STORM.",
+          "cost": "Strategic Gambit"
+        },
+        {
+          "name": "Hunting Astartes",
+          "text": "Во время активации каждого дружественного оператора WOLF SCOUT он может выполнить либо два действия Shoot, либо два действия Fight. Если это два действия Shoot:\n- Если оба действия используют plasma gun или plasma pistol, за второе действие нужно заплатить на 1 AP больше.\n- Нельзя выбрать два PSYCHIC ranged-оружия.\n\nКаждый дружественный оператор WOLF SCOUT может выполнять counteract независимо от своего order."
+        },
+        {
+          "name": "Cloaked by the Storm",
+          "text": "Когда оператор стреляет по дружественному оператору WOLF SCOUT, который в пределах твоего STORM, можно перебросить один из своих кубиков защиты.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Tempestuous Wrath",
+          "text": "Когда дружественный оператор WOLF SCOUT дерётся или отвечает (retaliating), если он в пределах твоего STORM или был в пределах твоего STORM в начале активации, его оружие ближнего боя получает weapon rule Balanced.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Storm's Bite",
+          "text": "Когда дружественный оператор WOLF SCOUT дерётся против вражеского оператора, который в пределах твоего STORM, вычти 1 из Atk stat оружия ближнего боя этого вражеского оператора (минимум до 3).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Savage Fighters",
+          "text": "Когда дружественный оператор WOLF SCOUT заканчивает отвечать (retaliating), если он не был выведен из строя, можно нанести D3+1 урона вражескому оператору в этой последовательности.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Acute Senses",
+          "text": "Примени этот firefight ploy, когда дружественный оператор WOLF SCOUT выполняет действие Shoot и ты выбираешь допустимую цель. До конца этого действия ranged-оружие этого дружественного оператора получает weapon rules Range 6\" и Seek Light, и вражеские операторы не могут быть obscured.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Counterattack",
+          "text": "Примени этот firefight ploy в конце активации вражеского оператора, либо после того как вражеский оператор выполнил действие Fight. Один дружественный оператор WOLF SCOUT может сразу выполнить свободное действие Fight, но нельзя выбрать другого вражеского оператора для драки во время этого действия.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Touched by Lokyar",
+          "text": "Примени этот firefight ploy после броска кубиков атаки для дружественного оператора WOLF SCOUT (кроме FENRISIAN WOLF), если он дерётся дальше 5\" от других дружественных операторов. Можно перебросить любые свои кубики атаки.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Transhuman Physiology",
+          "text": "Примени этот firefight ploy, когда оператор стреляет по дружественному оператору WOLF SCOUT (кроме FENRISIAN WOLF), на этапе Roll Defence Dice. Можно удержать один из своих normal success как critical success вместо этого.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "hunters_senses",
+          "name": "Hunter's Senses",
+          "target": "friendly"
+        },
+        {
+          "id": "call_the_storm",
+          "name": "Call the Storm",
+          "target": "friendly"
+        },
+        {
+          "id": "pounce",
+          "name": "Pounce",
+          "target": "friendly"
         }
       ]
     }
