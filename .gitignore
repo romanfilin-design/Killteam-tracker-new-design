@@ -1,5 +1,6 @@
 .DS_Store
 .claude/
+.playwright-mcp/
 /incoming_portraits/*
 !/incoming_portraits/README.md
 /incoming_teams/*
