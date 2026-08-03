@@ -142,6 +142,11 @@
   var pendingInfo = null; // { term, text } — памятка по параметру оружия
   var toastEl = null;
 
+  // Ручные переопределения свёрнутости карточки оператора на игровом экране
+  // (id -> true развернуть / false свернуть принудительно). Не персистится —
+  // это чисто вид на время сессии, по умолчанию решает isOperatorCollapsed().
+  var expandedOperatorOverrides = {};
+
   // ------------------------------------------------------------------
   // Комната синхронизации (Firebase) — see docs/js/firebase-room.js
   // ------------------------------------------------------------------
@@ -1118,7 +1123,20 @@
   function renderOperatorsList() {
     var t = appState.team;
     if (!t.operators.length) return '<p class="empty-state">В команде нет операторов. Добавьте вручную или вернитесь в подготовку.</p>';
-    return t.operators.map(renderOperatorCard).join('');
+    // Не активировавшиеся — вверх списка (кто ещё не ходил, требует
+    // внимания в первую очередь), уже активировавшиеся — вниз и свёрнуты.
+    var ordered = t.operators.slice().sort(function (a, b) {
+      return (a.activated ? 1 : 0) - (b.activated ? 1 : 0);
+    });
+    return ordered.map(renderOperatorCard).join('');
+  }
+
+  // По умолчанию активировавшийся оператор сворачивается до одной строки —
+  // его карточка снова не нужна до конца партии/раунда. Ручной тап по
+  // свёрнутой строке (или кнопке "−" на развёрнутой) переопределяет дефолт.
+  function isOperatorCollapsed(op) {
+    if (expandedOperatorOverrides.hasOwnProperty(op.id)) return !expandedOperatorOverrides[op.id];
+    return !!op.activated;
   }
 
   // Метки, которые соперник наложил на МОЕГО оператора (target:'enemy'
@@ -1144,6 +1162,8 @@
   }
 
   function renderOperatorCard(op) {
+    if (isOperatorCollapsed(op)) return renderOperatorCardCollapsed(op);
+
     var down = isIncapacitated(op);
     var injured = isInjured(op);
     var hpPct = op.maxWounds > 0 ? (op.wounds / op.maxWounds) * 100 : 0;
@@ -1199,6 +1219,7 @@
             '<input class="operator__name-input" type="text" data-focus-key="opname-' + op.id + '" data-field="operatorName" data-op="' + op.id + '" value="' + esc(op.name) + '" />' +
             statLine +
           '</div>' +
+          '<button class="operator__collapse-btn" data-action="toggleOperatorExpanded" data-op="' + op.id + '" title="Свернуть карточку" aria-label="Свернуть карточку">−</button>' +
         '</div>' +
 
         '<div class="operator__status-row">' +
@@ -1226,6 +1247,30 @@
           '<button class="btn btn--sm" type="submit">+ Токен</button>' +
         '</form>' +
         renderOperatorDatacard(op) +
+      '</article>'
+    );
+  }
+
+  // Свёрнутая карточка активировавшегося оператора — одна строка вместо
+  // семи блоков полной карточки: портрет, имя, текущее HP, галочка
+  // активации. Вся строка — один тап-таргет на разворот (data-action на
+  // самом <article>, отдельных интерактивных элементов внутри нет).
+  function renderOperatorCardCollapsed(op) {
+    var down = isIncapacitated(op);
+    var injured = isInjured(op);
+    var hpPct = op.maxWounds > 0 ? (op.wounds / op.maxWounds) * 100 : 0;
+    var hpClass = hpPct >= 60 ? 'hp-green' : (hpPct >= 30 ? 'hp-yellow' : 'hp-red');
+
+    return (
+      '<article class="operator operator--collapsed' + (down ? ' is-down' : (injured ? ' is-injured' : '')) + '" ' +
+        'data-action="toggleOperatorExpanded" data-op="' + op.id + '" role="button" tabindex="0" aria-expanded="false" ' +
+        'aria-label="Развернуть карточку: ' + esc(op.name) + '">' +
+        (op.portrait
+          ? '<img class="operator__collapsed-thumb" src="' + esc(op.portrait) + '" alt="">'
+          : '<span class="operator__collapsed-thumb operator__collapsed-thumb--placeholder" aria-hidden="true">' + PORTRAIT_PLACEHOLDER_SVG + '</span>') +
+        '<span class="operator__collapsed-name">' + esc(op.name) + '</span>' +
+        '<span class="operator__collapsed-hp ' + hpClass + '">' + op.wounds + '</span>' +
+        '<span class="operator__collapsed-check" aria-hidden="true">' + ICON_ACTIVATED_SVG + '</span>' +
       '</article>'
     );
   }
@@ -1464,6 +1509,12 @@
     changeKillGrade: function (ds) { changeKillGrade(appState.team, parseInt(ds.delta, 10)); persist(); render(); },
 
     addOperator: function () { addOperator(appState.team); persist(); render(); },
+    toggleOperatorExpanded: function (ds) {
+      var op = findOp(ds.op);
+      if (!op) return;
+      expandedOperatorOverrides[ds.op] = isOperatorCollapsed(op);
+      render();
+    },
     toggleActivated: function (ds) { var op = findOp(ds.op); if (op) { toggleActivated(op); persist(); render(); } },
     cycleOrder: function (ds) { var op = findOp(ds.op); if (op) { cycleOrder(op); persist(); render(); } },
     healOperator: function (ds) { var op = findOp(ds.op); if (op) { healOperator(op, parseInt(ds.amount, 10)); persist(); render(); } },
@@ -1582,7 +1633,7 @@
 
   function onKeydown(e) {
     if (e.key !== 'Enter' && e.key !== ' ') return;
-    var target = e.target.closest('.term-clickable[data-action]');
+    var target = e.target.closest('.term-clickable[data-action], [role="button"][data-action]');
     if (!target) return;
     e.preventDefault();
     target.click();

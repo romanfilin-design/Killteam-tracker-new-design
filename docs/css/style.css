@@ -24,13 +24,17 @@
   /* -- текст -- */
   --ink: #d9d4c8;
   --ink-dim: #9b9689;
-  --ink-faint: #6b675e;
+  --ink-faint: #8f8a7c;
 
   /* -- акцент: приглушённый сигнальный красный (доминанта) -- */
   --accent: #c94434;
   --accent-bright: #e0685a;
   --accent-dim: #7a2c22;
   --accent-glow: rgba(201, 68, 52, 0.35);
+  /* --accent сам по себе не даёт 4.5:1 ни с тёмным, ни с --ink текстом —
+     только чистый белый проходит AA поверх этого красного. Использовать
+     только на мелком тексте прямо на --accent (активная вкладка, бейдж). */
+  --ink-on-fill: #ffffff;
 
   /* -- функциональные (не декоративные) -- */
   --danger: #c94434;
@@ -190,9 +194,9 @@ a { color: var(--accent-bright); }
 }
 
 .mode-tabs button.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg-deep);
+  background: var(--info);
+  border-color: var(--info);
+  color: var(--ink-on-fill);
 }
 
 .mode-tabs__icon-btn {
@@ -254,9 +258,8 @@ a { color: var(--accent-bright); }
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 12px;
-  color: var(--ink);
   background: var(--accent);
-  color: var(--bg-deep);
+  color: var(--ink-on-fill);
   border: none;
   padding: 3px 8px;
   letter-spacing: 0.02em;
@@ -329,9 +332,9 @@ a { color: var(--accent-bright); }
 }
 
 .btn--pressed {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg-deep);
+  background: var(--info);
+  border-color: var(--info);
+  color: var(--ink-on-fill);
 }
 
 .btn-row {
@@ -433,19 +436,22 @@ a { color: var(--accent-bright); }
 .counters-row .counter-block { flex: 1 1 0; min-width: 0; }
 .counters-row .counter { width: 100%; justify-content: center; }
 
+/* Мобильный брейкпоинт сжимает только текст/паддинги — тап-высота нигде
+   не опускается ниже 44px (эти элементы тапаются каждый ход за столом,
+   см. CURRENT_STATE.md про уже дважды повторявшуюся ошибку сжатия). */
 @media (max-width: 480px) {
-  .counter button { width: 34px; height: 34px; font-size: 15px; }
-  .counter__value { min-width: 30px; height: 34px; font-size: 15px; padding: 0 4px; }
+  .counter button { width: 44px; height: 44px; font-size: 15px; }
+  .counter__value { min-width: 30px; height: 44px; font-size: 15px; padding: 0 4px; }
   .counter-block__label { font-size: 9px; letter-spacing: 0.05em; }
-  .turning-point-row__reset { font-size: 11px; padding: 8px 8px; min-height: 38px; }
+  .turning-point-row__reset { font-size: 11px; padding: 8px 8px; min-height: 44px; }
 
   .terminal-title { font-size: 13px; gap: 6px; }
-  .mode-tabs button { padding: 7px 6px; font-size: 10px; min-height: 38px; }
-  .mode-tabs__icon-btn { width: 38px; }
+  .mode-tabs button { padding: 7px 6px; font-size: 10px; min-height: 44px; }
+  .mode-tabs__icon-btn { width: 44px; min-height: 44px; }
   .mode-tabs__icon-btn svg { width: 15px; height: 15px; }
 
-  .status-chip { min-height: 30px; padding: 4px 8px; font-size: 10px; }
-  .counter--sm, .counter--sm button, .counter--sm .counter__value { height: 30px; }
+  .status-chip { min-height: 44px; padding: 4px 8px; font-size: 10px; }
+  .counter--sm, .counter--sm button, .counter--sm .counter__value { height: 44px; }
 }
 
 .counter-block__label {
@@ -476,7 +482,7 @@ a { color: var(--accent-bright); }
 
 .pick-stack .pick-card {
   padding: 9px 12px;
-  min-height: 40px;
+  min-height: 44px;
 }
 
 .pick-card {
@@ -507,12 +513,12 @@ a { color: var(--accent-bright); }
 }
 
 .pick-card.is-selected {
-  border-color: var(--accent);
-  background: var(--accent);
+  border-color: var(--info);
+  background: var(--info);
 }
 
-.pick-card.is-selected .pick-card__name { color: var(--bg-deep); }
-.pick-card.is-selected .pick-card__meta { color: rgba(14,13,11,0.65); }
+.pick-card.is-selected .pick-card__name { color: var(--ink-on-fill); }
+.pick-card.is-selected .pick-card__meta { color: rgba(255,255,255,0.75); }
 
 .pick-card:disabled { opacity: 0.4; }
 
@@ -527,14 +533,14 @@ a { color: var(--accent-bright); }
 }
 
 .pick-card.is-selected .pick-card__detail {
-  border-top-color: rgba(14,13,11,0.3);
-  color: rgba(14,13,11,0.8);
+  border-top-color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.85);
 }
 
 .pick-card__detail div + div { margin-top: 6px; }
 
 .pick-card__detail b { color: var(--ink); }
-.pick-card.is-selected .pick-card__detail b { color: var(--bg-deep); }
+.pick-card.is-selected .pick-card__detail b { color: var(--ink-on-fill); }
 
 /* Список выбора Kill Team — сплошные ряды в полную ширину, рамки схлопнуты,
    вместо решётки отдельных карточек. Высота ограничена ~3.5 рядами (карусель
@@ -641,8 +647,8 @@ a { color: var(--accent-bright); }
 }
 
 .pool-card.is-selected {
-  border-color: var(--accent);
-  box-shadow: inset 0 0 0 3px var(--accent);
+  border-color: var(--info);
+  box-shadow: inset 0 0 0 3px var(--info);
 }
 
 .pool-card.is-required {
@@ -761,6 +767,84 @@ a { color: var(--accent-bright); }
 
 .operator.is-injured { border-color: var(--caution); }
 
+/* -- свёрнутая карточка: активировавшийся оператор, одна строка вместо
+   полного стека контролов, весь ряд — тап-таргет на разворот -- */
+
+.operator--collapsed {
+  display: flex;
+  align-items: stretch;
+  min-height: 52px;
+  cursor: pointer;
+}
+
+.operator--collapsed:active { background: var(--panel-inset); }
+
+.operator__collapsed-thumb {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  object-fit: cover;
+  background: var(--panel-inset);
+  border-right: 2px solid var(--line);
+}
+
+.operator__collapsed-thumb--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+}
+
+.operator__collapsed-thumb--placeholder svg { width: 24px; height: 24px; }
+
+.operator__collapsed-name {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.operator__collapsed-hp {
+  flex: none;
+  width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+
+.operator__collapsed-hp.hp-green { background: #7a9a4e; color: var(--bg-deep); }
+.operator__collapsed-hp.hp-yellow { background: var(--caution); color: var(--bg-deep); }
+.operator__collapsed-hp.hp-red { background: var(--danger); color: var(--bg-deep); }
+
+.operator__collapsed-check {
+  flex: none;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid var(--line);
+  background: var(--ink);
+  color: var(--bg-deep);
+}
+
+.operator__collapsed-check svg { width: 18px; height: 18px; }
+
 .operator__top {
   display: flex;
   align-items: stretch;
@@ -792,6 +876,23 @@ a { color: var(--accent-bright); }
 
 .operator__id { flex: 1; min-width: 0; padding: 10px 12px; }
 
+/* Кнопка ручного сворачивания развёрнутой карточки — узкая колонка встык
+   справа от портрета/имени, той же высоты, что и весь operator__top. */
+.operator__collapse-btn {
+  flex: none;
+  width: 36px;
+  border: none;
+  border-left: 2px solid var(--line);
+  background: var(--bg);
+  color: var(--ink-faint);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.operator__collapse-btn:active { background: var(--panel-inset); color: var(--ink); }
+
 .operator__name-input {
   background: transparent;
   border: none;
@@ -808,7 +909,11 @@ a { color: var(--accent-bright); }
   text-overflow: ellipsis;
 }
 
-.operator__name-input:focus { outline: none; border-bottom-color: var(--accent); }
+.operator__name-input:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+  border-bottom-color: var(--accent);
+}
 
 /* Статы APL/MOVE/SAVE — сразу под именем, в той же узкой колонке рядом с
    портретом (использует border-bottom имени как разделитель, отдельного
@@ -985,7 +1090,7 @@ a { color: var(--accent-bright); }
 .operator__hp-buttons .btn {
   flex: 1;
   min-width: 0;
-  min-height: 38px;
+  min-height: 44px;
   padding: 6px 2px;
   border: none;
   border-right: 2px solid var(--line);
@@ -1009,7 +1114,7 @@ a { color: var(--accent-bright); }
   border: 2px solid var(--line);
   background: var(--bg);
   color: var(--ink-dim);
-  min-height: 38px;
+  min-height: 44px;
   padding: 6px 12px;
   font-size: 12px;
   font-weight: 700;
@@ -1082,20 +1187,20 @@ a { color: var(--accent-bright); }
 }
 
 /* Компактный степпер для счётчиков statusTokens (Damnation Points, Markerlight)
-   — высота всегда совпадает с .status-chip (38px / 30px на мобильном),
-   чтобы счётчики и кнопки-переключатели статусов стояли в ряд ровно. */
+   — высота всегда совпадает с .status-chip (44px, тап-высота не опускается
+   ниже минимума нигде — см. правило у @media (max-width:480px) выше). */
 .counter--sm {
-  height: 38px;
+  height: 44px;
 }
 
 .counter--sm button {
   width: 30px;
-  height: 38px;
+  height: 44px;
   font-size: 15px;
 }
 
 .counter--sm .counter__value {
-  height: 38px;
+  height: 44px;
   min-width: auto;
   padding: 0 8px;
   font-size: 12px;
@@ -1209,9 +1314,12 @@ a { color: var(--accent-bright); }
 
 .weapon-table th.term-clickable { text-decoration-color: var(--bg-deep); }
 
-.term-clickable:active, .term-clickable:focus-visible {
+.term-clickable:active { color: var(--accent-bright); }
+
+.term-clickable:focus-visible {
   color: var(--accent-bright);
-  outline: none;
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
 }
 
 .ability-list { display: flex; flex-direction: column; gap: 10px; }
@@ -1280,7 +1388,11 @@ a { color: var(--accent-bright); }
   font-weight: 600;
 }
 
-.field input:focus { outline: none; border-color: var(--accent); }
+.field input:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
 
 /* ==========================================================================
    Снаряжение
@@ -1347,8 +1459,8 @@ a { color: var(--accent-bright); }
 }
 
 .equip-toggle.is-selected .equip-toggle__box {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--info);
+  border-color: var(--info);
 }
 
 .equip-toggle:disabled {
