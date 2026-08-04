@@ -450,7 +450,6 @@ a { color: var(--accent-bright); }
   .mode-tabs__icon-btn { width: 44px; min-height: 44px; }
   .mode-tabs__icon-btn svg { width: 15px; height: 15px; }
 
-  .status-chip { min-height: 44px; padding: 4px 6px; font-size: 10px; }
   .counter--sm, .counter--sm button, .counter--sm .counter__value { height: 44px; }
 }
 
@@ -768,16 +767,14 @@ a { color: var(--accent-bright); }
 .operator.is-injured { border-color: var(--caution); }
 
 /* -- свёрнутая карточка: активировавшийся оператор, одна строка вместо
-   полного стека контролов, весь ряд — тап-таргет на разворот -- */
+   полного стека контролов. Портрет/имя/HP — не интерактивны, тап-таргеты
+   только два: галочка (переключает активацию) и "−" справа (разворот). -- */
 
 .operator--collapsed {
   display: flex;
   align-items: stretch;
   min-height: 52px;
-  cursor: pointer;
 }
-
-.operator--collapsed:active { background: var(--panel-inset); }
 
 .operator__collapsed-thumb {
   width: 52px;
@@ -838,10 +835,19 @@ a { color: var(--accent-bright); }
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   border-left: 2px solid var(--line);
+  background: var(--bg);
+  color: var(--ink-faint);
+}
+
+.operator__collapsed-check.is-on {
   background: var(--ink);
   color: var(--bg-deep);
 }
+
+.operator__collapsed-check:active { background: var(--panel-inset); }
+.operator__collapsed-check.is-on:active { background: var(--ink); }
 
 .operator__collapsed-check svg { width: 18px; height: 18px; }
 
@@ -1114,9 +1120,11 @@ a { color: var(--accent-bright); }
 @media (max-width: 480px) {
   .operator__controls { gap: 4px; padding: 8px 10px; }
   .token-with-info { gap: 0; }
-  .token-info-btn { width: 22px; }
 }
 
+/* Ширина/паддинг/шрифт плавно сжимаются с viewport (clamp), высота (тап-
+   таргет) всегда 44px — так на мобильном в ряд помещается больше токенов,
+   а не 1-2 штуки на всю ширину. */
 .status-chip {
   display: inline-flex;
   align-items: center;
@@ -1126,8 +1134,8 @@ a { color: var(--accent-bright); }
   background: var(--bg);
   color: var(--ink-dim);
   min-height: 44px;
-  padding: 6px 12px;
-  font-size: 12px;
+  padding: clamp(3px, 1.2vw, 6px) clamp(6px, 2.6vw, 12px);
+  font-size: clamp(10px, 3.1vw, 12px);
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -1158,14 +1166,14 @@ a { color: var(--accent-bright); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: clamp(18px, 4.5vw, 22px);
+  height: clamp(18px, 4.5vw, 22px);
   border: none;
   background: transparent;
   color: var(--info-bright);
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 13px;
+  font-size: clamp(10px, 3vw, 12px);
   flex: none;
 }
 

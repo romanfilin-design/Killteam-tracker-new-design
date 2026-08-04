@@ -1299,15 +1299,16 @@
     var hpClass = hpPct >= 60 ? 'hp-green' : (hpPct >= 30 ? 'hp-yellow' : 'hp-red');
 
     return (
-      '<article class="operator operator--collapsed' + (down ? ' is-down' : (injured ? ' is-injured' : '')) + '" ' +
-        'data-action="toggleOperatorExpanded" data-op="' + op.id + '" role="button" tabindex="0" aria-expanded="false" ' +
-        'aria-label="Развернуть карточку: ' + esc(op.name) + '">' +
+      '<article class="operator operator--collapsed' + (down ? ' is-down' : (injured ? ' is-injured' : '')) + '">' +
         (op.portrait
           ? '<img class="operator__collapsed-thumb" src="' + esc(op.portrait) + '" alt="">'
           : '<span class="operator__collapsed-thumb operator__collapsed-thumb--placeholder" aria-hidden="true">' + PORTRAIT_PLACEHOLDER_SVG + '</span>') +
         '<span class="operator__collapsed-name">' + esc(op.name) + '</span>' +
         '<span class="operator__collapsed-hp ' + hpClass + '">' + op.wounds + '</span>' +
-        '<span class="operator__collapsed-check" aria-hidden="true">' + ICON_ACTIVATED_SVG + '</span>' +
+        '<button class="operator__collapsed-check' + (op.activated ? ' is-on' : '') + '" data-action="toggleActivated" data-op="' + op.id + '" ' +
+          'aria-pressed="' + (op.activated ? 'true' : 'false') + '" title="' + (op.activated ? 'Активирован' : 'Не активирован') + '" ' +
+          'aria-label="' + (op.activated ? 'Активирован' : 'Не активирован') + '">' + ICON_ACTIVATED_SVG + '</button>' +
+        '<button class="operator__collapse-btn" data-action="toggleOperatorExpanded" data-op="' + op.id + '" title="Развернуть карточку" aria-label="Развернуть карточку: ' + esc(op.name) + '">−</button>' +
       '</article>'
     );
   }
