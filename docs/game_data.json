@@ -1556,7 +1556,11 @@
           "id": "ardour",
           "name": "Ardour",
           "target": "friendly",
-          "text": "BENEDICTION (Martyrdom). Когда INSPIRING оператор выведен из строя, другой оператор в пределах 6\" от него получает одно BENEDICTION. Ardour — до конца битвы +1 к APL того оператора (нельзя выбрать для SUPERIOR)."
+          "text": "BENEDICTION (Martyrdom). Когда INSPIRING оператор выведен из строя, другой оператор в пределах 6\" от него получает одно BENEDICTION. Ardour — до конца битвы +1 к APL того оператора (нельзя выбрать для SUPERIOR).",
+          "statMod": {
+            "stat": "apl",
+            "delta": 1
+          }
         },
         {
           "id": "wrath",
@@ -3899,14 +3903,22 @@
           "name": "Swift",
           "target": "friendly",
           "restrictToOperator": "R-VR Cyber-Mastiff",
-          "text": "Attack Pattern (R-VR CYBER-MASTIFF, выбирается дважды из трёх на всю битву). Swift — добавь 2\" к Move stat этого оператора."
+          "text": "Attack Pattern (R-VR CYBER-MASTIFF, выбирается дважды из трёх на всю битву). Swift — добавь 2\" к Move stat этого оператора.",
+          "statMod": {
+            "stat": "move",
+            "delta": 2
+          }
         },
         {
           "id": "defensive_pattern",
           "name": "Defensive",
           "target": "friendly",
           "restrictToOperator": "R-VR Cyber-Mastiff",
-          "text": "Attack Pattern (R-VR CYBER-MASTIFF, выбирается дважды из трёх на всю битву). Defensive — улучши Save stat этого оператора на 1."
+          "text": "Attack Pattern (R-VR CYBER-MASTIFF, выбирается дважды из трёх на всю битву). Defensive — улучши Save stat этого оператора на 1.",
+          "statMod": {
+            "stat": "save",
+            "delta": 1
+          }
         },
         {
           "id": "medic_used",
@@ -4979,7 +4991,11 @@
           "id": "gong_knell",
           "name": "Gong Knell",
           "target": "friendly",
-          "text": "До начала следующей активации этого оператора или пока он не incapacitated (что наступит раньше): когда оператор стреляет по этому оператору, улучши Save stat этого оператора на 1 и игнорируй weapon rule Piercing."
+          "text": "До начала следующей активации этого оператора или пока он не incapacitated (что наступит раньше): когда оператор стреляет по этому оператору, улучши Save stat этого оператора на 1 и игнорируй weapon rule Piercing.",
+          "statMod": {
+            "stat": "save",
+            "delta": 1
+          }
         },
         {
           "id": "mantle_of_darkness",
@@ -6703,7 +6719,11 @@
           "id": "photon_grenade",
           "name": "Photon Grenade",
           "target": "enemy",
-          "text": "Faction equipment. Once per turning point дружественный оператор PATHFINDER, у которого есть действие Markerlight на датакарте, может выполнить: Photon Grenade (1AP). Выбери одного вражеского оператора, видимого этому оператору, и брось D6: при 3+, до конца следующей активации того оператора, отними 2\" от его Move stat."
+          "text": "Faction equipment. Once per turning point дружественный оператор PATHFINDER, у которого есть действие Markerlight на датакарте, может выполнить: Photon Grenade (1AP). Выбери одного вражеского оператора, видимого этому оператору, и брось D6: при 3+, до конца следующей активации того оператора, отними 2\" от его Move stat.",
+          "statMod": {
+            "stat": "move",
+            "delta": -2
+          }
         },
         {
           "id": "pulse_accelerator",
@@ -7954,7 +7974,11 @@
           "id": "humbling_cruelty",
           "name": "Humbling Cruelty",
           "target": "enemy",
-          "text": "Если цель этого оружия не выведена из строя, но хотя бы одна из твоих костей атаки нанесла урон, цель получает один твой Humbling Cruelty token (если у неё его ещё нет). Пока вражеский оператор имеет один из твоих Humbling Cruelty token, отними 2\" от его Move stat и ухудши Hit stat его оружия на 1. Это не суммируется с being injured. В конце следующей активации этого вражеского оператора убери его Humbling Cruelty token."
+          "text": "Если цель этого оружия не выведена из строя, но хотя бы одна из твоих костей атаки нанесла урон, цель получает один твой Humbling Cruelty token (если у неё его ещё нет). Пока вражеский оператор имеет один из твоих Humbling Cruelty token, отними 2\" от его Move stat и ухудши Hit stat его оружия на 1. Это не суммируется с being injured. В конце следующей активации этого вражеского оператора убери его Humbling Cruelty token.",
+          "statMod": {
+            "stat": "move",
+            "delta": -2
+          }
         }
       ]
     },
@@ -8336,7 +8360,11 @@
           "id": "tanked_up",
           "name": "Tanked Up",
           "target": "friendly",
-          "text": "Первый раз, когда дружественный оператор WRECKA KREW (кроме BOMB SQUIG), имеющий Engage order, выполняет действие Charge, Shoot или Fight (кроме Guard) во время каждой своей активации/counteraction, добавь 1 к его APL stat до начала его следующей активации."
+          "text": "Первый раз, когда дружественный оператор WRECKA KREW (кроме BOMB SQUIG), имеющий Engage order, выполняет действие Charge, Shoot или Fight (кроме Guard) во время каждой своей активации/counteraction, добавь 1 к его APL stat до начала его следующей активации.",
+          "statMod": {
+            "stat": "apl",
+            "delta": 1
+          }
         }
       ]
     },
@@ -8762,7 +8790,11 @@
           "id": "pounce",
           "name": "Pounce",
           "target": "friendly",
-          "text": "Once per battle. Если APL stat этого оператора 2 или больше, этот оператор может выполнить свободное действие Charge, Fall Back или Reposition. Если он это делает, до конца его следующей активации вычти 1 из его APL stat, и он не может выполнять ни одно из вышеперечисленных действий."
+          "text": "Once per battle. Если APL stat этого оператора 2 или больше, этот оператор может выполнить свободное действие Charge, Fall Back или Reposition. Если он это делает, до конца его следующей активации вычти 1 из его APL stat, и он не может выполнять ни одно из вышеперечисленных действий.",
+          "statMod": {
+            "stat": "apl",
+            "delta": -1
+          }
         }
       ]
     }

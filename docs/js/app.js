@@ -302,6 +302,30 @@
       .replace(/"/g, '&quot;');
   }
 
+  // Строка статов APL/Move/Save с учётом активных токенов, которые их
+  // меняют (statMod в game_data.json — см. tools/README.md). `sources` —
+  // массив { defs, isActive(tok) }, суммируются по всем источникам сразу
+  // (например: свои baffs + метка от врага на этом же операторе).
+  function renderStatLine(op, sources) {
+    if (!(op.apl || op.move || op.save)) return '';
+    function totalDelta(statKey) {
+      return sources.reduce(function (sum, src) {
+        return sum + sumStatMods(src.defs, statKey, src.isActive);
+      }, 0);
+    }
+    function cell(label, base, statKey) {
+      var res = applyStatDelta(base, statKey, totalDelta(statKey));
+      var cls = 'operator__stat-value' + (res.changed ? (res.delta > 0 ? ' operator__stat-value--buffed' : ' operator__stat-value--debuffed') : '');
+      var title = res.changed ? ' title="Базово: ' + esc(base || '—') + '"' : '';
+      return '<div class="operator__stat"><span class="operator__stat-label">' + label + '</span><span class="' + cls + '"' + title + '>' + esc(res.changed ? res.value : (base || '—')) + '</span></div>';
+    }
+    return '<div class="operator__stats">' +
+      cell('APL', op.apl, 'apl') +
+      cell('Move', op.move, 'move') +
+      cell('Save', op.save, 'save') +
+    '</div>';
+  }
+
   function showToast(message) {
     var root = document.getElementById('toast-root');
     root.innerHTML = '<div class="toast">' + esc(message) + '</div>';
@@ -917,14 +941,12 @@
     }
     var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);
     var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : '—');
-    var statLine = (op.apl || op.move || op.save)
-      ? '<div class="operator__stats">' +
-          '<div class="operator__stat"><span class="operator__stat-label">APL</span><span class="operator__stat-value">' + esc(op.apl || '—') + '</span></div>' +
-          '<div class="operator__stat"><span class="operator__stat-label">Move</span><span class="operator__stat-value">' + esc(op.move || '—') + '</span></div>' +
-          '<div class="operator__stat"><span class="operator__stat-label">Save</span><span class="operator__stat-value">' + esc(op.save || '—') + '</span></div>' +
-        '</div>'
-      : '';
     var marks = roomState.enemyTokenMarks || {};
+    var opTokensForStats = op.tokens || [];
+    var statLine = renderStatLine(op, [
+      { defs: filterTokenDefsForOperator(friendlyDefs || [], op.name), isActive: function (tok) { return opTokensForStats.indexOf(tok.name) >= 0; } },
+      { defs: tokenDefs, isActive: function (tok) { return !!marks[window.KTRoom.enemyTokenKey(opponentUid, op.id, tok.id)]; } }
+    ]);
     var chipsHtml = tokenDefs.map(function (tok) {
       var key = window.KTRoom.enemyTokenKey(opponentUid, op.id, tok.id);
       if (tok.counter) {
@@ -1213,13 +1235,13 @@
 
     var enemyMarksChips = renderMyEnemyMarksChips(op);
 
-    var statLine = (op.apl || op.move || op.save)
-      ? '<div class="operator__stats">' +
-          '<div class="operator__stat"><span class="operator__stat-label">APL</span><span class="operator__stat-value">' + esc(op.apl || '—') + '</span></div>' +
-          '<div class="operator__stat"><span class="operator__stat-label">Move</span><span class="operator__stat-value">' + esc(op.move || '—') + '</span></div>' +
-          '<div class="operator__stat"><span class="operator__stat-label">Save</span><span class="operator__stat-value">' + esc(op.save || '—') + '</span></div>' +
-        '</div>'
-      : '';
+    var enemyOpponent = (roomState.others || [])[0];
+    var enemyMarkDefs = enemyOpponent ? enemyStatusTokenDefs(gameData, enemyOpponent.teamName) : [];
+    var enemyMarksForStats = roomState.enemyTokenMarks || {};
+    var statLine = renderStatLine(op, [
+      { defs: quickTokenDefs, isActive: function (tok) { return op.tokens.indexOf(tok.name) >= 0; } },
+      { defs: enemyMarkDefs, isActive: function (tok) { return !!enemyMarksForStats[window.KTRoom ? window.KTRoom.enemyTokenKey(roomState.uid, op.id, tok.id) : '']; } }
+    ]);
 
     var orderIcon = op.order === 'conceal' ? ICON_CONCEAL_SVG : (op.order === 'engage' ? ICON_ENGAGE_SVG : ICON_ORDER_NEUTRAL_SVG);
     var orderLabel = op.order === 'conceal' ? 'Conceal' : (op.order === 'engage' ? 'Engage' : '—');

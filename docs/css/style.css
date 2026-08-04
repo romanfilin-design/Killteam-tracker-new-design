@@ -450,7 +450,7 @@ a { color: var(--accent-bright); }
   .mode-tabs__icon-btn { width: 44px; min-height: 44px; }
   .mode-tabs__icon-btn svg { width: 15px; height: 15px; }
 
-  .status-chip { min-height: 44px; padding: 4px 8px; font-size: 10px; }
+  .status-chip { min-height: 44px; padding: 4px 6px; font-size: 10px; }
   .counter--sm, .counter--sm button, .counter--sm .counter__value { height: 44px; }
 }
 
@@ -884,14 +884,14 @@ a { color: var(--accent-bright); }
   border: none;
   border-left: 2px solid var(--line);
   background: var(--bg);
-  color: var(--ink-faint);
+  color: var(--accent-bright);
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 22px;
   line-height: 1;
 }
 
-.operator__collapse-btn:active { background: var(--panel-inset); color: var(--ink); }
+.operator__collapse-btn:active { background: var(--panel-inset); color: var(--accent-bright); }
 
 .operator__name-input {
   background: transparent;
@@ -952,6 +952,11 @@ a { color: var(--accent-bright); }
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
+
+/* Стат изменён активным токеном (см. statMod в game_data.json) — значение
+   на карточке уже показывает итог с учётом токена, не базовое. */
+.operator__stat-value--buffed { color: var(--ok-dim); }
+.operator__stat-value--debuffed { color: var(--danger); }
 
 /* -- статус-бар: активация + приказ, полноширинные ячейки встык -- */
 
@@ -1106,6 +1111,12 @@ a { color: var(--accent-bright); }
   padding: 10px 12px;
 }
 
+@media (max-width: 480px) {
+  .operator__controls { gap: 4px; padding: 8px 10px; }
+  .token-with-info { gap: 0; }
+  .token-info-btn { width: 22px; }
+}
+
 .status-chip {
   display: inline-flex;
   align-items: center;
@@ -1149,8 +1160,8 @@ a { color: var(--accent-bright); }
   justify-content: center;
   width: 26px;
   height: 26px;
-  border: 2px solid var(--info);
-  background: var(--bg);
+  border: none;
+  background: transparent;
   color: var(--info-bright);
   font-family: var(--font-display);
   font-weight: 800;

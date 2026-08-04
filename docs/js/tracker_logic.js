@@ -530,6 +530,47 @@ function findStatusTokenDef(gameData, killTeamName, tokenId) {
   return tokens.find(t => t.id === tokenId) || null;
 }
 
+// ---- влияние токенов на статы (APL/Move/Save) на карточке ----
+// Некоторые statusTokens меняют характеристику оператора, пока активны
+// (Ardour: +1 APL, Swift: +2" Move, Defensive/Gong Knell: улучшить Save на 1,
+// Pounce: -1 APL, Photon Grenade/Humbling Cruelty: -2" Move на отмеченного
+// врага). Поле статуса — {stat: 'apl'|'move'|'save', delta: number}.
+
+function parseStatNumber(raw) {
+  if (raw == null) return null;
+  const m = String(raw).match(/-?\d+/);
+  return m ? parseInt(m[0], 10) : null;
+}
+
+/** Считает суммарный delta по конкретному стату среди активных токенов. */
+function sumStatMods(tokenDefs, statKey, isActiveFn) {
+  return (tokenDefs || []).reduce((total, tok) => {
+    if (tok.statMod && tok.statMod.stat === statKey && isActiveFn(tok)) {
+      return total + tok.statMod.delta;
+    }
+    return total;
+  }, 0);
+}
+
+/**
+ * Применяет суммарный delta к исходному значению стата и возвращает
+ * отформатированную строку в том же формате (число для APL, `X"` для
+ * Move, `X+` для Save — улучшение Save означает уменьшение числа).
+ */
+function applyStatDelta(baseRaw, statKey, delta) {
+  if (!delta) return { value: baseRaw, changed: false };
+  const n = parseStatNumber(baseRaw);
+  if (n == null) return { value: baseRaw, changed: false };
+  if (statKey === 'save') {
+    const next = Math.max(1, n - delta);
+    return { value: next + '+', changed: true, delta };
+  }
+  if (statKey === 'move') {
+    return { value: (n + delta) + '"', changed: true, delta };
+  }
+  return { value: n + delta, changed: true, delta };
+}
+
 function toggleToken(op, tokenText) {
   const idx = op.tokens.indexOf(tokenText);
   if (idx >= 0) op.tokens.splice(idx, 1);
@@ -748,6 +789,8 @@ if (typeof module !== 'undefined' && module.exports) {
     friendlyStatusTokenDefs,
     enemyStatusTokenDefs,
     findStatusTokenDef,
+    sumStatMods,
+    applyStatDelta,
     toggleToken,
     addCustomToken,
     removeToken,
