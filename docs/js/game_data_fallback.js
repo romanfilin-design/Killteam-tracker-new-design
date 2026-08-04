@@ -1154,7 +1154,8 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "poison",
           "name": "Poison",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Некоторое оружие в правилах этой команды обладает правилом Poison. * Poison: на этапе Resolve Attack Dice, если ты наносишь урон любыми успехами, оператор, против которого используется это оружие (исключая дружественных операторов PLAGUE MARINE), получает один из твоих Poison tokens (если у него ещё нет). Когда оператор с одним из твоих Poison tokens активируется, нанеси ему 1 урон."
         }
       ]
     },
@@ -1550,27 +1551,32 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "inspiring",
           "name": "INSPIRING",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Когда дружественный оператор CELESTIAN INSIDIANT выводит из строя (incapacitate) вражеского оператора с характеристикой Wounds 6 или больше — этот дружественный оператор становится INSPIRING. Когда он выполняет действие Charge — перед перемещением он становится INSPIRING. Когда дружественный оператор CELESTIAN INSIDIANT является INSPIRING, оружие на его datacard получает правило Severe. (Faction rule Inspiration)"
         },
         {
           "id": "ardour",
           "name": "Ardour",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "BENEDICTION (Martyrdom). Когда INSPIRING оператор выведен из строя, другой оператор в пределах 6\" от него получает одно BENEDICTION. Ardour — до конца битвы +1 к APL того оператора (нельзя выбрать для SUPERIOR)."
         },
         {
           "id": "wrath",
           "name": "Wrath",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "BENEDICTION (Martyrdom). Когда INSPIRING оператор выведен из строя, другой оператор в пределах 6\" от него получает одно BENEDICTION. Wrath — до конца битвы оружие на datacard того оператора получает правило Ceaseless."
         },
         {
           "id": "restoration",
           "name": "Restoration",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "BENEDICTION (Martyrdom). Когда INSPIRING оператор выведен из строя, другой оператор в пределах 6\" от него получает одно BENEDICTION. Restoration — тот оператор восстанавливает D3+2 потерянных wounds."
         },
         {
           "id": "exigence",
           "name": "Exigence",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "BENEDICTION (Martyrdom). Когда INSPIRING оператор выведен из строя, другой оператор в пределах 6\" от него получает одно BENEDICTION. Exigence — тот оператор может немедленно выполнить бесплатное действие Charge или Dash (для Charge — не более 3\"), но должен закончить это перемещение ближе к выведенному из строя INSPIRING оператору."
         }
       ]
     },
@@ -2587,7 +2593,8 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "grudge",
           "name": "Grudge",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Когда вражеский оператор выводит из строя (incapacitate) дружественного оператора HEARTHKYN SALVAGER, тот вражеский оператор получает один из твоих токенов Grudge на всю битву. Когда дружественный оператор HEARTHKYN SALVAGER стреляет, дерётся или отвечает (retaliating) против вражеского оператора, за каждый токен Grudge у этого врага можно сохранить один свой обычный success как critical success (включая обычные successes, уже сохранённые за счёт правила Accurate). Токены Grudge при этом не убираются."
         }
       ]
     },
@@ -3867,40 +3874,47 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "apprehend",
           "name": "Apprehend",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Выбери одного вражеского оператора в пределах control range этого оператора. Пока тот вражеский оператор не покинет пределы control range этого оператора, или пока этот оператор не выполнит это действие снова (что наступит раньше) — ухудши Hit stat оружия того вражеского оператора на 1 (это не суммируется с состоянием injured); кроме того, тот вражеский оператор не может выполнить действие Fall Back. Нельзя выполнять это действие, если в пределах control range этого оператора нет вражеского оператора."
         },
         {
           "id": "veriscant",
           "name": "Veriscant",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Выбери одного вражеского оператора, видимого этому оператору. До начала следующей активации этого оператора, пока тот вражеский оператор не incapacitated, или пока это действие не выполнено снова (что наступит раньше) — каждый раз, когда дружественный оператор EXACTION SQUAD стреляет по этому вражескому оператору, дерётся против него или отвечает (retaliating) против него, оружие того дружественного оператора получает weapon rules Lethal 5+ и Severe; если у оружия уже есть это правило, оно также получает Lethal 5+. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора."
         },
         {
           "id": "spot",
           "name": "Spot",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "SUPPORT. Выбери одного вражеского оператора, видимого этому оператору и находящегося в пределах 8\" от него. До конца turning point, каждый раз, когда дружественный оператор EXACTION SQUAD в пределах 3\" от этого оператора стреляет по тому вражескому оператору, можно применить этот эффект. Если применяешь: оружие того дружественного оператора получает weapon rule Seek Light; тот вражеский оператор не может быть obscured. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора."
         },
         {
           "id": "aggressive_pattern",
           "name": "Aggressive",
           "target": "friendly",
-          "restrictToOperator": "R-VR Cyber-Mastiff"
+          "restrictToOperator": "R-VR Cyber-Mastiff",
+          "text": "Attack Pattern (R-VR CYBER-MASTIFF, выбирается дважды из трёх на всю битву). Aggressive — оружие ближнего боя этого оператора получает weapon rule Relentless."
         },
         {
           "id": "swift_pattern",
           "name": "Swift",
           "target": "friendly",
-          "restrictToOperator": "R-VR Cyber-Mastiff"
+          "restrictToOperator": "R-VR Cyber-Mastiff",
+          "text": "Attack Pattern (R-VR CYBER-MASTIFF, выбирается дважды из трёх на всю битву). Swift — добавь 2\" к Move stat этого оператора."
         },
         {
           "id": "defensive_pattern",
           "name": "Defensive",
           "target": "friendly",
-          "restrictToOperator": "R-VR Cyber-Mastiff"
+          "restrictToOperator": "R-VR Cyber-Mastiff",
+          "text": "Attack Pattern (R-VR CYBER-MASTIFF, выбирается дважды из трёх на всю битву). Defensive — улучши Save stat этого оператора на 1."
         },
         {
           "id": "medic_used",
           "name": "Medic!",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Первый раз за каждый turning point, когда другой дружественный оператор EXACTION SQUAD должен быть incapacitated, находясь в видимости и в пределах 3\" от этого оператора, можно применить это правило, при условии что ни этот, ни тот оператор не находятся в пределах control range вражеского оператора. Если применяешь — тот дружественный оператор не incapacitated, у него остаётся 1 wound, и он не может быть incapacitated до конца этого действия. После этого действия тот дружественный оператор может немедленно выполнить бесплатное действие Dash, но должен закончить это перемещение в пределах control range этого оператора. Вычти 1 из APL stat этого и того оператора до конца их следующих активаций соответственно, и если это правило было применено во время активации того дружественного оператора, эта активация заканчивается. Нельзя применять это правило, если этот оператор incapacitated, или если это действие Shoot и этот оператор был бы primary или secondary целью."
         }
       ]
     },
@@ -4420,17 +4434,20 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "mark",
           "name": "Mark (Call the Kill)",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Strategic Gambit, если этот оператор в killzone. Выбери одного вражеского оператора своей mark на этот turning point. Когда дружественный оператор FARSTALKER KINBAND стреляет против, дерётся против или отвечает (retaliating) против твоей mark, оружие этого дружественного оператора получает weapon rule Balanced. Когда твоя mark выведена из строя, можно выбрать нового вражеского оператора своей mark на этот turning point (и можно продолжать делать это в течение этого turning point)."
         },
         {
           "id": "victory_shriek",
           "name": "Victory Shriek",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Когда твоя mark выведена из строя, можно выбрать одного дружественного оператора FARSTALKER KINBAND в пределах 6\" от этого оператора. До конца битвы оружие этого оператора получает weapon rule Balanced. Каждый дружественный оператор может быть выбран для этого правила только один раз за битву."
         },
         {
           "id": "vengeance_mark",
           "name": "Vengeance for the Kinband",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Примени этот firefight ploy, когда дружественный оператор FARSTALKER KINBAND выведен из строя вражеским оператором. До конца битвы, когда другой дружественный оператор FARSTALKER KINBAND стреляет против, дерётся против или отвечает (retaliating) против этого вражеского оператора, оружие того дружественного оператора получает weapon rule Relentless. Нельзя применить этот ploy снова в этой битве, пока тот вражеский оператор не будет выведен из строя."
         }
       ]
     },
@@ -4957,22 +4974,26 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "frenzy",
           "name": "Frenzy",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Когда дружественный оператор FELLGOR RAVAGER, у которого нет одного из твоих Frenzy tokens, должен быть incapacitated во время битвы, вместо этого он не incapacitated и получает один из твоих Frenzy tokens. Все оставшиеся кубики атаки отбрасываются (включая твои, если этот оператор дерётся или отвечает (retaliating)). Если у него был приказ Conceal, смени его на Engage.\n\nПока у дружественного оператора FELLGOR RAVAGER есть один из твоих Frenzy tokens:\n- Он incapacitated только так, как описано ниже.\n- Он не может иметь приказ Conceal.\n- Он считается injured.\n- Он не может выполнять действие Pick Up Marker, unique actions (кроме Sweeping Blow, см. VANDAL) или mission actions (кроме Operate Hatch).\n- Для целей определения контроля маркеров и зон killzone считай его APL stat равным 1. Это имеет приоритет над любыми другими изменениями стата.\n\nДружественный оператор FELLGOR RAVAGER с одним из твоих Frenzy tokens incapacitated, когда выполняется одно из следующего:\n- Заканчивается его активация или counteraction.\n- Вражеский оператор дерётся против него или отвечает (retaliating), и твой противник бьёт с critical success.\n- Вражеский оператор дерётся против него или отвечает (retaliating), и твой противник бьёт по нему во второй раз с normal success (в том числе ударами из двух разных действий Fight).\n- Вражеский оператор стреляет по нему, и ему наносится Critical Dmg.\n- Битва заканчивается (разреши это до любых victory conditions, разрешаемых в конце битвы).\n\nТвой противник считает оператора FELLGOR RAVAGER incapacitated (вместо момента его фактического incapacitated) в момент, когда тот получает один из твоих Frenzy tokens — для целей начисления VP (например, kill op) и faction rules, требующих incapacitated (например, HAND OF THE ARCHON Power From Pain, CHAOS CULT Mutation и т.п.)."
         },
         {
           "id": "gong_knell",
           "name": "Gong Knell",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "До начала следующей активации этого оператора или пока он не incapacitated (что наступит раньше): когда оператор стреляет по этому оператору, улучши Save stat этого оператора на 1 и игнорируй weapon rule Piercing."
         },
         {
           "id": "mantle_of_darkness",
           "name": "Mantle of Darkness",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "PSYCHIC. До начала следующей активации этого оператора или пока он не incapacitated (что наступит раньше): когда дружественный оператор FELLGOR RAVAGER виден и в пределах 3\" от этого оператора, имеет приказ Conceal и находится в укрытии (cover), тот дружественный оператор не может быть выбран как допустимая цель — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме нахождения в пределах 2\".\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора."
         },
         {
           "id": "pelting_firepower",
           "name": "Pelting Firepower",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Когда дружественный оператор FELLGOR RAVAGER стреляет по вражескому оператору, по которому в этот turning point уже стрелял другой дружественный оператор FELLGOR RAVAGER, ranged-оружие этого первого дружественного оператора получает weapon rule Ceaseless; если по вражескому оператору в этот turning point стреляли более одного другого дружественного оператора, его ranged-оружие получает weapon rule Relentless вместо этого."
         }
       ]
     },
@@ -5963,12 +5984,14 @@ window.GAME_DATA_FALLBACK = {
           "target": "friendly",
           "counter": true,
           "max": 6,
-          "restrictToOperator": "Murderwing Chaos Lord"
+          "restrictToOperator": "Murderwing Chaos Lord",
+          "text": "Path to Damnation (MURDERWING CHAOS LORD). Этот оператор начинает битву с 1 Damnation point. Once per action, можно попытаться применить один Boon of Damnation: брось D6 и сравни с числом Damnation points — Higher: разреши правило, получи +1 Damnation point; Equal: не разрешай; Less: нанеси этому оператору урон, равный числу Damnation points, и не разрешай. При 6 points правило разрешается без броска."
         },
         {
           "id": "challenge_token",
           "name": "Challenge Token",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Chaos Champion (MURDERWING CHAMPION). STRATEGIC GAMBIT. Убери свой Challenge token с вражеского оператора (если есть), затем выбери одного вражеского оператора, чтобы он получил твой Challenge token. Когда этот оператор дерётся против/отвечает против того оператора — на этапе Select Weapons доступны дополнительные weapon rules. Path to Glory: вывод из строя оператора с этим token даёт 1CP."
         }
       ]
     },
@@ -6675,23 +6698,27 @@ window.GAME_DATA_FALLBACK = {
           "name": "Markerlight",
           "target": "enemy",
           "counter": true,
-          "max": 4
+          "max": 4,
+          "text": "См. faction rule Markerlights."
         },
         {
           "id": "photon_grenade",
           "name": "Photon Grenade",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Faction equipment. Once per turning point дружественный оператор PATHFINDER, у которого есть действие Markerlight на датакарте, может выполнить: Photon Grenade (1AP). Выбери одного вражеского оператора, видимого этому оператору, и брось D6: при 3+, до конца следующей активации того оператора, отними 2\" от его Move stat."
         },
         {
           "id": "pulse_accelerator",
           "name": "Pulse Accelerator",
           "target": "friendly",
-          "restrictToOperator": "MV31 Pulse Accelerator Drone"
+          "restrictToOperator": "MV31 Pulse Accelerator Drone",
+          "text": "До начала следующей активации этого оператора или пока он не выведен из строя (смотря что раньше): каждый раз, когда другой дружественный оператор PATHFINDER стреляет из pulse weapon в пределах 3\" от этого оператора, то оружие получает weapon rules Lethal 5+ и Severe."
         },
         {
           "id": "medic_used",
           "name": "Medic",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Первый раз в течение каждого turning point, когда другой дружественный оператор PATHFINDER (кроме DRONE) должен быть выведен из строя, будучи видимым этому оператору и в пределах 3\" от него, можно использовать это правило, если ни этот, ни тот оператор не в пределах control range вражеского оператора. Если используешь, тот дружественный оператор не выводится из строя, имеет 1 оставшийся wound и не может быть выведен из строя до конца этого действия. После этого действия тот дружественный оператор может сразу выполнить свободное действие Dash, но должен закончить это движение в пределах control range этого оператора. Отними 1 от APL stat того оператора до конца его следующей активации."
         }
       ],
       "factionChoices": [
@@ -7194,7 +7221,8 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "detected",
           "name": "Detected",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Eye Above. Выбранный оператор и каждый другой вражеский оператор в пределах 3\" от него получает Detected token до конца turning point. Оператор с этим token: стреляя по TEMPESTUS AQUILON — оппонент может перебросить кубик защиты; деря́сь/отвечая против TEMPESTUS AQUILON — один block оппонента блокирует два неразрешённых success вместо одного."
         }
       ]
     },
@@ -7581,14 +7609,16 @@ window.GAME_DATA_FALLBACK = {
           "name": "Communion Points",
           "target": "friendly",
           "counter": true,
-          "max": 6
+          "max": 6,
+          "text": "В Ready step каждой Strategy phase ты получаешь D3 Communion points, плюс 1, если дружественный оператор OVERSIGHT DRONE в killzone. Communion points используются следующим образом (операторы OVERSIGHT DRONE не подвержены следующему):\n\n1. Когда дружественный оператор VESPID STINGWING выполняет действие Shoot, он может выбрать целью только ближайшего вражеского оператора в пределах 8\" от него (кроме вражеских операторов в пределах control range других дружественных операторов VESPID STINGWING), если не потратишь 1 свой Communion point. Для оружия с weapon rules Blast и Torrent так нужно выбирать только первую цель.\n2. Когда дружественный оператор VESPID STINGWING (кроме DRONE) выполняет действие Charge, он должен закончить действие в пределах control range ближайшего вражеского оператора, до которого может дотянуться, если не потратишь 1 свой Communion point.\n3. Когда ты выполняешь действие Pick Up Marker или mission-действие (кроме Operate Hatch) дружественным оператором VESPID STINGWING, ты также должен потратить 1 свой Communion point, чтобы сделать это.\n4. Когда дружественный оператор VESPID STINGWING стреляет, можно потратить 1 (и только 1) свой Communion point, чтобы перебросить один из своих кубиков атаки."
         },
         {
           "id": "neutron_fragment",
           "name": "Neutron Fragment",
           "target": "enemy",
           "counter": true,
-          "max": 6
+          "max": 6,
+          "text": "Если цель этого оружия не выведена из строя, но ты разрешил любые кубики атаки, цель получает один из твоих Neutron Fragment tokens. Когда активируется оператор, у которого есть один из твоих Neutron Fragment tokens, нанеси ему D3 урона за каждый Neutron Fragment token, который у него есть (бросай отдельно за каждый)."
         }
       ]
     },
@@ -7925,7 +7955,8 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "humbling_cruelty",
           "name": "Humbling Cruelty",
-          "target": "enemy"
+          "target": "enemy",
+          "text": "Если цель этого оружия не выведена из строя, но хотя бы одна из твоих костей атаки нанесла урон, цель получает один твой Humbling Cruelty token (если у неё его ещё нет). Пока вражеский оператор имеет один из твоих Humbling Cruelty token, отними 2\" от его Move stat и ухудши Hit stat его оружия на 1. Это не суммируется с being injured. В конце следующей активации этого вражеского оператора убери его Humbling Cruelty token."
         }
       ]
     },
@@ -8300,12 +8331,14 @@ window.GAME_DATA_FALLBACK = {
           "name": "Wrecka Points",
           "target": "friendly",
           "counter": true,
-          "max": 6
+          "max": 6,
+          "text": "Wrecka Rampage. Когда WRECKA KREW стреляет/дерётся/отвечает: за каждый retained результат кубика атаки 6 получи 1 Wrecka point (максимум 6 одновременно). Можно потратить до 2 points (кроме BOMB SQUIG), чтобы retain fail как success вместо отбрасывания."
         },
         {
           "id": "tanked_up",
           "name": "Tanked Up",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Первый раз, когда дружественный оператор WRECKA KREW (кроме BOMB SQUIG), имеющий Engage order, выполняет действие Charge, Shoot или Fight (кроме Guard) во время каждой своей активации/counteraction, добавь 1 к его APL stat до начала его следующей активации."
         }
       ]
     },
@@ -8315,37 +8348,6 @@ window.GAME_DATA_FALLBACK = {
         "Seek & Destroy"
       ],
       "required": [
-        {
-          "name": "Fenrisian Wolf",
-          "apl": 2,
-          "move": "8\"",
-          "save": "5+",
-          "wounds": 9,
-          "count": 1,
-          "weapons": [
-            {
-              "name": "Fangs",
-              "atk": 5,
-              "hit": "3+",
-              "dmg": "4/5",
-              "wr": "Rending"
-            }
-          ],
-          "abilities": [
-            {
-              "name": "Instinctive Predator",
-              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Guard и Reposition. Он не может использовать оружие, которого нет на его карточке. Этот оператор может выполнять действие Charge, имея Conceal order."
-            },
-            {
-              "name": "Pounce",
-              "text": "Once per battle. Если APL stat этого оператора 2 или больше, этот оператор может выполнить свободное действие Charge, Fall Back или Reposition. Если он это делает, до конца его следующей активации вычти 1 из его APL stat, и он не может выполнять ни одно из вышеперечисленных действий.",
-              "cost": "Strategic Gambit"
-            }
-          ],
-          "portrait": "img/portraits/wolf-scout/wolf.png"
-        }
-      ],
-      "pool": [
         {
           "name": "Wolf Scout Pack Leader",
           "apl": 3,
@@ -8385,8 +8387,40 @@ window.GAME_DATA_FALLBACK = {
               "text": "В первый раз, когда этот оператор должен быть выведен из строя в этой битве, он не выводится из строя, у него остаётся 1 wound, и его нельзя вывести из строя до конца этого действия. Все оставшиеся кубики атаки отбрасываются (включая твои, если этот оператор дерётся или отвечает). Нельзя использовать firefight ploy Counterattack или наносить урон в результате strategy ploy Savage Fighters в конце этого действия."
             }
           ],
-          "portrait": "img/portraits/wolf-scout/ws_pack_leader.png"
+          "portrait": "img/portraits/wolf-scout/ws_pack_leader.png",
+          "count": 1
         },
+        {
+          "name": "Fenrisian Wolf",
+          "apl": 2,
+          "move": "8\"",
+          "save": "5+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Fangs",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Instinctive Predator",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Guard и Reposition. Он не может использовать оружие, которого нет на его карточке. Этот оператор может выполнять действие Charge, имея Conceal order."
+            },
+            {
+              "name": "Pounce",
+              "text": "Once per battle. Если APL stat этого оператора 2 или больше, этот оператор может выполнить свободное действие Charge, Fall Back или Reposition. Если он это делает, до конца его следующей активации вычти 1 из его APL stat, и он не может выполнять ни одно из вышеперечисленных действий.",
+              "cost": "Strategic Gambit"
+            }
+          ],
+          "portrait": "img/portraits/wolf-scout/wolf.png"
+        }
+      ],
+      "pool": [
         {
           "name": "Wolf Scout Fangbearer",
           "apl": 3,
@@ -8717,17 +8751,20 @@ window.GAME_DATA_FALLBACK = {
         {
           "id": "hunters_senses",
           "name": "Hunter's Senses",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Выбери одно из следующих правил, которое instigator bolt carbine этого оператора получит до начала его следующей активации:\n- Severe.\n- Saturate, и когда этот оператор стреляет из этого оружия, вражеские операторы не могут быть obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора."
         },
         {
           "id": "call_the_storm",
           "name": "Call the Storm",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "PSYCHIC. Убери свой Storm marker из killzone (если есть), затем размести его в killzone.\n\nPSYCHIC. Вместо этого можно разрешить следующий эффект: выбери одного дружественного оператора WOLF SCOUT. До начала следующей активации этого оператора, пока он не выведен из строя или пока это действие не выполнено снова (смотря что раньше), когда этот дружественный оператор в пределах своего STORM и более чем в 3\" от активного оператора, он obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора."
         },
         {
           "id": "pounce",
           "name": "Pounce",
-          "target": "friendly"
+          "target": "friendly",
+          "text": "Once per battle. Если APL stat этого оператора 2 или больше, этот оператор может выполнить свободное действие Charge, Fall Back или Reposition. Если он это делает, до конца его следующей активации вычти 1 из его APL stat, и он не может выполнять ни одно из вышеперечисленных действий."
         }
       ]
     }

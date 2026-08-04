@@ -1140,6 +1140,34 @@ a { color: var(--accent-bright); }
 .status-chip--enemy.is-on { background: var(--danger); border-color: var(--danger); color: var(--bg-deep); }
 .status-chip--enemy:disabled { opacity: 0.7; cursor: default; }
 
+/* Кнопка "?" сразу после чипа/счётчика токена — открывает текст правила
+   (см. showTokenInfo). Отдельная от самого чипа, чтобы не путать разовый
+   просмотр правила с переключением статуса на операторе. */
+.token-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--info);
+  background: var(--bg);
+  color: var(--info-bright);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  flex: none;
+}
+
+.token-info-btn:active { background: var(--info); color: var(--ink-on-fill); }
+
+/* Пара чип+кнопка "?" оборачивается вместе, чтобы не разъезжались на
+   перенос строки по отдельности внутри flex-wrap контейнера токенов. */
+.token-with-info {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 2px;
+}
+
 .token-row {
   display: flex;
   flex-wrap: wrap;
@@ -1631,6 +1659,7 @@ details.panel[open] summary::after { content: '−'; }
   font-size: 14px;
   color: var(--ink-dim);
   line-height: 1.5;
+  white-space: pre-line;
   margin-bottom: 16px;
 }
 

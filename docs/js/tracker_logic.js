@@ -523,6 +523,13 @@ function enemyStatusTokenDefs(gameData, killTeamName) {
   return tokens.filter(t => t.target === 'enemy');
 }
 
+/** Находит определение токена статуса (с текстом правила) по id внутри команды. */
+function findStatusTokenDef(gameData, killTeamName, tokenId) {
+  const killTeamDef = findKillTeamDef(gameData, killTeamName);
+  const tokens = (killTeamDef && killTeamDef.statusTokens) || [];
+  return tokens.find(t => t.id === tokenId) || null;
+}
+
 function toggleToken(op, tokenText) {
   const idx = op.tokens.indexOf(tokenText);
   if (idx >= 0) op.tokens.splice(idx, 1);
@@ -740,6 +747,7 @@ if (typeof module !== 'undefined' && module.exports) {
     isInjured,
     friendlyStatusTokenDefs,
     enemyStatusTokenDefs,
+    findStatusTokenDef,
     toggleToken,
     addCustomToken,
     removeToken,

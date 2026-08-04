@@ -484,6 +484,21 @@
     renderModal();
   }
 
+  function showTokenInfo(teamName, tokenId) {
+    var def = findStatusTokenDef(gameData, teamName, tokenId);
+    if (!def || !def.text) return;
+    pendingInfo = { term: def.name, text: def.text };
+    renderModal();
+  }
+
+  // Маленькая кнопка "?" рядом с чипом/счётчиком токена — открывает текст
+  // правила (см. showTokenInfo). Не совмещаем с самим чипом, чтобы клик по
+  // правилу не переключал статус случайно.
+  function tokenInfoBtn(teamName, tok) {
+    if (!tok.text) return '';
+    return '<button class="token-info-btn" data-action="showTokenInfo" data-team="' + esc(teamName) + '" data-token="' + esc(tok.id) + '" title="Текст правила: ' + esc(tok.name) + '" aria-label="Текст правила: ' + esc(tok.name) + '">?</button>';
+  }
+
   // ------------------------------------------------------------------
   // Заголовок / переключатель режима
   // ------------------------------------------------------------------
@@ -879,7 +894,7 @@
       var ops = player.operators || [];
       var friendlyDefs = friendlyStatusTokenDefs(gameData, player.teamName);
       var opsHtml = ops.length
-        ? ops.map(function (op) { return renderOpponentOperatorCard(op, player.uid, tokenDefs, friendlyDefs); }).join('')
+        ? ops.map(function (op) { return renderOpponentOperatorCard(op, player.uid, tokenDefs, friendlyDefs, appState.team.killTeamName, player.teamName); }).join('')
         : '<p class="empty-state">У соперника пока нет операторов в составе.</p>';
       return (
         '<section class="panel">' +
@@ -889,7 +904,7 @@
     }).join('');
   }
 
-  function renderOpponentOperatorCard(op, opponentUid, tokenDefs, friendlyDefs) {
+  function renderOpponentOperatorCard(op, opponentUid, tokenDefs, friendlyDefs, myTeamName, opponentTeamName) {
     var down = op.wounds <= 0;
     var maxWounds = op.maxWounds || 0;
     var hpPct = maxWounds > 0 ? (op.wounds / maxWounds) * 100 : 0;
@@ -914,15 +929,15 @@
       var key = window.KTRoom.enemyTokenKey(opponentUid, op.id, tok.id);
       if (tok.counter) {
         var count = Number(marks[key]) || 0;
-        return '<div class="counter counter--sm">' +
+        return '<span class="token-with-info"><div class="counter counter--sm">' +
           '<button data-action="decrementEnemyTokenMark" data-uid="' + esc(opponentUid) + '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-value="' + count + '">−</button>' +
           '<span class="counter__value">' + esc(tok.name) + ' ' + count + '</span>' +
           '<button data-action="incrementEnemyTokenMark" data-uid="' + esc(opponentUid) + '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-value="' + count + '" data-max="' + tok.max + '">+</button>' +
-        '</div>';
+        '</div>' + tokenInfoBtn(myTeamName, tok) + '</span>';
       }
       var on = !!marks[key];
-      return '<button class="status-chip status-chip--enemy' + (on ? ' is-on' : '') + '" data-action="toggleEnemyTokenMark" data-uid="' + esc(opponentUid) +
-        '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-on="' + (on ? '0' : '1') + '">' + esc(tok.name) + '</button>';
+      return '<span class="token-with-info"><button class="status-chip status-chip--enemy' + (on ? ' is-on' : '') + '" data-action="toggleEnemyTokenMark" data-uid="' + esc(opponentUid) +
+        '" data-op="' + esc(op.id) + '" data-token="' + esc(tok.id) + '" data-on="' + (on ? '0' : '1') + '">' + esc(tok.name) + '</button>' + tokenInfoBtn(myTeamName, tok) + '</span>';
     }).join('');
 
     // Свои статус-токены соперника (его же friendly-токены — Inspiring,
@@ -933,10 +948,10 @@
     var friendlyChipsHtml = filterTokenDefsForOperator(friendlyDefs || [], op.name).map(function (tok) {
       if (tok.counter) {
         var count = Number(opTokenCounts[tok.id]) || 0;
-        return '<span class="status-chip status-chip--friendly' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>';
+        return '<span class="token-with-info"><span class="status-chip status-chip--friendly' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>' + tokenInfoBtn(opponentTeamName, tok) + '</span>';
       }
       var on = opTokens.indexOf(tok.name) >= 0;
-      return '<span class="status-chip status-chip--friendly' + (on ? ' is-on' : '') + '">' + esc(tok.name) + '</span>';
+      return '<span class="token-with-info"><span class="status-chip status-chip--friendly' + (on ? ' is-on' : '') + '">' + esc(tok.name) + '</span>' + tokenInfoBtn(opponentTeamName, tok) + '</span>';
     }).join('');
 
     return (
@@ -1154,10 +1169,10 @@
       var key = window.KTRoom ? window.KTRoom.enemyTokenKey(roomState.uid, op.id, tok.id) : '';
       if (tok.counter) {
         var count = Number(marks[key]) || 0;
-        return '<span class="status-chip status-chip--enemy' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>';
+        return '<span class="token-with-info"><span class="status-chip status-chip--enemy' + (count > 0 ? ' is-on' : '') + '">' + esc(tok.name) + ' ' + count + '</span>' + tokenInfoBtn(opponent.teamName, tok) + '</span>';
       }
       var on = !!marks[key];
-      return '<span class="status-chip status-chip--enemy' + (on ? ' is-on' : '') + '">' + esc(tok.name) + '</span>';
+      return '<span class="token-with-info"><span class="status-chip status-chip--enemy' + (on ? ' is-on' : '') + '">' + esc(tok.name) + '</span>' + tokenInfoBtn(opponent.teamName, tok) + '</span>';
     }).join('');
   }
 
@@ -1181,14 +1196,14 @@
     var quickChips = quickTokenDefs.map(function (tok) {
       if (tok.counter) {
         var count = op.tokenCounts[tok.id] || 0;
-        return '<div class="counter counter--sm" data-token-label="' + esc(tok.name) + '">' +
+        return '<span class="token-with-info"><div class="counter counter--sm" data-token-label="' + esc(tok.name) + '">' +
           '<button data-action="decrementOpToken" data-op="' + op.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">−</button>' +
           '<span class="counter__value">' + esc(tok.name) + ' ' + count + '</span>' +
           '<button data-action="incrementOpToken" data-op="' + op.id + '" data-token="' + esc(tok.id) + '" data-max="' + tok.max + '">+</button>' +
-        '</div>';
+        '</div>' + tokenInfoBtn(appState.team.killTeamName, tok) + '</span>';
       }
       var on = op.tokens.indexOf(tok.name) >= 0;
-      return '<button class="status-chip status-chip--friendly' + (on ? ' is-on' : '') + '" data-action="toggleToken" data-op="' + op.id + '" data-value="' + esc(tok.name) + '">' + esc(tok.name) + '</button>';
+      return '<span class="token-with-info"><button class="status-chip status-chip--friendly' + (on ? ' is-on' : '') + '" data-action="toggleToken" data-op="' + op.id + '" data-value="' + esc(tok.name) + '">' + esc(tok.name) + '</button>' + tokenInfoBtn(appState.team.killTeamName, tok) + '</span>';
     }).join('');
 
     var otherTokens = op.tokens.filter(function (tok) { return quickTokens.indexOf(tok) === -1; });
@@ -1548,6 +1563,7 @@
 
     closeInfo: function () { pendingInfo = null; renderModal(); },
     showTermInfo: function (ds) { showTermInfo(ds.term); },
+    showTokenInfo: function (ds) { showTokenInfo(ds.team, ds.token); },
   };
 
   function onClick(e) {
