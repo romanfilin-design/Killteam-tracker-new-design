@@ -835,6 +835,36 @@
         "usesLabel": "Пассив",
         "desc": "Когда дружественный оператор WOLF SCOUT (кроме FENRISIAN WOLF), полностью находящийся в пределах своего STORM, дерётся или отвечает (retaliating), на этапе Resolve Attack Dice можно вычесть 1 из урона, наносимого ему одним normal success."
       }
+    ],
+    "Inquisitorial Agents": [
+      {
+        "id": "inquisitorial_rosette",
+        "name": "Inquisitorial Rosette",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, когда дружественный оператор INQUISITORIAL AGENTS активируется, если в этом turning point уже использовался ploy Quarry, можно выбрать нового вражеского оператора своей Quarry до конца turning point."
+      },
+      {
+        "id": "combat_daggers",
+        "name": "Combat Daggers",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы INQUISITORIAL AGENTS экипированы Combat dagger (Atk3 Hit4+ Dmg3/4). Когда дружественный оператор SISTER OF SILENCE использует его, добавь 1 к его Atk stat."
+      },
+      {
+        "id": "armoured_bodysuits",
+        "name": "Armoured Bodysuits",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Когда по дружественному оператору INQUISITORIAL AGENTS (кроме TOME-SKULL) с Save stat 5+ стреляют, можно удержать один из своих результатов defence dice 4 как normal success."
+      },
+      {
+        "id": "servo_skull",
+        "name": "Servo-Skull",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, дружественный оператор INQUISITORIAL AGENTS может выполнить mission-действие на 1 AP меньше."
+      }
     ]
   },
   "killTeams": {
@@ -8795,6 +8825,573 @@
             "stat": "apl",
             "delta": -1
           }
+        }
+      ]
+    },
+    "Inquisitorial Agents": {
+      "archetypes": [
+        "Recon",
+        "Infiltration",
+        "Security",
+        "Seek & Destroy"
+      ],
+      "equipment": "Inquisitorial Agents",
+      "required": [
+        {
+          "name": "Interrogator Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Extended stock relic autopistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/4",
+              "wr": "Range 12\", Lethal 5+"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Inquisitorial Tomes",
+              "text": "Пока этот оператор в killzone и/или когда этот оператор активируется, выбери одно из правил INQUISITORIAL TOME (см. статус-токен Inquisitorial Tome), которое получит этот оператор, и одно (можно то же самое) для дружественного Tome-Skull. Это можно выбирать заново при каждой активации.",
+              "cost": "Strategic Gambit"
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/interrogator_agent.png"
+        },
+        {
+          "name": "Tome-Skull",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 5,
+          "count": 1,
+          "weapons": [],
+          "abilities": [
+            {
+              "name": "Consecrated Tome",
+              "text": "Этот оператор может иметь правило INQUISITORIAL TOME (см. Interrogator Agent). Учти, что он сохраняет это правило, даже если дружественный Interrogator Agent убран из killzone."
+            },
+            {
+              "name": "Machine",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back и Reposition. Он не может отвечать (retaliating) или assist в драке. При определении контроля маркера считай его APL stat на 1 ниже (это не изменение самого APL stat, поэтому суммируется с другими изменениями). Пока у этого оператора приказ Conceal и он в cover, он не может быть выбран допустимой целью — это имеет приоритет над всеми другими правилами (например, Seek, Vantage terrain), кроме случаев, когда он в пределах 2\"."
+            },
+            {
+              "name": "Expendable",
+              "text": "Этот оператор игнорируется для kill/elimination op твоего противника (когда он incapacitated), а также при определении victory conditions и scoring VP, если они требуют 'escape', 'survive' или incapacitate операторов (если он escapes/survives/incapacitated, при подсчёте сколько операторов должны escape/survive/be incapacitated он не учитывается)."
+            },
+            {
+              "name": "Group Activation",
+              "text": "Когда этот оператор expended, ты должен затем активировать готового дружественного оператора INTERROGATOR (если можешь) прежде чем противник активируется. То же самое верно и в обратную сторону (INTERROGATOR, затем TOME-SKULL). Когда тот другой оператор expended, твой противник активируется как обычно."
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/tome_skull.png"
+        }
+      ],
+      "poolPick": 10,
+      "pool": [
+        {
+          "name": "Autosavant Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Mechanical appendages",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "1/2",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Scrivener",
+              "text": "Каждый следующий раз (кроме первого) за битву, когда противник использует ploy (кроме Command Re-roll), пока этот оператор в killzone, получи 1CP (максимум 2CP за turning point)."
+            },
+            {
+              "name": "Irrefutable Report",
+              "text": "Каждый раз, когда этот оператор оспаривает objective marker или один из твоих mission marker'ов, он всегда контролирует его. Это имеет приоритет над всеми другими правилами."
+            },
+            {
+              "name": "Lightly Armed",
+              "text": "Этот оператор не может использовать оружие, которого нет на его карточке, или выполнять unique actions."
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/autosavant_agent.png"
+        },
+        {
+          "name": "Questkeeper Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Eviscerator",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/6",
+              "wr": "Brutal"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Irrepressible Purpose",
+              "text": "Если этот оператор incapacitated во время действия Fight, можно ударить вражеского оператора в этой последовательности одним из своих unresolved successes, прежде чем этот оператор будет убран из killzone."
+            },
+            {
+              "name": "Zealot",
+              "text": "Каждый раз, когда кубики атаки наносят этому оператору урон 3 или больше, брось один D6: на результате 5+ вычти 1 из этого урона."
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/questkeeper_agent.png"
+        },
+        {
+          "name": "Death World Veteran Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Knife",
+              "atk": 1,
+              "hit": "2+",
+              "dmg": "5/7",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Polearm",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Hunter",
+              "text": "Этот оператор может выполнить действие Charge, имея приказ Conceal."
+            },
+            {
+              "name": "Weathered",
+              "text": "Once per turning point, пока этот оператор дерётся или отвечает (retaliating), на этапе Resolve Attack Dice можно проигнорировать урон, наносимый ему одним normal success."
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/death_world_veteran_agent.png"
+        },
+        {
+          "name": "Enlightener Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Paired blades",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Balanced, Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "No Escape",
+              "text": "Каждый раз, когда вражеский оператор в пределах control range этого оператора должен выполнить действие Fall Back, можно применить это правило: брось D6, вычти 1, если у того вражеского оператора Wounds stat выше, чем у этого, и добавь 1, если тот вражеский оператор injured. На результате 4+ тот вражеский оператор не может выполнить это действие во время этой активации/counteraction (потраченный на него AP не возвращается)."
+            },
+            {
+              "name": "Extract Information",
+              "text": "Каждый раз, когда вражеский оператор incapacitated в пределах control range этого оператора, получи 1CP."
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/enlightener_agent.png"
+        },
+        {
+          "name": "Hexorcist Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Shotgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Range 6\""
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Hexorcise",
+              "text": "Каждый раз, когда вражеский оператор видим этому оператору или в пределах 6\" от него, твой противник не может перебрасывать свои кубики атаки или защиты за этого вражеского оператора."
+            },
+            {
+              "name": "Chasten",
+              "text": "Выбери одного вражеского оператора, допустимую цель для этого действия и в пределах 6\" от этого оператора, затем выбери одно дополнительное правило (включая weapon rule, кроме правил, которые игнорируются для kill/elimination op), которое есть на его карточке. До конца следующей активации того вражеского оператора считай, что у него нет этого правила. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/hexorcist_agent.png"
+        },
+        {
+          "name": "Mystic Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "2/3",
+              "wr": "Range 8\", Seek"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Icon Bearer",
+              "text": "При определении контроля маркера считай этого оператора с APL stat на 1 больше (это не изменение самого APL stat, поэтому суммируется с другими изменениями)."
+            },
+            {
+              "name": "Lightly Armed",
+              "text": "Этот оператор не может использовать оружие, которого нет на его карточке."
+            },
+            {
+              "name": "Scry",
+              "text": "PSYCHIC. Выбери одного дружественного оператора INQUISITORIAL AGENTS в пределах 6\" от этого оператора, затем выбери один из следующих эффектов, который будет действовать до начала следующей активации того оператора, пока он не incapacitated, или пока это действие не выполнено снова (что наступит раньше): Guidance (PSYCHIC) — этот оператор получает статус-токен Guidance; или Protection (PSYCHIC) — этот оператор получает статус-токен Protection. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/mystic_agent.png"
+        },
+        {
+          "name": "Penal Legionnaire Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Hand flamer",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 6\", Saturate, Torrent 1\""
+            },
+            {
+              "name": "Chainsword",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Chem-mask",
+              "text": "Можно игнорировать любые изменения APL stat этого оператора, а также любые изменения его статов от being injured. На этого оператора не действуют weapon rules Shock и Stun противника."
+            },
+            {
+              "name": "Cruel",
+              "text": "Каждый раз, когда этот оператор стреляет, дерётся или отвечает (retaliating) против injured вражеского оператора, оружие этого оператора получает weapon rule Relentless."
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/penal_legionnaire_agent.png"
+        },
+        {
+          "name": "Pistolier Agent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Scoped plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 12\", Piercing 1"
+            },
+            {
+              "name": "Scoped plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 12\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Suppressed autopistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/3",
+              "wr": "Range 8\", Silent"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Pistolier",
+              "text": "Можно игнорировать любые изменения Hit stat ranged-оружия этого оператора."
+            },
+            {
+              "name": "Pistol Barrage",
+              "text": "Выполни два бесплатных действия Shoot этим оператором (это имеет приоритет над ограничениями на действия). Нужно выбрать профиль scoped plasma pistol для одного действия и suppressed autopistol для другого (в любом порядке). Нельзя выполнять это действие, если у этого оператора приказ Conceal, или во время активации, в которой он выполнил действие Shoot (и наоборот).",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/pistolier_agent.png"
+        },
+        {
+          "name": "Requisitioned Gun Servitor",
+          "apl": 1,
+          "move": "5\"",
+          "save": "4+",
+          "wounds": 11,
+          "maxCopies": 2,
+          "weapons": [
+            {
+              "name": "Heavy bolter (focused)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Piercing Crits 1"
+            },
+            {
+              "name": "Heavy bolter (sweeping)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Piercing Crits 1, Torrent 1\""
+            },
+            {
+              "name": "Multi-melta",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "6/3",
+              "wr": "Devastating 4, Heavy (Dash only), Piercing 2"
+            },
+            {
+              "name": "Plasma cannon (standard)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/6",
+              "wr": "Blast 2\", Heavy (Dash only), Piercing 1"
+            },
+            {
+              "name": "Plasma cannon (supercharge)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/6",
+              "wr": "Blast 2\", Heavy (Dash only), Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Servo claw",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Lobotomised",
+              "text": "Каждый раз, когда этот оператор активируется, если он видим или в пределах 3\" от другого дружественного оператора INQUISITORIAL AGENTS (кроме GUN SERVITOR) или наоборот, добавь 1 к APL stat этого оператора до конца этой активации."
+            },
+            {
+              "name": "Weapon Loadout",
+              "text": "Этот оператор экипирован одним из вариантов: Heavy bolter + servo claw, Multi-melta + servo claw или Plasma cannon + servo claw (выбирается при добавлении в ростер). В ростер можно включить до двух Gun Servitor, но у них должны быть разные варианты дальнобойного оружия."
+            }
+          ],
+          "portrait": "img/portraits/inquisitorial-agents/requisitioned_gun_servitor.png"
+        }
+      ],
+      "lore": {
+        "intro": "Инквизиция действует в тени, и её агенты выполняют самую грязную и опасную работу от имени Инквизитора. Interrogator ведёт допросы и собирает досье на предателей и еретиков, а верный Tome-Skull хранит секреты, которые нельзя доверить бумаге. Вокруг них собирается пёстрая свита завербованных специалистов — от закалённых ветеранов диких миров до безумных мистиков и лоботомированных сервиторов — каждый инструмент в руках тех, кто охотится на врагов Императора там, где официальные силы бессильны.",
+        "operatives": [
+          {
+            "name": "Interrogator Agent",
+            "text": "Правая рука Инквизитора, ведущий допросы и расследования там, куда не дотягивается официальное правосудие."
+          },
+          {
+            "name": "Tome-Skull",
+            "text": "Парящий череп-хранитель, несущий в себе тайные архивы Инквизиции — и, если потребуется, приговор."
+          },
+          {
+            "name": "Autosavant Agent",
+            "text": "Ходячий архив данных, чья лояльность Инквизиции превосходит его человечность."
+          },
+          {
+            "name": "Questkeeper Agent",
+            "text": "Фанатик, для которого завершение порученного расследования важнее собственной жизни."
+          },
+          {
+            "name": "Death World Veteran Agent",
+            "text": "Выживший на мире, который убивает большинство своих обитателей ещё до рождения — теперь его выживание служит Инквизиции."
+          },
+          {
+            "name": "Enlightener Agent",
+            "text": "Мастер клинка, чья задача — не дать врагу сбежать от правосудия Инквизиции."
+          },
+          {
+            "name": "Hexorcist Agent",
+            "text": "Охотник за ересью варпа, чьё присутствие само по себе рушит нечестивые чары."
+          },
+          {
+            "name": "Mystic Agent",
+            "text": "Слабый псайкер, чей дар предчувствия делает его бесценным проводником для отряда."
+          },
+          {
+            "name": "Penal Legionnaire Agent",
+            "text": "Осуждённый преступник, которому дали шанс искупить вину кровью — своей или чужой."
+          },
+          {
+            "name": "Pistolier Agent",
+            "text": "Виртуоз стрельбы с двух рук, несущий смерть на расстоянии, прежде чем цель успеет понять, что её выследили."
+          },
+          {
+            "name": "Requisitioned Gun Servitor",
+            "text": "Лоботомированный сервитор с тяжёлым вооружением — безмолвный, безжалостный и абсолютно послушный."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Inquisitorial Requisition",
+          "text": "Вместо второй пятёрки pool-операторов можно реквизировать специалистов из другой имперской силы (Death Korps of Krieg, Arbites Exaction Squad, Imperial Navy Breachers, Kasrkin, Sisters of Silence или Tempestus Scions) как тематический альтернативный набор. Эта опция не реализована для сборки в этом приложении — справочно, для настольной игры."
+        },
+        {
+          "name": "Denounce",
+          "text": "Выбери вражеского оператора и брось один D3; тот оператор не может активироваться или выполнять действия, пока он не станет последним оператором противника, который активируется в этом turning point, или пока противник не активирует количество операторов, равное результату D3 (что наступит раньше). Отметь цель статус-токеном Denounce. Каждый следующий раз, когда этот ploy используется снова в этой битве, он стоит на 1CP больше, чем в прошлый раз (1CP, затем 2CP, затем 3CP и т.д.).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Intense Scrutiny",
+          "text": "Когда выбираешь допустимую цель для дружественного оператора INQUISITORIAL AGENTS, вражеские операторы в пределах 4\" от другого оператора (вместо обычных 2\") не могут находиться в cover. Это не убирает реальный cover save, если обычное условие в 2\" тоже выполнено.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Quarry",
+          "text": "Выбери одного вражеского оператора своей Quarry на этот turning point (отметь его статус-токеном Quarry). Каждый раз, когда дружественный оператор INQUISITORIAL AGENTS стреляет, дерётся или отвечает (retaliating) против твоей Quarry, его оружие получает weapon rule Ceaseless. Когда твоя Quarry incapacitated, можно выбрать нового вражеского оператора своей Quarry (и можно продолжать делать это в течение этого turning point).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Irrefutable Jurisdiction",
+          "text": "Каждый раз, когда по дружественному оператору INQUISITORIAL AGENTS в пределах 3\" от objective marker стреляют, можно перебросить один из своих кубиков защиты. Если этот оператор оспаривает тот marker, вместо этого можно перебросить любое количество своих кубиков защиты с одним выбранным результатом (например, все результаты 2).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Absolute Authority",
+          "text": "Примени этот firefight ploy во время битвы, когда противник использует strategy ploy или firefight ploy (кроме Command Re-roll или ploy стоимостью 0CP). Тот ploy не срабатывает, а потраченный на него CP возвращается противнику. Противник не может использовать тот же ploy снова в этом turning point. Нельзя использовать это правило, чтобы остановить один и тот же ploy более одного раза за битву.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Relentless in Pursuit",
+          "text": "Примени этот firefight ploy, когда вражеский оператор в пределах 2\" от готового дружественного оператора INQUISITORIAL AGENTS выполняет действие, перемещающее его. После того как он переместился, этот дружественный оператор может выполнить либо бесплатное действие Reposition, но должен закончить его в пределах 2\" от того вражеского оператора, либо бесплатное действие Charge, но должен закончить его в control range того вражеского оператора. Если ни одно из этого невозможно, этот ploy не срабатывает, и потраченный CP возвращается.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "The Emperor's Will",
+          "text": "Примени этот firefight ploy, когда дружественный оператор INQUISITORIAL AGENTS активируется. До конца активации этого оператора можно игнорировать любые изменения его статов (включая статы его оружия).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Intimidating Presence",
+          "text": "Примени этот firefight ploy, когда вражеский оператор, видимый дружественному оператору INQUISITORIAL AGENTS и в пределах 3\" от него (или видимый дружественному Mystic Agent и в пределах 6\" от него), выполняет действие Pick Up Marker или mission-действие (кроме Operate Hatch). Противник должен заплатить 1 дополнительный AP за то действие тем вражеским оператором (если не может или не хочет, потраченный на действие AP возвращается).",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "inquisitorial_tome",
+          "name": "Inquisitorial Tome",
+          "target": "friendly",
+          "text": "Этот токен отражает одно из двух правил, которое сейчас есть у оператора (выбирается способностью Inquisitorial Tomes оператора Interrogator Agent):\n- Denunciation: каждый раз, когда дружественный оператор с этим правилом стреляет, дерётся или отвечает (retaliating) против вражеского оператора в пределах 2\" от дружественного оператора с этим правилом, добавь 1 к Atk stat оружия этого дружественного оператора.\n- Sanctification: каждый раз, когда вражеский оператор стреляет, дерётся или отвечает (retaliating) против дружественного оператора с этим правилом, находящегося в пределах 2\" от дружественного оператора с этим правилом, вычти 1 из Atk stat оружия того вражеского оператора."
+        },
+        {
+          "id": "quarry",
+          "name": "Quarry",
+          "target": "enemy",
+          "text": "Отмечает текущую цель strategy ploy Quarry. Единственная цель за раз."
+        },
+        {
+          "id": "guidance",
+          "name": "Guidance",
+          "target": "friendly",
+          "text": "PSYCHIC. Пока у этого оператора этот токен, каждый раз, когда он стреляет, дерётся или отвечает (retaliating), на этапе Roll Attack Dice можно удержать один свой fail как normal success вместо того, чтобы отбросить его, либо удержать один свой normal success как critical success вместо этого."
+        },
+        {
+          "id": "protection",
+          "name": "Protection",
+          "target": "friendly",
+          "text": "PSYCHIC. Пока у этого оператора этот токен, каждый раз, когда оператор стреляет по этому оператору, на этапе Roll Defence Dice можно удержать один свой fail как normal success вместо того, чтобы отбросить его, либо удержать один свой normal success как critical success вместо этого."
+        },
+        {
+          "id": "chasten",
+          "name": "Chasten",
+          "target": "enemy",
+          "text": "До конца следующей активации этого оператора считай, что у него нет одного выбранного правила (см. способность Chasten оператора Hexorcist Agent); затем этот токен убирается."
+        },
+        {
+          "id": "denounce",
+          "name": "Denounce",
+          "target": "enemy",
+          "text": "Этот оператор не может активироваться или выполнять действия, пока он не станет последним оператором своего контролирующего игрока в этом turning point, или пока тот игрок не активирует количество операторов, равное результату D3 броска ploy Denounce (что наступит раньше); затем этот токен убирается."
         }
       ]
     }
