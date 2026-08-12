@@ -865,6 +865,126 @@
         "usesLabel": "1× за битву",
         "desc": "Once per battle, дружественный оператор INQUISITORIAL AGENTS может выполнить mission-действие на 1 AP меньше."
       }
+    ],
+    "Hierotek Circle": [
+      {
+        "id": "magnification_conduits",
+        "name": "Magnification Conduits",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный APPRENTEK или CRYPTEK выполняет действие Shoot, выбери другого дружественного оператора (кроме PLASMACYTE) с приказом Engage, видимого ему — до конца этого действия он может быть \"активным оператором\" для правила Magnify."
+      },
+      {
+        "id": "phase_shifter",
+        "name": "Phase Shifter",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Once per turning point, когда оператор стреляет по дружественному CRYPTEK, в начале этапа Roll Defence Dice ухудши weapon rule Piercing x на 1 (Piercing 1 в этом случае игнорируется)."
+      },
+      {
+        "id": "tesseract_cube",
+        "name": "Tesseract Cube",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "В Ready step, когда получаешь CP, если дружественный CRYPTEK не incapacitated, не в control range врага и не был REANIMATED в этом turning point, брось один D6: на результате 1 отключи это правило до конца битвы; на результате 4+ получи 1CP. Как только суммарно получишь 2CP этим способом, отключи это правило до конца битвы."
+      },
+      {
+        "id": "tesla_weave",
+        "name": "Tesla Weave",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда вражеский оператор заканчивает действие Charge в пределах control range дружественных операторов, нанеси тому вражескому оператору D3+1 урона."
+      }
+    ],
+    "Spectre Squad": [
+      {
+        "id": "sniper_overwatch",
+        "name": "Sniper Overwatch",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point дружественный оператор SPECTRE SQUAD может использовать дальнобойное оружие Sniper overwatch: Atk4 Hit3+ Dmg3/3, wr Devastating 2, Heavy (Dash only), Saturate, Silent."
+      },
+      {
+        "id": "tvid_feed_triangulation",
+        "name": "Tvid-feed Triangulation",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор SPECTRE SQUAD выполняет Shoot и ты выбираешь допустимую цель, можно использовать это правило. Цель не может быть obscured, если она также допустимая цель для другого дружественного оператора SPECTRE SQUAD, либо в пределах 6\" от дружественного оператора VOX-RELAY BEACON."
+      },
+      {
+        "id": "starshell_flare",
+        "name": "Starshell Flare",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "STRATEGIC GAMBIT. Один дружественный оператор SPECTRE SQUAD может немедленно выполнить бесплатное действие Stun Grenade (universal equipment); это не считается в лимит действий (даже если ты также выбрал другие гранаты из снаряжения). Когда APL stat вражеского оператора изменяется в результате этого Strategic Gambit, нельзя использовать это снаряжение до конца битвы."
+      },
+      {
+        "id": "advanced_camouflage_equip",
+        "name": "Advanced Camouflage",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы SPECTRE SQUAD (кроме VOX-RELAY BEACON) могут выполнить уникальное действие Advanced Camouflage (1AP): до начала следующей активации этого оператора, пока у него приказ Conceal и он в cover, его нельзя выбрать допустимой целью — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме случаев, когда вражеский оператор в пределах 2\" от него. Отметь этого оператора статус-токеном Advanced Camouflage. Нельзя выполнять это действие, будучи видимым вражескому оператору в пределах 3\" от него."
+      }
+    ],
+    "XV26 Stealth Battlesuits": [
+      {
+        "id": "xv26_multitrackers",
+        "name": "XV26 Multitrackers",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор XV26 STEALTH BATTLESUIT выполняет Shoot из burst cannon (sweeping), то оружие получает weapon rule Torrent 2\" до конца действия."
+      },
+      {
+        "id": "counter_network_jammers",
+        "name": "Counter-Network Jammers",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "STRATEGIC GAMBIT. Выбери один objective/mission marker. До конца turning point, при определении контроля того маркера, считай суммарный APL вражеских операторов, оспаривающих его, на 1 ниже, если хотя бы один из них в пределах 3\" от дружественных операторов XV26 STEALTH BATTLESUIT (это не изменение APL stat, суммируется с другими изменениями)."
+      },
+      {
+        "id": "advanced_blacksun_filters",
+        "name": "Advanced Blacksun Filters",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Каждый раз, когда дружественный оператор XV26 STEALTH BATTLESUIT стреляет по obscured оператору, не нужно отбрасывать один success за это правило; остальные эффекты obscured применяются как обычно."
+      },
+      {
+        "id": "hardwired_target_locks",
+        "name": "Hardwired Target Locks",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Каждый раз, когда ты хотел бы counteract-ить, можно сделать это дружественным оператором XV26 STEALTH BATTLESUIT с приказом Conceal, находящимся дальше 3\" от вражеских операторов, но перед counteraction он должен сменить приказ на Engage и может выполнить только действие Shoot во время этого counteraction."
+      }
+    ],
+    "Blades of Khaine": [
+      {
+        "id": "rune_of_prophecy",
+        "name": "Rune of Prophecy",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Когда это снаряжение раскрыто, брось один D3. В Strategy phase turning point, равного результату, получи 1 дополнительный CP."
+      },
+      {
+        "id": "rune_of_shielding",
+        "name": "Rune of Shielding",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, когда кубик атаки наносит Normal Dmg дружественному оператору BLADES OF KHAINE, можно проигнорировать этот нанесённый урон."
+      },
+      {
+        "id": "rune_of_foresight",
+        "name": "Rune of Foresight",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Once per battle, после броска за инициативу (roll-off), можно прибавить D3 к своему результату или вычесть D3 из него."
+      },
+      {
+        "id": "wraithbone_talisman",
+        "name": "Wraithbone Talisman",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор BLADES OF KHAINE стреляет, дерётся или отвечает (retaliating), если ты выбросил два или более fail, можно отбросить один из них, чтобы удержать другой как normal success вместо этого."
+      }
     ]
   },
   "killTeams": {
@@ -9198,6 +9318,1375 @@
           "name": "Denounce",
           "target": "enemy",
           "text": "Этот оператор не может активироваться или выполнять действия, пока он не станет последним оператором своего контролирующего игрока в этом turning point, или пока тот игрок не активирует количество операторов, равное результату D3 броска ploy Denounce (что наступит раньше); затем этот токен убирается."
+        }
+      ]
+    },
+    "Hierotek Circle": {
+      "archetypes": ["Recon", "Security"],
+      "equipment": "Hierotek Circle",
+      "required": [
+        {
+          "name": "Chronomancer",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "count": 1,
+          "weapons": [
+            { "name": "Aeonstave (ranged)", "atk": 5, "hit": "3+", "dmg": "3/3", "wr": "Blast 2\", Lethal 5+, Stun, Magnify" },
+            { "name": "Entropic lance (ranged)", "atk": 4, "hit": "3+", "dmg": "5/3", "wr": "Devastating 3, Piercing 1, Magnify" },
+            { "name": "Aeonstave (melee)", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Lethal 5+, Shock" },
+            { "name": "Entropic lance (melee)", "atk": 4, "hit": "4+", "dmg": "3/6", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается один вариант оружия — Aeonstave или Entropic lance — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Interstitial Command",
+              "text": "SUPPORT. Выбери другого дружественного оператора HIEROTEK CIRCLE (кроме APPRENTEK и CRYPTEK), видимого этому оператору и в пределах 6\" от него, либо видимого дружественному DESPOTEK, видимому этому оператору, и в пределах 6\" от того DESPOTEK. Тот оператор может немедленно выполнить бесплатное действие за 1AP, но не может переместиться больше чем на 2\" или быть убран/размещён больше чем на 2\" во время этого действия, не может выполнить действие, которое он уже выполнял в этом turning point, и не может выполнить это же действие снова в этом turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время counteraction.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Timesplinter",
+              "text": "SUPPORT. Выбери другого expended дружественного оператора HIEROTEK CIRCLE, видимого этому оператору и в пределах 5\" от него. Убери его из killzone и размести обратно, видимым этому оператору и в пределах 5\" по горизонтали от него, в месте, где его можно разместить.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, в первый turning point, или если дружественный оператор уже выполнял это действие в этом turning point.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Countertemporal Nanomine",
+              "text": "Размести маркер Countertemporal Nanomine, видимый этому оператору, либо на Vantage terrain, видимом этому оператору. Каждый раз, когда вражеский оператор в пределах 4\" от маркера, вычти 2\" из его Move stat. Маркер убирается, когда этот оператор в следующий раз активируется, выведен из строя, или это действие выполняется снова дружественным оператором (что наступит раньше).\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Chronometron",
+              "text": "SUPPORT. Выбери дружественного оператора HIEROTEK CIRCLE, видимого этому оператору и в пределах 6\" от него; он получает твой статус-токен Chronometron до начала следующей активации этого оператора, до вывода этого оператора из строя, или до тех пор, пока это действие не будет выполнено снова дружественным оператором (что наступит раньше).\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/chronomancer.png"
+        },
+        {
+          "name": "Psychomancer",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "count": 1,
+          "weapons": [
+            { "name": "Abyssal lance (ranged)", "atk": 5, "hit": "3+", "dmg": "2/2", "wr": "Blast 2\", 2\" Devastating 1, Piercing 2, Magnify" },
+            { "name": "Abyssal lance (melee)", "atk": 4, "hit": "4+", "dmg": "4/4", "wr": "Devastating 1" }
+          ],
+          "abilities": [
+            {
+              "name": "Interstitial Command",
+              "text": "SUPPORT. Выбери другого дружественного оператора HIEROTEK CIRCLE (кроме APPRENTEK и CRYPTEK), видимого этому оператору и в пределах 6\" от него, либо видимого дружественному DESPOTEK, видимому этому оператору, и в пределах 6\" от того DESPOTEK. Тот оператор может немедленно выполнить бесплатное действие за 1AP, но не может переместиться больше чем на 2\" или быть убран/размещён больше чем на 2\" во время этого действия, не может выполнить действие, которое он уже выполнял в этом turning point, и не может выполнить это же действие снова в этом turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время counteraction.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Harbinger of Despair",
+              "text": "Размести маркер Despair, видимый этому оператору, либо на Vantage terrain, видимом этому оператору; он убирается, когда этот оператор в следующий раз активируется, выведен из строя, или это действие выполняется снова (что наступит раньше). Каждый раз, когда вражеский оператор в пределах 2\" от маркера, противник должен заплатить 1 дополнительное AP за действие Pick Up Marker или mission action с ним. При определении контроля оспариваемого маркера, если хотя бы один вражеский оператор, оспаривающий его, в пределах 2\" от маркера Despair, считай суммарный APL вражеских операторов, оспаривающих его, на 1 ниже (это не изменение самого APL stat, поэтому суммируется с другими модификаторами).\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Nightmare Shroud",
+              "text": "До начала следующей активации этого оператора, до его вывода из строя, или до тех пор, пока это действие не будет выполнено снова дружественным оператором (что наступит раньше): каждый раз, когда вражеский оператор в пределах 4\" от этого оператора стреляет, дерётся или отвечает, противник не может перебросить свои кубики атаки и не может удержать результат меньше 6 как critical success (то есть это отменяет удержание crit от правил вроде Lethal, Rending, Severe).\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Vision of Madness",
+              "text": "Выбери видимого вражеского оператора; он получает твой статус-токен Madness до начала следующей активации этого оператора, до его вывода из строя, или до тех пор, пока это действие не будет выполнено снова (что наступит раньше). Каждый раз, когда противник хотел бы активировать оператора с твоим токеном Madness, можно бросить один D6: если результат равен или больше APL stat того оператора, противник должен активировать того оператора во время этой активации вместо запланированного. Если активация состоялась этим способом (или нет другого допустимого вражеского оператора), убери токен Madness с него.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/psychomancer.png"
+        },
+        {
+          "name": "Technomancer",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 14,
+          "count": 1,
+          "weapons": [
+            { "name": "Staff of light (ranged)", "atk": 6, "hit": "3+", "dmg": "3/4", "wr": "Rending, Magnify" },
+            { "name": "Staff of light (melee)", "atk": 4, "hit": "4+", "dmg": "3/5", "wr": "Rending" }
+          ],
+          "abilities": [
+            {
+              "name": "Interstitial Command",
+              "text": "SUPPORT. Выбери другого дружественного оператора HIEROTEK CIRCLE (кроме APPRENTEK и CRYPTEK), видимого этому оператору и в пределах 6\" от него, либо видимого дружественному DESPOTEK, видимому этому оператору, и в пределах 6\" от того DESPOTEK. Тот оператор может немедленно выполнить бесплатное действие за 1AP, но не может переместиться больше чем на 2\" или быть убран/размещён больше чем на 2\" во время этого действия, не может выполнить действие, которое он уже выполнял в этом turning point, и не может выполнить это же действие снова в этом turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время counteraction.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Canoptek Repair",
+              "text": "SUPPORT. Выбери дружественного оператора HIEROTEK CIRCLE, видимого этому оператору и в пределах 6\" от него; он восстанавливает до 2D3 потерянных wounds.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или если дружественный оператор уже выполнял это действие в этом turning point.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Augment Weapon",
+              "text": "SUPPORT. Выбери дружественного оператора HIEROTEK CIRCLE, видимого этому оператору и в пределах 6\" от него. До начала его следующей активации, до его вывода из строя, или до тех пор, пока это действие не будет выполнено снова (что наступит раньше), выбери два из следующих правил, чтобы добавить их одному оружию на карточке того оператора: Lethal 5+, Rending, Saturate, Severe. Если выбрано оружие с профилями и дальнобойного, и ближнего боя (например, staff of light, arcane conduit), два правила применяются только к одному из этих профилей (на твой выбор), не к обоим.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Reinforce Metal",
+              "text": "SUPPORT. Выбери дружественного оператора HIEROTEK CIRCLE, видимого этому оператору и в пределах 6\" от него; он получает твой статус-токен Reinforce Metal до начала его следующей активации, до его вывода из строя, или до тех пор, пока это действие не будет выполнено снова (что наступит раньше).\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/technomancer.png"
+        },
+        {
+          "name": "Plasmacyte Accelerator",
+          "apl": 2,
+          "move": "7\"",
+          "save": "5+",
+          "wounds": 5,
+          "count": 1,
+          "weapons": [
+            { "name": "Spark", "atk": 4, "hit": "4+", "dmg": "2/3", "wr": "Range 4\", Piercing 1" },
+            { "name": "Claws", "atk": 3, "hit": "5+", "dmg": "1/2", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Scuttler",
+              "text": "Пока у этого оператора Conceal order и он в cover, его нельзя выбрать допустимой целью — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме случаев, когда вражеский оператор в пределах 2\" от него. Этот оператор может выполнять действие Fall Back за 1AP меньше. Этот оператор не может использовать оружие, которого нет на его карточке, или выполнять любое уникальное действие, кроме Accelerate."
+            },
+            {
+              "name": "Accelerate",
+              "text": "Выбери дружественного оператора DEATHMARK или IMMORTAL, видимого этому оператору и в пределах 6\" от него. До конца следующей активации того оператора прибавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/plasmacyte_accelerator.png"
+        },
+        {
+          "name": "Plasmacyte Reanimator",
+          "apl": 2,
+          "move": "7\"",
+          "save": "5+",
+          "wounds": 5,
+          "count": 1,
+          "weapons": [
+            { "name": "Atomiser beam", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Range 6\", Lethal 5+" },
+            { "name": "Claws", "atk": 3, "hit": "5+", "dmg": "1/2", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Scuttler",
+              "text": "Пока у этого оператора Conceal order и он в cover, его нельзя выбрать допустимой целью — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме случаев, когда вражеский оператор в пределах 2\" от него. Этот оператор может выполнять действие Fall Back за 1AP меньше. Этот оператор не может использовать оружие, которого нет на его карточке, или выполнять любое уникальное действие, кроме Reanimate."
+            },
+            {
+              "name": "Reanimate",
+              "text": "Выбери один свой Reanimation marker, видимый этому оператору и в пределах 6\" от него. Брось один D6: на результате 3+ дружественный оператор, которому принадлежит тот маркер, REANIMATED (см. faction rule Reanimation Protocols). Если заплатить 1 дополнительное AP (2AP всего за это действие вместо 1AP), тот оператор REANIMATED автоматически, без броска. Оператор, REANIMATED этим способом, размещается expended, если он уже был expended ранее в этом turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP или 2AP"
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/plasmacyte_reanimator.png"
+        }
+      ],
+      "poolPick": 5,
+      "pool": [
+        {
+          "name": "Apprentek",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 11,
+          "weapons": [
+            { "name": "Arcane conduit (ranged)", "atk": 4, "hit": "3+", "dmg": "4/5", "wr": "Piercing 1, Magnify" },
+            { "name": "Arcane conduit (melee)", "atk": 3, "hit": "4+", "dmg": "3/5", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Apprentek Assistance",
+              "text": "Этот оператор имеет те же уникальные действия, что и оператор CRYPTEK (Chronomancer, Psychomancer или Technomancer), находящийся в твоём ростере, но может выполнять только одно уникальное действие CRYPTEK за turning point."
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/apprentek.png"
+        },
+        {
+          "name": "Deathmark",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 10,
+          "maxCopies": 5,
+          "weapons": [
+            { "name": "Synaptic disintegrator", "atk": 4, "hit": "2+", "dmg": "4/3", "wr": "Devastating 2, Heavy (Dash only), Piercing 1, Severe" },
+            { "name": "Fists", "atk": 3, "hit": "3+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Deathmarked",
+              "text": "Каждый раз, когда этот оператор заканчивает действие Shoot, цель этого действия (основная цель, если применимо) получает твой статус-токен Deathmarked. Каждый раз, когда дружественный оператор HIEROTEK CIRCLE DEATHMARK стреляет по вражескому оператору с твоим токеном Deathmarked, дальнобойное оружие того дружественного оператора получает weapon rule Seek."
+            },
+            {
+              "name": "Multi-Dimensional Vision",
+              "text": "До начала следующей активации этого оператора он получает твой статус-токен Multi-Dimensional Vision — каждый раз, когда он стреляет, вражеские операторы не могут быть obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/deathmark.png"
+        },
+        {
+          "name": "Immortal Despotek",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 11,
+          "weapons": [
+            { "name": "Gauss blaster", "atk": 4, "hit": "3+", "dmg": "4/5", "wr": "Piercing 1" },
+            { "name": "Tesla carbine", "atk": 5, "hit": "3+", "dmg": "3/3", "wr": "2\" Devastating 1" },
+            { "name": "Bayonet", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Gauss blaster или Tesla carbine (плюс bayonet в любом случае) — при сборке ростера. В этом приложении представлены оба варианта дальнобойного оружия; используй только выбранный."
+            },
+            {
+              "name": "Steadfast",
+              "text": "При определении контроля маркера можно считать APL stat этого оператора равным 3; если применить это, оно имеет приоритет над всеми остальными правилами, то есть любые изменения его APL stat игнорируются для этой цели."
+            },
+            {
+              "name": "Interstitial Command",
+              "text": "SUPPORT. Выбери другого дружественного оператора HIEROTEK CIRCLE (кроме APPRENTEK и CRYPTEK), видимого этому оператору и в пределах 6\" от него. Тот оператор может немедленно выполнить бесплатное действие за 1AP (кроме действия Accelerate), но не может переместиться больше чем на 2\" или быть убран/размещён больше чем на 2\" во время этого действия, не может выполнить действие, которое он уже выполнял в этом turning point, и не может выполнить это же действие снова в этом turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или во время counteraction.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/immortal_despotek.png"
+        },
+        {
+          "name": "Immortal Guardian",
+          "apl": 2,
+          "move": "5\"",
+          "save": "3+",
+          "wounds": 10,
+          "maxCopies": 5,
+          "weapons": [
+            { "name": "Gauss blaster", "atk": 4, "hit": "3+", "dmg": "4/5", "wr": "Piercing 1" },
+            { "name": "Tesla carbine", "atk": 5, "hit": "3+", "dmg": "3/3", "wr": "2\" Devastating 1" },
+            { "name": "Bayonet", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Gauss blaster или Tesla carbine (плюс bayonet в любом случае) — при сборке ростера. В этом приложении представлены оба варианта дальнобойного оружия; используй только выбранный."
+            },
+            {
+              "name": "Steadfast",
+              "text": "При определении контроля маркера можно считать APL stat этого оператора равным 3; если применить это, оно имеет приоритет над всеми остальными правилами, то есть любые изменения его APL stat игнорируются для этой цели."
+            }
+          ],
+          "portrait": "img/portraits/hierotek-circle/immortal_guardian.png"
+        }
+      ],
+      "lore": {
+        "intro": "Hierotek Circle — древние некронские советники и их конструкты, служащие интересам своей династии через холодный расчёт и безграничное терпение. Cryptek-и повелевают временем, разумом и материей, а их Plasmacyte и Immortal свита обеспечивает бесконечное возвращение павших к жизни.",
+        "operatives": [
+          { "name": "Chronomancer", "text": "Повелевая потоками времени, Chronomancer способен замедлять врагов и перемещать своих союзников сквозь мгновения битвы, будто их и не было." },
+          { "name": "Psychomancer", "text": "Psychomancer выворачивает разум противника наизнанку, насаждая отчаяние и безумие там, где раньше была воля к сопротивлению." },
+          { "name": "Technomancer", "text": "Technomancer поддерживает механизмы Circle в рабочем состоянии, восстанавливая повреждённых союзников и усиливая их оружие древними формулами." },
+          { "name": "Plasmacyte Accelerator", "text": "Небольшой конструкт, снующий среди рядов Circle и наделяющий избранных воинов вспышкой дополнительной скорости в решающий момент." },
+          { "name": "Plasmacyte Reanimator", "text": "Этот Plasmacyte несёт в себе энергию, способную вырвать павшего некрона из небытия и вернуть его в строй." },
+          { "name": "Apprentek", "text": "Apprentek изучает искусство своего наставника-Cryptek, повторяя его ритуалы хоть и с меньшим мастерством, но с той же беспощадной точностью." },
+          { "name": "Deathmark", "text": "Deathmark-и выслеживают цель издалека и поражают её единственным точным выстрелом synaptic disintegrator, прежде чем раствориться в тенях." },
+          { "name": "Immortal Despotek", "text": "Despotek командует своими собратьями-Immortal с непоколебимой стойкостью, воплощая несокрушимую волю династии." },
+          { "name": "Immortal Guardian", "text": "Immortal-ы — костяк любой некронской армии: неутомимые, безжалостные и практически неуничтожимые солдаты." }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Reanimation Protocols",
+          "text": "Первый раз, когда дружественный оператор HIEROTEK CIRCLE incapacitated, прежде чем он будет убран из killzone, размести один свой Reanimation marker в пределах его control range (и отметь этого оператора своим статус-токеном Reanimation Marker, чтобы отслеживать, что у него уже был использован единственный шанс на возрождение). Затем убери его как incapacitated, также убрав любые токены и эффекты правил, которые у него были.\n\nВ Ready step каждой Strategy phase: выбери один свой Reanimation marker и брось один D6: на результате 1-2 оставь тот marker в killzone и повтори этот процесс с другим Reanimation marker (если есть); на результате 3+ оператор REANIMATED. Можно выбрать каждый Reanimation marker только один раз за turning point, и как только выпадет 3+, выбор Reanimation marker'ов на этот turning point прекращается.\n\nКаждый раз, когда оператор REANIMATED: собери того оператора, для которого был размещён этот Reanimation marker (он больше не expended). Он должен быть размещён в пределах 3\" от этого marker и не в пределах control range вражеских операторов (если невозможно, считай результат броска как 1-2 вместо этого). У него 1 wound, приказ на твой выбор, и он ready. Убери тот Reanimation marker.\n\nТак как REANIMATED операторы больше не incapacitated, для целей kill op kill grade противника может уменьшиться во время битвы (они теряют VP соответственно). Однако это не меняет задним числом другие VP, уже начисленные противнику (например, от tac ops)."
+        },
+        {
+          "name": "Magnify",
+          "text": "Каждый раз, когда этот оператор выполняет действие Shoot этим оружием, если цель ему видима, и другой дружественный оператор HIEROTEK CIRCLE APPRENTEK или CRYPTEK с приказом Engage, не находящийся в пределах control range вражеских операторов, видим этому оператору — можно применить это правило. Если применяешь, считай того другого оператора активным оператором для целей определения допустимой цели, cover и obscured. Если применяешь, это оружие получает weapon rule Ceaseless до конца этого действия."
+        },
+        {
+          "name": "Living Metal",
+          "text": "В Ready step каждой Strategy phase, после разрешения всех остальных правил на этом этапе (например, faction rule Reanimation Protocols), каждый дружественный оператор HIEROTEK CIRCLE восстанавливает до D3+1 потерянных wounds (бросай отдельно для каждого)."
+        },
+        {
+          "name": "Relentless Onslaught",
+          "text": "Каждый раз, когда дружественный оператор HIEROTEK CIRCLE стреляет по оператору в пределах 8\" от него, дальнобойное оружие этого дружественного оператора получает weapon rule Balanced.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Undying Androids",
+          "text": "Каждый раз, когда оператор стреляет по дружественному оператору HIEROTEK CIRCLE, если нельзя удержать cover save, можно удержать один кубик защиты как normal success без броска.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Methodical Elimination",
+          "text": "Оружие ближнего боя дружественных операторов получает weapon rule Accurate 1. Если дерущийся оператор не перемещался больше своего Move stat в этой активации, или отвечает (retaliating), его оружие ближнего боя получает Accurate 2 вместо этого.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Command Underlings",
+          "text": "Выбери одно из следующего: SUPPORT — каждый другой дружественный оператор, видимый дружественному CRYPTEK и в пределах 6\" от него, может немедленно выполнить бесплатное действие Dash (приказ на твой выбор); ИЛИ SUPPORT — каждый другой дружественный оператор (кроме CRYPTEK), видимый дружественному APPRENTEK и в пределах 3\" от него, может немедленно выполнить бесплатное действие Dash (приказ на твой выбор).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Cortical Control",
+          "text": "Примени, когда дружественный APPRENTEK или CRYPTEK выполняет SUPPORT unique action — до конца этого действия игнорируй требование по дистанции при выборе другого дружественного оператора (требование видимости остаётся).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Reanimated Function",
+          "text": "Примени при определении контроля маркера. Выбери один свой Reanimation marker; до начала следующего turning point считай тот marker дружественным оператором с APL 1 для целей контроля маркеров. Не действует для tac op Martyrs (Approved Ops 2025).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Living Lightning",
+          "text": "Примени, когда дружественный IMMORTAL стреляет из tesla carbine — до конца этого действия это оружие теряет ограничение дистанции 2\" от Devastating, но получает Blast 2\" вместо этого.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Dimensional Ambush",
+          "text": "Примени во время активации дружественного DEATHMARK, если у него приказ Conceal — он может выполнить действие Guard независимо от ограничений killzone, оставаясь Concealed, но должен сменить приказ на Engage, когда во время этого прерывания срабатывает бесплатное действие Shoot или Fight.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "reanimation_marker",
+          "name": "Reanimation Marker",
+          "target": "friendly",
+          "text": "Отмечает, что этот оператор уже был incapacitated один раз в этой битве и использовал свой единственный Reanimation marker (см. faction rule Reanimation Protocols). Второй раз он уже не возрождается."
+        },
+        {
+          "id": "deathmarked",
+          "name": "Deathmarked",
+          "target": "enemy",
+          "text": "Дружественные операторы HIEROTEK CIRCLE DEATHMARK получают weapon rule Seek на дальнобойное оружие, стреляя по этому оператору."
+        },
+        {
+          "id": "madness",
+          "name": "Madness",
+          "target": "enemy",
+          "text": "Каждый раз, когда противник хотел бы активировать этого оператора, можно бросить один D6: если результат равен или больше его APL stat, противник должен активировать этого оператора во время этой активации вместо запланированной. Если активация состоялась этим способом (или нет другого допустимого вражеского оператора), убери этот токен."
+        },
+        {
+          "id": "multi_dimensional_vision",
+          "name": "Multi-Dimensional Vision",
+          "target": "friendly",
+          "text": "До начала следующей активации этого оператора, пока у него этот токен, каждый раз, когда он стреляет, вражеские операторы не могут быть obscured."
+        },
+        {
+          "id": "reinforce_metal",
+          "name": "Reinforce Metal",
+          "target": "friendly",
+          "text": "Пока у этого оператора этот токен, каждый раз, когда кубики атаки наносят ему урон 3 или больше, вычти 1 из этого урона."
+        },
+        {
+          "id": "chronometron",
+          "name": "Chronometron",
+          "target": "friendly",
+          "text": "Пока у этого оператора этот токен, каждый раз, когда оператор стреляет по нему, вычти 1 из Atk stat того оружия."
+        }
+      ]
+    },
+    "Spectre Squad": {
+      "archetypes": ["Infiltration", "Recon"],
+      "required": [
+        {
+          "name": "Spectre Veteran Sergeant",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            { "name": "Scoped lascarbine", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Lethal 5+, Rending" },
+            { "name": "Bionic arm", "atk": 3, "hit": "3+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Issue Mission",
+              "text": "Выбери одного expended дружественного оператора SPECTRE SQUAD (кроме VOX-RELAY BEACON), видимого этому оператору, который ещё не прерывал активацию вражеского оператора через faction rule Elite Fieldcraft в этом turning point. До конца turning point тот дружественный оператор может делать это, даже будучи expended (это имеет приоритет над обычными правилами); однако, если он это делает, он не может counteract в этом turning point, а также не может выполнить действие Reposition, если уже выполнял его в этом turning point. Отметь того оператора своим статус-токеном Issue Mission.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "0AP"
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_veteran_sergeant.png"
+        },
+        {
+          "name": "Spectre Vox-Relay Beacon",
+          "apl": 1,
+          "move": "0\"",
+          "save": "5+",
+          "wounds": 3,
+          "count": 1,
+          "weapons": [],
+          "abilities": [
+            {
+              "name": "Expendable",
+              "text": "Этот оператор может выполнять только действие Signal (см. ниже) — он не может counteract, отвечать (retaliating) или assist в драке. Он не может оспаривать маркеры или зоны killzone. Он игнорируется для kill/elimination op (стартовое количество операторов) и для любых victory conditions или начисления VP, требующих, чтобы операторы escape, survive или были incapacitated (в любом направлении). Операторы могут проходить сквозь него; противник может игнорировать его control range в любой момент, а дружественные операторы SPECTRE SQUAD при выборе допустимой цели для действия Shoot также могут игнорировать его control range."
+            },
+            {
+              "name": "Signal",
+              "text": "SUPPORT. Выбери другого дружественного оператора SPECTRE SQUAD в пределах 6\" от этого оператора. До конца следующей активации того оператора прибавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_vox-relay_beacon.png"
+        }
+      ],
+      "poolPick": 9,
+      "pool": [
+        {
+          "name": "Field Medicae",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Lascarbine", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Rending" },
+            { "name": "Lasrifle", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Heavy (Reposition only), Lethal 5+" },
+            { "name": "Gun butt", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Lasrifle или Lascarbine (плюс gun butt в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Medic!",
+              "text": "В первый раз за turning point, когда другой дружественный оператор SPECTRE SQUAD (кроме VOX-RELAY BEACON) должен быть выведен из строя, будучи видимым этому оператору и в пределах 3\" от него, можно использовать это правило при условии, что ни этот, ни тот другой оператор не в пределах control range вражеского оператора. Если используешь: тот дружественный оператор не выводится из строя, у него остаётся 1 wound, и до конца этого действия его нельзя вывести из строя; после этого действия он может немедленно выполнить бесплатное действие Dash, но должен закончить это движение в пределах control range этого оператора; вычти 1 из APL stat этого оператора и того оператора соответственно, и если это правило было использовано во время активации того дружественного оператора, та активация заканчивается. Отметь того дружественного оператора своим статус-токеном Medic! (нельзя использовать это правило снова на операторе, у которого уже есть этот токен в этом turning point).\n\nНельзя использовать это правило, если этот оператор выведен из строя, или если это действие Shoot, заканчивающееся с этим оператором как primary или secondary целью."
+            },
+            {
+              "name": "Medikit",
+              "text": "Выбери дружественного оператора SPECTRE SQUAD (кроме VOX-RELAY BEACON) в пределах control range этого оператора, чтобы он восстановил до 2D3 потерянных wounds. Нельзя выбрать оператора, у которого есть твой статус-токен Medic! с этого turning point.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "0AP"
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_field_medicae.png"
+        },
+        {
+          "name": "Grenadier",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Lascarbine", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Rending" },
+            { "name": "Lasrifle", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Heavy (Reposition only), Lethal 5+" },
+            { "name": "Gun butt", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Lasrifle или Lascarbine (плюс gun butt в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Grenadier",
+              "text": "Может использовать frag, krak и smoke гранаты (universal equipment); их использование не учитывается в лимит применений. Каждый раз, когда используется frag или krak граната, улучши Hit stat этого оружия на 1."
+            },
+            {
+              "name": "Melta Mine",
+              "text": "Этот оператор несёт маркер Melta Mine. Он может выполнить действие Pick Up Marker с ним; каждый раз, когда он выполняет действие Place Marker с этим маркером, он может немедленно выполнить бесплатное действие Dash. Маркер нельзя разместить в пределах control range вражеского оператора (если этот оператор выведен из строя, неся маркер, и его нельзя разместить, маркер убирается вместе с этим оператором)."
+            },
+            {
+              "name": "Proximity Mine",
+              "text": "В первый раз, когда твой маркер Melta Mine оказывается в пределах control range другого оператора, убери этот маркер и нанеси 2D6+3 урона тому оператору; если он не выведен из строя, заверши его текущее действие (если есть), даже если другие эффекты этого действия не выполнены. Если маркер нельзя разместить, передвинь его на минимальное расстояние, необходимое для размещения. Этот оператор игнорируется для этих эффектов (он не может сработать от маркера или получить от него урон)."
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_grenadier.png"
+        },
+        {
+          "name": "Guide",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Lascarbine", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Rending" },
+            { "name": "Lasrifle", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Heavy (Reposition only), Lethal 5+" },
+            { "name": "Gun butt", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Lasrifle или Lascarbine (плюс gun butt в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Prepared Killzone",
+              "text": "Можно выбрать один дополнительный вариант снаряжения, но это должен быть Ammo Cache или снаряжение-terrain feature (universal equipment)."
+            },
+            {
+              "name": "Scout Terrain",
+              "text": "Terrain features в пределах твоей территории, или в пределах 3\" от этого оператора, считаются scouted для дружественных операторов SPECTRE SQUAD. Один раз за каждую свою активацию дружественные операторы SPECTRE SQUAD могут сделать одно из: игнорировать первые 2\" вертикальной дистанции climb-up движения на scouted terrain feature; или выполнить действие Operate Hatch за 1 AP меньше, если точка доступа scouted."
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_guide.png"
+        },
+        {
+          "name": "Gunner",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Meltagun", "atk": 4, "hit": "3+", "dmg": "6/3", "wr": "Range 6\", Devastating 4, Piercing 2" },
+            { "name": "Plasma gun (standard)", "atk": 4, "hit": "3+", "dmg": "4/6", "wr": "Piercing 1" },
+            { "name": "Plasma gun (supercharge)", "atk": 4, "hit": "3+", "dmg": "5/6", "wr": "Hot, Lethal 5+, Piercing 1" },
+            { "name": "Gun butt", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [],
+          "portrait": "img/portraits/spectre-squad/spectre_gunner.png"
+        },
+        {
+          "name": "Heavy Gunner",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Laspistol", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Range 8\"" },
+            { "name": "Missile launcher (frag)", "atk": 4, "hit": "3+", "dmg": "3/5", "wr": "Blast 2\", Heavy" },
+            { "name": "Missile launcher (krak)", "atk": 4, "hit": "3+", "dmg": "5/7", "wr": "Heavy, Piercing 1" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapons Team",
+              "text": "Каждый раз, когда этот оператор активируется, если дружественный оператор Loader в пределах его control range, все профили его missile launcher получают weapon rule Heavy (Dash only) вместо weapon rule Heavy до конца этой активации."
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_heavy_gunner.png"
+        },
+        {
+          "name": "Loader",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Laspistol", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Range 8\"" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Assist",
+              "text": "Каждый раз, когда другой дружественный оператор SPECTRE SQUAD в пределах control range этого оператора стреляет, можно перебросить один из своих кубиков атаки."
+            },
+            {
+              "name": "Load Weapon",
+              "text": "Выбери дружественного оператора SPECTRE SQUAD в пределах control range этого оператора и не в пределах 3\" от вражеских операторов. Тот дружественный оператор может немедленно выполнить бесплатное действие Shoot (кроме Guard), и можно сменить его order для этого. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора, во время counteract, а также во время активации, в которой этот или тот оператор выполнял действие Charge, Dash или Shoot (или наоборот).",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_loader.png"
+        },
+        {
+          "name": "Sharpshooter",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Long-las (concealed)", "atk": 4, "hit": "2+", "dmg": "3/3", "wr": "Devastating 3, Heavy, Silent, Concealed Position" },
+            { "name": "Long-las (mobile)", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "-" },
+            { "name": "Long-las (stationary)", "atk": 4, "hit": "2+", "dmg": "3/3", "wr": "Devastating 3, Heavy" },
+            { "name": "Gun butt", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Rule: Concealed Position",
+              "text": "Concealed Position: этот оператор может использовать этот профиль оружия только первый раз, когда он выполняет действие Shoot за битву."
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_sharpshooter.png"
+        },
+        {
+          "name": "Stub-Gunner",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Autostubber (focused)", "atk": 5, "hit": "3+", "dmg": "3/4", "wr": "Heavy (Dash only)" },
+            { "name": "Autostubber (suppressive)", "atk": 5, "hit": "5+", "dmg": "0/0", "wr": "Heavy, Lethal 5+, Seek Light, Stun, Torrent 1\"" },
+            { "name": "Autostubber (sweeping)", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Heavy (Dash only), Torrent 1\"" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Suppressive Fire",
+              "text": "Каждый раз, когда вражеский оператор видим этому оператору и в пределах 3\" от него, если у того вражеского оператора Engage order и он не в пределах control range другого оператора, вычти 1 из Atk stat оружия того вражеского оператора (минимум 1). Нет эффекта, если этот оператор выполнял действие Charge в этом turning point."
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_stub-gunner.png"
+        },
+        {
+          "name": "Trooper",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "maxCopies": 6,
+          "weapons": [
+            { "name": "Lascarbine", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Rending" },
+            { "name": "Lasrifle", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Heavy (Reposition only), Lethal 5+" },
+            { "name": "Gun butt", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Lasrifle или Lascarbine (плюс gun butt в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Cool-Headed",
+              "text": "Once per turning point дружественный оператор SPECTRE SQUAD с этим правилом может прервать активацию вражеского оператора через faction rule Elite Fieldcraft за 0 Fieldcraft points (это имеет приоритет над обычными правилами). Отметь того оператора своим статус-токеном Cool-Headed после использования в этом turning point."
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_trooper.png"
+        },
+        {
+          "name": "Vox-Operator",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "weapons": [
+            { "name": "Lascarbine", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Rending" },
+            { "name": "Lasrifle", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Heavy (Reposition only), Lethal 5+" },
+            { "name": "Gun butt", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Lasrifle или Lascarbine (плюс gun butt в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Signal",
+              "text": "SUPPORT. Выбери другого дружественного оператора SPECTRE SQUAD (кроме VOX-RELAY BEACON), видимого этому оператору. До конца следующей активации того оператора прибавь 1 к его APL stat.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/spectre-squad/spectre_vox-operator.png"
+        }
+      ],
+      "equipment": "Spectre Squad",
+      "lore": {
+        "intro": "Kill team Spectre Squad — элитная разведывательно-диверсионная группа Astra Militarum, выдвигаемая далеко за линию фронта для скрытной разведки, целеуказания и точечных ударов. Действуя малыми группами, операторы Spectre Squad полагаются на камуфляж, дисциплину и слаженную связь, позволяющую всей команде реагировать на угрозы быстрее противника.",
+        "operatives": [
+          { "name": "Spectre Veteran Sergeant", "text": "Опытный командир отряда, координирующий действия своих бойцов даже тогда, когда те, казалось бы, уже исчерпали свой запал." },
+          { "name": "Spectre Vox-Relay Beacon", "text": "Стационарный ретранслятор, усиливающий сигнал команд по всей зоне действия отряда." },
+          { "name": "Field Medicae", "text": "Полевой медик, вытаскивающий бойцов Spectre Squad с края гибели прямо посреди боя." },
+          { "name": "Grenadier", "text": "Специалист по взрывчатке, несущий смертоносный заряд melta mine на самый опасный участок killzone." },
+          { "name": "Guide", "text": "Проводник, знающий местность лучше противника и превращающий рельеф killzone в союзника отряда." },
+          { "name": "Gunner", "text": "Тяжёлое вооружение отряда — meltagun или plasma gun — способное пробить самую прочную броню." },
+          { "name": "Heavy Gunner", "text": "Расчёт missile launcher, обеспечивающий подавляющую огневую мощь на средних и дальних дистанциях." },
+          { "name": "Loader", "text": "Второй номер расчёта, ускоряющий перезарядку и подающий оружие товарищам в разгар боя." },
+          { "name": "Sharpshooter", "text": "Снайпер отряда, работающий из засады с long-las и способный вскрыть цель первым же выстрелом." },
+          { "name": "Stub-Gunner", "text": "Оператор autostubber, прижимающий врага к земле шквальным огнём." },
+          { "name": "Trooper", "text": "Рядовой боец Spectre Squad, надёжный и хладнокровный в любой ситуации." },
+          { "name": "Vox-Operator", "text": "Связист отряда, обеспечивающий координацию и ускоряющий реакцию товарищей по рации." }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Elite Fieldcraft",
+          "text": "В Ready step каждой Strategy phase получи 1 Fieldcraft point (отметь свой счётчик статус-токеном Fieldcraft Points), или 2, если дружественный оператор VOX-OPERATOR в killzone и не в пределах control range вражеских операторов. Сбрасывай Fieldcraft points в конце каждого turning point.\n\nПосле того как вражеский оператор с приказом Engage выполнил действие во время своей активации, можно потратить 1 Fieldcraft point, чтобы прервать эту активацию: готовый дружественный оператор SPECTRE SQUAD, не находящийся в пределах control range других вражеских операторов, может выполнить бесплатное действие Shoot (кроме Guard), Dash или Reposition. Нельзя прерывать активацию одного вражеского оператора этим способом больше одного раза (включая Guard), и каждый дружественный оператор не может выполнить больше одного бесплатного действия этим способом за turning point.\n\nЕсли это действие Shoot: можно сменить приказ дружественного оператора для его выполнения; нельзя выбрать другого вражеского оператора допустимой целью во время этого действия; нахождение в пределах control range того (но не другого) вражеского оператора не мешает выполнить это действие — в этом случае действуют правила point-blank выстрела из Guard (Core Book).\n\nЕсли это действие Reposition: тот дружественный оператор не может выполнить это действие снова в этом turning point. Если Dash или Reposition: тот оператор не может закончить движение ближе к тому вражескому оператору или drop zone противника (если не заканчивает движение полностью в своей drop zone). В killzone с close quarters правилами (например, Tomb World) игнорируй Wall terrain при определении «ближе» и нельзя телепортироваться."
+        },
+        {
+          "name": "Camo Cloaks",
+          "text": "Каждый раз, когда оператор стреляет по дружественному оператору SPECTRE SQUAD (кроме VOX-RELAY BEACON), если можно удержать любые cover save, можно удержать один дополнительный cover save, либо удержать один cover save как critical success вместо этого. Не суммируется с улучшенными cover save от Vantage terrain."
+        },
+        {
+          "name": "Disappear",
+          "text": "Один дружественный оператор SPECTRE SQUAD может немедленно выполнить бесплатное действие Reposition. Нельзя закончить движение ближе к вражеским операторам или drop zone противника (если не заканчивает движение полностью в своей drop zone), и нельзя выполнить это действие снова в этом turning point. В killzone с close quarters правилами игнорируй Wall terrain при определении «ближе».",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Hidden Engagement",
+          "text": "Каждый раз, когда дружественный оператор SPECTRE SQUAD стреляет, если он в cover с точки зрения цели, его оружие получает weapon rule Balanced. Противник всё равно определяет линии обзора для допустимости цели как обычно.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Ambushing Volley",
+          "text": "Каждый раз, когда дружественный оператор SPECTRE SQUAD активируется, если он дальше 3\" от вражеских операторов и не является допустимой целью для вражеских операторов до определения его приказа, его дальнобойное оружие (кроме suppressive-профиля autostubber) получает weapon rule Devastating 1 до конца этой активации; если у оружия уже есть Devastating x, добавь 1 к x вместо этого.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Patience",
+          "text": "В Firefight phase этого turning point сделай одно из: когда наступает твоя очередь активировать дружественного оператора, можно пропустить эту активацию (нельзя делать это, пока противник не активировал хотя бы одного оператора первым); или когда дружественный оператор SPECTRE SQUAD выполняет Shoot или Fight во время своей активации, если он последний дружественный оператор, активированный в этом turning point, его оружие получает weapon rule Relentless для этого действия.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Dodge",
+          "text": "Примени во время активации дружественного оператора SPECTRE SQUAD, до или после выполнения им действия; тот оператор может выполнить действие Fall Back за 1 AP меньше.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Silent Killers",
+          "text": "Примени во время активации дружественного оператора, до или после действия, если у него приказ Conceal и он не является допустимой целью для вражеских операторов. До конца активации он может выполнить действие Charge, имея приказ Conceal, и первый раз, когда он наносит удар, наносит 3 дополнительных урона, но не может разрешить никакие другие successes в этой последовательности.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Sharp Reactions",
+          "text": "Примени после того, как вражеский оператор с приказом Conceal выполнил действие, если он в пределах 8\" от дружественного оператора SPECTRE SQUAD — можно использовать faction rule Elite Fieldcraft, чтобы прервать ту активацию тем дружественным оператором вне зависимости от приказа (имеет приоритет над обычными правилами).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Prepared Defence",
+          "text": "Примени, когда дружественный оператор SPECTRE SQUAD с приказом Conceal или готовый отвечает (retaliating). Сделай одно из: в начале этапа Resolve Attack Dice разреши один свой success раньше обычного порядка — тот success должен быть использован для блока; или когда ты блокируешь, тот блок может заблокировать два неразрешённых success вместо одного. Нельзя использовать во время активации, которую ты прервал через Elite Fieldcraft.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "fieldcraft_points",
+          "name": "Fieldcraft Points",
+          "target": "friendly",
+          "counter": true,
+          "max": 3,
+          "text": "Командный ресурс faction rule Elite Fieldcraft. Получаешь 1 (или 2, если дружественный VOX-OPERATOR в killzone вне control range врагов) в Ready step каждой Strategy phase; тратится на прерывание вражеской активации; сбрасывается в конце каждого turning point."
+        },
+        {
+          "id": "advanced_camouflage",
+          "name": "Advanced Camouflage",
+          "target": "friendly",
+          "text": "До начала следующей активации этого оператора, пока у него приказ Conceal и он в cover, его нельзя выбрать допустимой целью (кроме случаев, когда вражеский оператор в пределах 2\" от него)."
+        },
+        {
+          "id": "medic_used",
+          "name": "Medic!",
+          "target": "friendly",
+          "text": "Отмечает, что этот оператор уже был спасён правилом Medic! в этом turning point — нельзя применить Medic! или Medikit повторно на нём в этом же turning point."
+        },
+        {
+          "id": "cool_headed_used",
+          "name": "Cool-Headed",
+          "target": "friendly",
+          "text": "Отмечает, что этот оператор уже использовал способность Cool-Headed (0-cost прерывание через Elite Fieldcraft) в этом turning point."
+        },
+        {
+          "id": "issue_mission_used",
+          "name": "Issue Mission",
+          "target": "friendly",
+          "text": "Отмечает, что этот оператор уже прервал вражескую активацию через Elite Fieldcraft, будучи expended, благодаря способности Issue Mission оператора Veteran Sergeant, в этом turning point."
+        }
+      ]
+    },
+    "XV26 Stealth Battlesuits": {
+      "archetypes": ["Infiltration", "Recon"],
+      "required": [
+        {
+          "name": "XV26 Shas'vre",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 13,
+          "count": 1,
+          "weapons": [
+            { "name": "Burst cannon (focused)", "atk": 5, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless" },
+            { "name": "Burst cannon (sweeping)", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless, Torrent 1\"" },
+            { "name": "Fusion blaster (short range)", "atk": 4, "hit": "4+", "dmg": "6/3", "wr": "Range 6\", Devastating 4, Piercing 2" },
+            { "name": "Fusion blaster (long range)", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Range 12\", Piercing 1" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "3/4", "wr": "-" },
+            { "name": "Pulse pistol (ranged)", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Range 8\"" },
+            { "name": "Pulse pistol (point-blank)", "atk": 3, "hit": "4+", "dmg": "4/5", "wr": "Accurate 1" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Burst cannon или Fusion blaster (плюс Fists в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный. Суммарно в ростере не может быть больше двух Fusion blaster."
+            },
+            {
+              "name": "XV26 Drone Controller",
+              "text": "Выбери одного дружественного оператора XV26 STEALTH BATTLESUIT DRONE в killzone; до конца следующей активации того оператора игнорируй первые два пункта его правила Drone (это имеет приоритет над тем правилом). Пометь его своим статус-токеном XV26 Drone Controller.",
+              "cost": "Strategic Gambit"
+            },
+            {
+              "name": "For the Greater Good",
+              "text": "Каждый раз, когда определяется X для weapon rule Accurate X от faction rule Kayuon, если этот оператор в killzone, добавь 1 к результату, если 2 или больше дружественных операторов XV26 STEALTH BATTLESUIT (кроме DRONE) выведены из строя (максимум Accurate 3). Для использования этого правила требуется минимум Accurate 1."
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/xv26_shas.png"
+        },
+        {
+          "name": "MV75 Marker Drone",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "count": 1,
+          "weapons": [
+            { "name": "Ram", "atk": 3, "hit": "5+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight и Reposition. Каждый раз, когда определяется контроль objective marker, считай APL stat этого оператора на 1 ниже (это не изменение самого APL stat, поэтому суммируется с другими изменениями). Этот оператор не может использовать оружие, которого нет на его карточке. При определении того, что видимо этому оператору, круглый диск в верхней части миниатюры считается его головой. Он игнорируется для целей kill/elimination op твоего противника и подсчёта стартового числа операторов, а также для victory conditions, требующих, чтобы операторы \"сбежали\"/\"выжили\"/были выведены из строя (в любом направлении)."
+            },
+            {
+              "name": "Markerlight",
+              "text": "Каждый раз, когда вражеский оператор является допустимой целью для этого оператора, или видим ему и в пределах 2\" от твоего Ambush marker (см. strategy ploy Prepare Ambush), он получает твой статус-токен Marked. Каждый раз, когда дружественный оператор XV26 STEALTH BATTLESUIT стреляет по вражескому оператору с твоим статус-токеном Marked, дальнобойное оружие того дружественного оператора получает weapon rule Severe. Это может применяться, даже если этот оператор не является активным оператором."
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/mv75_marker_drone.png"
+        },
+        {
+          "name": "MV15 Gun Drone",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "count": 1,
+          "weapons": [
+            { "name": "Twin pulse carbine", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Ceaseless" },
+            { "name": "Ram", "atk": 3, "hit": "5+", "dmg": "2/3", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Drone",
+              "text": "Этот оператор не может выполнять никакие действия, кроме Charge, Dash, Fall Back, Fight, Photon Grenade Launcher и Reposition. Каждый раз, когда определяется контроль objective marker, считай APL stat этого оператора на 1 ниже (это не изменение самого APL stat, поэтому суммируется с другими изменениями). Этот оператор не может использовать оружие, которого нет на его карточке. При определении того, что видимо этому оператору, круглый диск в верхней части миниатюры считается его головой. Он игнорируется для целей kill/elimination op твоего противника и подсчёта стартового числа операторов, а также для victory conditions, требующих, чтобы операторы \"сбежали\"/\"выжили\"/были выведены из строя (в любом направлении)."
+            },
+            {
+              "name": "Photon Grenade Launcher",
+              "text": "Выбери одного вражеского оператора, видимого этому оператору, и брось 1D6: при результате 3+ тот оператор получает твой статус-токен Photon Grenade (вычти 2\" из его Move stat до конца его следующей активации). Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/mv15_gun_drone.png"
+        }
+      ],
+      "poolPick": 4,
+      "pool": [
+        {
+          "name": "XV26 Designator",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            { "name": "Burst cannon (focused)", "atk": 5, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless" },
+            { "name": "Burst cannon (sweeping)", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless, Torrent 1\"" },
+            { "name": "Fusion blaster (short range)", "atk": 4, "hit": "4+", "dmg": "6/3", "wr": "Range 6\", Devastating 4, Piercing 2" },
+            { "name": "Fusion blaster (long range)", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Range 12\", Piercing 1" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Burst cannon или Fusion blaster (плюс Fists в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный. Суммарно в ростере не может быть больше двух Fusion blaster."
+            },
+            {
+              "name": "Markerlight",
+              "text": "Каждый раз, когда вражеский оператор является допустимой целью для этого оператора, или видим ему и в пределах 2\" от твоего Ambush marker (см. strategy ploy Prepare Ambush), он получает твой статус-токен Marked. Каждый раз, когда дружественный оператор XV26 STEALTH BATTLESUIT стреляет по вражескому оператору с твоим статус-токеном Marked, дальнобойное оружие того дружественного оператора получает weapon rule Severe. Это может применяться, даже если этот оператор не является активным оператором."
+            },
+            {
+              "name": "Focused Markerlight",
+              "text": "Выбери одного вражеского оператора, видимого этому оператору. Один раз за этот turning point, когда дружественный оператор XV26 STEALTH BATTLESUIT стреляет по тому вражескому оператору, можно использовать этот эффект: улучши на 1 Hit stat дальнобойного оружия того дружественного оператора до конца того действия. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/xv26_designator.png"
+        },
+        {
+          "name": "XV26 Infiltrator",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 12,
+          "maxCopies": 4,
+          "weapons": [
+            { "name": "Burst cannon (focused)", "atk": 5, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless" },
+            { "name": "Burst cannon (sweeping)", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless, Torrent 1\"" },
+            { "name": "Fusion blaster (short range)", "atk": 4, "hit": "4+", "dmg": "6/3", "wr": "Range 6\", Devastating 4, Piercing 2" },
+            { "name": "Fusion blaster (long range)", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Range 12\", Piercing 1" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Burst cannon или Fusion blaster (плюс Fists в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный. Суммарно в ростере не может быть больше двух Fusion blaster."
+            },
+            {
+              "name": "Covert Protocols",
+              "text": "Этот оператор может counteract-ить независимо от своего приказа, но если во время той counteraction у него приказ Conceal, он не может выполнять никакие действия, кроме Pick Up Marker, Place Marker или mission actions."
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/xv26_infiltrator.png"
+        },
+        {
+          "name": "XV26 Liberator",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            { "name": "Burst cannon (focused)", "atk": 5, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless" },
+            { "name": "Burst cannon (sweeping)", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless, Torrent 1\"" },
+            { "name": "Fusion blaster (short range)", "atk": 4, "hit": "4+", "dmg": "6/3", "wr": "Range 6\", Devastating 4, Piercing 2" },
+            { "name": "Fusion blaster (long range)", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Range 12\", Piercing 1" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "3/4", "wr": "-" },
+            { "name": "EMP bomb", "atk": 5, "hit": "3+", "dmg": "2/2", "wr": "Range 4\", Blast 2\", Devastating 1, Heavy (Reposition only), Lethal 4+, Limited 1, Saturate" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Burst cannon или Fusion blaster (плюс Fists в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный. Суммарно в ростере не может быть больше двух Fusion blaster."
+            },
+            {
+              "name": "Grenadier",
+              "text": "Может использовать frag, krak и stun grenades (universal equipment) без учёта их в лимите использований (например, если также выбраны из equipment для других операторов). Каждый раз, когда используется frag или krak grenade, улучши Hit stat того оружия на 1."
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/xv26_liberator.png"
+        },
+        {
+          "name": "XV26 Lodestar",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            { "name": "Burst cannon (focused)", "atk": 5, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless" },
+            { "name": "Burst cannon (sweeping)", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless, Torrent 1\"" },
+            { "name": "Fusion blaster (short range)", "atk": 4, "hit": "4+", "dmg": "6/3", "wr": "Range 6\", Devastating 4, Piercing 2" },
+            { "name": "Fusion blaster (long range)", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Range 12\", Piercing 1" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Burst cannon или Fusion blaster (плюс Fists в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный. Суммарно в ростере не может быть больше двух Fusion blaster."
+            },
+            {
+              "name": "Electrochaff Launcher",
+              "text": "Один раз за turning point, когда вражеский оператор выполняет действие Shoot и твой противник выбирает допустимую цель (кроме DRONE), можно использовать это правило, при условии что этот оператор не в пределах control range вражеских операторов. Если это сделано, до конца того действия: каждый раз, когда вражеский оператор стреляет по дружественному оператору XV26 STEALTH BATTLESUIT, видимому и в пределах 3\" от этого оператора и дальше 2\" от того вражеского оператора — игнорируй weapon rule Piercing, и тот дружественный оператор считается obscured."
+            },
+            {
+              "name": "Homing Beacon",
+              "text": "Этот оператор несёт твой Homing Beacon marker (если это не DRONE) и может выполнять действие Pick Up Marker на нём. В первый раз, когда оператор выполняет Pick Up Marker на твоём Homing Beacon marker, убери тот маркер. На Ready step каждой Strategy phase, если ты получаешь CP, брось 1D6, если этот маркер дальше 6\" от твоей drop zone; брось 2D6 вместо этого, если он на территории противника; брось 3D6 вместо этого, если он в пределах 6\" от drop zone противника. Если хотя бы один результат 4+, получи один дополнительный CP."
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/xv26_lodestar.png"
+        },
+        {
+          "name": "XV26 Neutraliser",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            { "name": "Burst cannon (focused)", "atk": 5, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless" },
+            { "name": "Burst cannon (sweeping)", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Ceaseless, Torrent 1\"" },
+            { "name": "Fusion blaster (short range)", "atk": 4, "hit": "4+", "dmg": "6/3", "wr": "Range 6\", Devastating 4, Piercing 2" },
+            { "name": "Fusion blaster (long range)", "atk": 4, "hit": "4+", "dmg": "4/5", "wr": "Range 12\", Piercing 1" },
+            { "name": "Fists", "atk": 3, "hit": "4+", "dmg": "3/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения — Burst cannon или Fusion blaster (плюс Fists в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный. Суммарно в ростере не может быть больше двух Fusion blaster."
+            },
+            {
+              "name": "Multispectrum Sensor Package",
+              "text": "SUPPORT. Один раз за turning point, когда вражеский оператор активируется, если у тебя есть дружественный оператор XV26 STEALTH BATTLESUIT в пределах 3\" от этого оператора, можно использовать это правило: каждый дружественный оператор, выполняющий действие Dash, не может закончить то движение в пределах 3\" от вражеского оператора."
+            },
+            {
+              "name": "System Jam",
+              "text": "Выбери одного вражеского оператора, видимого этому оператору; он получает твой статус-токен System Jam (вычти 1 из его APL stat до конца его следующей активации). Каждый раз, когда у него приказ Conceal, нужно потратить 1 дополнительный AP для выполнения этого действия. Нельзя выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP или 2AP"
+            }
+          ],
+          "portrait": "img/portraits/xv26-stealth-battlesuits/xv26_neutraliser.png"
+        }
+      ],
+      "equipment": "XV26 Stealth Battlesuits",
+      "lore": {
+        "intro": "Экипажи XV26 Stealth Battlesuits — элитные пилоты Империума Т'ау, чьи скафандры оснащены гравитационными двигателями и системами подавления сигнатур. Они действуют на грани видимости, просачиваясь во вражеские построения раньше, чем противник успевает опомниться, и обрушивая огонь burst cannon и fusion blaster из тени.",
+        "operatives": [
+          { "name": "XV26 Shas'vre", "text": "Ведёт группу, координируя дронов и направляя огонь товарищей во имя Greater Good." },
+          { "name": "MV75 Marker Drone", "text": "Подсвечивает цели своим маркерлайтом, делая их уязвимыми для точного огня battlesuits." },
+          { "name": "MV15 Gun Drone", "text": "Дополняет отряд огневой мощью twin pulse carbine, оставаясь простым в управлении спутником." },
+          { "name": "XV26 Designator", "text": "Специализируется на целеуказании, усиливая точность союзников фокусированным маркерлайтом." },
+          { "name": "XV26 Infiltrator", "text": "Проникает глубоко во вражеский тыл, оставаясь готовым к контрдействию в любой момент." },
+          { "name": "XV26 Liberator", "text": "Несёт EMP bomb и арсенал гранат, взрывая укрепления противника точным ударом." },
+          { "name": "XV26 Lodestar", "text": "Прикрывает союзников electrochaff-помехами и несёт homing beacon для быстрой переброски сил." },
+          { "name": "XV26 Neutraliser", "text": "Подавляет системы вражеских операторов, замедляя их реакцию с помощью system jam." }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Kayuon",
+          "text": "Каждый раз, когда дружественный оператор XV26 STEALTH BATTLESUIT стреляет по вражескому оператору, его дальнобойное оружие получает weapon rule Accurate X, где X определяется по расположению вражеского оператора: в пределах 3\" от твоей территории — Accurate 1; на твоей территории — Accurate 2; в пределах 3\" от твоей drop zone — Accurate 3."
+        },
+        {
+          "name": "Stealth Fields",
+          "text": "Пока у дружественного оператора XV26 STEALTH BATTLESUIT приказ Conceal, он не может быть видим вражеским операторам дальше 3\" от него (имеет приоритет над всеми остальными правилами). Пока у него приказ Conceal, он может выполнять действие Fall Back за 1 AP меньше."
+        },
+        {
+          "name": "Patient Hunters",
+          "text": "Каждый раз, когда дружественный оператор XV26 STEALTH BATTLESUIT стреляет по expended вражескому оператору или дерётся против него, его оружие получает weapon rule Balanced, а дальнобойное оружие также получает weapon rule Saturate.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Bonds of Unity",
+          "text": "Каждый раз, когда дружественный оператор XV26 STEALTH BATTLESUIT (кроме DRONE) активируется, если он видим другому дружественному оператору XV26 STEALTH BATTLESUIT (кроме DRONE) и в пределах 6\" от него, можно игнорировать любые изменения его APL stat и выбрать одно из: игнорировать изменения его Move stat от being injured до конца активации; игнорировать изменения Hit stat его оружия от being injured до конца активации.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Prepare Ambush",
+          "text": "Размести один свой Ambush marker полностью на своей территории и дальше 2\" от вражеских операторов. Каждый раз, когда дружественный оператор XV26 STEALTH BATTLESUIT стреляет по вражескому оператору в пределах 2\" от того маркера, его дальнобойное оружие получает weapon rule Seek до конца этого действия. Убери Ambush marker в конце того действия или в Ready step следующего turning point (что наступит раньше).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Holowave Countermeasures",
+          "text": "Каждый раз, когда оператор стреляет по дружественному оператору XV26 STEALTH BATTLESUIT дальше 6\" от него, на этапе Roll Attack Dice противник должен отбросить один неразрешённый normal success (или critical success, если normal success нет). Не суммируется с obscured.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Vectored Retro-Thrusters",
+          "text": "Когда вражеский оператор заканчивает действие Charge в пределах control range дружественного оператора XV26 STEALTH BATTLESUIT (кроме DRONE), прервись, чтобы применить это правило. Тот дружественный оператор выполняет бесплатное действие Fall Back (максимум 3\" движения), затем вражеский оператор выполняет бесплатное действие Reposition, используя оставшуюся дистанцию от Charge, даже если он выполнил действие, которое обычно запрещает Reposition.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Ghostshroud",
+          "text": "Примени в конце активации дружественного оператора XV26 STEALTH BATTLESUIT. Если у него приказ Engage, смени на Conceal. Максимум один раз за битву на одного дружественного оператора.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Engage Jet Pack",
+          "text": "Примени, когда дружественный оператор XV26 STEALTH BATTLESUIT (кроме DRONE) активируется или counteract-ит. До конца этой активации/counteraction игнорируй вертикальную дистанцию, пройденную во время одного climb и одного drop.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Saviour Protocols",
+          "text": "Примени, когда дружественный оператор XV26 STEALTH BATTLESUIT выбран допустимой целью действия Shoot. Выбери одного дружественного оператора XV26 STEALTH BATTLESUIT DRONE, видимого и в пределах 3\" от первого оператора, чтобы он стал допустимой целью вместо него (даже если он обычно не был бы допустимой целью). Тот DRONE считается в cover/obscured, только если исходная цель была таковой. Не действует, если у дальнобойного оружия есть weapon rule Blast или Torrent.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "marked",
+          "name": "Marked",
+          "target": "enemy",
+          "text": "Дружественные операторы XV26 STEALTH BATTLESUIT получают weapon rule Severe на дальнобойное оружие, стреляя по этому оператору."
+        },
+        {
+          "id": "system_jam",
+          "name": "System Jam",
+          "target": "enemy",
+          "text": "Вычти 1 из APL stat этого оператора до конца его следующей активации."
+        },
+        {
+          "id": "photon_grenade",
+          "name": "Photon Grenade",
+          "target": "enemy",
+          "text": "Вычти 2\" из Move stat этого оператора до конца его следующей активации."
+        },
+        {
+          "id": "drone_controller",
+          "name": "XV26 Drone Controller",
+          "target": "friendly",
+          "text": "До конца следующей активации этого оператора игнорируй первые два пункта его правила Drone (это имеет приоритет над тем правилом)."
+        }
+      ]
+    },
+    "Blades of Khaine": {
+      "archetypes": ["Recon", "Infiltration", "Security", "Seek & Destroy"],
+      "required": [
+        {
+          "name": "Dire Avenger Exarch",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            { "name": "Shuriken catapult", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Rending" },
+            { "name": "Shuriken pistol", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Range 8\", Rending" },
+            { "name": "Twin shuriken catapult", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Ceaseless, Rending" },
+            { "name": "Diresword", "atk": 5, "hit": "3+", "dmg": "4/5", "wr": "Lethal 5+, Rending" },
+            { "name": "Fists", "atk": 4, "hit": "3+", "dmg": "2/4", "wr": "-" },
+            { "name": "Gun butts", "atk": 3, "hit": "4+", "dmg": "2/3", "wr": "-" },
+            { "name": "Power weapon", "atk": 5, "hit": "3+", "dmg": "4/6", "wr": "Lethal 5+" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах у этого оператора выбирается вариант вооружения при сборке ростера: Shuriken catapult+fists ИЛИ Twin shuriken catapult+gun butts, а также один из {Diresword, Power weapon} и один из {Shuriken pistol, Shimmershield}. В этом приложении представлены все варианты оружия; используй только выбранные."
+            },
+            {
+              "name": "Defence Tactics",
+              "text": "Каждый раз, когда этот оператор contests objective marker или один из твоих mission markers, или когда он стреляет по вражескому оператору, который это делает, оружие этого оператора получает weapon rule Balanced."
+            },
+            {
+              "name": "Shimmershield",
+              "text": "Каждый раз, когда оператор стреляет по дружественному оператору BLADES OF KHAINE, видимому и в пределах 2\" от этого оператора, игнорируй weapon rule Piercing. Это правило есть у этого оператора, только если выбран wargear-вариант shimmershield."
+            },
+            {
+              "name": "Exarch",
+              "text": "Этот оператор может выполнить два действия Shoot или два действия Fight во время своей активации."
+            }
+          ],
+          "portrait": "img/portraits/blades-of-khaine/dire_avenger_exarch.png"
+        },
+        {
+          "name": "Howling Banshee Exarch",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            { "name": "Shuriken pistol", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Range 8\", Rending" },
+            { "name": "Triskele (throw)", "atk": 4, "hit": "3+", "dmg": "2/3", "wr": "Range 8\", Rending, Torrent 2\"" },
+            { "name": "Executioner", "atk": 5, "hit": "3+", "dmg": "3/7", "wr": "Lethal 5+" },
+            { "name": "Mirrorswords", "atk": 5, "hit": "3+", "dmg": "4/6", "wr": "Ceaseless, Lethal 5+" },
+            { "name": "Power weapon", "atk": 5, "hit": "3+", "dmg": "4/6", "wr": "Lethal 5+" },
+            { "name": "Triskele (slice)", "atk": 5, "hit": "3+", "dmg": "4/5", "wr": "Rending" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах у этого оператора выбирается один вариант вооружения при сборке ростера: Mirrorswords, ИЛИ Shuriken pistol+Executioner, ИЛИ Shuriken pistol+Power weapon, ИЛИ Shuriken pistol+Triskele, ИЛИ Triskele+Power weapon. В этом приложении представлены все варианты; используй только выбранный."
+            },
+            {
+              "name": "Banshee Mask",
+              "text": "Каждый раз, когда этот оператор дерётся, ухудши Hit stat оружия ближнего боя вражеского оператора на 1. Это не суммируется с being injured."
+            },
+            {
+              "name": "Exarch",
+              "text": "Этот оператор может выполнить два действия Shoot или два действия Fight во время своей активации."
+            }
+          ],
+          "portrait": "img/portraits/blades-of-khaine/howling_banshee_exarch.png"
+        },
+        {
+          "name": "Striking Scorpion Exarch",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            { "name": "Shuriken pistol", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Range 8\", Rending" },
+            { "name": "Twin shuriken pistols", "atk": 4, "hit": "4+", "dmg": "3/4", "wr": "Range 8\", Ceaseless, Rending" },
+            { "name": "Biting blade", "atk": 5, "hit": "3+", "dmg": "5/6", "wr": "-" },
+            { "name": "Scorpion's claw and chainsword", "atk": 5, "hit": "3+", "dmg": "4/6", "wr": "Brutal, Lethal 5+" },
+            { "name": "Twin chainswords", "atk": 5, "hit": "3+", "dmg": "4/5", "wr": "Ceaseless, Rending" }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах у этого оператора выбирается один вариант вооружения при сборке ростера: Shuriken pistol+Biting blade, ИЛИ Shuriken pistol+Scorpion's claw and chainsword, ИЛИ Twin shuriken pistols+Twin chainswords. В этом приложении представлены все варианты; используй только выбранный."
+            },
+            {
+              "name": "Mandiblasters",
+              "text": "Каждый раз, когда этот оператор выполняет действие Fight, в начале этапа Roll Attack Dice можно применить это правило. Если применяешь, нанеси 2 урона вражескому оператору в этой последовательности."
+            },
+            {
+              "name": "Exarch",
+              "text": "Этот оператор может выполнить два действия Shoot или два действия Fight во время своей активации."
+            }
+          ],
+          "portrait": "img/portraits/blades-of-khaine/striking_scorpion_exarch.png"
+        }
+      ],
+      "poolPick": 7,
+      "pool": [
+        {
+          "name": "Dire Avenger Warrior",
+          "apl": 3,
+          "move": "7\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 7,
+          "weapons": [
+            { "name": "Shuriken catapult", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Rending" },
+            { "name": "Fists", "atk": 4, "hit": "3+", "dmg": "2/4", "wr": "-" }
+          ],
+          "abilities": [
+            {
+              "name": "Defence Tactics",
+              "text": "Каждый раз, когда этот оператор contests objective marker или один из твоих mission markers, или когда он стреляет по вражескому оператору, который это делает, оружие этого оператора получает weapon rule Balanced."
+            }
+          ],
+          "portrait": "img/portraits/blades-of-khaine/dire_avenger_warrior.png"
+        },
+        {
+          "name": "Howling Banshee Warrior",
+          "apl": 3,
+          "move": "7\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 7,
+          "weapons": [
+            { "name": "Shuriken pistol", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Range 8\", Rending" },
+            { "name": "Power weapon", "atk": 4, "hit": "3+", "dmg": "4/6", "wr": "Lethal 5+" }
+          ],
+          "abilities": [
+            {
+              "name": "Banshee Mask",
+              "text": "Каждый раз, когда этот оператор дерётся, ухудши Hit stat оружия ближнего боя вражеского оператора на 1. Это не суммируется с being injured."
+            }
+          ],
+          "portrait": "img/portraits/blades-of-khaine/howling_banshee_warrior.png"
+        },
+        {
+          "name": "Striking Scorpion Warrior",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 8,
+          "maxCopies": 7,
+          "weapons": [
+            { "name": "Shuriken pistol", "atk": 4, "hit": "3+", "dmg": "3/4", "wr": "Range 8\", Rending" },
+            { "name": "Chainsword", "atk": 4, "hit": "3+", "dmg": "4/5", "wr": "Rending" }
+          ],
+          "abilities": [
+            {
+              "name": "Mandiblasters",
+              "text": "Каждый раз, когда этот оператор выполняет действие Fight, в начале этапа Roll Attack Dice можно применить это правило. Если применяешь, нанеси 2 урона вражескому оператору в этой последовательности."
+            }
+          ],
+          "portrait": "img/portraits/blades-of-khaine/striking_scorpion_warrior.png"
+        }
+      ],
+      "equipment": "Blades of Khaine",
+      "lore": {
+        "intro": "Blades of Khaine — воины аспектных святилищ Асурьяни, каждый из которых посвятил себя одному из ликов Khaine, Бога Войны эльдар. Dire Avenger, Howling Banshee и Striking Scorpion сражаются бок о бок, объединённые ритуалом и дисциплиной, но каждый несёт в бою свой собственный, отточенный веками стиль убийства.",
+        "operatives": [
+          { "name": "Dire Avenger Exarch", "text": "Aspect мести — Dire Avenger удерживают позиции и обрушивают на врага несмолкающий шквал shuriken-огня, отказываясь отступать." },
+          { "name": "Howling Banshee Exarch", "text": "Banshee-маски исторгают вопль, леденящий душу и замедляющий руку противника — Howling Banshee врываются в ближний бой быстрее, чем враг успевает опомниться." },
+          { "name": "Striking Scorpion Exarch", "text": "Striking Scorpion выжидают в тени, полагаясь на терпение хищника, чтобы нанести один-единственный смертельный удар и снова раствориться во мраке." },
+          { "name": "Dire Avenger Warrior", "text": "Рядовые бойцы святилища Мести, обученные держать строй и поддерживать шквальный огонь shuriken-оружия." },
+          { "name": "Howling Banshee Warrior", "text": "Стремительные клинки святилища Вопля, специализирующиеся на молниеносном сближении и безжалостном ближнем бое." },
+          { "name": "Striking Scorpion Warrior", "text": "Скрытные охотники святилища Скорпиона, наносящие удар из засады и исчезающие прежде, чем враг успевает ответить." }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Aspect Techniques",
+          "text": "Каждый ASPECT TECHNIQUE относится к одной из категорий: Dire Avenger, Howling Banshee или Striking Scorpion. Каждый ASPECT TECHNIQUE можно использовать только дружественным оператором с соответствующим Aspect-ключевым словом. Нельзя использовать больше одного ASPECT TECHNIQUE за активацию или counteraction. Нельзя использовать один и тот же ASPECT TECHNIQUE больше одного раза за turning point — если только все дружественные операторы BLADES OF KHAINE, выбранные для этой битвы, не имеют одно и то же Aspect-ключевое слово (например, все STRIKING SCORPION) — в этом случае каждый ASPECT TECHNIQUE можно использовать до двух раз за turning point вместо одного."
+        },
+        {
+          "name": "The Woe",
+          "text": "Используй во время активации дружественного оператора Howling Banshee, после того как он выполнил действие Charge и вывел из строя вражеского оператора действием Fight, и больше не находится в пределах control range вражеских операторов. Этот дружественный оператор может немедленно выполнить свободное действие Charge, используя оставшуюся дистанцию движения от первого действия Charge (он может выполнить два действия Charge за свою активацию для этого). Оператор не может выполнять никакие другие действия во время этой активации до этого (но может делать это после разрешения этого ASPECT TECHNIQUE)."
+        },
+        {
+          "name": "Rain of Tears",
+          "text": "Используй, когда дружественный оператор Howling Banshee дерётся, после того как ты нанёс удар critical success, если вражеский оператор не выведен из строя. Заверши эту последовательность (отбрось оставшиеся кубики атаки) и немедленно выполни свободное действие Fall Back до 3\" этим оператором (после чего действие Fight завершается). Этот оператор может сделать это, даже если он выполнил действие, которое обычно не позволяет ему выполнить действие Fall Back."
+        },
+        {
+          "name": "Acrobatic",
+          "text": "Используй, когда дружественный оператор Howling Banshee выполняет действие, в котором он двигается. До конца действия этот оператор: может игнорировать все вертикальные дистанции при спуске или подъёме; может двигаться сквозь вражеских операторов, входить в их control range, и во время действия Charge покидать их control range (он всё равно должен завершить движение, соблюдая все прочие требования к этому движению); не может двигаться дальше своего Move stat, если это действие Charge."
+        },
+        {
+          "name": "Scream-that-steals",
+          "text": "Используй, когда дружественный оператор Howling Banshee дерётся или отвечает (retaliating), в начале этапа Resolve Attack Dice. Можно разрешить один из своих success вне обычного порядка; если делаешь это, тот success должен быть использован для блока."
+        },
+        {
+          "name": "Shriek-that-kills",
+          "text": "Используй, когда дружественный оператор Howling Banshee выполняет действие Shoot. До конца этого действия этот оператор может использовать следующее дальнобойное оружие: \"Shriek-that-kills\" — Atk5 Hit3+ Dmg1/2, wr Range 6\", Saturate, Seek Light, Stun, Torrent 1\"."
+        },
+        {
+          "name": "The Slicing Hurricane",
+          "text": "Используй, когда дружественный оператор Dire Avenger выполняет действие Reposition. Этот оператор может выполнить действие Shoot во время этого действия (он должен сделать это в локации, где может быть размещён, и оставшаяся дистанция движения от того действия Reposition может быть использована после этого). Нужно выбрать shuriken catapult, shuriken pistol или twin shuriken catapult для этого действия Shoot."
+        },
+        {
+          "name": "Death of a Thousand Blades",
+          "text": "Используй, когда дружественный оператор Dire Avenger выполняет действие Shoot и ты выбираешь shuriken catapult или twin shuriken catapult. До конца этого действия это оружие получает weapon rule Torrent 2\", но нельзя выбрать больше одной secondary target."
+        },
+        {
+          "name": "Vigilance of the Avenger",
+          "text": "Используй, когда дружественный оператор Dire Avenger выполняет действие Shoot и ты выбираешь shuriken catapult или twin shuriken catapult. До конца этого действия это оружие получает weapon rule Lethal 5+."
+        },
+        {
+          "name": "Unstinting, Immovable",
+          "text": "Используй, когда оператор стреляет по дружественному оператору Dire Avenger, и ты выбросил два или более fail. Можно отбросить один из них, чтобы удержать другой как normal success вместо этого."
+        },
+        {
+          "name": "Raging Heat of the Dying Flame",
+          "text": "Используй во время активации дружественного оператора Dire Avenger. До начала следующей активации этого оператора можно игнорировать любые изменения его статов от being injured, включая статы его оружия."
+        },
+        {
+          "name": "Patient Stalk, Sudden Blow",
+          "text": "Используй, когда дружественный оператор Striking Scorpion с приказом Conceal выполняет действие Reposition. Во время этого действия этот оператор может двигаться в пределах control range вражеских операторов (он не может завершить движение там), и можно нанести D3+2 урона одному вражескому оператору, в пределах control range которого он оказался после движения."
+        },
+        {
+          "name": "Strike and Fade",
+          "text": "Используй, когда дружественный оператор Striking Scorpion выводит из строя вражеского оператора, дерясь или отвечая (retaliating), и больше не находится в пределах 3\" от вражеских операторов. Смени приказ этого дружественного оператора на Conceal, и он может немедленно выполнить свободное действие Dash, даже если он выполнил действие, которое обычно не позволяет ему выполнить действие Dash."
+        },
+        {
+          "name": "Scorpion's Eye",
+          "text": "Используй, когда дружественный оператор Striking Scorpion выполняет действие Shoot и ты выбираешь shuriken pistol. До конца этого действия это оружие получает weapon rule Seek Light."
+        },
+        {
+          "name": "Merciless Strikes",
+          "text": "Используй, когда дружественный оператор Striking Scorpion дерётся, в первый раз, когда ты наносишь удар critical success во время этой последовательности. До конца последовательности оружие ближнего боя этого оператора получает weapon rule Shock."
+        },
+        {
+          "name": "One with the Gloom",
+          "text": "Используй во время активации дружественного оператора Striking Scorpion. До начала его следующей активации, пока у этого оператора приказ Conceal и он в cover, его нельзя выбрать допустимой целью — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме случаев, когда вражеский оператор в пределах 2\" от него."
+        },
+        {
+          "name": "Forewarned",
+          "text": "Каждый раз, когда оператор стреляет по ready дружественному оператору BLADES OF KHAINE, можно перебросить любые свои кубики защиты с одним результатом (например, результаты 2).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Ruthless Poise",
+          "text": "Каждый раз, когда дружественный оператор BLADES OF KHAINE дерётся с ready вражеским оператором, оружие ближнего боя этого дружественного оператора получает weapon rule Ceaseless.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Khaine's Vengeance",
+          "text": "Каждый раз, когда дружественный оператор BLADES OF KHAINE стреляет по expended вражескому оператору, дальнобойное оружие этого дружественного оператора получает weapon rule Ceaseless.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Dance of Death",
+          "text": "Выбери двух дружественных операторов BLADES OF KHAINE, видимых друг другу и в пределах 6\" друг от друга. Убери их обоих из killzone и размести обратно на местах друг друга (то есть поменяй их местами).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Bladewind",
+          "text": "Используй во время активации дружественного оператора BLADES OF KHAINE. Во время этой активации этот оператор может выполнить два действия Fight.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Starfall",
+          "text": "Используй во время активации дружественного оператора BLADES OF KHAINE. Во время этой активации этот оператор может выполнить два действия Shoot.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Fading Light",
+          "text": "Используй во время активации дружественного оператора BLADES OF KHAINE, до или после выполнения им действия. Во время этой активации этот оператор может выполнить действие Fall Back за 1 AP меньше.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Contempt",
+          "text": "Используй, когда дружественный оператор BLADES OF KHAINE отвечает (retaliating), или вражеский оператор стреляет по нему, после того как противник бросил свои кубики атаки, но до переброса. До конца последовательности противник не может перебрасывать свои кубики атаки (если противник объявил использование firefight ploy во время этой последовательности, позволяющего перебросить, тот ploy отменяется, и потраченный CP возвращается).",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "rune_of_shielding_used",
+          "name": "Rune of Shielding",
+          "target": "friendly",
+          "text": "Отмечает, что снаряжение Rune of Shielding уже использовано в этой битве."
+        },
+        {
+          "id": "wraithbone_talisman_used",
+          "name": "Wraithbone Talisman",
+          "target": "friendly",
+          "text": "Отмечает, что снаряжение Wraithbone Talisman уже использовано в этом turning point."
+        },
+        {
+          "id": "rune_of_foresight_used",
+          "name": "Rune of Foresight",
+          "target": "friendly",
+          "text": "Отмечает, что снаряжение Rune of Foresight уже использовано в этой битве."
         }
       ]
     }
