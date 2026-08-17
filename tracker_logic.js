@@ -231,6 +231,14 @@ function filterEquipmentAfterTeamChange(team) {
  * синхронизировался с новым poolCounts. Это сделано намеренно раздельно,
  * чтобы можно было батчить несколько изменений перед одной пересборкой.
  */
+function poolWeightedTotal(killTeamDef, poolCounts) {
+  return Object.entries(poolCounts || {}).reduce((sum, [name, count]) => {
+    const opDef = (killTeamDef.pool || []).find(p => p.name === name);
+    const weight = (opDef && opDef.poolWeight) || 1;
+    return sum + count * weight;
+  }, 0);
+}
+
 function adjustPoolCount(gameData, team, operatorName, delta) {
   const killTeamDef = findKillTeamDef(gameData, team.killTeamName);
   if (!killTeamDef) return false;
@@ -238,12 +246,13 @@ function adjustPoolCount(gameData, team, operatorName, delta) {
   if (!def) return false;
 
   const maxCopies = def.maxCopies || 1;
+  const weight = def.poolWeight || 1;
   const current = team.poolCounts[operatorName] || 0;
-  const totalPicked = Object.values(team.poolCounts).reduce((a, b) => a + b, 0);
+  const totalPicked = poolWeightedTotal(killTeamDef, team.poolCounts);
 
   if (delta > 0) {
     if (current >= maxCopies) return false;
-    if (totalPicked >= killTeamDef.poolPick) return false;
+    if (totalPicked + weight > killTeamDef.poolPick) return false;
     team.poolCounts[operatorName] = current + 1;
   } else {
     if (current <= 0) return false;

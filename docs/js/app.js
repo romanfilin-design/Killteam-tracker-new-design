@@ -113,6 +113,9 @@
     'Earthen Wrath': 'Earthen Wrath — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Earthen Wrath»).',
     'Riposte': 'Riposte — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Riposte»).',
     'Zealous Rage': 'Zealous Rage — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Zealous Rage»).',
+    'Stalk': 'Stalk — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Stalk»).',
+    'Blood Offering': 'Blood Offering — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Blood Offering»).',
+    'Dimensional Banishment': 'Dimensional Banishment — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Dimensional Banishment»).',
     'Vicious Blows': 'Vicious Blows — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Vicious Blows»).',
     'Headtaker': 'Headtaker — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Headtaker»).',
     'Tactual Hunter': 'Tactual Hunter — особое правило конкретного оружия; полное описание — в способностях этого оператора (ищи запись «* Tactual Hunter»).',
@@ -678,22 +681,28 @@
       '</article>';
     }).join('');
 
-    var totalPicked = Object.values(t.poolCounts || {}).reduce(function (a, b) { return a + b; }, 0);
+    var totalPicked = Object.entries(t.poolCounts || {}).reduce(function (sum, entry) {
+      var opDef = (def.pool || []).find(function (p) { return p.name === entry[0]; });
+      var weight = (opDef && opDef.poolWeight) || 1;
+      return sum + entry[1] * weight;
+    }, 0);
 
     var poolCards = (def.pool || []).map(function (p) {
       var count = t.poolCounts[p.name] || 0;
       var maxCopies = p.maxCopies || 1;
+      var weight = p.poolWeight || 1;
       return '<article class="pool-card' + (count > 0 ? ' is-selected' : '') + '">' +
         '<div class="pool-card__portrait">' + poolCardPortrait(p.portrait) + '</div>' +
         '<div class="pool-card__body">' +
           '<div class="pool-card__name">' + esc(p.name) + '</div>' +
           '<div class="pool-card__stats">APL ' + esc(p.apl) + ' · MOVE ' + esc(p.move) + ' · SAVE ' + esc(p.save) + ' · W' + esc(p.wounds) +
-            (maxCopies > 1 ? ' · лимит ' + maxCopies : '') + '</div>' +
+            (maxCopies > 1 ? ' · лимит ' + maxCopies : '') +
+            (weight > 1 ? ' · занимает ' + weight + ' слота' : '') + '</div>' +
           '<div class="pool-card__stepper">' +
             '<button class="btn btn--icon btn--sm" data-action="adjustPool" data-value="' + esc(p.name) + '" data-delta="-1" ' + (count <= 0 ? 'disabled' : '') + '>−</button>' +
             '<span class="pool-card__count">' + count + '</span>' +
             '<button class="btn btn--icon btn--sm" data-action="adjustPool" data-value="' + esc(p.name) + '" data-delta="1" ' +
-              (count >= maxCopies || totalPicked >= def.poolPick ? 'disabled' : '') + '>+</button>' +
+              (count >= maxCopies || totalPicked + weight > def.poolPick ? 'disabled' : '') + '>+</button>' +
           '</div>' +
         '</div>' +
       '</article>';
