@@ -985,6 +985,156 @@
         "usesLabel": "1× за turning point",
         "desc": "Once per turning point, когда дружественный оператор BLADES OF KHAINE стреляет, дерётся или отвечает (retaliating), если ты выбросил два или более fail, можно отбросить один из них, чтобы удержать другой как normal success вместо этого."
       }
+    ],
+    "Battleclade": [
+      {
+        "id": "covert_guises",
+        "name": "Covert Guises",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "STRATEGIC GAMBIT в первом turning point. Брось один D3. Число дружественных операторов BATTLECLADE, равное результату, полностью находящихся в пределах твоей drop zone, может немедленно выполнить бесплатное действие Reposition, но должно закончить движение полностью в пределах 3\" от твоей drop zone. Твой оператор TECHNOARCHEOLOGIST не может выполнить больше одного действия Reposition в Strategy phase первого turning point (то есть с учётом действия по правилу Seeker of Divine Arcana)."
+      },
+      {
+        "id": "electromantic_capacitors",
+        "name": "Electromantic Capacitors",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Оружие ближнего боя дружественных операторов BATTLECLADE получает weapon rule Shock. Каждый раз, когда дружественный оператор BATTLECLADE отвечает (retaliating), его оружие ближнего боя также получает weapon rule Severe."
+      },
+      {
+        "id": "concealed_apparatus",
+        "name": "Concealed Apparatus",
+        "uses": 1,
+        "usesLabel": "1× за битву",
+        "desc": "Один раз за битву один оператор COMBAT SERVITOR или GUN SERVITOR может использовать другой вариант вооружения со своего датакарты, который не был выбран для этой битвы."
+      },
+      {
+        "id": "neurocyclic_reserve_cells",
+        "name": "Neurocyclic Reserve Cells",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Один раз за turning point, каждый раз когда ты выполняешь TRANSFER POWER, ты можешь использовать это правило. Если делаешь так, ты можешь выполнить TRANSFER POWER за 0AP (это имеет приоритет над обычными правилами Noospheric Network)."
+      }
+    ],
+    "Novitiates": [
+      {
+        "id": "icon_of_faith",
+        "name": "Icon of Faith",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Священные иконы Ecclesiarchy имеют огромное значение для Sisters, которые их несут, укрепляя их веру в самое сердце битвы.\n\nОдин раз за turning point ты можешь использовать до двух ACTS OF FAITH в одной последовательности (sequence), но каждый из них должен быть разным. Это имеет приоритет над обычными правилами ACTS OF FAITH."
+      },
+      {
+        "id": "sanctified_rounds",
+        "name": "Sanctified Rounds",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Освящённая кровью и слезами святых и благословлённая высшими иерархами клира, эта амуниция — анафема для нечестивых.\n\nКаждый раз, когда дружественный оператор NOVITIATE стреляет из autogun, autopistol, relic bolt pistol или relic boltgun, если ты тратишь Faith point, то оружие получает weapon rule Piercing Crits 1 до конца этой последовательности."
+      },
+      {
+        "id": "auto_chastisers",
+        "name": "Auto-Chastisers",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Эти орудия самобичевания причиняют благословенные страдания, разжигая пыл их носителя.\n\nОдин раз за turning point, когда дружественный оператор NOVITIATE стреляет, дерётся или отвечает (retaliating), на этапе Roll Attack Dice ты можешь нанести 1-3 урона тому дружественному оператору (но не выводя его из строя). Если ты это делаешь, ты можешь использовать один ACT OF FAITH бесплатно в этой последовательности со стоимостью Faith points не выше нанесённого этим правилом урона."
+      },
+      {
+        "id": "holy_embrocations",
+        "name": "Holy Embrocations",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Святые масла и бальзамы притупляют боль и обостряют разум, позволяя Novitiate игнорировать раны, которые иначе сковали бы её движения.\n\nТы можешь игнорировать любые изменения Move stat дружественных операторов NOVITIATE от полученных ранений."
+      }
+    ],
+    "Kasrkin": [
+      {
+        "id": "foregrip",
+        "name": "Foregrip",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Каждый раз, когда дружественный оператор KASRKIN стреляет по оператору в пределах 3\" от него, дальнобойное оружие на его датакарте (кроме оружия, в названии которого есть 'pistol' — например, hot-shot laspistol, все профили plasma pistol и т.д.) получает weapon rule Accurate 1."
+      },
+      {
+        "id": "long_range_scope",
+        "name": "Long-Range Scope",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Каждый раз, когда дружественный оператор KASRKIN стреляет по оператору дальше 6\" от него, hot-shot weapons того дружественного оператора получают weapon rule Saturate."
+      },
+      {
+        "id": "relics_of_cadia",
+        "name": "Relics of Cadia",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор KASRKIN стреляет, дерётся или отвечает (retaliating), если ты бросил два или более fails, можно сбросить один из них, чтобы удержать другой как normal success вместо этого."
+      },
+      {
+        "id": "combat_daggers",
+        "name": "Combat Daggers",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Дружественные операторы KASRKIN получают следующее оружие ближнего боя: Combat dagger — Atk3 Hit4+ Dmg3/4."
+      }
+    ],
+    "Exodite Dragon Masters": [
+      {
+        "id": "dragonscale_mesh",
+        "name": "Dragonscale Mesh",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда оператор стреляет по дружественному оператору EXODITE DRAGON MASTER MOUNTED, на шаге Roll Defence Dice можно удержать один normal success как critical success вместо этого."
+      },
+      {
+        "id": "clan_talismans",
+        "name": "Clan Talismans",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор EXODITE DRAGON MASTER MOUNTED стреляет, дерётся или отвечает (retaliating), если выпало два или более fail, можно отбросить один из них, чтобы удержать другой как normal success вместо этого."
+      },
+      {
+        "id": "lileathan_crystal_matrices",
+        "name": "Lileathan Crystal Matrices",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Once per turning point, когда дружественный оператор EXODITE DRAGON MASTER выполняет действие Shoot и ты выбираешь solar carbine или профиль его long rifle, можно использовать это правило. До конца той активации это оружие получает weapon rule Piercing 1."
+      },
+      {
+        "id": "spirit_stones",
+        "name": "Spirit Stones",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Каждый раз, когда дружественный оператор EXODITE DRAGON MASTER MOUNTED выведен из строя, получи 1CP."
+      }
+    ],
+    "Scout Squad": [
+      {
+        "id": "camo_cloak",
+        "name": "Camo Cloak",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Изготовленные из светопреломляющих материалов вроде cameleoline, camo cloaks помогают носителю сливаться с окружающей местностью. Каждый раз, когда оператор стреляет по дружественному оператору SCOUT SQUAD (кроме SNIPER), если можно удержать любые cover save, можно удержать один дополнительный cover save, либо удержать один cover save как critical success вместо этого. Не суммируется с улучшенными cover save от Vantage terrain."
+      },
+      {
+        "id": "targeting_oculars",
+        "name": "Targeting Oculars",
+        "uses": 2,
+        "usesLabel": "2× за turning point",
+        "desc": "Высокочувствительные мультиспектральные прицельные визоры, повышающие точность и летальность оружия носителя. До двух раз за turning point, когда дружественный оператор SCOUT SQUAD выполняет действие Shoot и ты выбираешь допустимую цель, можно использовать это правило. Если используешь, до конца этого действия дальнобойное оружие того дружественного оператора получает weapon rules Lethal 5+ и Saturate."
+      },
+      {
+        "id": "combat_blades",
+        "name": "Combat Blades",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Неофиты Space Marine владеют разнообразным короткоклинковым оружием и демонстрируют смертоносное мастерство в его применении. Дружественные операторы SCOUT SQUAD получают следующее оружие ближнего боя: Combat blade (Atk3 Hit3+ Dmg4/5). Обрати внимание, что у некоторых операторов уже есть это оружие с лучшими характеристиками; в этом случае используй более выгодный вариант."
+      },
+      {
+        "id": "tactical_vox_link",
+        "name": "Tactical Vox-Link",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Scout Sergeant поддерживает постоянную вокс-связь со своими подопечными, направляя их натиск с смертоносной точностью. Один раз за turning point можно использовать firefight ploy Astartes Training или Emboldened Aspirant за 0CP, если в killzone есть дружественный оператор SERGEANT."
+      }
     ]
   },
   "killTeams": {
@@ -11702,6 +11852,2384 @@
           "name": "Rune of Foresight",
           "target": "friendly",
           "text": "Отмечает, что снаряжение Rune of Foresight уже использовано в этой битве."
+        }
+      ]
+    },
+    "Battleclade": {
+      "archetypes": [
+        "Infiltration",
+        "Recon"
+      ],
+      "required": [
+        {
+          "name": "Battleclade Technoarcheologist",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Eradication pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/2",
+              "wr": "Range 8\", Devastating 3, Lethal 5+"
+            },
+            {
+              "name": "Servo-arc claw",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Severe, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Seeker of Divine Arcana",
+              "text": "Ты можешь немедленно сменить приказ этого оператора и/или он может немедленно выполнить бесплатное действие Omniscanner, Fall Back, Place Marker, Pick Up Marker, Reposition или mission-действие. Если это действие Fall Back или Reposition и этот оператор не несёт маркер, он должен закончить движение либо в пределах своей drop zone (если она не в пределах его control range), либо как можно ближе к ней, либо в пределах control range объектного маркера или одного из твоих mission-маркеров.",
+              "cost": "Strategic Gambit"
+            },
+            {
+              "name": "Omniscanner",
+              "text": "Выбери одного вражеского оператора, видимого этому оператору, в пределах 8\" от него, чтобы дать ему один из своих токенов Omniscanner. Каждый раз, когда дружественный оператор BATTLECLADE стреляет, дерётся или отвечает (retaliating) против вражеского оператора с одним из твоих токенов Omniscanner, оружие того дружественного оператора получает weapon rule Ceaseless.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/battleclade/technoarcheologist.png"
+        },
+        {
+          "name": "Battleclade Servitor Underseer",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Master-crafted radium pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/4",
+              "wr": "Range 8\", Balanced, Rending"
+            },
+            {
+              "name": "Dataspikes",
+              "atk": 3,
+              "hit": "5+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Datacoronal Accumulator",
+              "text": "SUPPORT. Определи дружественных операторов BATTLECLADE в пределах 6\" от этого оператора и/или от дружественного оператора BATTLECLADE AUTO-PROXY, затем брось один D3. Если результат равен или меньше числа объектных маркеров, которые оспаривают эти дружественные операторы, ты получаешь 1CP. Для целей universal equipment Comms Device оператор, от которого определяется дистанция, должен контролировать твой маркер Comms Device, чтобы добавить 3\" к требуемой дистанции для этого правила.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Network Override",
+              "text": "SUPPORT. Выбери одного дружественного оператора BATTLECLADE SERVITOR в пределах 6\" от этого оператора либо от дружественного оператора BATTLECLADE AUTO-PROXY, чтобы он немедленно выполнил NETWORK COUNTERACT (для этого не обязательно выполнять TRANSFER POWER) или действие Dash. После этого продолжи активацию этого оператора. Для целей universal equipment Comms Device оператор, от которого определяется дистанция, должен контролировать этот маркер.\n\nЭтот оператор может выполнить это действие дважды за свою активацию, но не может выполнять его, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/battleclade/servitor_underseer.png"
+        }
+      ],
+      "poolPick": 8,
+      "pool": [
+        {
+          "name": "Battleclade Auto-Proxy Servitor",
+          "apl": 2,
+          "move": "5\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Taser goad",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Achilian Eye",
+              "text": "Каждый раз, когда дружественный оператор BATTLECLADE стреляет по вражескому оператору, видимому этому оператору, дальнобойное оружие того дружественного оператора получает weapon rule Saturate. Это правило не действует, если этот оператор находится в пределах control range вражеского оператора."
+            },
+            {
+              "name": "Gaze of the Omnissiah",
+              "text": "Выбери одного вражеского оператора, видимого этому оператору. До конца turning point, каждый раз, когда дружественный оператор BATTLECLADE стреляет по тому вражескому оператору, ты можешь использовать этот эффект. Если делаешь так: дальнобойное оружие того дружественного оператора получает weapon rule Seek Light; тот вражеский оператор не может быть obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/battleclade/auto-proxy_servitor.png"
+        },
+        {
+          "name": "Battleclade Breacher Servitor",
+          "apl": 2,
+          "move": "5\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Lascutter (close range)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 2\", Lethal 5+, Piercing 2"
+            },
+            {
+              "name": "Lascutter (short range)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 6\", Lethal 5+"
+            },
+            {
+              "name": "Hydraulic pincer & lascutter",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Breach",
+              "text": "Размести один свой маркер Breach в пределах control range этого оператора, как можно ближе к элементу террейна в пределах его control range. Каждый раз, когда оператор находится в пределах 1\" от этого маркера, части того элемента террейна толщиной не более 1\" считаются Accessible terrain.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или если в его control range нет элемента террейна.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/battleclade/breacher_servitor.png"
+        },
+        {
+          "name": "Battleclade Combat Servitor",
+          "apl": 2,
+          "move": "5\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 3,
+          "weapons": [
+            {
+              "name": "Incendine igniter",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "4/4",
+              "wr": "Range 6\", Saturate, Torrent 1\""
+            },
+            {
+              "name": "Meltagun",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "6/3",
+              "wr": "Range 6\", Devastating 4, Piercing 2"
+            },
+            {
+              "name": "Phosphor blaster",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Blast 1\", Severe"
+            },
+            {
+              "name": "Servo-claw",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается один из трёх вариантов дальнобойного оружия — Incendine igniter, Meltagun или Phosphor blaster (плюс Servo-claw в любом случае) — при сборке ростера. В отряде можно включить до трёх операторов Combat Servitor, но лишь один из них может нести Meltagun (несущих Incendine igniter — до трёх). В этом приложении представлены все варианты; используй только выбранный для каждой копии этого оператора."
+            }
+          ],
+          "portrait": "img/portraits/battleclade/combat_servitor.png"
+        },
+        {
+          "name": "Battleclade Gun Servitor",
+          "apl": 2,
+          "move": "5\"",
+          "save": "4+",
+          "wounds": 11,
+          "weapons": [
+            {
+              "name": "Heavy arc rifle",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/6",
+              "wr": "Heavy (Dash only), Piercing 1, Stun"
+            },
+            {
+              "name": "Heavy bolter (focused)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Piercing Crits 1"
+            },
+            {
+              "name": "Heavy bolter (sweeping)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Piercing Crits 1, Torrent 1\""
+            },
+            {
+              "name": "Augmetic claw",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Brutal"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант тяжёлого вооружения — Heavy arc rifle или Heavy bolter (с профилями focused и sweeping; плюс Augmetic claw в любом случае) — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный для каждой копии этого оператора."
+            }
+          ],
+          "portrait": "img/portraits/battleclade/gun_servitor.png"
+        },
+        {
+          "name": "Battleclade Technomedic Servitor",
+          "apl": 2,
+          "move": "5\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Servo-chirurgic claw",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Mechanosuture Array",
+              "text": "Один раз за turning point, когда другой дружественный оператор BATTLECLADE, видимый этому оператору и находящийся в пределах 3\" от него, должен быть выведен из строя, ты можешь использовать это правило, при условии что ни этот, ни тот оператор не находятся в пределах control range вражеского оператора. Если используешь: тот дружественный оператор не выводится из строя, у него остаётся 1 wound, и его нельзя вывести из строя до конца этого действия. После этого действия тот дружественный оператор может немедленно выполнить бесплатное действие Dash, но должен закончить это движение в пределах control range этого оператора. Если это правило было использовано во время активации того дружественного оператора, та активация заканчивается.\n\nНельзя использовать это правило, если этот оператор выведен из строя, либо если это действие Shoot, в котором этот оператор был бы primary или secondary целью. Отметь того дружественного оператора своим статус-токеном Mechanosuture Array (нельзя использовать это правило снова на операторе, у которого уже есть этот токен в этом turning point)."
+            },
+            {
+              "name": "Expedient Repair",
+              "text": "Выбери одного дружественного оператора BATTLECLADE в пределах control range этого оператора, чтобы он восстановил до D3+3 потерянных wounds. Нельзя выбрать оператора, на котором в этом turning point уже было использовано правило Mechanosuture Array.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/battleclade/technomedic_servitor.png"
+        }
+      ],
+      "equipment": "Battleclade",
+      "lore": {
+        "intro": "Battleclade — сборная боевая группа Adeptus Mechanicus, объединяющая сервиторов различного назначения под управлением Technoarcheologist и Servitor Underseer через невидимую ноосферную сеть. Каждый сервитор — лишь придаток единой воли Омниссиаха, чья обработка и приоритеты могут быть мгновенно перераспределены между членами клады через передачу мощности (Transfer Power) и перехват контроля (Network Counteract), позволяя отряду действовать с почти механической слаженностью.",
+        "operatives": [
+          {
+            "name": "Battleclade Technoarcheologist",
+            "text": "Одержимый жаждой утраченных знаний тех-жрец, возглавляющий кладу и направляющий Omniscanner на самые ценные вражеские цели."
+          },
+          {
+            "name": "Battleclade Servitor Underseer",
+            "text": "Надсмотрщик над сервиторами клады, чьё присутствие в ноосферной сети позволяет мгновенно перенастраивать и перехватывать управление подчинёнными машинами."
+          },
+          {
+            "name": "Battleclade Auto-Proxy Servitor",
+            "text": "Сервитор-ретранслятор, чьё Achilian Eye усиливает прицельные системы клады и метит цели для беспощадного огня."
+          },
+          {
+            "name": "Battleclade Breacher Servitor",
+            "text": "Тяжело бронированный проходчик, вскрывающий укрепления лазерным резаком и прокладывающий клады путь сквозь любые преграды."
+          },
+          {
+            "name": "Battleclade Combat Servitor",
+            "text": "Боевой автомат, несущий один из смертоносных стволов — от испепеляющего Incendine igniter до пробивающего броню Meltagun."
+          },
+          {
+            "name": "Battleclade Gun Servitor",
+            "text": "Массивная огневая платформа клады, обрушивающая на противника шквал тяжёлого вооружения."
+          },
+          {
+            "name": "Battleclade Technomedic Servitor",
+            "text": "Хирург-автомат, чей Mechanosuture Array вырывает соратников из объятий смерти в последний момент."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Noospheric Network",
+          "text": "Сервиторы связаны со своими тех-жрецами невидимой сетью контроля. Эта ноосферная сеть позволяет быстро перераспределять обрабатывающие мощности между сервиторами, чтобы те лучше выполняли текущую волю тех-жрецов. Одни остаются верны базовым программам, другие получают ключевые задачи во славу Машинного Бога.\n\nОдин раз во время активации каждого дружественного оператора BATTLECLADE SERVITOR, до или после выполнения им действия, ты можешь потратить 1AP, чтобы выполнить TRANSFER POWER.\n\nПосле этой активации ты можешь выполнить NETWORK COUNTERACT одним другим дружественным оператором BATTLECLADE SERVITOR до того, как активируется оппонент. Каждый раз, когда ты выполняешь NETWORK COUNTERACT дружественным оператором, сначала выбери его приказ. Затем он может бесплатно выполнить одно действие за 1AP, но не может переместиться больше чем на 2\" во время этого действия. После этого твой оппонент активируется как обычно.\n\nОператор не может выполнить TRANSFER POWER или NETWORK COUNTERACT, если у него APL stat меньше 2 (например, если эта характеристика была изменена до значения меньше 2 каким-либо правилом). NETWORK COUNTERACT — это контрдействие (counteraction), но оператору не обязательно быть expended с приказом Engage, чтобы его выполнить. Это значит, что если он готов (ready), когда выполняет NETWORK COUNTERACT, он всё равно может быть активирован позже как обычно. Оператор, выполнивший NETWORK COUNTERACT, не может сделать это снова или counteract в этом же turning point."
+        },
+        {
+          "name": "Noospheric Possession",
+          "text": "SUPPORT. Каждый раз, когда дружественный оператор BATTLECLADE SERVITOR находится в пределах 6\" от дружественного оператора BATTLECLADE AUTO-PROXY или BATTLECLADE SERVITOR UNDERSEER, оружие того дружественного оператора SERVITOR получает weapon rule Accurate 1.\n\nДля целей universal equipment Comms Device оператор, от которого определяется дистанция, должен контролировать твой маркер Comms Device, чтобы добавить 3\" к требуемой дистанции для этого правила.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Duty of Reclamation",
+          "text": "Один раз за действие ты можешь использовать firefight ploy Command Re-roll для перебрасывания attack- или defence-кубика, если он был брошен для дружественного оператора BATTLECLADE, который оспаривает объектный маркер или один из твоих mission-маркеров.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Incantation of the Iron Soul",
+          "text": "Каждый раз, когда attack dice наносит 3 или больше урона дружественному оператору BATTLECLADE, брось один D6: на 4+ вычти 1 из этого нанесённого урона.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Prioritised Acquisition",
+          "text": "Выбери один объектный маркер или один из своих mission-маркеров.\n\n- При определении контроля над этим маркером считай суммарный APL stat дружественных операторов BATTLECLADE, оспаривающих его, на 1 выше, если этот маркер оспаривает хотя бы один дружественный оператор BATTLECLADE. Учти, что это не изменение самого APL stat, поэтому не суммируется с другими подобными изменениями.\n- Каждый раз, когда дружественный оператор BATTLECLADE находится в пределах 3\" от этого маркера, добавь 1 к характеристике Atk его оружия ближнего боя (максимум до 4).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "System Exorcism",
+          "text": "Используй этот firefight ploy, когда активируешь дружественного оператора BATTLECLADE. Убери один эффект правила или изменение характеристики, применённые к нему твоим оппонентом (например, токен Poison, -1APL, запрет активироваться или выполнять действия и т.п.), затем активируй его. Этот ploy не позволяет восстановить потерянные wounds, убрать эффекты ранения или mission pack rules.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Remote Access",
+          "text": "Используй этот firefight ploy во время активации дружественного оператора BATTLECLADE TECH-PRIEST. Один раз за эту активацию ты можешь использовать одно из следующих правил:\n\n- Этому оператору не требуется маркер в пределах его control range для выполнения mission-действия, которое обычно этого требует (это имеет приоритет над условиями того действия); вместо этого маркер должен быть в пределах 4\" от него, и ни один вражеский оператор не должен оспаривать этот маркер. Однако при этом можно игнорировать вражеских операторов в пределах control range других дружественных операторов BATTLECLADE.\n- Этому оператору не требуется точка доступа hatchway в пределах его control range для выполнения действия Operate Hatch. Вместо этого точка доступа должна быть в пределах 4\" от него.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Auto-Ferric Supplication",
+          "text": "Используй этот firefight ploy, когда по дружественному оператору BATTLECLADE TECH-PRIEST стреляют, в начале этапа Roll Attack Dice. До конца последовательности игнорируй weapon rule Piercing.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Servile Surrogacy",
+          "text": "Используй этот firefight ploy, когда дружественный оператор BATTLECLADE TECH-PRIEST выбран допустимой целью действия Shoot или для боя в действии Fight. Выбери одного дружественного оператора BATTLECLADE SERVITOR, видимого и в пределах 3\" от того первого дружественного оператора, чтобы он стал допустимой целью (вместо него), даже если обычно не подходил бы для этого. Если это действие Fight — для целей этого действия считай, что тот SERVITOR находится в пределах control range сражающегося оператора на всё время этого действия. Если это действие Shoot — тот SERVITOR считается in cover или obscured, только если изначальная цель была in cover или obscured.\n\nЭтот ploy не действует, если это действие Shoot и дальнобойное оружие имеет weapon rule Blast или Torrent.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "omniscanner",
+          "name": "Omniscanner",
+          "target": "enemy",
+          "text": "Размещён действием Omniscanner оператора Technoarcheologist. Каждый раз, когда дружественный оператор BATTLECLADE стреляет, дерётся или отвечает (retaliating) против отмеченного вражеского оператора, оружие того дружественного оператора получает weapon rule Ceaseless."
+        },
+        {
+          "id": "gaze_of_omnissiah",
+          "name": "Gaze of the Omnissiah",
+          "target": "enemy",
+          "text": "Размещён действием Gaze of the Omnissiah оператора Auto-Proxy Servitor. До конца turning point, каждый раз, когда дружественный оператор BATTLECLADE стреляет по отмеченному вражескому оператору, ты можешь дать дальнобойному оружию того дружественного оператора weapon rule Seek Light и не позволить отмеченному оператору быть obscured."
+        },
+        {
+          "id": "network_counteract",
+          "name": "Network Counteract",
+          "target": "friendly",
+          "text": "Отмечает, что этот дружественный оператор BATTLECLADE SERVITOR уже выполнил NETWORK COUNTERACT в этом turning point — он не может сделать это снова или counteract в этом же turning point."
+        },
+        {
+          "id": "mechanosuture_array",
+          "name": "Mechanosuture Array",
+          "target": "friendly",
+          "text": "Отмечает, что этот дружественный оператор BATTLECLADE уже был спасён правилом Mechanosuture Array оператора Technomedic Servitor в этом turning point — нельзя использовать это правило снова на нём в этом же turning point."
+        }
+      ]
+    },
+    "Novitiates": {
+      "archetypes": [
+        "Recon",
+        "Security"
+      ],
+      "equipment": "Novitiates",
+      "required": [
+        {
+          "name": "Novitiate Superior",
+          "apl": 3,
+          "move": "6\"",
+          "save": "3+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Relic bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Lethal 5+"
+            },
+            {
+              "name": "Relic boltgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается один из трёх вариантов вооружения — Plasma pistol + power weapon, Relic boltgun + gun butt, или Relic bolt pistol + power weapon — при сборке ростера. В этом приложении представлены все варианты; используй только выбранный."
+            },
+            {
+              "name": "Inspirational Example",
+              "text": "Каждый раз, когда этот оператор выводит из строя (incapacitate) вражеского оператора, ты получаешь 1 Faith point, или 2 Faith points, если у того вражеского оператора был Wounds stat 12 или больше. Это правило не действует при использовании firefight ploy Glorious Martyrdom."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_superior.png"
+        }
+      ],
+      "poolPick": 9,
+      "pool": [
+        {
+          "name": "Novitiate Condemnor",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Condemnor stakethrower",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Anti-PSYKER*, Devastating 2, Piercing Crits 1, Silent"
+            },
+            {
+              "name": "Null rod",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/3",
+              "wr": "Anti-PSYKER*, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Null Rod",
+              "text": "PSYCHIC ranged-оружие не может наносить урон этому оператору. Для эффектов PSYCHIC-действий этого оператора нельзя выбирать, и он никогда не считается находящимся в пределах требуемых дистанций этих действий. Когда оператор находится в пределах 6\" от этого оператора: тот оператор не может выполнять PSYCHIC-действия или использовать PSYCHIC additional rules; тот оператор не может использовать PSYCHIC ranged-оружие; PSYCHIC melee-оружие не имеет никаких weapon rules и не может иметь характеристики Dmg выше 3/4."
+            },
+            {
+              "name": "Anti-PSYKER",
+              "text": "*Anti-PSYKER: каждый раз, когда это оружие используется против оператора с ключевым словом PSYKER, прибавь 1 к обоим Dmg stats этого оружия, и оно получает weapon rule Lethal 5+."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_condemnor.png"
+        },
+        {
+          "name": "Novitiate Dialogus",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Dialogus stave",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/3",
+              "wr": "Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Stirring Rhetoric",
+              "text": "SUPPORT. Выбери другого дружественного оператора NOVITIATE, видимого этому оператору и находящегося в пределах 6\" от него, либо в пределах 6\" от твоего маркера Auto-broadcaster. До конца следующей активации того оператора прибавь 1 к его APL stat (максимум до 3 после суммирования всех изменений APL stat).\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Auto-Broadcaster",
+              "text": "Если твой маркер Auto-broadcaster ещё не в killzone, размести его в пределах 8\" по горизонтали от этого оператора; в противном случае передвинь маркер Auto-broadcaster на расстояние до 8\" по горизонтали. Если этот оператор убирается из killzone, убери и маркер Auto-broadcaster.\n\nКаждый раз, когда вражеский оператор в пределах 3\" от твоего маркера Auto-broadcaster стреляет, дерётся или отвечает (retaliating), твой противник не может перебрасывать (re-roll) свои кубики атаки.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "0AP"
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_dialogus.png"
+        },
+        {
+          "name": "Novitiate Duellist",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Duelling blades",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Ceaseless, Riposte*"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Riposte",
+              "text": "*Riposte: каждый раз, когда ты блокируешь (block) с critical success, ты также можешь нанести урон, равный Critical Dmg stat этого оружия, вражескому оператору в этой последовательности (sequence)."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_duellist.png"
+        },
+        {
+          "name": "Novitiate Exactor",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Neural whips (ranged)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "2/3",
+              "wr": "Range 3\", Lethal 5+, Stun"
+            },
+            {
+              "name": "Neural whips (melee)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "2/3",
+              "wr": "Lethal 5+, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Whip Into Frenzy",
+              "text": "Выбери другого дружественного оператора NOVITIATE (кроме SUPERIOR), видимого этому оператору и находящегося в пределах 3\" от него, который в данный момент не находится под действием этого действия. До конца следующей активации того оператора прибавь 1\" к его Move stat, он может выполнить два действия Fight во время своей следующей активации, и одно из них может быть бесплатным. Отметь того оператора своим статус-токеном Whip Into Frenzy.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_exactor.png"
+        },
+        {
+          "name": "Novitiate Hospitaller",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Surgical saw",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Lethal 5+, Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Medic!",
+              "text": "В первый раз за каждый turning point, когда другой дружественный оператор NOVITIATE должен быть выведен из строя (incapacitated), будучи видимым этому оператору и в пределах 3\" от него, можно использовать это правило при условии, что ни этот, ни тот оператор не находятся в пределах control range вражеского оператора. Если используешь: тот дружественный оператор не выводится из строя, у него остаётся 1 wound, и до конца этого действия его нельзя вывести из строя. После этого действия тот дружественный оператор может немедленно выполнить бесплатное действие Dash, но должен закончить это перемещение в пределах control range этого оператора. Вычти 1 из APL stat этого оператора и того оператора соответственно до конца их следующих активаций, и если это правило было использовано во время активации того дружественного оператора, та активация заканчивается. Отметь того дружественного оператора своим статус-токеном Medic! (нельзя использовать это правило снова на операторе, у которого уже есть этот токен в этом turning point).\n\nНельзя использовать это правило, если этот оператор выведен из строя, или если это действие Shoot, в котором этот оператор является primary или secondary целью."
+            },
+            {
+              "name": "Chirurgeon's Tools",
+              "text": "Выбери одного дружественного оператора NOVITIATE в пределах control range этого оператора, чтобы он восстановил до 2D3 потерянных wounds. Нельзя выбрать оператора, на котором в этом turning point уже было использовано правило Medic!.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_hospitaller.png"
+        },
+        {
+          "name": "Novitiate Militant",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Autogun",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Novitiate blade",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается один из двух вариантов вооружения — Autopistol + Novitiate blade, или Autogun + gun butt — при сборке ростера. В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Militant Faith",
+              "text": "Каждый раз, когда этот оператор стреляет, дерётся или отвечает (retaliating), если ты используешь ACT OF FAITH в этой последовательности и вражеский оператор выводится из строя, Faith points, потраченные на тот ACT OF FAITH, возвращаются. Если ты используешь снаряжение Icon of Faith, Faith points возвращаются только за один из этих ACTS OF FAITH (на твой выбор)."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_militant.png"
+        },
+        {
+          "name": "Novitiate Penitent",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Penitent eviscerator",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/6",
+              "wr": "Brutal, Zealous Rage*"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Zealous Rage",
+              "text": "*Zealous Rage: каждый раз, когда этот оператор дерётся этим оружием, оно получает weapon rule Ceaseless."
+            },
+            {
+              "name": "Absolution Through Destruction",
+              "text": "Каждый раз, когда этот оператор выполняет действие Fight, если он не выведен из строя, он может немедленно выполнить бесплатное действие Fight после этого. Это имеет приоритет над ограничениями на действия, и нельзя выполнить более двух действий Fight подряд в результате этого правила. Если этот оператор находится под действием Whip Into Frenzy (см. EXACTOR), это применяется к каждому из действий Fight от того эффекта."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_penitent.png"
+        },
+        {
+          "name": "Novitiate Preceptor",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Mace of the Righteous",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "5/5",
+              "wr": "Brutal, Severe"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Unflinching Example",
+              "text": "Каждый раз, когда этот оператор выводит из строя (incapacitate) ready вражеского оператора в пределах своего control range, ты получаешь 1 Faith point, или 2 Faith points, если у того вражеского оператора был Wounds stat 12 или больше."
+            },
+            {
+              "name": "Glorious Hymnal",
+              "text": "SUPPORT. Каждый раз, когда дружественный оператор NOVITIATE находится в пределах 3\" от этого оператора, оружие того дружественного оператора получает weapon rule Severe."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_preceptor.png"
+        },
+        {
+          "name": "Novitiate Pronatus",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Relic Seeker",
+              "text": "Один раз во время каждой своей активации этот оператор может выполнить действие Pick Up Marker, Place Marker или mission-действие за 1 AP меньше."
+            },
+            {
+              "name": "Divine Acquisition",
+              "text": "Один раз за turning point, когда этот оператор выполняет mission-действие, требующее контроля над objective или mission-маркером, ты получаешь количество Faith points, равное номеру turning point. Отметь этого оператора своим статус-токеном Divine Acquisition."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_pronatus.png"
+        },
+        {
+          "name": "Novitiate Purgatus",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 2,
+          "weapons": [
+            {
+              "name": "Ministorum flamer",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "4/4",
+              "wr": "Range 8\", Saturate, Torrent 2\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Purge with Flame",
+              "text": "Один раз за turning point ты можешь использовать firefight ploy Blazing Inferno за 0CP, если это указанный дружественный оператор NOVITIATE."
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_purgatus.png"
+        },
+        {
+          "name": "Novitiate Reliquarius",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 7,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Autopistol",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Icon Bearer",
+              "text": "Каждый раз, когда определяется контроль над маркером, считай APL stat этого оператора на 1 выше. Учти, что это не изменение его APL stat, поэтому изменения не суммируются с этим правилом."
+            },
+            {
+              "name": "Raise Icon",
+              "text": "Ты получаешь 1 Faith point. Если этот оператор контролирует objective-маркер, ты также получаешь количество Faith points, равное номеру turning point.\n\nНельзя выполнять это действие более одного раза за turning point, и нельзя выполнять его, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/novitiates/novitiate_reliquarius.png"
+        }
+      ],
+      "lore": {
+        "intro": "Kill team Novitiates — молодые сёстры Adepta Sororitas, ещё не принесшие финальных обетов, но уже брошенные в бой, чтобы закалить веру огнём и клинком. Ведомые Novitiate Superior, они действуют слаженно и жертвенно: каждая проверка боем приближает их к посвящению в полноправные Battle Sisters, а каждая смерть на поле боя становится актом высшего служения Императору.",
+        "operatives": [
+          {
+            "name": "Novitiate Superior",
+            "text": "Старшая среди послушниц, ведущая отряд личным примером и неколебимой верой даже под самым плотным огнём."
+          },
+          {
+            "name": "Novitiate Condemnor",
+            "text": "Охотница на псайкеров, несущая stakethrower и null rod, гасящие саму возможность колдовства в её присутствии."
+          },
+          {
+            "name": "Novitiate Dialogus",
+            "text": "Хранительница священных текстов, чьи проповеди через auto-broadcaster вдохновляют сестёр на подвиг посреди хаоса боя."
+          },
+          {
+            "name": "Novitiate Duellist",
+            "text": "Мастер клинка, оттачивающая смертоносное изящество duelling blades в стремительных поединках."
+          },
+          {
+            "name": "Novitiate Exactor",
+            "text": "Надзирательница, чьи neural whips подстёгивают сестёр к исступлённой, почти безрассудной ярости в бою."
+          },
+          {
+            "name": "Novitiate Hospitaller",
+            "text": "Полевая целительница, вырывающая раненых сестёр из объятий смерти прямо посреди сражения."
+          },
+          {
+            "name": "Novitiate Militant",
+            "text": "Рядовая послушница отряда, чья простая, но твёрдая вера возвращает потраченную ею силу духа в момент триумфа."
+          },
+          {
+            "name": "Novitiate Penitent",
+            "text": "Кающаяся грешница, обрушивающая penitent eviscerator на врага с необузданной, самоотречённой яростью."
+          },
+          {
+            "name": "Novitiate Preceptor",
+            "text": "Наставница послушниц, чей боевой гимн и mace of the Righteous освящают удары сестёр рядом с ней."
+          },
+          {
+            "name": "Novitiate Pronatus",
+            "text": "Хранительница реликвий, быстрее прочих завладевающая ключевыми точками killzone во имя веры."
+          },
+          {
+            "name": "Novitiate Purgatus",
+            "text": "Носительница Ministorum flamer, очищающая позиции противника священным пламенем."
+          },
+          {
+            "name": "Novitiate Reliquarius",
+            "text": "Знаменосица отряда, чей поднятый icon укрепляет решимость сестёр и притягивает благословение Императора к захваченным рубежам."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Acts of Faith",
+          "text": "Таков пыл Adepta Sororitas, что в их присутствии становится явлена божественная воля Императора.\n\nНа этапе Ready каждой Strategy phase ты получаешь количество Faith points, равное половине числа дружественных операторов NOVITIATE, которые не были выведены из строя (округляя вверх).\n\nКаждый раз, когда дружественный оператор NOVITIATE стреляет, дерётся или отвечает (retaliating), либо оператор стреляет по нему (на этапе Roll Attack Dice, или Roll Defence Dice, если по нему стреляют), ты можешь потратить свои Faith points, чтобы использовать один ACT OF FAITH. Нельзя использовать более одного ACT OF FAITH за последовательность (sequence), а их стоимость и эффекты таковы:\n\n- Guidance — 1 Faith point: ты можешь перебросить один свой кубик.\n- Blessing — 2 Faith points: ты можешь удержать один свой normal success как critical success.\n- Intervention — 3 Faith points: ты можешь удержать один свой fail как normal success вместо того, чтобы отбросить его."
+        },
+        {
+          "name": "Ardent Vengeance",
+          "text": "Каждый раз, когда дружественный оператор NOVITIATE стреляет по, дерётся против или отвечает (retaliating) против expended вражеского оператора, оружие того дружественного оператора получает weapon rule Punishing.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Defenders of the Faith",
+          "text": "Каждый раз, когда оператор стреляет по, дерётся против или отвечает (retaliating) против дружественного оператора NOVITIATE, который оспаривает (contest) objective-маркер, на этапе Resolve Attack Dice той последовательности ты можешь уменьшить вдвое урон, нанесённый (округляя вверх и минимум до 2) тому дружественному оператору от одного успеха.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Blessed Rejuvenation",
+          "text": "Каждый раз, когда ты тратишь Faith points, в конце того действия дружественный оператор, на которого ты их потратил, может восстановить до D3 потерянных wounds. Учти, что этот ploy не действует, если тот дружественный оператор был выведен из строя во время того действия, или если ACT OF FAITH не стоил Faith points (например, снаряжение Auto-chastisers).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Righteous Advance",
+          "text": "До одной трети дружественных операторов NOVITIATE в killzone (округляя вниз, минимум 1) могут немедленно выполнить бесплатное действие Dash в выбранном тобой порядке, но каждый из них, сделавший это, должен закончить то перемещение ближе к своему ближайшему вражескому оператору, ближайшему objective-маркеру или к drop zone противника (можешь выбирать отдельно для каждого). Нельзя использовать этот ploy в течение первого turning point.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Glorious Martyrdom",
+          "text": "Используй этот firefight ploy, когда дружественный оператор NOVITIATE выводится из строя (incapacitated), перед тем как он убирается из killzone. За каждого вражеского оператора, видимого ему и находящегося в пределах 2\" от него, ты получаешь 1 Faith point и наносишь D3 урона тому вражескому оператору (бросай отдельно для каждого).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Blazing Inferno",
+          "text": "Используй этот firefight ploy, когда дружественный оператор NOVITIATE стреляет с Ministorum flamer и ты наносишь урон любыми critical successes. Цель получает один из твоих Blaze tokens (если у неё его ещё нет). Каждый раз, когда активируется оператор с одним из твоих Blaze tokens:\n\n- Нанеси ему D3 урона.\n- Игрок, контролирующий его, может вычесть 1 из APL stat того оператора до конца этой активации, чтобы убрать этот токен. Учти, что это нужно сделать до того, как тот оператор выполнит любые действия в этой активации.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Blinding Aura",
+          "text": "Используй этот firefight ploy, когда вражеский оператор выполняет действие Shoot и выбирает дружественного оператора NOVITIATE допустимой целью. До конца этой активации/counteraction, пока тот дружественный оператор находится дальше 2\" от вражеского оператора, твой противник не может выбрать его допустимой целью. Если нет других допустимых целей, которые может выбрать твой противник, то действие заканчивается (оно не отменяется, так что тот оператор всё равно его выполнил). Учти, что этот ploy не действует, если выбранный оператор — не тот дружественный оператор, например, если он secondary цель от weapon rule Blast.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Guided by Faith",
+          "text": "Используй этот firefight ploy, когда дружественный оператор NOVITIATE выполняет действие Shoot и выбирает дальнобойное оружие. До конца этого действия, каждый раз, когда тот оператор стреляет по оператору в пределах 6\" от него, то оружие получает weapon rule Seek Light.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "blaze",
+          "name": "Blaze",
+          "target": "enemy",
+          "text": "Этот токен даётся от firefight ploy Blazing Inferno. Каждый раз, когда активируется оператор с одним из этих токенов: нанеси ему D3 урона; контролирующий его игрок может вычесть 1 из APL stat того оператора до конца этой активации, чтобы убрать этот токен (это нужно сделать до того, как тот оператор выполнит любые действия в этой активации)."
+        },
+        {
+          "id": "whip_into_frenzy",
+          "name": "Whip Into Frenzy",
+          "target": "friendly",
+          "text": "Этот токен ставится действием EXACTOR Whip Into Frenzy. До конца следующей активации помеченного оператора: прибавь 1\" к его Move stat, он может выполнить два действия Fight во время этой активации, и одно из них может быть бесплатным."
+        },
+        {
+          "id": "medic",
+          "name": "Medic!",
+          "target": "friendly",
+          "text": "Этот токен отмечает, что в этом turning point на этом операторе уже было использовано правило HOSPITALLER Medic!. Нельзя снова использовать это правило на операторе, у которого уже есть этот токен в этом turning point, а также нельзя выбрать его для действия Chirurgeon's Tools в этом turning point."
+        },
+        {
+          "id": "divine_acquisition",
+          "name": "Divine Acquisition",
+          "target": "friendly",
+          "text": "Этот токен отмечает, что в этом turning point уже было использовано правило PRONATUS Divine Acquisition. Divine Acquisition можно использовать только один раз за turning point."
+        },
+        {
+          "id": "icon_of_faith",
+          "name": "Icon of Faith",
+          "target": "friendly",
+          "text": "Этот токен отмечает, что в этом turning point уже было использовано двойное применение ACTS OF FAITH от снаряжения Icon of Faith (до двух разных ACTS OF FAITH за одну последовательность). Это допускается только один раз за turning point."
+        },
+        {
+          "id": "auto_chastisers",
+          "name": "Auto-Chastisers",
+          "target": "friendly",
+          "text": "Этот токен отмечает, что в этом turning point уже было использовано снаряжение Auto-Chastisers. Оно позволяет один раз за turning point, когда дружественный оператор NOVITIATE стреляет, дерётся или отвечает (retaliating), на этапе Roll Attack Dice нанести 1-3 урона тому дружественному оператору (но не выводя его из строя) и в этом случае использовать один ACT OF FAITH бесплатно в этой последовательности со стоимостью Faith points не выше нанесённого этим правилом урона."
+        }
+      ]
+    },
+    "Kasrkin": {
+      "archetypes": [
+        "Security",
+        "Seek & Destroy"
+      ],
+      "equipment": "Kasrkin",
+      "required": [
+        {
+          "name": "Kasrkin Sergeant",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 9,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Hot-shot lasgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Hot-shot laspistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Plasma pistol (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Plasma pistol (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Range 8\", Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Power weapon",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается один из четырёх вариантов вооружения при сборке ростера — Bolt pistol и Power weapon; Hot-shot lasgun и Gun butt; Hot-shot laspistol и Power weapon; либо Plasma pistol и Chainsword. В этом приложении представлены все варианты; используй только выбранный."
+            },
+            {
+              "name": "Tactical Command",
+              "text": "Выбери одного дружественного оператора KASRKIN, затем выбери один SKILL AT ARMS, который этот оператор будет иметь до Ready step следующей Strategy phase. Это может быть в дополнение к любому SKILL AT ARMS, который у него уже есть, но они не могут совпадать.\n\nВместо разрешения указанного выше эффекта, если твой маркер Clearance Sweep в killzone, можно вместо этого убрать его и разместить заново.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "0AP"
+            },
+            {
+              "name": "Veteran Leadership",
+              "text": "Пока этот оператор в killzone и ты используешь Strategic Gambit SKILL AT ARMS, можно выбрать один дополнительный SKILL AT ARMS для этого оператора, но они не могут совпадать."
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_sergeant.png"
+        }
+      ],
+      "poolPick": 9,
+      "pool": [
+        {
+          "name": "Combat Medic",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Hot-shot lasgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Medic!",
+              "text": "В первый раз за каждый turning point, когда другой дружественный оператор KASRKIN должен быть выведен из строя, будучи видимым этому оператору и в пределах 3\" от него, можно использовать это правило, при условии что ни этот, ни тот другой оператор не в пределах control range вражеского оператора. Если используешь: тот дружественный оператор не выводится из строя и не может быть выведен из строя до конца этого действия; после этого действия тот дружественный оператор может немедленно выполнить бесплатное действие Dash, но должен закончить это движение в пределах control range этого оператора; вычти 1 из APL stat этого и того оператора соответственно до конца их следующих активаций, и если это правило было использовано во время активации того дружественного оператора, та активация заканчивается. Нельзя использовать это правило, если этот оператор выведен из строя, или если это действие Shoot, в котором этот оператор был бы primary или secondary целью."
+            },
+            {
+              "name": "Medikit",
+              "text": "Выбери одного дружественного оператора KASRKIN в пределах control range этого оператора, чтобы он восстановил до 2D3 потерянных wounds. Нельзя выбрать оператора, на котором в этом turning point уже было использовано правило Medic!.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "0AP"
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_combat_medic.png"
+        },
+        {
+          "name": "Demo-Trooper",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Hot-shot laspistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Melta Mine",
+              "text": "Этот оператор несёт маркер Melta Mine. Он может выполнить действие Pick Up Marker с этим маркером, а каждый раз, когда он выполняет действие Place Marker с этим маркером, он может немедленно выполнить бесплатное действие Dash. Этот маркер нельзя разместить в пределах control range вражеского оператора (если этот оператор выведен из строя, неся этот маркер, и его нельзя разместить, маркер убирается вместе с этим оператором)."
+            },
+            {
+              "name": "Proximity Mine",
+              "text": "В первый раз, когда твой маркер Melta Mine оказывается в пределах control range другого оператора, убери этот маркер и нанеси 2D6+3 урона тому оператору; если он не выведен из строя, заверши его текущее действие (если есть), даже если другие эффекты того действия не выполнены. Если маркер нельзя разместить, передвинь его на минимальное расстояние, необходимое для размещения. Этот оператор игнорируется для этих эффектов (он не может сработать от маркера или получить от него урон)."
+            },
+            {
+              "name": "Blast Padding",
+              "text": "Каждый раз, когда оператор стреляет по этому оператору оружием с weapon rule Blast или Torrent (кроме оружия со sweeping-профилем), можно перебросить один свой кубик защиты. Кроме того, на этого оператора не действует weapon rule Devastating x\" (то есть Devastating с указанием дистанции), если только он не является целью в этой последовательности."
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_demo-trooper.png"
+        },
+        {
+          "name": "Gunner",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Flamer",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 8\", Saturate, Torrent 2\""
+            },
+            {
+              "name": "Grenade launcher (frag)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/4",
+              "wr": "Blast 2\""
+            },
+            {
+              "name": "Grenade launcher (krak)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Hot-shot volley gun (focused)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1"
+            },
+            {
+              "name": "Hot-shot volley gun (sweeping)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1, Torrent 1\""
+            },
+            {
+              "name": "Meltagun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "6/3",
+              "wr": "Range 6\", Devastating 4, Piercing 2"
+            },
+            {
+              "name": "Plasma gun (standard)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Plasma gun (supercharge)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/6",
+              "wr": "Hot, Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается один из пяти вариантов вооружения при сборке ростера — Flamer, Grenade launcher, Hot-shot volley gun, Meltagun или Plasma gun (плюс Gun butt в любом случае). В этом приложении представлены все варианты; используй только выбранный."
+            },
+            {
+              "name": "Selection Limit",
+              "text": "ВНИМАНИЕ (правило отбора ростера): суммарно операторов GUNNER (в любых вариантах вооружения) и SHARPSHOOTER в ростере не может быть больше 4."
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_gunner.png"
+        },
+        {
+          "name": "Recon-Trooper",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Hot-shot lasgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Reconnoitre Killzone",
+              "text": "Strategy ploy Relocate стоит 0CP, если этот оператор — выбранный дружественный оператор KASRKIN."
+            },
+            {
+              "name": "Auspex Scan",
+              "text": "До начала следующей активации этого оператора или до его вывода из строя (что наступит раньше) — каждый раз, когда вражеский оператор оказывается в пределах 8\" от этого оператора, тот вражеский оператор считается being scanned. Каждый раз, когда дружественный оператор KASRKIN стреляет по вражескому оператору, который being scanned, тот вражеский оператор не может быть obscured.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_recon-trooper.png"
+        },
+        {
+          "name": "Sharpshooter",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Hot-shot marksman rifle (concealed)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, Heavy, Silent, Concealed Position"
+            },
+            {
+              "name": "Hot-shot marksman rifle (mobile)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Hot-shot marksman rifle (stationary)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, Heavy"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Camo Cloak",
+              "text": "Каждый раз, когда оператор стреляет по этому оператору: игнорируй weapon rule Saturate. Если можно удержать любые cover save, можно удержать один дополнительный cover save, либо удержать один cover save как critical success вместо этого. Не суммируется с улучшенными cover save от Vantage terrain."
+            },
+            {
+              "name": "Weapon Rule: Concealed Position",
+              "text": "Concealed Position: этот оператор может использовать этот профиль оружия только первый раз, когда он выполняет действие Shoot за битву."
+            },
+            {
+              "name": "Selection Limit",
+              "text": "ВНИМАНИЕ (правило отбора ростера): суммарно операторов SHARPSHOOTER и GUNNER (в любых вариантах вооружения) в ростере не может быть больше 4."
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_sharpshooter.png"
+        },
+        {
+          "name": "Trooper",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "weapons": [
+            {
+              "name": "Hot-shot lasgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Adaptive Equipment",
+              "text": "Можно один раз за turning point сделать каждое из следующего: один дружественный оператор KASRKIN TROOPER может выполнить действие Smoke Grenade; один дружественный оператор KASRKIN TROOPER может выполнить действие Stun Grenade.\n\nПравила для этих действий находятся в universal equipment. Выполнение этих действий через это правило не учитывается в их лимитах действий (то есть даже если ты также выбрал эти гранаты как снаряжение)."
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_trooper.png"
+        },
+        {
+          "name": "Vox-Trooper",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 8,
+          "maxCopies": 1,
+          "weapons": [
+            {
+              "name": "Hot-shot lasgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Battle Comms",
+              "text": "Выбери другого дружественного оператора KASRKIN. До конца следующей активации того оператора прибавь 1 к его APL stat (максимум 3 после суммирования всех изменений APL stat).\n\nЭтот оператор может выполнить это действие дважды за свою активацию, но не может выполнять его, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/kasrkin/kasrkin_vox-trooper.png"
+        }
+      ],
+      "lore": {
+        "intro": "Kill team Kasrkin — элитные штурмовые войска Astra Militarum, набранные из самых стойких и опытных бойцов Кадии. Вооружённые hot-shot оружием и облачённые в улучшенную броню, Kasrkin выполняют опаснейшие миссии: скрытные рейды, зачистку укреплённых позиций и охоту за высокоценными целями там, где обычные Guardsmen обречены на поражение.",
+        "operatives": [
+          {
+            "name": "Kasrkin Sergeant",
+            "text": "Командир отряда, координирующий действия своих бойцов и способный в разгар боя перераспределить их боевые навыки SKILL AT ARMS."
+          },
+          {
+            "name": "Combat Medic",
+            "text": "Полевой медик, вытаскивающий товарищей с края гибели прямо посреди перестрелки."
+          },
+          {
+            "name": "Demo-Trooper",
+            "text": "Специалист по подрывному делу, несущий melta mine на самый опасный участок killzone."
+          },
+          {
+            "name": "Gunner",
+            "text": "Тяжёлое вооружение отряда — flamer, grenade launcher, hot-shot volley gun, meltagun или plasma gun — способное переломить исход боя одним залпом."
+          },
+          {
+            "name": "Recon-Trooper",
+            "text": "Разведчик, вскрывающий позиции противника сканером auspex и наводящий на цель остальной отряд."
+          },
+          {
+            "name": "Sharpshooter",
+            "text": "Снайпер, работающий из укрытия с hot-shot marksman rifle и способный поразить цель первым же точным выстрелом."
+          },
+          {
+            "name": "Trooper",
+            "text": "Рядовой боец Kasrkin, надёжный в бою и готовый применить дымовые или шоковые гранаты по приказу командира."
+          },
+          {
+            "name": "Vox-Trooper",
+            "text": "Связист отряда, ускоряющий реакцию товарищей за счёт слаженной радиосвязи Battle Comms."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Skill at Arms",
+          "text": "Касркин отправляются туда, где они нужнее всего. Закалённые в боях, бескомпромиссные и вооружённые лучшим доступным оружием, эти элитные бойцы преследуют свои цели профессионально, с закалённым опытом и железной решимостью.\n\nSTRATEGIC GAMBIT. Выбери один SKILL AT ARMS, который дружественные операторы KASRKIN будут иметь до Ready step следующей Strategy phase."
+        },
+        {
+          "name": "Hot-Shot Weapon",
+          "text": "Некоторые правила KASRKIN ссылаются на 'hot-shot weapon'. Это дальнобойное оружие, в названии которого есть 'hot-shot' — например, hot-shot lasgun, все профили hot-shot marksman rifle и т.д."
+        },
+        {
+          "name": "Elimination Pattern",
+          "text": "Каждый раз, когда дружественный оператор KASRKIN стреляет hot-shot weapon по оператору, который не может удержать никакие cover save, или по being scanned оператору, это оружие получает weapon rule Piercing Crits 1, либо Piercing 1 вместо этого, если это hot-shot volley gun.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Engage from Cover",
+          "text": "Каждый раз, когда оператор стреляет по дружественному оператору KASRKIN, который в cover, можно перебросить один свой кубик защиты.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Clearance Sweep",
+          "text": "Размести свой маркер Clearance Sweep в killzone. Каждый раз, когда дружественный оператор KASRKIN в пределах 5\" по горизонтали от этого маркера стреляет по оператору, тоже находящемуся в пределах 5\" по горизонтали от этого маркера, оружие того дружественного оператора получает weapon rule Ceaseless. В Ready step следующей Strategy phase убери этот маркер.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Relocate",
+          "text": "Выбери одного дружественного оператора KASRKIN, который дальше 3\" от вражеских операторов. Тот оператор и каждый другой дружественный оператор KASRKIN, находящийся в пределах 3\" от него и дальше 3\" от вражеских операторов, может немедленно выполнить бесплатное действие Dash в выбранном тобой порядке. Нельзя использовать этот ploy в первый turning point.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Seize the Initiative",
+          "text": "Используй этот firefight ploy в начале Firefight phase. Один дружественный оператор KASRKIN может немедленно выполнить бесплатное действие за 1AP, но не может двигаться во время этого действия. Нельзя использовать этот ploy, если ты игрок с initiative.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Cover Retreat",
+          "text": "Используй этот firefight ploy, когда дружественный оператор KASRKIN выполняет действие Fall Back, будучи видимым и в пределах 6\" от другого дружественного оператора KASRKIN, который не в пределах control range вражеских операторов. После того как тот оператор закончил движение, но до завершения действия Fall Back, тот другой дружественный оператор может немедленно выполнить бесплатное действие Shoot (можно сменить его приказ на Engage для этого).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Neutralise Target",
+          "text": "Используй этот firefight ploy после броска атакующих кубиков за дружественного оператора KASRKIN, если он стреляет по оператору, который не может удержать никакие cover save, или который being scanned. Можно перебросить любые свои кубики атаки.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Give No Ground",
+          "text": "Используй этот firefight ploy во время активации дружественного оператора KASRKIN, либо в конце Firefight phase. Выбери один из своих mission markers или objective marker. До конца той активации или до начала следующего turning point соответственно — если суммарный APL дружественных операторов KASRKIN, оспаривающих этот маркер, равен 2, и суммарный APL вражеских операторов, оспаривающих его, такой же, дружественные операторы KASRKIN контролируют этот маркер.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "factionChoices": [
+        {
+          "id": "skill_at_arms",
+          "label": "Skill at Arms",
+          "scope": "game",
+          "pick": 1,
+          "options": [
+            {
+              "id": "light_em_up",
+              "name": "Light 'Em Up",
+              "text": "Дружественные операторы KASRKIN получают weapon rule Severe на дальнобойное оружие."
+            },
+            {
+              "id": "strike_fast",
+              "name": "Strike Fast",
+              "text": "Каждый раз, когда дружественный оператор KASRKIN выполняет действие Reposition, добавь 1\" к его Move stat."
+            },
+            {
+              "id": "ice_in_your_veins",
+              "name": "Ice in Your Veins",
+              "text": "Каждый раз, когда дружественный оператор KASRKIN дерётся или отвечает (retaliating), либо когда оператор стреляет по нему — первый раз за эту последовательность, когда attack dice наносит Normal Dmg 3 или больше этому оператору, тот dice наносит на 1 урона меньше."
+            },
+            {
+              "id": "for_cadia",
+              "name": "For Cadia!",
+              "text": "Добавь 1 к Atk stat оружия ближнего боя дружественных операторов KASRKIN (максимум 4). Каждый раз, когда дружественный оператор KASRKIN дерётся, первый раз, когда он наносит удар в этой последовательности, нанеси 1 дополнительный урон."
+            },
+            {
+              "id": "rapid_fire",
+              "name": "Rapid Fire",
+              "text": "Каждый дружественный оператор KASRKIN, который не выполняет действие с движением во время своей активации, может выполнить два действия Shoot (кроме Guard) во время этой активации, но для обоих этих действий нужно выбрать bolt pistol, hot-shot lasgun или hot-shot laspistol."
+            }
+          ]
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "scanned",
+          "name": "Being Scanned",
+          "target": "enemy",
+          "text": "Оператор помечен этим токеном оператором RECON-TROOPER через действие Auspex Scan. Действует до начала следующей активации того RECON-TROOPER или до его вывода из строя (что наступит раньше). Каждый раз, когда дружественный оператор KASRKIN стреляет по оператору с этим токеном, тот оператор не может быть obscured."
+        }
+      ]
+    },
+    "Exodite Dragon Masters": {
+      "archetypes": [
+        "Recon",
+        "Seek & Destroy"
+      ],
+      "equipment": "Exodite Dragon Masters",
+      "required": [
+        {
+          "name": "Dragon Master Clanblade",
+          "apl": 4,
+          "move": "12\"",
+          "save": "3+",
+          "wounds": 24,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Solar carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Devastating 1"
+            },
+            {
+              "name": "Drakesteed fangs & talons",
+              "atk": 6,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Brutal"
+            },
+            {
+              "name": "Moonblades",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Scaleshield",
+              "text": "Каждый раз, когда оператор стреляет по этому оператору, и ни один атакующий кубик не удержан как critical success, ухудши x weapon rule Piercing на 1 (если есть). Piercing 1 в этом случае игнорируется."
+            },
+            {
+              "name": "Clanblade Upgrades",
+              "text": "Когда этот оператор выбирается для битвы, выбери 2 разных правила Clanblade Upgrade (см. faction choices), которые добавляются на его карточку до конца битвы."
+            }
+          ],
+          "portrait": "img/portraits/exodite-dragon-masters/dragon_master_clanblade.png"
+        },
+        {
+          "name": "Dragon Master Leystalker",
+          "apl": 4,
+          "move": "12\"",
+          "save": "3+",
+          "wounds": 24,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Long rifle (в движении)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Devastating 1"
+            },
+            {
+              "name": "Long rifle (стационарно)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, *Aimed"
+            },
+            {
+              "name": "Drakesteed fangs & talons",
+              "atk": 6,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Brutal"
+            },
+            {
+              "name": "Hunting blade",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "*Aimed",
+              "text": "Этот оператор не может использовать это оружие во время активации, в которой он передвинулся более чем на 3\", и не может передвинуться более чем на 3\" во время активации, в которой использовал это оружие. Этот weapon rule не мешает выполнению действия Guard."
+            },
+            {
+              "name": "Implacable Darkscale",
+              "text": "Можно игнорировать любые изменения Hit stat оружия Drakesteed fangs & talons этого оператора от ранений."
+            },
+            {
+              "name": "Leystalker Upgrades",
+              "text": "Когда этот оператор выбирается для битвы, выбери 2 разных правила Leystalker Upgrade (см. faction choices), которые добавляются на его карточку до конца битвы."
+            }
+          ],
+          "portrait": "img/portraits/exodite-dragon-masters/dragon_master_leystalker.png"
+        },
+        {
+          "name": "Dragon Master Stonesinger",
+          "apl": 4,
+          "move": "12\"",
+          "save": "3+",
+          "wounds": 24,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Solar carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Devastating 1"
+            },
+            {
+              "name": "Venomcrest spit",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Severe, Torrent 2\""
+            },
+            {
+              "name": "Drakesteed fangs & talons",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Brutal"
+            },
+            {
+              "name": "Stone stave",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "PSYCHIC, Lethal 5+, Shock, Stun"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Stonesinger Upgrades",
+              "text": "Когда этот оператор выбирается для битвы, выбери 2 разных правила Stonesinger Upgrade (см. faction choices), которые добавляются на его карточку до конца битвы."
+            },
+            {
+              "name": "Song of Renewal",
+              "text": "PSYCHIC. Выбери одного дружественного оператора EXODITE DRAGON MASTER, видимого этому оператору. Тот оператор восстанавливает до 2D3 потерянных wounds.\n\nЛибо же: PSYCHIC. Каждый дружественный оператор EXODITE DRAGON MASTER может восстановить до D3 потерянных wounds.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или более одного раза за turning point.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/exodite-dragon-masters/dragon_master_stonesinger.png"
+        },
+        {
+          "name": "Drakolithe",
+          "apl": 2,
+          "move": "8\"",
+          "save": "5+",
+          "wounds": 7,
+          "count": 2,
+          "weapons": [
+            {
+              "name": "Fangs & talons",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Preternatural Evasion",
+              "text": "Каждый раз, когда этот оператор выполняет действие Charge, Fall Back или Reposition, если он заканчивает это действие более чем в 2\" от своего предыдущего местоположения, у него SPEED 4+; если более чем в 5\" — SPEED 7+ вместо этого. Каждый раз, когда этот оператор заканчивает свою активацию, если он не получил SPEED 4+ или SPEED 7+ во время этой активации, у него SPEED 3-. Учитывается расстояние от предыдущего местоположения, а не пройденное расстояние (то есть нельзя вернуться к предыдущему местоположению по кругу и получить высокий SPEED)."
+            },
+            {
+              "name": "Beast",
+              "text": "Этот оператор может выполнять только действия Charge, Dash, Fall Back, Reposition, Guard, Pick Up Marker, Place Marker и mission actions. Он не может выполнять действия Pick Up Marker, Place Marker или mission actions, если нет дружественного оператора LEYSTALKER, который не выведен из строя. Этот оператор может использовать любое оружие, даже отсутствующее на его карточке."
+            }
+          ],
+          "portrait": "img/portraits/exodite-dragon-masters/drakolithe.png"
+        }
+      ],
+      "poolPick": 0,
+      "pool": [],
+      "lore": {
+        "intro": "«У всего живого есть защита от чужеродной материи. Наш мир не исключение. Болотные топи поглощают, споры отравляют, драконы топчут и рвут. Мы, кланы, убиваем с древним изяществом и мастерством. Вы — чужеродная материя, отравляющий загрязнитель, и вас вырежут из этого мира, пока не останется и следа заразы». — последнее сообщение, полученное гарнизоном Brantakh's Landing перед тем, как колония была стёрта с лица земли.\n\nЦеремониальные роли в сердце kill team Dragon Masters связаны гармонией воинского, духовного и стратегического мастерства. Вместе эти клановые чемпионы образуют смертоносную триаду. Усиленные силой и скоростью своих свирепых дракестидов, а также острыми чувствами своих Drakolithe, ни одна добыча не может долго ускользать от них.",
+        "operatives": [
+          {
+            "name": "Dragon Master Clanblade",
+            "text": "В одной из ритуальных вершин триады Dragon Master находятся Clanblade. Сражаясь верхом на свирепых redmaw-дракестидах, они мастера ближнего боя, владеющие силовыми мечами и топорами в церемониальной паре, известной как moonblades. Clanblade возглавляют финальную и самую физически опасную стадию охоты, когда добыча загнана в угол и каждое её смертоносное движение должно быть предугадано, парировано и использовано."
+          },
+          {
+            "name": "Dragon Master Leystalker",
+            "text": "Leystalker зорки и неусыпно бдительны. Они прочерчивают сложные маршруты, ведущие их собратьев по триаде к добыче через скрытые тропы и хитрые стратегии. Они также мастерские снайперы: стоит незнающей жертве попасть в прицел их искусно изготовленного long rifle, как смертельный выстрел Leystalker находит цель с неестественной точностью."
+          },
+          {
+            "name": "Dragon Master Stonesinger",
+            "text": "Stonesinger — могущественные псайкеры Exodite, разъезжающие на плюющихся ядом дракестидах. Они обладают потусторонней связью с энергией, пронизывающей их окружение, и высвобождают её в стихийных проявлениях, вызывая воющие бури и геомантические всплески, либо разрывая броню, плоть и кость гудящими песнями гнева и разрушения."
+          },
+          {
+            "name": "Drakolithe",
+            "text": "Этих чешуйчатых, быстроногих зверей Dragon Master используют для помощи в охоте на неуловимые цели. Они также защищают Exodite от врагов, пытающихся окружить их, перехватывая и контратакуя с дикой яростью."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Draconic Cavalry Tactics",
+          "text": "Клановые триады Dragon Master высылают вперёд своих Drakolithe, чтобы выгнать добычу перед тем, как обрушиться из засады. Верховые дракестиды обладают острым охотничьим инстинктом, а с возвышенных позиций Exodite могут разить добычу, пытающуюся держаться вне досягаемости.\n\nПри расстановке kill team EXODITE DRAGON MASTER перед битвой первая треть твоей kill team должна состоять из дружественных операторов DRAKOLITHE, расставленных как обычно. Каждый дружественный оператор EXODITE DRAGON MASTER MOUNTED после этого должен быть выставлен в резерв: помести его в сторону, а не в killzone.\n\nВ первую Firefight phase каждый дружественный оператор EXODITE DRAGON MASTER MOUNTED, выставленный в резерв, активируется как обычно. При этом его размещают в месте, где его можно поставить на пол killzone так, чтобы основание касалось края твоей killzone (он больше не в резерве). Считается, что этот оператор выполняет действие Turn (трать AP соответственно), после чего продолжает свою активацию как обычно."
+        },
+        {
+          "name": "Drakesteed Agility",
+          "text": "Операторы EXODITE DRAGON MASTER MOUNTED не могут выполнять действия Charge, Dash, Fall Back или Reposition; вместо этого они могут выполнять уникальные действия Sprint и Turn.\n\nSPRINT (0AP). Передвинь активного оператора в место, где его можно разместить. Движение должно быть строго прямо вперёд или назад одним или несколькими прямолинейными отрезками, каждый отрезок всегда округляется вверх до целого дюйма. Нельзя передвинуться более чем на 9\" вперёд или 3\" назад за активацию, и не более чем на 12\" за turning point. До или после одного из отрезков можно повернуть активного оператора до 45° — это не расходует его movement allowance, и он может продолжить движение оставшейся дистанцией.\n\nАктивный оператор не может забираться или заканчивать движение на Vantage terrain выше 2\" от пола killzone. Он может двигаться сквозь других операторов и считает участки terrain ниже 2\" Accessible terrain. Каждый раз, когда он проходит сквозь equipment terrain feature, убери этот terrain feature из игры.\n\nОператор не может выполнять это действие во время counteract. Для правил противника, mission rules и killzone rules это действие считается действием Reposition, либо действием Charge, если активный оператор заканчивает действие в пределах control range вражеского оператора.\n\nTURN (1AP). Поверни активного оператора до 45° — это не расходует movement allowance.\n\nОператор не может выполнять это действие во время counteract. Для правил противника, mission rules и killzone rules это действие считается действием Dash, либо действием Charge, если активный оператор заканчивает действие в пределах control range вражеского оператора.\n\nКаждый дружественный оператор EXODITE DRAGON MASTER MOUNTED активируется дважды за turning point (он считается expended только после второй активации). Нельзя тратить на него более 3AP за активацию, или более его APL stat за turning point.\n\nДружественный оператор EXODITE DRAGON MASTER MOUNTED не может быть в cover от или obscured Light terrain, участками terrain ниже 2\" или terrain, не полностью перекрывающим линию обзора. Каждый раз, когда дружественный оператор EXODITE DRAGON MASTER MOUNTED выполняет действие Fight, требования дистанции его control range можно изменить на 1\" по горизонтали и 4\" по вертикали до конца этого действия."
+        },
+        {
+          "name": "Mercurial Speed",
+          "text": "Контролируемое разведение и суровые условия среды наделили дракестидов мощными мышцами. По команде хозяина они могут переключаться от неподвижности до головокружительных рывков, слишком быстрых для глаза.\n\nУ каждого дружественного оператора EXODITE DRAGON MASTER есть SPEED с тремя уровнями: SPEED 3-, SPEED 4+ и SPEED 7+. Оператор может иметь только один уровень SPEED одновременно и начинает битву с SPEED 3-.\n\nОператор EXODITE DRAGON MASTER MOUNTED имеет SPEED 3-, если верно любое из следующего: он закончил действие Sprint, двигаясь назад или менее чем на 4\" вперёд; либо закончил активацию, не выполнив действие Sprint.\n\nОператор EXODITE DRAGON MASTER MOUNTED имеет SPEED 4+, если закончил действие Sprint, передвинувшись на 4\" или более за это действие, либо SPEED 7+ вместо этого, если передвинулся на 7\" или более.\n\nКаждый раз, когда оператор стреляет по дружественному оператору EXODITE DRAGON MASTER, если у того SPEED 4+, можно удержать один defence die как normal success без броска; если у него SPEED 7+, можно удержать один как critical success вместо этого.\n\nSPEED операторов EXODITE DRAGON MASTER DRAKOLITHE изменяется согласно правилам на их карточке (Preternatural Evasion), а не через Sprint."
+        },
+        {
+          "name": "Wind-Swift Precision",
+          "text": "Dragon Master — превосходные стрелки верхом. На высокой скорости они инстинктивно используют мгновения затишья в галопе своих дракестидов, чтобы вогнать точные выстрелы в ошеломлённых врагов.\n\nКаждый раз, когда дружественный оператор EXODITE DRAGON MASTER стреляет, если у него SPEED 4+, его дальнобойное оружие получает weapon rule Balanced.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Draconic Fury",
+          "text": "В стремительных наскоках или дерзких выпадах сквозь вражеские линии равновесие и грация Exodite и их драконов на скорости легендарны.\n\nКаждый раз, когда дружественный оператор EXODITE DRAGON MASTER дерётся:\n• Если у него SPEED 4+, его оружие ближнего боя получает weapon rule Balanced.\n• Если у него SPEED 7+, его оружие ближнего боя получает weapon rule Ceaseless.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Sinuous Flux",
+          "text": "Dragon Master на охоте — пугающе неуловимые хищники. Опытные наездники, как и их рептильные скакуны и охотничьи звери, извиваются и уклоняются, избегая вражеских атак.\n\nКаждый раз, когда вражеский оператор стреляет по дружественному оператору EXODITE DRAGON MASTER на расстоянии более 6\" от него, если у того SPEED 4+ или SPEED 7+, противник не может делать re-roll своих attack dice.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Ride Them Down",
+          "text": "Дракестиды — крупные и свирепые звери, чрезвычайно смертоносные, когда их режущие когти и рвущие клыки усилены сокрушающим ударом.\n\nОдин раз за каждую активацию дружественного оператора EXODITE DRAGON MASTER MOUNTED, каждый раз, когда он заканчивает движение действием Sprint:\n• Если он передвинулся на 4\" или более за это действие, можно нанести 1 урон одному вражескому оператору в пределах его control range.\n• Если он передвинулся на 7\" или более за это действие, или это оператор CLANBLADE, можно вместо этого нанести D3 урона одному вражескому оператору в пределах его control range.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Survivalist Spirit",
+          "text": "Dragon Master пережили долгие жизни, полные суровых испытаний, которые закалили их против множества ран.\n\nИспользуй этот firefight ploy во время активации или counteract дружественного оператора EXODITE DRAGON MASTER MOUNTED, до или после выполнения им действия. До начала его следующей активации можно игнорировать любые изменения его weapon stats от ранений.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Leap",
+          "text": "Сверхъестественная ловкость и мощные мышцы дракестидов позволяют им мгновенно перемещаться одним гибким движением.\n\nИспользуй этот firefight ploy, когда дружественный оператор EXODITE DRAGON MASTER MOUNTED выполняет действие Sprint. Вместо перемещения этого оператора убери его из killzone и поставь заново в месте, где его можно разместить, в пределах 1\" по горизонтали от исходного местоположения. Это расстояние нельзя измерять сквозь terrain features выше 2\", и оператора нельзя поставить на Vantage terrain выше 2\" от пола killzone. Считается, что этот оператор передвинулся на 3\" для целей movement allowance и имеет SPEED 3-.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Feral Hunger",
+          "text": "Учуяв запах крови и страха, Exodite охотно спускают с цепи самые кровожадные и звериные инстинкты своих драконов.\n\nИспользуй этот firefight ploy после броска attack dice дружественного оператора EXODITE DRAGON MASTER, если он дерётся против раненого вражеского оператора оружием Drakesteed fangs & talons или fangs & talons. Можно сделать re-roll любых своих attack dice.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Riding Mastery",
+          "text": "Владение дракестидами у Dragon Master сочетается с исключительной ловкостью и атлетизмом их собственного вида. Защищая будущее своего клана, Dragon Master способны на невероятные манёвры, стремительно продвигаясь через враждебную территорию.\n\nИспользуй этот firefight ploy, когда дружественный оператор EXODITE DRAGON MASTER MOUNTED выполняет действие Sprint во время своей активации. Во время этого действия тот оператор может выполнить Pick Up Marker, Place Marker или mission action (можно определить контроль во время этого действия для этого), а оставшуюся дистанцию движения от Sprint можно использовать после этого.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "factionChoices": [
+        {
+          "id": "clanblade_upgrades",
+          "label": "Clanblade Upgrades",
+          "scope": "setup",
+          "pick": 2,
+          "options": [
+            {
+              "id": "moonsong_cull",
+              "name": "Moonsong Cull",
+              "text": "Мифическое оружие, в честь которого названы moonblades, по легенде, поёт всё громче с каждой оборванной нитью души. Некоторые Clanblade вторят этому жуткому напеву, перелетая от жертвы к жертве под крики и кровавые брызги павших врагов.\n\nОдин раз за каждую активацию этого оператора, после того как он выполнил действие Sprint вперёд и вывел из строя вражеского оператора действием Fight, если он больше не в пределах control range вражеских операторов, можно использовать это правило. Если используешь: он может немедленно выполнить бесплатное действие Sprint вперёд, используя оставшуюся дистанцию движения от первого действия Sprint, но не может повернуться во время этого бесплатного действия. Этот оператор может выполнить два действия Sprint за свою активацию таким образом, и его SPEED определяется суммарной дистанцией, пройденной за оба действия Sprint. Между этими действиями оператор не может выполнять никаких других действий."
+            },
+            {
+              "id": "spectral_nimbus",
+              "name": "Spectral Nimbus",
+              "text": "Те Clanblade, кому суждено пройти сквозь самые смертоносные испытания, в совершенстве овладевают контролем над энергиями scaleshield. Они учатся вплетать собственные псайкерские дары через его хаптические controls, проецируя защитный нимб эмпиреической энергии, способный отвести даже самые тяжкие раны.\n\nОдин раз за turning point, когда этот оператор дерётся или отвечает (retaliating), после того как противник бросил свои attack dice, но до re-rolls, можно использовать это правило. Если используешь: противник не может удерживать результаты attack dice меньше 6 как critical success в этой последовательности (например, из-за weapon rules Lethal, Rending или Severe)."
+            },
+            {
+              "id": "focused_reflection",
+              "name": "Focused Reflection",
+              "text": "Благодаря сверхъестественной реакции и точной настройке scaleshield, Clanblade способен отразить энергию выстрелов бесчестного врага прямо в него.\n\nКаждый раз, когда вражеский оператор стреляет по этому оператору, находясь в пределах 6\" от него, если ты выделяешь один или более critical success для блока attack dice противника, можно использовать это правило. Если используешь: после действия, до того как выведенные из строя операторы будут убраны (включая этого, если применимо), нанеси 1 урон тому вражескому оператору за каждый выделенный таким образом critical success."
+            },
+            {
+              "id": "speartip_of_the_clan",
+              "name": "Speartip of the Clan",
+              "text": "Именно Clanblade выпадает ритуальная роль возглавлять атаку триады на добычу. Самые прославленные из них поражают цели подобно небесному копью, оттачивая скорость не меньше, чем любое другое оружие в своём арсенале.\n\nКаждый раз, когда этот оператор дерётся:\n• Если у него SPEED 4+, первый раз, когда он наносит удар normal success в этой последовательности, нанеси 1 дополнительный урон.\n• Если у него SPEED 7+, добавь 1 к Normal Dmg stat оружия ближнего боя на его карточке."
+            },
+            {
+              "id": "bladed_stance",
+              "name": "Bladed Stance",
+              "text": "Clanblade оттачивают воинское мастерство, охотясь на самых опасных драконов — созданий такой скорости и силы, что выжить может только тот, чья реакция достаточно быстра, чтобы отбить и отразить их первый удар.\n\nКаждый раз, когда этот оператор дерётся или отвечает (retaliating) с moonblades, можно разрешить один из своих успехов вне обычного порядка. Если используешь: этот успех должен быть использован для блока."
+            }
+          ]
+        },
+        {
+          "id": "leystalker_upgrades",
+          "label": "Leystalker Upgrades",
+          "scope": "setup",
+          "pick": 2,
+          "options": [
+            {
+              "id": "nomad_executioner",
+              "name": "Nomad Executioner",
+              "text": "Тех, кто задумал перехитрить охотничьи группы Dragon Master, быстро выслеживают исключительно ловкие стрелки триады. Leystalker разворачивают, заряжают, прицеливаются и стреляют из своих long rifle одним изящным движением на ходу, уже выискивая следующую цель до того, как падёт первая жертва.\n\nКаждый раз, когда этот оператор выполняет действие Sprint, он может выполнить действие Shoot во время этого действия (это нужно сделать в месте, где его можно разместить, а оставшуюся дистанцию движения от Sprint можно использовать после этого). Поскольку действие Shoot происходит до завершения действия Sprint, для этого Shoot SPEED этого оператора считается таким, каким он был до начала действия Sprint."
+            },
+            {
+              "id": "elusive_phantasm",
+              "name": "Elusive Phantasm",
+              "text": "Leystalker постоянно в движении. Они разведывают охотничьи угодья триады, определяют позицию и силы врага, при этом снова и снова ускользая из его хватки. Их мастерство заставило многих врагов Exodite поверить, что перед ними некий бесплотный дух. Пока паранойя врага растёт, Leystalker уже целится в него с очередного неожиданного угла.\n\nВ конце каждой Firefight phase, если этот оператор не в пределах control range вражеских операторов, он может выполнить бесплатное действие Sprint или Turn, но не может передвинуться более чем на 3\" за это действие, а его SPEED остаётся прежним. У него по-прежнему должно оставаться необходимое movement allowance в этот turning point."
+            },
+            {
+              "id": "fated_shot",
+              "name": "Fated Shot",
+              "text": "Некоторые Leystalker читают скрытые пути в ley lines мира больше, чем сами себя. Они прочерчивают траекторию точного выстрела так, чтобы он прошёл сквозь клубы дыма и хлещущую растительность, безопасно минуя союзников и находя самое уязвимое место в защите врага.\n\nОдин раз за turning point, когда этот оператор выполняет действие Shoot и ты выбираешь профиль его long rifle, можно использовать это правило. Если используешь: выбери одно из следующих правил, которое действует до конца этой последовательности:\n• Вражеские операторы не могут быть obscured.\n• Наличие других дружественных операторов EXODITE DRAGON MASTER в пределах control range вражеского оператора не мешает выбрать того оператора допустимой целью."
+            },
+            {
+              "id": "nexus_sentinel",
+              "name": "Nexus Sentinel",
+              "text": "Там, где сходятся линии силы — будь то яркие ley worlds Exodite или приглушённые естественные потоки — Leystalker способны улавливать восприятия невероятной широты и остроты. Немногие враги могут приблизиться к такому месту, охраняемому Leystalker, оставшись незамеченными.\n\nОдин раз за turning point этот оператор может выполнить действие Guard во время своей активации независимо от типа killzone, если у него SPEED 3- (см. правила close quarters, Kill Team Core Book).\n\nКаждый раз, когда этот оператор совершает point-blank выстрел в результате действия Guard, не ухудшай Hit stat его оружия из-за point-blank выстрела."
+            },
+            {
+              "id": "gloaming_mantle",
+              "name": "Gloaming Mantle",
+              "text": "Мастера слияния со средой и использования маскирующих энергий скрытых ley lines, Leystalker способны ускользать от внимания охотящихся на них, словно окутывая себя сверхъестественным сумраком.\n\nКаждый раз, когда оператор стреляет по этому оператору с расстояния более 8\", если нельзя удержать ни один cover save, можно удержать один defence die как normal success без броска; если можно удержать cover save, можно удержать его как critical success вместо этого."
+            }
+          ]
+        },
+        {
+          "id": "stonesinger_upgrades",
+          "label": "Stonesinger Upgrades",
+          "scope": "setup",
+          "pick": 2,
+          "options": [
+            {
+              "id": "wails_of_the_world",
+              "name": "Wails of the World",
+              "text": "Пронзительный плач, издаваемый Stonesinger, сигнализирует об их неприятии врага. Он нарастает до содрогающего воя, от которого дрожит воздух вокруг врага и земля под ним. Те, кому не хватает ловкости удержаться на ногах, рискуют быть поглощёнными внезапными расщелинами, побиты падающими камнями или увязнуть в вязких потоках некогда твёрдой материи.\n\nWAILS OF THE WORLD (1AP). PSYCHIC. Выбери одного вражеского оператора, видимого этому оператору. Вычти 2\" из Move stat того оператора и каждого другого вражеского оператора в пределах 2\" от него до конца их соответствующих следующих активаций (это не суммируется с ранением). Операторы MOUNTED не затрагиваются.\n\nБрось 2D3 отдельно для каждого из этих операторов: нанеси урон тому оператору, равный разнице между результатом броска и его новым Move stat (это имеет приоритет над правилом «stat не меняется во время действия»). Операторы MOUNTED не затрагиваются.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или более одного раза за turning point."
+            },
+            {
+              "id": "cleansing_of_the_pale_moon",
+              "name": "Cleansing of the Pale Moon",
+              "text": "Stonesinger сплетает псайкерский вихрь очищения. Токсины изгоняются, а страдания унимаются, словно призывается давно утраченная Бледная Луна.\n\nCLEANSING OF THE PALE MOON (1AP). PSYCHIC. Выбери одного дружественного оператора EXODITE DRAGON MASTER, видимого этому оператору. Убери один эффект правила или изменение stat, применённое к нему противником (например, токен Poison, -1APL, невозможность активироваться или выполнять действия и т.п.). Это не позволяет восстановить потерянные wounds, отменить mission pack rules или проигнорировать эффекты ранения.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора. В отличие от других уникальных действий-апгрейдов этого оператора, это действие можно выполнять более одного раза за turning point."
+            },
+            {
+              "id": "sow_the_seeds",
+              "name": "Sow the Seeds",
+              "text": "Ускоряя медленные ритмы растительной жизни, неестественно подвижные лозы и корни прорываются наружу, отмечая места как подвластные Stonesinger.\n\nОдин раз за turning point, во время активации этого оператора, до или после выполнения им действия, можно использовать это правило. Если используешь: выбери один маркер объектива, который он контролирует. Пока этот оператор не выведен из строя, пока ты не используешь это правило снова или пока вражеский оператор не станет контролировать этот маркер (что наступит раньше), этот оператор считается оспаривающим тот маркер с APL 1 и контролирующим его для целей mission actions и victory conditions (даже если маркер не в пределах его control range). Это может позволить этому оператору выполнить mission action, требующее контроля над тем маркером."
+            },
+            {
+              "id": "winds_grace",
+              "name": "Wind's Grace",
+              "text": "Закручивая зефиры, псайкер размывает силуэты союзников, чтобы защитить их.\n\nWIND'S GRACE (1AP). PSYCHIC. Выбери одного дружественного оператора EXODITE DRAGON MASTER, видимого этому оператору. До начала первой активации этого оператора в следующем turning point, пока тот не выведен из строя или пока он не выполнит это действие снова (что наступит раньше), SPEED выбранного оператора на один уровень выше (т.е. если был бы SPEED 3-, становится SPEED 4+; если был бы SPEED 4+, становится SPEED 7+).\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора, или более одного раза за turning point."
+            },
+            {
+              "id": "earthen_wrath",
+              "name": "Earthen Wrath",
+              "text": "Эльдритчский жест Stonesinger способен вызвать извержение каменных осколков или превратить твёрдую землю в жижу, поглощающую врага.\n\nЭтот оператор получает следующее дальнобойное оружие:\nEarthen Wrath: Atk 4, Hit 3+, Dmg 4/3, WR Devastating 2, Saturate, *Earthen Wrath.\n*Earthen Wrath: если цель в cover, это оружие получает weapon rule Lethal 5+."
+            }
+          ]
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "speed",
+          "name": "Speed",
+          "target": "friendly",
+          "counter": true,
+          "max": 2,
+          "text": "Отслеживает уровень SPEED оператора MOUNTED (faction rule Mercurial Speed): 0 = SPEED 3-, 1 = SPEED 4+, 2 = SPEED 7+. Определяется по дистанции действия Sprint: 4\"+ вперёд даёт SPEED 4+ (уровень 1), 7\"+ вперёд даёт SPEED 7+ (уровень 2); движение назад, менее 4\" вперёд, или отсутствие действия Sprint за активацию сбрасывает SPEED до 3- (уровень 0). Эффект: когда по этому оператору стреляют, при SPEED 4+ можно удержать один defence die как normal success без броска, при SPEED 7+ — как critical success вместо этого. У операторов DRAKOLITHE SPEED меняется отдельным правилом Preternatural Evasion на их карточке, а не через Sprint."
+        }
+      ]
+    },
+    "Scout Squad": {
+      "archetypes": [
+        "Infiltration",
+        "Recon"
+      ],
+      "required": [
+        {
+          "name": "Scout Sergeant",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 11,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Astartes shotgun",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "4/4",
+              "wr": "Range 6\""
+            },
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Boltgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения при сборке ростера: Astartes shotgun+Fists, ИЛИ Boltgun+Fists, ИЛИ Bolt pistol+Chainsword. В этом приложении представлены все варианты оружия; используй только выбранные."
+            },
+            {
+              "name": "Guidance and Experience",
+              "text": "Один раз за каждую активацию этого оператора можно выбрать одного другого дружественного оператора SCOUT SQUAD в killzone. До конца следующей активации того оператора добавь 1 к его APL stat."
+            },
+            {
+              "name": "Astartes",
+              "text": "Во время своей активации этот оператор может выполнить либо два действия Shoot, либо два действия Fight. Если это два действия Shoot, хотя бы для одного из них должен быть выбран Astartes shotgun, bolt pistol или boltgun. Этот оператор может выполнять counteract вне зависимости от своего приказа (order)."
+            }
+          ],
+          "portrait": "img/portraits/scout-squad/scout-sergeant.png"
+        }
+      ],
+      "poolPick": 8,
+      "pool": [
+        {
+          "name": "Heavy Gunner (Heavy Bolter)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Heavy bolter (focused)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Piercing Crits 1"
+            },
+            {
+              "name": "Heavy bolter (sweeping)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Piercing Crits 1, Torrent 1\""
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Heavy Weapon Bipod",
+              "text": "Каждый раз, когда этот оператор стреляет оружием со своего datacard, если он не двигался во время этой активации, или если это counteract, то оружие получает weapon rule Ceaseless; если оружие уже имеет это weapon rule (например, от strategy ploy Ambush), вместо этого оно получает weapon rule Relentless. Обрати внимание, что этому оператору не запрещено двигаться после стрельбы."
+            }
+          ],
+          "portrait": "img/portraits/scout-squad/heavy-gunner-heavy-bolter.png"
+        },
+        {
+          "name": "Heavy Gunner (Missile Launcher)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Missile launcher (frag)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/5",
+              "wr": "Blast 2\", Heavy (Dash only)"
+            },
+            {
+              "name": "Missile launcher (krak)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "5/7",
+              "wr": "Heavy (Dash only), Piercing 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Heavy Weapon Bipod",
+              "text": "Каждый раз, когда этот оператор стреляет оружием со своего datacard, если он не двигался во время этой активации, или если это counteract, то оружие получает weapon rule Ceaseless; если оружие уже имеет это weapon rule (например, от strategy ploy Ambush), вместо этого оно получает weapon rule Relentless. Обрати внимание, что этому оператору не запрещено двигаться после стрельбы."
+            }
+          ],
+          "portrait": "img/portraits/scout-squad/heavy-gunner-missile-launcher.png"
+        },
+        {
+          "name": "Hunter",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Combat blade",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Grapnel Launcher",
+              "text": "Каждый раз, когда этот оператор взбирается (climbing up), вертикальную дистанцию можно считать равной 2\", независимо от того, насколько далеко оператор реально переместился по вертикали."
+            },
+            {
+              "name": "Grapnel Assault",
+              "text": "Каждый раз, когда этот оператор выполняет действие Charge во время своей активации, если во время этого действия он взбирается, спускается (drops), прыгает (jumps), либо его база проходит движением под Vantage terrain, его оружие ближнего боя получает weapon rule Lethal 3+ до конца этой активации."
+            }
+          ],
+          "portrait": "img/portraits/scout-squad/hunter.png"
+        },
+        {
+          "name": "Sniper",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Sniper rifle (mobile)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Sniper rifle (stationary)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, Heavy (Dash only), Silent"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Camo Cloak",
+              "text": "Каждый раз, когда оператор стреляет по этому оператору:\n• Игнорируется weapon rule Saturate.\n• Если можно удержать любые cover save, можно удержать один дополнительный cover save, либо удержать один cover save как critical success вместо этого. Не суммируется с улучшенными cover save от Vantage terrain."
+            },
+            {
+              "name": "Optics",
+              "text": "До начала следующей активации этого оператора, каждый раз когда он стреляет, вражеские операторы, по которым он стреляет, не могут быть obscured. Этот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/scout-squad/sniper.png"
+        },
+        {
+          "name": "Tracker",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 10,
+          "weapons": [
+            {
+              "name": "Boltgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Track Enemy",
+              "text": "Выбери одного вражеского оператора в пределах 8\" от этого оператора. До конца turning point, каждый раз когда дружественный оператор SCOUT SQUAD стреляет по тому вражескому оператору, дальнобойное оружие того дружественного оператора получает weapon rule Seek Light. Этот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            },
+            {
+              "name": "Auspex Scan",
+              "text": "До начала следующей активации этого оператора либо до его выведения из строя (incapacitated) — что наступит раньше, — каждый раз когда дружественный оператор SCOUT SQUAD стреляет по вражескому оператору в пределах 8\" от этого оператора, тот вражеский оператор не может быть obscured; если тот дружественный оператор — SNIPER, находящийся под эффектом своего действия Optics, его дальнобойное оружие также получает weapon rule Seek Light. Этот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/scout-squad/tracker.png"
+        },
+        {
+          "name": "Warrior",
+          "apl": 2,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 10,
+          "maxCopies": 8,
+          "weapons": [
+            {
+              "name": "Astartes shotgun",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "4/4",
+              "wr": "Range 6\""
+            },
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Boltgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Combat blade",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 3,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения при сборке ростера: Astartes shotgun+Fists, ИЛИ Boltgun+Fists, ИЛИ Bolt pistol+Combat blade. В этом приложении представлены все варианты оружия; используй только выбранные."
+            },
+            {
+              "name": "Adaptive Equipment",
+              "text": "Каждое из следующего можно сделать один раз за turning point:\n• Один дружественный оператор SCOUT SQUAD WARRIOR может выполнить действие Smoke Grenade.\n• Один дружественный оператор SCOUT SQUAD WARRIOR может выполнить действие Stun Grenade.\nПравила этих действий находятся в universal equipment. Выполнение этих действий по этому правилу не учитывается в лимите действий (то есть, даже если ты также выбрал эти гранаты как equipment)."
+            }
+          ],
+          "portrait": "img/portraits/scout-squad/warrior.png"
+        }
+      ],
+      "equipment": "Scout Squad",
+      "lore": {
+        "intro": "Kill team Scout Squad — разведывательное подразделение Space Marines, формируемое из неофитов Ордена, ещё не удостоенных полного статуса брата-битвы. Действуя далеко впереди основных сил, скауты закладывают ловушки, ведут наблюдение за противником и прокладывают путь для последующего штурма, полагаясь на скрытность, выносливость и суровую выучку.",
+        "operatives": [
+          {
+            "name": "Scout Sergeant",
+            "text": "Опытный ветеран Ордена, обучающий следующее поколение братьев-битвы личным примером и командующий их уважением благодаря отваге и тактическому чутью."
+          },
+          {
+            "name": "Heavy Gunner (Heavy Bolter)",
+            "text": "Расчёт тяжёлого вооружения, обрушивающий на противника шквал огня из heavy bolter, чтобы уничтожать даже самые опасные вражеские цели."
+          },
+          {
+            "name": "Heavy Gunner (Missile Launcher)",
+            "text": "Оператор missile launcher, способный поразить как одиночную цель бронебойным krak-снарядом, так и группу противников осколочным frag-зарядом."
+          },
+          {
+            "name": "Hunter",
+            "text": "Скаут, вооружённый grapnel launcher, способный стремительно преодолевать труднопроходимую местность, устраивать засады или уходить от преследования."
+          },
+          {
+            "name": "Sniper",
+            "text": "Мастер засады и меткого выстрела, часами выжидающий в укрытии идеальный момент для смертельного удара."
+          },
+          {
+            "name": "Tracker",
+            "text": "Носитель мощного auspex-сканера, позволяющего отряду выявлять цели и планировать сокрушительные удары ещё до начала боя."
+          },
+          {
+            "name": "Warrior",
+            "text": "Опытный боец отряда, стремящийся заслужить полный статус брата-битвы и готовый сражаться яростно и решительно при любых обстоятельствах."
+          }
+        ]
+      },
+      "factionRules": [
+        {
+          "name": "Forward Scouting",
+          "text": "Центральная роль Space Marine Scouts в ударной группе — выдвигаться далеко впереди основных сил: закладывать ловушки для врага, изматывать вражеские патрули, собирать разведданные и разведывать местность в преддверии штурма Ордена.\n\nВ конце шага Set Up Operatives можно выбрать и разрешить до шести опций Forward Scouting (см. faction choices). У каждой опции есть число в скобках — максимум, сколько раз её можно выбрать и разрешить за битву. Например, шесть твоих выборов могут быть: Reposition (2 раза), Trip Alarm (1 раз), Booby Trap (1 раз) и Diversion (1 раз). Если это правило есть у обоих игроков, разрешайте выборы по очереди, начиная с игрока, обладающего initiative."
+        },
+        {
+          "name": "Guerrilla Engagement",
+          "text": "Каждый раз, когда вражеский оператор стреляет по дружественному оператору SCOUT SQUAD, если тот дружественный оператор в cover и дальше 6\" от вражеских операторов, которым он виден, можно перебросить один из своих defence dice.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Ambush",
+          "text": "Каждый раз, когда дружественный оператор SCOUT SQUAD стреляет или дерётся во время своей активации, если его приказ был изменён с Conceal на Engage в начале этой активации, или он не был виден вражеским операторам в начале этой активации:\n• Оружие того дружественного оператора получает weapon rule Balanced.\n• Если цель expended, вместо этого оружие того дружественного оператора получает weapon rule Ceaseless.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Adaptable Training",
+          "text": "Можно изменить порядок активации до D3 дружественных операторов SCOUT SQUAD, находящихся дальше 4\" от вражеских операторов.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Stealth Relocation",
+          "text": "До D3 дружественных операторов SCOUT SQUAD с приказом Conceal, находящихся дальше 4\" от вражеских операторов, могут немедленно выполнить бесплатное действие Dash. Нельзя использовать этот ploy в первый turning point.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Astartes Training",
+          "text": "Примени во время активации дружественного оператора SCOUT SQUAD. До конца этой активации тот оператор может сделать одно из следующего:\n• Выполнить два действия Fight.\n• Выполнить два действия Shoot, если хотя бы для одного из них выбран Astartes shotgun, bolt pistol или boltgun.\n• Выполнить два действия Shoot оружием heavy bolter, missile launcher или sniper rifle, но за второе действие нужно потратить на 1 AP больше.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Raw Physiology",
+          "text": "Примени во время активации дружественного оператора SCOUT SQUAD, до или после выполнения им действия. До начала его следующей активации добавь 1\" к его Move stat, и можно игнорировать любые изменения его характеристик от ранений (включая характеристики его оружия).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Emboldened Aspirant",
+          "text": "Примени, когда дружественный оператор SCOUT SQUAD выполняет действие Shoot или Fight, после любых переигровок (re-rolls). Если это первое действие Shoot или Fight, выполняемое дружественным оператором в этом turning point, либо если вражеский оператор — цель этого действия (primary target, если применимо) — имеет Wounds stat выше, чем у того дружественного оператора SCOUT SQUAD, можно удержать один свой normal success как critical success вместо этого.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Covert Position",
+          "text": "Примени во время активации дружественного оператора SCOUT SQUAD. До начала его следующей активации, пока у того оператора приказ Conceal и он в cover, его нельзя выбрать допустимой целью — это имеет приоритет над всеми остальными правилами (например, Seek, Vantage terrain), кроме случаев, когда вражеский оператор в пределах 2\" от него.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "factionChoices": [
+        {
+          "id": "forward_scouting",
+          "label": "Forward Scouting",
+          "scope": "setup",
+          "pick": 6,
+          "options": [
+            {
+              "id": "redeploy",
+              "name": "Redeploy",
+              "text": "Измени расстановку (set up) одной трети своих операторов (округляя вверх)."
+            },
+            {
+              "id": "reposition_1",
+              "name": "Reposition",
+              "text": "Выполни бесплатное действие Reposition одним дружественным оператором, находящимся в пределах своей drop zone. Он должен закончить это движение полностью в пределах 3\" от своей drop zone."
+            },
+            {
+              "id": "reposition_2",
+              "name": "Reposition",
+              "text": "Выполни бесплатное действие Reposition одним дружественным оператором, находящимся в пределах своей drop zone. Он должен закончить это движение полностью в пределах 3\" от своей drop zone."
+            },
+            {
+              "id": "trip_alarm_1",
+              "name": "Trip Alarm",
+              "text": "Размести один из своих маркеров Trip Alarm дальше 6\" от drop zone противника. В первый и второй turning point, каждый раз когда дружественный оператор SCOUT SQUAD стреляет по вражескому оператору в пределах 2\" от этого маркера, дальнобойное оружие того дружественного оператора получает weapon rule Seek. В Ready step третьей Strategy phase убери этот маркер."
+            },
+            {
+              "id": "trip_alarm_2",
+              "name": "Trip Alarm",
+              "text": "Размести один из своих маркеров Trip Alarm дальше 6\" от drop zone противника. В первый и второй turning point, каждый раз когда дружественный оператор SCOUT SQUAD стреляет по вражескому оператору в пределах 2\" от этого маркера, дальнобойное оружие того дружественного оператора получает weapon rule Seek. В Ready step третьей Strategy phase убери этот маркер."
+            },
+            {
+              "id": "booby_trap",
+              "name": "Booby Trap",
+              "text": "Размести один из своих маркеров Booby Trap дальше 6\" от drop zone противника и дальше 2\" от других маркеров, access points и Accessible terrain. Первый раз, когда твой маркер Booby Trap оказывается в пределах control range вражеского оператора, убери этот маркер и нанеси 2D3 урона тому оператору; если он не выведен из строя, заверши его действие (если оно выполнялось), даже если эффекты того действия не были полностью разрешены. Если маркер невозможно разместить по правилам, сдвинь его на минимально необходимое расстояние, чтобы разместить."
+            },
+            {
+              "id": "tactical_manoeuvre",
+              "name": "Tactical Manoeuvre",
+              "text": "Дважды за битву STRATEGIC GAMBIT. Выбери одного дружественного оператора. До конца его следующей активации добавь 1 к его APL stat. Выбор этой опции открывает Strategic Gambit, доступный дважды за битву."
+            },
+            {
+              "id": "diversion",
+              "name": "Diversion",
+              "text": "Один раз за битву STRATEGIC GAMBIT. Выбери одного вражеского оператора в пределах 6\" от края killzone. До конца его следующей активации вычти 1 из его APL stat. Выбор этой опции открывает Strategic Gambit, доступный один раз за битву."
+            },
+            {
+              "id": "devise_plan",
+              "name": "Devise Plan",
+              "text": "Получи 1CP."
+            },
+            {
+              "id": "designate_target",
+              "name": "Designate Target",
+              "text": "Выбери одного вражеского оператора, чтобы он получил один из твоих Target token. Каждый раз, когда дружественный оператор SCOUT SQUAD стреляет по вражескому оператору с одним из твоих Target token, дерётся против него или отвечает (retaliating) против него, можно перебросить один из своих attack dice."
+            },
+            {
+              "id": "spy",
+              "name": "Spy",
+              "text": "Только Approved Ops. Твой противник должен раскрыть выбранный им tac op."
+            }
+          ]
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "designate_target",
+          "name": "Designate Target",
+          "target": "enemy",
+          "text": "Пока вражеский оператор отмечен этим токеном, каждый раз когда дружественный оператор SCOUT SQUAD стреляет по нему, дерётся против него или отвечает (retaliating) против него, можно перебросить один из своих attack dice."
+        },
+        {
+          "id": "track_enemy",
+          "name": "Track Enemy",
+          "target": "enemy",
+          "text": "Пока вражеский оператор отмечен этим токеном (до конца этого turning point), каждый раз когда дружественный оператор SCOUT SQUAD стреляет по нему, его дальнобойное оружие получает weapon rule Seek Light."
+        },
+        {
+          "id": "auspex_scan",
+          "name": "Auspex Scan",
+          "target": "friendly",
+          "text": "Пока этот оператор отмечен этим токеном (до начала его следующей активации либо до его выведения из строя — что наступит раньше), каждый раз когда дружественный оператор SCOUT SQUAD стреляет по вражескому оператору в пределах 8\" от этого оператора, тот вражеский оператор не может быть obscured; если тот дружественный оператор — SNIPER, находящийся под эффектом действия Optics, его дальнобойное оружие также получает weapon rule Seek Light."
+        },
+        {
+          "id": "optics",
+          "name": "Optics",
+          "target": "friendly",
+          "text": "Пока этот оператор отмечен этим токеном (до начала его следующей активации), каждый раз когда он стреляет, вражеские операторы, по которым он стреляет, не могут быть obscured."
         }
       ]
     }
