@@ -67,6 +67,7 @@ function createTeam(id, name) {
     operators: [],
     factionChoices: {},     // { choiceId: [optionId, ...] } — см. killTeamDef.factionChoices
     factionChoiceUsedOptions: {}, // { choiceId: [optionId, ...] } — для choice с oncePerBattle:true
+    selectedExclusive: {},  // { exclusiveGroupId: operatorName } — выбор внутри группы взаимоисключающих required (см. killTeamDef.required[].exclusiveGroup)
   };
 }
 
@@ -135,6 +136,37 @@ function resolveEquipmentItem(gameData, team, uniqueId) {
 // ============================================================
 
 /**
+ * Группирует required-записи killTeamDef по exclusiveGroup (взаимоисключающие
+ * варианты лидера, из которых в ростер попадает ровно один — см.
+ * ADD_NEW_TEAM.md, паттерн "Выбор лидера из N взаимоисключающих вариантов").
+ * Возвращает { groupId: [record, ...] } только для записей, у которых
+ * exclusiveGroup задан; записи без этого поля сюда не попадают.
+ */
+function exclusiveGroupsOf(killTeamDef) {
+  const groups = {};
+  (killTeamDef.required || []).forEach(r => {
+    if (!r.exclusiveGroup) return;
+    (groups[r.exclusiveGroup] = groups[r.exclusiveGroup] || []).push(r);
+  });
+  return groups;
+}
+
+/**
+ * Устанавливает выбор внутри группы взаимоисключающих required (см.
+ * exclusiveGroupsOf). Не пересобирает team.operators — как и adjustPoolCount,
+ * вызывающая сторона обязана после этого вызвать rebuildOperatorsFromKillTeam.
+ * Возвращает true, если operatorName реально состоит в этой группе.
+ */
+function selectExclusiveLeader(gameData, team, groupId, operatorName) {
+  const killTeamDef = findKillTeamDef(gameData, team.killTeamName);
+  if (!killTeamDef) return false;
+  const group = exclusiveGroupsOf(killTeamDef)[groupId];
+  if (!group || !group.some(r => r.name === operatorName)) return false;
+  team.selectedExclusive[groupId] = operatorName;
+  return true;
+}
+
+/**
  * Пересобирает team.operators на основе team.killTeamName и team.poolCounts.
  * Сохраняет существующих операторов с тем же именем (переиспользует их
  * id/wounds/tokens/etc), лишние по количеству — отбрасывает, недостающие —
@@ -148,8 +180,16 @@ function rebuildOperatorsFromKillTeam(gameData, team) {
   const statsOf = (def) => ({ apl: def.apl, move: def.move, save: def.save, portrait: def.portrait, weapons: def.weapons, abilities: def.abilities });
 
   const wanted = [];
+  const exclusiveGroups = exclusiveGroupsOf(killTeamDef);
   (killTeamDef.required || []).forEach(r => {
+    if (r.exclusiveGroup) return; // обработаны отдельно ниже
     for (let i = 0; i < r.count; i++) wanted.push({ name: r.name, wounds: r.wounds, stats: statsOf(r) });
+  });
+  Object.entries(exclusiveGroups).forEach(([groupId, members]) => {
+    const selectedName = team.selectedExclusive[groupId];
+    const chosen = members.find(m => m.name === selectedName) || members[0];
+    if (!team.selectedExclusive[groupId]) team.selectedExclusive[groupId] = chosen.name;
+    for (let i = 0; i < chosen.count; i++) wanted.push({ name: chosen.name, wounds: chosen.wounds, stats: statsOf(chosen) });
   });
   Object.entries(team.poolCounts || {}).forEach(([name, count]) => {
     const def = (killTeamDef.pool || []).find(p => p.name === name);
@@ -201,6 +241,7 @@ function selectKillTeam(gameData, team, killTeamName) {
   team.killTeamName = killTeamName || null;
   team.poolCounts = {};
   team.factionChoices = {};
+  team.selectedExclusive = {};
   team.archetype = null;
   team.tacOpId = null;
   team.equipmentIds = [];
@@ -267,6 +308,7 @@ function importRoster(team, operatorsList, teamName) {
   team.killTeamName = null;
   team.poolCounts = {};
   team.factionChoices = {};
+  team.selectedExclusive = {};
   filterEquipmentAfterTeamChange(team);
   if (teamName) team.name = teamName;
   return team;
@@ -276,6 +318,7 @@ function clearRoster(team) {
   team.operators = [];
   team.killTeamName = null;
   team.poolCounts = {};
+  team.selectedExclusive = {};
   filterEquipmentAfterTeamChange(team);
   return team;
 }
@@ -705,6 +748,7 @@ function importState(rawState) {
   if (!t.equipmentUsed) t.equipmentUsed = {};
   if (!t.factionChoices) t.factionChoices = {};
   if (!t.factionChoiceUsedOptions) t.factionChoiceUsedOptions = {};
+  if (!t.selectedExclusive) t.selectedExclusive = {};
   delete t.enemyMarkers;
   (t.operators || []).forEach(o => {
     if (o.order === undefined) o.order = null;
@@ -759,6 +803,8 @@ if (typeof module !== 'undefined' && module.exports) {
     findKillTeamDef,
     findOperatorDefInKillTeam,
     resolveEquipmentItem,
+    exclusiveGroupsOf,
+    selectExclusiveLeader,
     rebuildOperatorsFromKillTeam,
     selectKillTeam,
     filterEquipmentAfterTeamChange,

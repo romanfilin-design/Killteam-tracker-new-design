@@ -18303,7 +18303,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/sicarian_ruststalker_princeps.png"
+          "portrait": "img/portraits/hunter-clade/sicarian_ruststalker_princeps.png",
+          "exclusiveGroup": "hunter-clade-leader"
         },
         {
           "name": "Sicarian Infiltrator Princeps",
@@ -18360,7 +18361,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/sicarian_infiltrator_princeps.png"
+          "portrait": "img/portraits/hunter-clade/sicarian_infiltrator_princeps.png",
+          "exclusiveGroup": "hunter-clade-leader"
         },
         {
           "name": "Skitarii Ranger Alpha",
@@ -18449,7 +18451,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/skitarii_ranger_alpha.png"
+          "portrait": "img/portraits/hunter-clade/skitarii_ranger_alpha.png",
+          "exclusiveGroup": "hunter-clade-leader"
         },
         {
           "name": "Skitarii Vanguard Alpha",
@@ -18538,7 +18541,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/skitarii_vanguard_alpha.png"
+          "portrait": "img/portraits/hunter-clade/skitarii_vanguard_alpha.png",
+          "exclusiveGroup": "hunter-clade-leader"
         }
       ],
       "poolPick": 9,

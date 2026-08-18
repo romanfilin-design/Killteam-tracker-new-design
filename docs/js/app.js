@@ -674,7 +674,10 @@
     var def = findKillTeamDef(gameData, t.killTeamName);
     if (!def) return '';
 
-    var requiredCards = (def.required || []).map(function (r) {
+    var exclusiveGroups = exclusiveGroupsOf(def);
+    var requiredCards = (def.required || []).filter(function (r) {
+      return !r.exclusiveGroup;
+    }).map(function (r) {
       return '<article class="pool-card is-required">' +
         '<div class="pool-card__portrait">' + poolCardPortrait(r.portrait) + '</div>' +
         '<div class="pool-card__body">' +
@@ -683,6 +686,22 @@
           '<span class="pool-card__tag">Обязательный ×' + r.count + '</span>' +
         '</div>' +
       '</article>';
+    }).join('');
+
+    var exclusiveCards = Object.keys(exclusiveGroups).map(function (groupId) {
+      var members = exclusiveGroups[groupId];
+      var selectedName = t.selectedExclusive[groupId] || members[0].name;
+      return members.map(function (r) {
+        var isSel = r.name === selectedName;
+        return '<article class="pool-card is-required is-exclusive-choice' + (isSel ? ' is-selected' : '') + '" data-action="selectExclusiveLeader" data-value="' + esc(r.name) + '" data-group="' + esc(groupId) + '">' +
+          '<div class="pool-card__portrait">' + poolCardPortrait(r.portrait) + '</div>' +
+          '<div class="pool-card__body">' +
+            '<div class="pool-card__name">' + esc(r.name) + '</div>' +
+            '<div class="pool-card__stats">APL ' + esc(r.apl) + ' · MOVE ' + esc(r.move) + ' · SAVE ' + esc(r.save) + ' · W' + esc(r.wounds) + '</div>' +
+            '<span class="pool-card__tag">' + (isSel ? 'Выбран лидер' : 'Выбрать лидером') + '</span>' +
+          '</div>' +
+        '</article>';
+      }).join('');
     }).join('');
 
     var totalPicked = Object.entries(t.poolCounts || {}).reduce(function (sum, entry) {
@@ -715,7 +734,7 @@
     return (
       '<section class="panel">' +
         '<div class="panel__head"><span class="panel__title">Состав отряда</span></div>' +
-        '<div class="pool-carousel">' + requiredCards + poolCards + '</div>' +
+        '<div class="pool-carousel">' + exclusiveCards + requiredCards + poolCards + '</div>' +
         '<div class="limit-line"><span>Выбрано из пула</span><strong>' + totalPicked + ' / ' + def.poolPick + '</strong></div>' +
       '</section>'
     );
@@ -1523,6 +1542,12 @@
     adjustPool: function (ds) {
       var delta = parseInt(ds.delta, 10);
       if (adjustPoolCount(gameData, appState.team, ds.value, delta)) {
+        rebuildOperatorsFromKillTeam(gameData, appState.team);
+        persist(); render();
+      }
+    },
+    selectExclusiveLeader: function (ds) {
+      if (selectExclusiveLeader(gameData, appState.team, ds.group, ds.value)) {
         rebuildOperatorsFromKillTeam(gameData, appState.team);
         persist(); render();
       }
