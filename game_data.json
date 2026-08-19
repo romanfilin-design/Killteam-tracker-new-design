@@ -1405,6 +1405,66 @@
         "usesLabel": "1× за turning point",
         "desc": "Искусно вырезанные из костей жертв Mandrakes, эти хрупкие, но острые снаряды смертоносны при точном броске.\n\nOnce per turning point дружественный оператор MANDRAKE может использовать следующее дальнобойное оружие: Bone dart — Atk4 Hit3+ Dmg2/4, wr Range 6\", Rending, Silent."
       }
+    ],
+    "Wyrmblade": [
+      {
+        "id": "blasting_charges",
+        "name": "Blasting Charges",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Горное оборудование становится смертоносным оружием в руках Wyrmblade.\n\nOnce per turning point дружественный оператор WYRMBLADE NEOPHYTE может использовать следующее дальнобойное оружие:\n\nBlasting charge — Atk 4, Hit 4+, Dmg 3/5, WR: Range 4\", Blast 1\", Saturate."
+      },
+      {
+        "id": "cult_knives",
+        "name": "Cult Knives",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Агенты культа несут множество клинков — одни просто инструменты, другие ритуальные, но все одинаково смертоносны.\n\nДружественные операторы WYRMBLADE NEOPHYTE имеют следующее оружие ближнего боя:\n\nCult knife — Atk 3, Hit 4+, Dmg 3/4."
+      },
+      {
+        "id": "explosive_traps",
+        "name": "Explosive Traps",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Операторы Wyrmblade часто используют ловушки и мины при подготовке засад.\n\nЭто equipment позволяет выбрать два universal equipment «мина». Нельзя также выбрать это equipment как обычную единицу снаряжения (то есть даёт тебе три мины суммарно), и дружественные операторы WYRMBLADE игнорируются эффектами твоих мин (то есть не могут их сработать и не получают от них урон). Это имеет приоритет над обычными правилами мин."
+      },
+      {
+        "id": "spotlights",
+        "name": "Spotlights",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Neophyte культа несут горные фонари и прожекторы, которыми обшаривают тени и выявляют укрывшихся врагов.\n\nКаждый раз, когда дружественный оператор WYRMBLADE стреляет: цель не может быть obscured, если она видима и в пределах 6\" от дружественного оператора WYRMBLADE NEOPHYTE, не находящегося в control range вражеских операторов."
+      }
+    ],
+    "Phobos Strike Team": [
+      {
+        "id": "additional_utility_grenades",
+        "name": "Additional Utility Grenades",
+        "uses": null,
+        "usesLabel": "Пассив (выбор при сборке)",
+        "desc": "Некоторые Space Marines предпочитают брать с собой дополнительные smoke grenades, shock grenades и другие ручные гранаты.\n\nЭто снаряжение позволяет выбрать четыре utility grenades из списка utility grenades (см. universal equipment). Нельзя при этом также выбрать то снаряжение как обычно (то есть получить шесть)."
+      },
+      {
+        "id": "combat_blades",
+        "name": "Combat Blades",
+        "uses": null,
+        "usesLabel": "Пассив",
+        "desc": "Эти клинки прочны, увесисты и обладают бритвенно-острой кромкой.\n\nДружественные операторы PHOBOS STRIKE TEAM получают следующее оружие ближнего боя: Combat blade — Atk 5, Hit 3+, Dmg 3/4."
+      },
+      {
+        "id": "special_issue_ammunition",
+        "name": "Special Issue Ammunition",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Bolt-оружие Space Marine можно снарядить разнообразными специальными боеприпасами.\n\nOnce per turning point, когда дружественный оператор PHOBOS STRIKE TEAM выполняет действие Shoot и ты выбираешь bolt carbine, marksman bolt carbine или occulus bolt carbine, можно использовать это правило. Если используешь — до конца turning point то оружие получает weapon rule Piercing 1."
+      },
+      {
+        "id": "purity_seals",
+        "name": "Purity Seals",
+        "uses": 1,
+        "usesLabel": "1× за turning point",
+        "desc": "Дарованные капелланами Ордена, purity seals несут благословения, вдохновляющие носителя сражаться с удвоенной яростью.\n\nOnce per turning point, когда дружественный оператор PHOBOS STRIKE TEAM стреляет, дерётся или отвечает (retaliating), если ты выбросил два или более fail, можно отбросить один из них, чтобы удержать другой как normal success."
+      }
     ]
   },
   "killTeams": {
@@ -18303,7 +18363,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/sicarian_ruststalker_princeps.png"
+          "portrait": "img/portraits/hunter-clade/sicarian_ruststalker_princeps.png",
+          "exclusiveGroup": "hunter-clade-leader"
         },
         {
           "name": "Sicarian Infiltrator Princeps",
@@ -18360,7 +18421,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/sicarian_infiltrator_princeps.png"
+          "portrait": "img/portraits/hunter-clade/sicarian_infiltrator_princeps.png",
+          "exclusiveGroup": "hunter-clade-leader"
         },
         {
           "name": "Skitarii Ranger Alpha",
@@ -18449,7 +18511,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/skitarii_ranger_alpha.png"
+          "portrait": "img/portraits/hunter-clade/skitarii_ranger_alpha.png",
+          "exclusiveGroup": "hunter-clade-leader"
         },
         {
           "name": "Skitarii Vanguard Alpha",
@@ -18538,7 +18601,8 @@
               "text": "Можно использовать firefight ploy Command Override за 0CP, если указанный в этом ploy дружественный оператор HUNTER CLADE виден этому оператору."
             }
           ],
-          "portrait": "img/portraits/hunter-clade/skitarii_vanguard_alpha.png"
+          "portrait": "img/portraits/hunter-clade/skitarii_vanguard_alpha.png",
+          "exclusiveGroup": "hunter-clade-leader"
         }
       ],
       "poolPick": 9,
@@ -20131,6 +20195,1351 @@
           "counter": true,
           "max": 6,
           "text": "Ресурс оператора CHOOSER OF THE FLESH. Ты получаешь 1 очко, каждый раз когда вражеский оператор с APL stat 3 или больше выводится из строя правилом Part Collector этого оператора или его baleblade. Каждый раз, когда дружественный оператор MANDRAKE активируется, можно потратить 1 очко Soul Harvest, чтобы либо прибавить 1 к его APL stat до конца битвы, либо восстановить ему до 2D3 потерянных wounds. Очки можно тратить, даже если оператор CHOOSER OF THE FLESH incapacitated."
+        }
+      ]
+    },
+    "Wyrmblade": {
+      "archetypes": [
+        "Infiltration",
+        "Seek & Destroy"
+      ],
+      "equipment": "Wyrmblade",
+      "required": [
+        {
+          "name": "Neophyte Leader",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 8,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Autogun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\""
+            },
+            {
+              "name": "Master-crafted autopistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/4",
+              "wr": "Range 8\", Lethal 5+"
+            },
+            {
+              "name": "Shotgun",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 6\""
+            },
+            {
+              "name": "Web pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 6\", Severe, Stun"
+            },
+            {
+              "name": "Chainsword",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Power maul",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Shock"
+            },
+            {
+              "name": "Power pick",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Выбор оружия",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения при сборке ростера: (Autogun + gun butt) или (Shotgun + gun butt); либо один вариант из (Bolt pistol, Master-crafted autopistol или Web pistol) в сочетании с одним из (Chainsword, Power maul или Power pick). В этом приложении представлены все варианты; используй только выбранный набор."
+            },
+            {
+              "name": "Shadow Vector",
+              "text": "Once per turning point можно использовать firefight ploy Slink Into Darkness или Coiled Serpent за 0CP, если указанный в этом ploy дружественный оператор WYRMBLADE является NEOPHYTE, видимым этому оператору."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/neophyte_leader.png"
+        }
+      ],
+      "poolPick": 13,
+      "pool": [
+        {
+          "name": "Kelermorph",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 9,
+          "poolWeight": 2,
+          "weapons": [
+            {
+              "name": "Liberator autostubs (hypersense)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 6\", Saturate, Seek Light, Hypersense*"
+            },
+            {
+              "name": "Liberator autostubs (long range)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Piercing Crits 1, Rending"
+            },
+            {
+              "name": "Liberator autostubs (short range)",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Piercing 1, Rending"
+            },
+            {
+              "name": "Kelermorph knife",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "3/4",
+              "wr": "Rending"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Hypersense*",
+              "text": "*Каждый раз, когда этот оператор стреляет с профилем Liberator autostubs (hypersense), вражеские операторы не могут быть obscured."
+            },
+            {
+              "name": "Expert Gunslinger",
+              "text": "Этот оператор может выполнить два действия Shoot во время своей активации."
+            },
+            {
+              "name": "Heroic Inspiration",
+              "text": "Каждый раз, когда дружественный оператор WYRMBLADE NEOPHYTE, видимый и в пределах 3\" от этого оператора, стреляет, дерётся или отвечает (retaliating): если этот оператор вывел из строя вражеского оператора в этот turning point, оружие того дружественного оператора получает weapon rule Severe."
+            },
+            {
+              "name": "Cult Agent — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов CULT AGENT (Kelermorph, Locus, Sanctus Sniper, Sanctus Talon — в любом сочетании)."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/kelermorph.png"
+        },
+        {
+          "name": "Locus",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 9,
+          "poolWeight": 2,
+          "weapons": [
+            {
+              "name": "Barbed tail",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 3\", Silent"
+            },
+            {
+              "name": "Locus blades",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/6",
+              "wr": "Lethal 5+"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Expert Swordsman",
+              "text": "Этот оператор может выполнить два действия Fight во время своей активации. Каждый раз, когда этот оператор завершает действие Fight: если он более не находится в control range вражеских операторов, он может немедленно выполнить бесплатное действие Charge (даже если уже выполнял Charge в этой активации), но не может сдвинуться более чем на 3\" в этом действии. Это не мешает ему затем выполнить действие Dash в этой же активации."
+            },
+            {
+              "name": "Quicksilver Strike",
+              "text": "Once per turning point, после того как вражеский оператор выполняет действие, в котором он двигается или устанавливается на стол, можно прервать это для применения этого правила. Если применяешь: этот оператор может немедленно выполнить бесплатное действие Charge (можно сменить его приказ для этого), но не может сдвинуться более чем на 3\" и должен закончить движение в control range того вражеского оператора. Если это невозможно, прерывание отменяется и это правило считается неиспользованным."
+            },
+            {
+              "name": "Bladed Stance",
+              "text": "Каждый раз, когда этот оператор дерётся или отвечает (retaliating), можно разрешить один из своих successes до обычного порядка. Если делаешь так, тот success должен быть использован как block."
+            },
+            {
+              "name": "Cult Agent — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов CULT AGENT (Kelermorph, Locus, Sanctus Sniper, Sanctus Talon — в любом сочетании)."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/locus.png"
+        },
+        {
+          "name": "Gunner (Flamer)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Flamer",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Range 8\", Saturate, Torrent 2\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Gunner — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов GUNNER (в любом сочетании вариантов вооружения)."
+            }
+          ],
+          "portrait": null
+        },
+        {
+          "name": "Gunner (Grenade launcher)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Grenade launcher (frag)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/4",
+              "wr": "Blast 2\""
+            },
+            {
+              "name": "Grenade launcher (krak)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Piercing 1"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Gunner — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов GUNNER (в любом сочетании вариантов вооружения)."
+            }
+          ],
+          "portrait": null
+        },
+        {
+          "name": "Gunner (Webber)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Webber",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 12\", Severe, Stun"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Gunner — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов GUNNER (в любом сочетании вариантов вооружения)."
+            }
+          ],
+          "portrait": null
+        },
+        {
+          "name": "Heavy Gunner (Heavy stubber)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Heavy stubber (focused)",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only)"
+            },
+            {
+              "name": "Heavy stubber (sweeping)",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Torrent 1\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Heavy Weapon Bipod",
+              "text": "Каждый раз, когда этот оператор стреляет оружием со своей datacard: если он не двигался в этой активации, либо это контрдействие (counteraction), то оружие получает weapon rule Ceaseless; если оружие уже имеет это правило (например, от faction rule Cult Ambush) — оно получает weapon rule Relentless вместо этого. Учти: этот оператор не ограничен в движении после стрельбы."
+            },
+            {
+              "name": "Heavy Gunner — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов HEAVY GUNNER (в любом сочетании вариантов вооружения)."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/heavy_gunner_heavy_stubber.png"
+        },
+        {
+          "name": "Heavy Gunner (Mining laser)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Mining laser",
+              "atk": 5,
+              "hit": "4+",
+              "dmg": "4/5",
+              "wr": "Heavy (Dash only), Piercing 1"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Heavy Weapon Bipod",
+              "text": "Каждый раз, когда этот оператор стреляет оружием со своей datacard: если он не двигался в этой активации, либо это контрдействие (counteraction), то оружие получает weapon rule Ceaseless; если оружие уже имеет это правило (например, от faction rule Cult Ambush) — оно получает weapon rule Relentless вместо этого. Учти: этот оператор не ограничен в движении после стрельбы."
+            },
+            {
+              "name": "Heavy Gunner — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов HEAVY GUNNER (в любом сочетании вариантов вооружения)."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/heavy_gunner_mining_laser.png"
+        },
+        {
+          "name": "Heavy Gunner (Seismic cannon)",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Seismic cannon (long-wave)",
+              "atk": 6,
+              "hit": "4+",
+              "dmg": "2/2",
+              "wr": "Blast 1\", Heavy (Dash only), Stun"
+            },
+            {
+              "name": "Seismic cannon (short-wave)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "4/4",
+              "wr": "Range 6\", Heavy (Dash only), Piercing Crits 1, Stun"
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Heavy Weapon Bipod",
+              "text": "Каждый раз, когда этот оператор стреляет оружием со своей datacard: если он не двигался в этой активации, либо это контрдействие (counteraction), то оружие получает weapon rule Ceaseless; если оружие уже имеет это правило (например, от faction rule Cult Ambush) — оно получает weapon rule Relentless вместо этого. Учти: этот оператор не ограничен в движении после стрельбы."
+            },
+            {
+              "name": "Heavy Gunner — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов HEAVY GUNNER (в любом сочетании вариантов вооружения)."
+            }
+          ],
+          "portrait": null
+        },
+        {
+          "name": "Icon Bearer",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "weapons": [
+            {
+              "name": "Autogun",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Shotgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Range 6\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Выбор оружия",
+              "text": "В официальных правилах для этого оператора выбирается один вариант вооружения при сборке ростера: (Autogun + gun butt) либо (Shotgun + gun butt). В этом приложении представлены оба варианта; используй только выбранный."
+            },
+            {
+              "name": "Icon Bearer",
+              "text": "Каждый раз, когда определяется контроль над маркером, считай APL stat этого оператора на 1 выше. Учти: это не изменение самого APL stat, поэтому другие изменения суммируются с этим."
+            },
+            {
+              "name": "Overthrow the Oppressors",
+              "text": "Once per turning point, когда готовый дружественный оператор WYRMBLADE NEOPHYTE выводится из строя, будучи видимым и в пределах 6\" от этого оператора, можно применить это правило. Если применяешь, до того как тот оператор будет убран с killzone, он может либо выполнить бесплатное действие Shoot (можно сменить его приказ для этого), либо можно применить firefight ploy A Plan Generations in the Making за 0CP, если тот выведенный из строя оператор — указанный в этом ploy дружественный WYRMBLADE NEOPHYTE. После этого он убирается с killzone как обычно."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/icon_bearer.png"
+        },
+        {
+          "name": "Sanctus Sniper",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 9,
+          "poolWeight": 2,
+          "weapons": [
+            {
+              "name": "Sanctus sniper rifle (mobile)",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            },
+            {
+              "name": "Sanctus sniper rifle (stationary)",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/3",
+              "wr": "Devastating 3, Heavy (Dash only), Silent"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "2/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Target Vulnerability (1AP)",
+              "text": "До конца активации этого оператора stationary-профиль его Sanctus sniper rifle получает weapon rule Lethal 5+. Нельзя выполнять это действие в пределах control range вражеского оператора."
+            },
+            {
+              "name": "Familiar's Soulsight (1AP)",
+              "text": "Выбери одного видимого этому оператору вражеского оператора. До конца битвы, либо пока это действие не будет выполнено повторно дружественным оператором (что наступит раньше), тот вражеский оператор получает один твой токен Soulsight. Каждый раз, когда этот оператор стреляет по вражескому оператору, несущему твой токен Soulsight, все профили его Sanctus sniper rifle получают weapon rule Saturate, и та цель не может быть obscured. Нельзя выполнять это действие в пределах control range вражеского оператора."
+            },
+            {
+              "name": "Cult Agent — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов CULT AGENT (Kelermorph, Locus, Sanctus Sniper, Sanctus Talon — в любом сочетании)."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/sanctus_sniper.png"
+        },
+        {
+          "name": "Sanctus Talon",
+          "apl": 3,
+          "move": "6\"",
+          "save": "4+",
+          "wounds": 9,
+          "poolWeight": 2,
+          "weapons": [
+            {
+              "name": "Sanctus bio-dagger",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/6",
+              "wr": "Lethal 4+, Shock"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Creeping Shadow",
+              "text": "Этот оператор может выполнить действие Charge, имея приказ Conceal. Каждый раз, когда этот оператор выполняет действие Fight, он может немедленно выполнить бесплатное действие Dash или Fall Back после него в этой же активации (для Fall Back — не более 3\"), даже если выполненное действие обычно мешало бы выполнить эти действия."
+            },
+            {
+              "name": "Assassinate (2AP)",
+              "text": "Выбери одного вражеского оператора, невидимого этому оператору. Выполни бесплатное действие Charge этим оператором, но не превышая его Move stat (то есть без +2\"), и он должен закончить движение в control range того вражеского оператора. Затем немедленно выполни действие Fight этим оператором против того вражеского оператора. В первый раз, когда наносится удар (strike) в этой последовательности, можно немедленно разрешить ещё один свой success как удар (до оппонента). Нельзя выполнять это действие, имея приказ Engage, или находясь в control range вражеского оператора."
+            },
+            {
+              "name": "Familiar's Soulsight (1AP)",
+              "text": "Выбери одного видимого этому оператору вражеского оператора. До конца битвы, либо пока это действие не будет выполнено повторно дружественным оператором (что наступит раньше), тот вражеский оператор получает один твой токен Soulsight. Каждый раз, когда этот оператор дерётся или отвечает (retaliating) против вражеского оператора, несущего твой токен Soulsight, его Sanctus bio-dagger получает weapon rules Brutal и Balanced. Нельзя выполнять это действие в пределах control range вражеского оператора."
+            },
+            {
+              "name": "Cult Agent — лимит выбора",
+              "text": "В ростере не может быть более 2 операторов CULT AGENT (Kelermorph, Locus, Sanctus Sniper, Sanctus Talon — в любом сочетании)."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/sanctus_talon.png"
+        },
+        {
+          "name": "Warrior",
+          "apl": 2,
+          "move": "6\"",
+          "save": "5+",
+          "wounds": 7,
+          "maxCopies": 13,
+          "weapons": [
+            {
+              "name": "Autogun",
+              "atk": 4,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            },
+            {
+              "name": "Shotgun",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/3",
+              "wr": "Range 6\""
+            },
+            {
+              "name": "Gun butt",
+              "atk": 3,
+              "hit": "4+",
+              "dmg": "2/3",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Выбор оружия",
+              "text": "В официальных правилах для этого оператора выбирается один вариант вооружения при сборке ростера: (Autogun + gun butt) либо (Shotgun + gun butt). В этом приложении представлены оба варианта; используй выбранный на каждой конкретной модели."
+            },
+            {
+              "name": "Group Activation",
+              "text": "Каждый раз, когда этот оператор становится expended, ты должен затем активировать одного другого готового дружественного оператора WYRMBLADE WARRIOR (если возможно), прежде чем активируется оппонент. Когда тот другой оператор станет expended, оппонент активируется как обычно (иначе говоря, нельзя активировать более двух операторов подряд этим правилом)."
+            }
+          ],
+          "portrait": "img/portraits/wyrmblade/warrior.png"
+        }
+      ],
+      "factionChoices": [],
+      "lore": {
+        "intro": "Genestealer Cults — коварные выводки человеко-ксеносских гибридов, годами и поколениями незаметно расползающиеся по мирам Империума. Они пронизывают социальную, промышленную и военную ткань Империума, а их элитные килл-команды Wyrmblade незримо просачиваются на идеальные позиции для засады.",
+        "operatives": [
+          {
+            "name": "Neophyte Leader",
+            "text": "Часто — тайный ветеран имперской военной или силовой структуры, лидер выводка Wyrmblade является опытным командиром партизанской войны. Мастерски владея нетривиальными ударами и координацией многофланговых атак, он пользуется непререкаемым авторитетом среди агентов ген-секты."
+          },
+          {
+            "name": "Sanctus Sniper",
+            "text": "Пойманный в трёхлинзовые очки убийцы и удерживаемый в перекрестье калиброванной винтовки, тот, кого выбрал Sanctus Sniper, обречён. Меткость Sanctus дополнительно оттачивается его фамильяром Soulsight, через которого Патриарх культа направляет руку убийцы."
+          },
+          {
+            "name": "Kelermorph",
+            "text": "Kelermorph — гибрид культа третьего поколения, выведенный, чтобы использовать надежды угнетённых и воплощать стремление своих сородичей к бунту. Их почитают как народных героев, и именно в миссиях Wyrmblade чаще всего куётся легенда о них как о ловких стрелках-революционерах."
+          },
+          {
+            "name": "Sanctus Talon",
+            "text": "Некоторые Sanctus-агенты несут атрофические клинки, каждый из которых выращен в бурлящих чанах с ожиженной психической сущностью павших культистов. Сжимая это оружие, Sanctus способен днями выслеживать свою цель, протискивая многосуставчатые конечности сквозь узкие лазы и идя по её психическому следу."
+          },
+          {
+            "name": "Neophyte Warrior",
+            "text": "Warrior — один из самых опытных партизанских бойцов среди Neophyte Hybrid культа. Это закалённые агитаторы и повстанцы, глубоко пропитанные догмами культа. Именно они составляют костяк элитных выводков Wyrmblade, засылаемых глубоко на территорию угнетателей."
+          },
+          {
+            "name": "Locus",
+            "text": "Скрывая мощное, мутировавшее под влиянием ксеноса тело под тяжёлыми одеяниями и зловеще неподвижной внешностью, Locus способен обрушить на врага шквал ударов в мгновение ока. Часто назначаемые Магом культа для охраны лидера килл-команды, эти выведенные телохранители также служат глазами и ушами своего господина."
+          },
+          {
+            "name": "Neophyte Gunner",
+            "text": "Особо мощное оружие, похищенное у ополчений обороны, добытое через криминальные связи или даже изготовленное в подпольных мастерских, вручают самым способным Gunner'ам выводка Wyrmblade. Эти бойцы охотно ведут шквальный огонь на ходу, защищая товарищей и уничтожая врагов культа."
+          },
+          {
+            "name": "Neophyte Heavy Gunner",
+            "text": "Крепко сложенным Neophyte доверяют честь нести смертоносные переделанные горные инструменты или оружие, слишком тяжёлое для обычного человека. Их тяжёлая огневая мощь поддерживает миссии Wyrmblade, выкашивая самые опасные угрозы."
+          },
+          {
+            "name": "Neophyte Icon Bearer",
+            "text": "Столь же крепкие верой, сколь и телом благодаря генетическому наследию, Icon Bearer несут свои святые символы низко опущенными — до того момента, когда придёт время поднять их и подать сигнал к атаке. Почётные хранители священной иконы своего выводка, они вдохновляют братьев и сестёр на великие жертвы."
+          }
+        ],
+        "quote": {
+          "text": "День Вознесения наконец близок. Нам дарован шанс обеспечить его приход. Те, кто падёт сегодня, падут святыми мучениками. Те, кто выживет, узрят, как ангельская родня Патриарха сходит со звёзд, раскрыв объятия.",
+          "author": "Грейта Селбрех, предводительница Pinioned Plaintiffs"
+        }
+      },
+      "factionRules": [
+        {
+          "name": "Familiar Territory",
+          "text": "Genestealer Cults пронизывают все слои имперского общества, накапливая знания о транспортных маршрутах, проходах и скрытых туннелях, с помощью которых они могут обходить своих врагов.\n\nПри расстановке команды WYRMBLADE перед битвой треть твоей команды может быть выставлена в HIDING: размести их в стороне от killzone. Операторы CULT AGENT не могут быть выставлены в HIDING.\n\nВ Firefight phase дружественные операторы WYRMBLADE, выставленные в HIDING, активируются как обычно. При этом можно либо сделать оператора expended, либо позволить ему появиться (emerge). Если он появляется, установи его в killzone в месте, где он может быть размещён следующим образом (он больше не считается выставленным в HIDING):\n• целиком в пределах 6\" от твоей drop zone;\n• более чем в 6\" от вражеских операторов;\n• с приказом на твой выбор.\n\nОператор считается выполняющим действие Reposition (потрать AP соответственно), затем продолжает активацию как обычно. Если этот оператор — WARRIOR, игнорируй его правило Group Activation. Дружественные операторы, всё ещё находящиеся в HIDING в конце второго turning point, выводятся из строя (incapacitated)."
+        },
+        {
+          "name": "Cult Agent",
+          "text": "Избранные агенты Патриарха рассеяны по всем силам культа, направляя и вдохновляя верных.\n\nКаждый раз, когда оператор стреляет по дружественному оператору WYRMBLADE CULT AGENT:\n• Игнорируй weapon rules Piercing и Saturate.\n• Если можно удержать любые cover saves, можно удержать один дополнительный cover save, либо удержать один cover save как critical success вместо обычного. Не суммируется с улучшенными cover saves от Vantage terrain."
+        },
+        {
+          "name": "Cult Ambush",
+          "text": "Когда наступает День Вознесения, культ наносит удар единым фронтом, заставая врагов врасплох смертоносными засадами и внезапными атаками.\n\nКаждый раз, когда дружественный оператор WYRMBLADE стреляет или дерётся во время своей активации: если его приказ был изменён с Conceal на Engage в начале этой активации, либо он не был видим вражеским операторам в начале этой активации — оружие этого дружественного оператора получает weapon rule Ceaseless."
+        },
+        {
+          "name": "The Day is at Hand",
+          "text": "Каждый раз, когда дружественный оператор активируется, если его приказ был изменён с Conceal на Engage, до конца активации: дальнобойное оружие получает weapon rule Rending; Atk stat оружия ближнего боя +1 (максимум 5).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Crossfire",
+          "text": "Каждый раз, когда дружественный оператор стреляет по цели, по которой в этот turning point уже стрелял другой дружественный оператор, дальнобойное оружие того первого оператора получает weapon rule Accurate 1.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "One with the Shadows",
+          "text": "Каждый раз, когда оператор стреляет по дружественному оператору с приказом Conceal, если между ними полностью проходит Light terrain, тот дружественный оператор считается obscured (кроме случаев, когда пересекающий Light terrain находится в пределах 1\" от любого из операторов).",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Divert and Disappear",
+          "text": "До трёх дружественных операторов могут немедленно выполнить бесплатное действие Dash или Charge (выбирается отдельно для каждого; Charge — не более 3\"). Выбранный оператор CULT AGENT считается за двух операторов и вместо этого выполняет бесплатное действие Fall Back (не более 3\"); если делает это, вычти 1 из его APL stat до конца его следующей активации.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Slink Into Darkness",
+          "text": "Используй в конце активации дружественного оператора, если у него приказ Engage. Смени его приказ на Conceal. Once per friendly operative per battle.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Coiled Serpent",
+          "text": "Используй, когда дружественный оператор стреляет или дерётся, после броска кубиков атаки, если его приказ был изменён с Conceal на Engage в начале этой активации, и это первый раз в этой активации, когда выполняется Shoot или Fight. Разреши один normal success как critical success вместо этого. Нельзя применить более раза за активацию (не за оба действия Shoot и Fight сразу).",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Unquestioning Loyalty",
+          "text": "Используй, когда дружественный оператор CULT AGENT или Leader выбирается допустимой целью действия Shoot, либо оператором, против которого дерутся в действии Fight. Выбери другого дружественного оператора NEOPHYTE (кроме Leader), видимого и в пределах 3\" от первого дружественного оператора — он становится целью/оператором, против которого дерутся, вместо первого. Не действует, если это Shoot и выбранное дальнобойное оружие имеет weapon rule Blast или Torrent.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "A Plan Generations in the Making",
+          "text": "Используй, когда дружественный оператор NEOPHYTE выводится из строя. Он может выполнить бесплатное mission-действие перед тем, как его уберут с killzone.",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "soulsight",
+          "name": "Soulsight",
+          "target": "enemy",
+          "text": "Ставится действием Familiar's Soulsight (1AP) операторов SANCTUS SNIPER или SANCTUS TALON на видимого вражеского оператора; заменяется на новую цель при повторном использовании действия или снимается в конце битвы. Пока вражеский оператор несёт этот токен: каждый раз, когда SANCTUS SNIPER стреляет по нему — все профили его Sanctus sniper rifle получают weapon rule Saturate, и эта цель не может быть obscured; каждый раз, когда SANCTUS TALON дерётся или отвечает (retaliating) против него — его Sanctus bio-dagger получает weapon rules Brutal и Balanced."
+        }
+      ]
+    },
+    "Phobos Strike Team": {
+      "archetypes": [
+        "Infiltration",
+        "Recon"
+      ],
+      "equipment": "Phobos Strike Team",
+      "required": [
+        {
+          "name": "Infiltrator Sergeant",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Marksman bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Выбор лидера",
+              "text": "В ростер PHOBOS STRIKE TEAM включается только ОДИН из трёх вариантов лидера (Infiltrator Sergeant, Incursor Sergeant, Reiver Sergeant) — какой именно, выбирает игрок при сборке команды перед битвой. Остальные два варианта в этот бой не берутся."
+            },
+            {
+              "name": "Tactical Advantage",
+              "text": "Можно один раз за битву использовать каждое из следующего:\n• После розыгрыша roll-off для определения инициативы, если этот оператор в killzone, можно перебросить свои кубики.\n• Можно использовать firefight ploy за 0CP, если это указанный оператор PHOBOS STRIKE TEAM (включая Command Re-roll, если кубик атаки или защиты был брошен за этого оператора), либо firefight ploy Patient Ambush за 0CP, если этот оператор ready и не в пределах control range вражеских операторов."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/infiltrator_sergeant.png",
+          "exclusiveGroup": "phobos-leader"
+        },
+        {
+          "name": "Incursor Sergeant",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Occulus bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Saturate"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Выбор лидера",
+              "text": "В ростер PHOBOS STRIKE TEAM включается только ОДИН из трёх вариантов лидера (Infiltrator Sergeant, Incursor Sergeant, Reiver Sergeant) — какой именно, выбирает игрок при сборке команды перед битвой. Остальные два варианта в этот бой не берутся."
+            },
+            {
+              "name": "Tactical Advantage",
+              "text": "Можно один раз за битву использовать каждое из следующего:\n• После розыгрыша roll-off для определения инициативы, если этот оператор в killzone, можно перебросить свои кубики.\n• Можно использовать firefight ploy за 0CP, если это указанный оператор PHOBOS STRIKE TEAM (включая Command Re-roll, если кубик атаки или защиты был брошен за этого оператора), либо firefight ploy Patient Ambush за 0CP, если этот оператор ready и не в пределах control range вражеских операторов."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/incursor_sergeant.png",
+          "exclusiveGroup": "phobos-leader"
+        },
+        {
+          "name": "Reiver Sergeant",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 13,
+          "count": 1,
+          "weapons": [
+            {
+              "name": "Bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Special issue bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Combat knife",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Выбор лидера",
+              "text": "В ростер PHOBOS STRIKE TEAM включается только ОДИН из трёх вариантов лидера (Infiltrator Sergeant, Incursor Sergeant, Reiver Sergeant) — какой именно, выбирает игрок при сборке команды перед битвой. Остальные два варианта в этот бой не берутся."
+            },
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения при сборке ростера: Special issue bolt pistol + combat knife, либо Bolt carbine + fists. В этом приложении представлены все варианты; используй только выбранный набор."
+            },
+            {
+              "name": "Grav-chute and Grapnel Launcher",
+              "text": "Каждый раз, когда этот оператор climbing up (взбирается вверх), можно считать вертикальную дистанцию равной 2\" (независимо от того, на сколько оператор реально переместился по вертикали). Каждый раз, когда этот оператор dropping (спрыгивает/падает вниз), игнорируй вертикальную дистанцию."
+            },
+            {
+              "name": "Tactical Advantage",
+              "text": "Можно один раз за битву использовать каждое из следующего:\n• После розыгрыша roll-off для определения инициативы, если этот оператор в killzone, можно перебросить свои кубики.\n• Можно использовать firefight ploy за 0CP, если это указанный оператор PHOBOS STRIKE TEAM (включая Command Re-roll, если кубик атаки или защиты был брошен за этого оператора), либо firefight ploy Patient Ambush за 0CP, если этот оператор ready и не в пределах control range вражеских операторов."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/reiver_sergeant.png",
+          "exclusiveGroup": "phobos-leader"
+        }
+      ],
+      "poolPick": 5,
+      "pool": [
+        {
+          "name": "Infiltrator Commsman",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Marksman bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Strategic Oversight",
+              "text": "В шаге Ready каждой Strategy phase, когда ты получаешь CP, если этот оператор в killzone и не в пределах control range вражеских операторов, можно применить это правило. Если применяешь — брось один D6: на 4+ ты получаешь дополнительный CP."
+            },
+            {
+              "name": "Comms Array",
+              "text": "Once per turning point, во время активации или counteraction дружественного оператора PHOBOS STRIKE TEAM, до или после выполнения им действия, если этот оператор в killzone, можно сменить strategy ploy, который ты уже использовал в этот turning point (это не стоит тебе CP)."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/infiltrator_commsman.png"
+        },
+        {
+          "name": "Infiltrator Helix Adept",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Marksman bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Medic!",
+              "text": "Первый раз за каждый turning point, когда другой дружественный оператор PHOBOS STRIKE TEAM должен быть выведен из строя, будучи видимым и в пределах 3\" от этого оператора, можно применить это правило, если ни этот, ни тот оператор не находятся в пределах control range вражеского оператора. Если применяешь — тот дружественный оператор не выводится из строя, у него остаётся D3 wounds, и его нельзя вывести из строя до конца этого действия. После этого действия тот дружественный оператор может немедленно выполнить бесплатное действие Dash, но должен закончить это перемещение в пределах control range этого оператора. Вычти 1 из APL stat этого и того оператора до конца их следующих активаций соответственно, и если это правило было использовано во время активации того дружественного оператора, та активация заканчивается. Нельзя использовать это правило, если этот оператор выведен из строя, либо если это действие Shoot и этот оператор был бы первичной или вторичной целью."
+            },
+            {
+              "name": "Helix Gauntlet",
+              "text": "Выбери одного дружественного оператора PHOBOS STRIKE TEAM в пределах control range этого оператора, чтобы он восстановил до D3+3 потерянных wounds. Это не может быть оператор, на котором в этот turning point уже было использовано правило Medic!.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/infiltrator_helix_adept.png"
+        },
+        {
+          "name": "Infiltrator Saboteur",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Marksman bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Remote detonator",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "5/6",
+              "wr": "Heavy (Dash only), Limited 1, Piercing 1, Silent, Detonate*"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Plant Explosives",
+              "text": "Этот оператор несёт твой маркер Explosives. Он может выполнить действие Pick Up Marker на этом маркере, и каждый раз, когда он выполняет действие Place Marker на этом маркере, он может немедленно выполнить бесплатное действие Dash."
+            },
+            {
+              "name": "* Detonate",
+              "text": "Не выбирай допустимую цель как обычно. Вместо этого стреляй против каждого оператора в пределах 2\" от твоего маркера Explosives, если только между тем оператором и маркером полностью не проходит heavy terrain. Каждого из этих операторов можно выбрать в произвольном порядке. Разыгрывай каждую последовательность отдельно, в порядке по твоему выбору. Это оружие нельзя выбрать, если твой маркер Explosives не в killzone. В конце действия убери свой маркер Explosives из killzone. В killzone, где используются close quarters правила (например, Killzone: Tomb World), это оружие получает weapon rule Lethal 5+."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/infiltrator_saboteur.png"
+        },
+        {
+          "name": "Infiltrator Veteran",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Custom bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Custom*"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "* Custom: в конце шага Select Operatives, если этот оператор выбран для развёртывания, выбери до двух из следующих weapon rules для этого оружия на всю битву: Balanced, Lethal 5+, Piercing Crits 1, Rending, Saturate."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/infiltrator_veteran.png"
+        },
+        {
+          "name": "Infiltrator Voxbreaker",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Marksman bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Voxbreak",
+              "text": "Каждый раз, когда вражеский оператор находится в пределах 6\" от этого оператора, твой противник не может перебрасывать свои кубики атаки или защиты за того оператора."
+            },
+            {
+              "name": "Auspex Scan",
+              "text": "До начала следующей активации этого оператора или до тех пор, пока он не будет выведен из строя (что наступит раньше), каждый раз, когда дружественный оператор PHOBOS STRIKE TEAM стреляет по вражескому оператору в пределах 8\" от этого оператора, тот вражеский оператор нельзя obscure; если тот дружественный оператор — INCURSOR, его дальнобойное оружие также получает weapon rule Seek Light.\n\nЭтот оператор не может выполнять это действие, находясь в пределах control range вражеского оператора.",
+              "cost": "1AP"
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/infiltrator_voxbreaker.png"
+        },
+        {
+          "name": "Infiltrator Warrior",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Marksman bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Vanguard",
+              "text": "Once per turning point один дружественный оператор PHOBOS STRIKE TEAM с этим правилом может выполнить действие Pick Up Marker или mission-действие за 1 AP меньше."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/infiltrator_warrior.png"
+        },
+        {
+          "name": "Incursor Marksman",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Stalker marksman bolt carbine",
+              "atk": 4,
+              "hit": "2+",
+              "dmg": "3/4",
+              "wr": "Lethal 5+, Piercing 1"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Track Target",
+              "text": "Этот оператор может выполнить действие Guard во время своей активации независимо от приказа (см. close quarters правила, Kill Team Core Book). Он может выполнить действие Guard, имея приказ Conceal, но когда ты выполняешь бесплатное действие Shoot или Fight во время interruption, ты обязан сменить его приказ на Engage."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/incursor_marksman.png"
+        },
+        {
+          "name": "Incursor Minelayer",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "weapons": [
+            {
+              "name": "Occulus bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Saturate"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Haywire Mine",
+              "text": "Этот оператор несёт твой маркер Haywire Mine. Он может выполнить действие Pick Up Marker на этом маркере, но тот маркер нельзя разместить в пределах control range вражеского оператора (если этот оператор выведен из строя, неся тот маркер, и тот маркер нельзя разместить — он убирается вместе с этим оператором)."
+            },
+            {
+              "name": "Proximity Mine",
+              "text": "Первый раз, когда твой маркер Haywire Mine оказывается в пределах control range другого оператора, убери тот маркер, вычти 1 из APL stat того оператора до конца его следующей активации и нанеси ему 2D3+3 урона, даже если он при этом выведен из строя (если применимо), даже если эффекты этого действия не выполняются полностью. Если маркер нельзя разместить, передвинь его на минимально необходимое расстояние, чтобы это стало возможным. Учти, что этот оператор не может привести маркер в действие или получить от него урон."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/incursor_minelayer.png"
+        },
+        {
+          "name": "Incursor Warrior",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "maxCopies": 5,
+          "weapons": [
+            {
+              "name": "Occulus bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Saturate"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Vanguard",
+              "text": "Once per turning point один дружественный оператор PHOBOS STRIKE TEAM с этим правилом может выполнить действие Pick Up Marker или mission-действие за 1 AP меньше."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/incursor_warrior.png"
+        },
+        {
+          "name": "Reiver Warrior",
+          "apl": 3,
+          "move": "7\"",
+          "save": "3+",
+          "wounds": 12,
+          "maxCopies": 5,
+          "weapons": [
+            {
+              "name": "Bolt carbine",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Accurate 1"
+            },
+            {
+              "name": "Special issue bolt pistol",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "Range 8\", Piercing 1"
+            },
+            {
+              "name": "Combat knife",
+              "atk": 5,
+              "hit": "3+",
+              "dmg": "4/5",
+              "wr": "-"
+            },
+            {
+              "name": "Fists",
+              "atk": 4,
+              "hit": "3+",
+              "dmg": "3/4",
+              "wr": "-"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Weapon Choice",
+              "text": "В официальных правилах для этого оператора выбирается вариант вооружения при сборке ростера: Special issue bolt pistol + combat knife, либо Bolt carbine + fists. В этом приложении представлены все варианты; используй только выбранный набор."
+            },
+            {
+              "name": "Grav-chute and Grapnel Launcher",
+              "text": "Каждый раз, когда этот оператор climbing up (взбирается вверх), можно считать вертикальную дистанцию равной 2\" (независимо от того, на сколько оператор реально переместился по вертикали). Каждый раз, когда этот оператор dropping (спрыгивает/падает вниз), игнорируй вертикальную дистанцию."
+            },
+            {
+              "name": "Vanguard",
+              "text": "Once per turning point один дружественный оператор PHOBOS STRIKE TEAM с этим правилом может выполнить действие Pick Up Marker или mission-действие за 1 AP меньше."
+            }
+          ],
+          "portrait": "img/portraits/phobos-strike-team/reiver_warrior.png"
+        }
+      ],
+      "factionChoices": [],
+      "lore": {
+        "intro": "Мастера скрытности и подрывной войны, Phobos Strike Teams состоят из Space Marine Infiltrators, Incursors и Reivers. Обладая трансчеловеческой силой и снаряжённые широким арсеналом взрывчатки, средств связи и точного оружия, они способны обходить с фланга и подавлять вражеские силы, многократно превосходящие их числом.",
+        "operatives": [
+          {
+            "name": "Infiltrator Sergeant",
+            "text": "Образец для своих братьев; стратегический и тактический лидер исключительного мастерства; смертельный враг для недругов Императора — Infiltrator Sergeant обязан быть всем этим сразу, ведь именно его словами и действиями Phobos Strike Team либо побеждает, либо гибнет."
+          },
+          {
+            "name": "Infiltrator Commsman",
+            "text": "Infiltrator Commsman служит стратегическим узлом на поле боя — каналом, через который проходят вокс-обмены и потоки разведданных. Присутствие такого брата увеличивает манёвренность и универсальность strike team."
+          },
+          {
+            "name": "Infiltrator Helix Adept",
+            "text": "Действуя, как это свойственно им, далеко за линией фронта врага без поддержки, Phobos Strike Teams нуждаются в медицинской помощи Helix Adept'ов, чтобы вернуть раненых братьев в строй и извлечь gene-seed павших для Ордена."
+          },
+          {
+            "name": "Infiltrator Saboteur",
+            "text": "Неся смертоносный набор melta-зарядов, super-krak боеприпасов и даже противорастительных канистр в бой, Infiltrator Saboteur готов заминировать любую цель для уничтожения. Выполнив эту задачу, он стремительно отступает, прежде чем спровоцировать взрыв, подобный гневу Императора."
+          },
+          {
+            "name": "Infiltrator Veteran",
+            "text": "Самые опытные из братьев-Infiltrator выслеживают своих врагов, точно бронированные призраки, владея оружием, отобранным из редчайших арсеналов их Ордена, — каждое усилено вниманием мастеров-оружейников. Так вооружённые, они способны стать проклятием для любого противника."
+          },
+          {
+            "name": "Infiltrator Voxbreaker",
+            "text": "Voxbreaker ведёт войну как в физическом, так и в дата-спектральном пространстве. Его специализированное снаряжение не только позволяет сканировать и раскрывать скрытые угрозы, но и взламывать вражеские коммуникации, добывая стратегические разведданные."
+          },
+          {
+            "name": "Infiltrator Warrior",
+            "text": "Infiltrators, сражающиеся в составе Phobos Strike Teams, стремительны и агрессивны в мыслях и действиях, даже по меркам их боевого братства. Немногие способны надолго увернуться от их точных выстрелов или сокрушающих ударов бронированных кулаков."
+          },
+          {
+            "name": "Incursor Sergeant",
+            "text": "Склонные к агрессивным и динамичным стратегиям, Incursor Sergeants ведут Phobos Strike Teams в яростные наступления, оставляющие вражеские командные структуры и логистические цепи в руинах, готовые к планетарному вторжению полномасштабных сил Space Marine."
+          },
+          {
+            "name": "Incursor Marksman",
+            "text": "Будто сочетания высококвалифицированного Space Marine и мощного bolt carbine было недостаточно смертоносно, Incursor Marksman использует auspex класса Divinator, чтобы прекогнитивно отслеживать будущие позиции целей и наносить по ним точные выстрелы."
+          },
+          {
+            "name": "Incursor Minelayer",
+            "text": "Некоторые Incursors несут в бой тяжёлые haywire mines, устанавливая их в заранее рассчитанных узлах вероятного движения врага. Электрофантазмальные разряды этого оружия способны изгнать machine spirit из вражеского снаряжения и вывести из строя augmetic-усиления."
+          },
+          {
+            "name": "Incursor Warrior",
+            "text": "Incursors — грозные наступательные бойцы. Они используют oracular auspexes, привязанные к своим occulus bolt carbine, чтобы засекать вражеские цели даже сквозь твёрдые стены, затем стремительно сближаются с позициями противника, вступая в кровавые, односторонние перестрелки с обескураженным врагом."
+          },
+          {
+            "name": "Reiver Sergeant",
+            "text": "Reiver Sergeants — мастера психологической войны и тактики устрашения. Их задача — рассекать хрупкие нити вражеского морального духа, точно скальпелем, пока силы противника не превратятся в разрозненную и сломленную толпу."
+          },
+          {
+            "name": "Reiver Warrior",
+            "text": "Врываясь из теней под усиленные vox-ревы, Reivers обрушиваются на своих потрясённых жертв под грохот пистолетов и свист клинков. Пока враг ещё не оправился от дезориентирующих вспышек их shock grenades, Reivers быстро и кроваво заканчивают дело."
+          }
+        ],
+        "quote": {
+          "text": "Вы говорите, что нас лишь горстка против армии еретиков, что нам не одолеть таких чисел. Но вы не понимаете: каждый Space Marine — сам по себе целая армия.",
+          "author": "Infiltrator Sergeant Justarian"
+        }
+      },
+      "factionRules": [
+        {
+          "name": "Omni-Scrambler",
+          "text": "Backpack-mounted omni-scramblers используются, чтобы нарушать вражеские коммуникации.\n\nSTRATEGIC GAMBIT, если дружественный оператор INFILTRATOR в killzone. Выбери одного вражеского оператора, видимого дружественному оператору INFILTRATOR, либо находящегося в пределах 6\" от дружественного оператора VOXBREAKER. В Firefight phase этого turning point тот вражеский оператор не может активироваться или выполнять действия, пока не станет истинным одно из следующего:\n• Твой противник активировал количество вражеских операторов, равное числу дружественных операторов INFILTRATOR в killzone на момент использования этого STRATEGIC GAMBIT.\n• Это последний вражеский оператор, который должен активироваться."
+        },
+        {
+          "name": "Terror",
+          "text": "Специализированные войска устрашения, Reivers используют черепные маски, шоковые гранаты и усиленный vox рёв, чтобы терроризировать своих жертв.\n\nКаждый раз, когда вражеский оператор находится в пределах 3\" от дружественных операторов REIVER, твой противник обязан потратить 1 дополнительный AP, чтобы тот вражеский оператор выполнил действие Pick Up Marker или mission-действие.\n\nПри определении контроля над маркером считай суммарный APL stat вражеских операторов, оспаривающих его, на 1 ниже, если хотя бы один из тех вражеских операторов находится в пределах 3\" от дружественных операторов REIVER. Учти, что это не изменение самого APL stat, поэтому любые другие изменения суммируются с этим эффектом."
+        },
+        {
+          "name": "Astartes",
+          "text": "Во время активации каждого дружественного оператора PHOBOS STRIKE TEAM он может выполнить либо два действия Shoot, либо два действия Fight. Если это два действия Shoot, для хотя бы одного из них должно быть выбрано bolt-оружие. Bolt-оружие — это любое дальнобойное оружие, в названии которого есть слово 'bolt', например marksman bolt carbine, special issue bolt pistol и т.д.\n\nКаждый дружественный оператор PHOBOS STRIKE TEAM может выполнять counteract независимо от своего приказа."
+        },
+        {
+          "name": "Multi-Spectrum Array",
+          "text": "Каждый раз, когда дружественный оператор INCURSOR стреляет, вражеских операторов нельзя obscure."
+        },
+        {
+          "name": "Guerrilla Warfare",
+          "text": "Действие (1AP): смени приказ этого оператора. Нельзя выполнять это действие в пределах control range вражеского оператора.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "And They Shall Know No Fear",
+          "text": "Игнорируй любые изменения статов дружественных операторов PHOBOS STRIKE TEAM от being injured, включая статы их оружия.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Deadly Shots",
+          "text": "Дальнобойное оружие дружественных операторов PHOBOS STRIKE TEAM получает weapon rule Balanced, когда они стреляют во время активации без Charge/Fall Back/Reposition, либо по цели, не находящейся в cover или находящейся более чем в 6\" от них.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Lethal Assaults",
+          "text": "Оружие ближнего боя дружественных операторов PHOBOS STRIKE TEAM получает weapon rule Balanced, когда они дерутся. Если это выполняется во время активации с действием Charge, то оружие также получает weapon rule Lethal 5+.",
+          "cost": "Strategy Ploy"
+        },
+        {
+          "name": "Patient Ambush",
+          "text": "Используй, когда наступает твоя очередь активировать дружественного оператора. Пропусти эту активацию вместо этого.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Critical Shot",
+          "text": "Каждый раз, когда дружественный оператор PHOBOS STRIKE TEAM стреляет и наносит critical success bolt-оружием, нанеси D3 дополнительного урона.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Transhuman Physiology",
+          "text": "Используй, когда дружественный оператор PHOBOS STRIKE TEAM защищается от стрельбы, в шаге Roll Defence Dice. Разреши один normal success как critical success вместо этого.",
+          "cost": "Firefight Ploy"
+        },
+        {
+          "name": "Stealth Assault",
+          "text": "Используй, когда дружественный оператор PHOBOS STRIKE TEAM с приказом Conceal активируется, получает приказ Engage, выполняет Charge, затем Fight, и разрешает свой первый attack die. Немедленно разреши ещё один свой attack die до оппонента (никаких других действий до этого в этой активации выполнено не было, но можно действовать после).",
+          "cost": "Firefight Ploy"
+        }
+      ],
+      "statusTokens": [
+        {
+          "id": "tactical_advantage",
+          "name": "Tactical Advantage",
+          "target": "friendly",
+          "text": "Отмечает, что оператор-сержант PHOBOS STRIKE TEAM уже использовал в этой битве переброс кубика для определения инициативы по правилу Tactical Advantage — повторно в этой битве применить нельзя."
+        },
+        {
+          "id": "medic",
+          "name": "Medic",
+          "target": "friendly",
+          "text": "Отмечает, что оператор Infiltrator Helix Adept уже использовал правило Medic! в этот turning point — повторно до следующего turning point применить нельзя."
+        },
+        {
+          "id": "vanguard",
+          "name": "Vanguard",
+          "target": "friendly",
+          "text": "Отмечает, что в этот turning point уже была использована скидка AP по правилу Vanguard (Pick Up Marker или mission-действие за 1 AP меньше) — повторно до следующего turning point применить нельзя."
+        },
+        {
+          "id": "purity_seals",
+          "name": "Purity Seals",
+          "target": "friendly",
+          "text": "Отмечает, что в этот turning point уже было использовано faction-снаряжение Purity Seals (отбросить один fail, чтобы удержать другой как normal success) — повторно до следующего turning point применить нельзя."
+        },
+        {
+          "id": "special_issue_ammunition",
+          "name": "Special Issue Ammunition",
+          "target": "friendly",
+          "text": "Отмечает, что в этот turning point уже было использовано faction-снаряжение Special Issue Ammunition — bolt carbine/marksman bolt carbine/occulus bolt carbine дружественного оператора, выполнявшего Shoot, получает weapon rule Piercing 1 до конца turning point. Повторно в этот turning point применить нельзя."
+        },
+        {
+          "id": "omni_scrambler",
+          "name": "Omni-Scrambler",
+          "target": "enemy",
+          "text": "Отмечает вражеского оператора, выбранного faction rule Omni-Scrambler — до выполнения условий снятия он не может активироваться или выполнять действия в этот Firefight phase."
+        },
+        {
+          "id": "auspex_scan",
+          "name": "Auspex Scan",
+          "target": "enemy",
+          "text": "Отмечает вражеского оператора, по которому дружественный оператор PHOBOS STRIKE TEAM стреляет под действием Auspex Scan оператора Infiltrator Voxbreaker — до истечения эффекта его нельзя obscure (а для стреляющих INCURSOR их дальнобойное оружие также получает weapon rule Seek Light)."
         }
       ]
     }
